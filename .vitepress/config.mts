@@ -64,7 +64,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/gantrol/gantrol.com' }
+      { icon: 'github', link: 'https://github.com/gantrol/gantrol-blog' }
     ],
   },
   locales: {
