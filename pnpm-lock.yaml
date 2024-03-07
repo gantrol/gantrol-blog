@@ -17,6 +17,9 @@ devDependencies:
   markdown-it-anchor:
     specifier: ^8.6.7
     version: 8.6.7(@types/markdown-it@12.2.3)(markdown-it@14.0.0)
+  markdown-it-footnote:
+    specifier: ^4.0.0
+    version: 4.0.0
   markdown-it-mathjax3:
     specifier: ^4.3.2
     version: 4.3.2
@@ -1064,6 +1067,10 @@ packages:
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 14.0.0
+    dev: true
+
+  /markdown-it-footnote@4.0.0:
+    resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
     dev: true
 
   /markdown-it-mathjax3@4.3.2:

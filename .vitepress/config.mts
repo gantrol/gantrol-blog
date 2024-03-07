@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import footnote from 'markdown-it-footnote';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -80,6 +81,9 @@ export default defineConfig({
     // @mdit-vue/plugin-toc 的选项
     // https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc#options
     toc: { level: [1, 2] },
+    config: (md) => {
+      md.use(footnote);
+    },
     image: {
       // 图片懒加载
       lazyLoading: true

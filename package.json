@@ -9,16 +9,15 @@
     "preview": "vitepress preview",
     "preinstall": "npx only-allow pnpm"
   },
-  "dependencies": {
-  },
   "devDependencies": {
-    "markdown-it-anchor": "^8.6.7",
-    "vitepress": "1.0.0-rc.45",
-    "vue": "^3.4.0",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.10.1",
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-footnote": "^4.0.0",
     "markdown-it-mathjax3": "^4.3.2",
-    "terser": "^5.14.2"
+    "terser": "^5.14.2",
+    "vitepress": "1.0.0-rc.45",
+    "vue": "^3.4.0"
   },
   "pnpm": {
     "overrides": {
