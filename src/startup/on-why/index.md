@@ -1,0 +1,40 @@
+# 黄金之问：为什么？
+
+如果突然冒出一位“登山王”，要手把手教你登珠穆朗玛峰，你会不会觉得很奇怪？问题就出在“为什么要去登珠峰”上。
+
+就算你有资源学到怎么登珠峰，你大概也不会去。或许是太费时间，或许是太危险，也许是家里人不同意……
+
+假设你真能给十年前的自己发条“买比特币”的信息，他真的会听吗？为什么会听？
+
+---
+
+高中时，封闭式管理。但有个别同学，突破种种困难，顺着水管滑到宿舍楼下，翻墙去外面网吧。是游戏不耗费精力吗？不，网络游戏简直是献祭精力，换取那段时间的快乐。
+
+可他们为什么如此热爱网络游戏，以至于能突破种种学校的限制？
+
+大概是因为，网络游戏能挖掘玩家娱乐的动机，甚至植入动机，从而让他们迷上游戏。
+
+如果你仔细研究，甚至会发现，挖掘动机的过程跟学习有关——如果玩家在游戏“学”不到什么东西了，那么他就会不玩这个游戏！
+
+这方面最典型例子就是井字棋。可能一、二年级的小孩还会在班上用草稿纸偷偷玩井字棋，但会突然有一天，大家都知道怎么让井字棋稳定平局，大家都“学会了”，也就不好玩、不会玩了。
+
+---
+
+有的人会想起，马斯洛需求金字塔。有点心理学常识，挺好的。可惜人的需求没那么稳定有层次，不然烈士会少很多——有的军人，打仗的时候饥一顿饱一顿，但最后放弃生命都要完成任务。
+
+但另一方面，我们在保证温饱的前提下，是不是能将一些高层次的需求拉低，从而使自己更有动力去学习新知识，进而更……
+
+[//]: # (TODO: 补充文章，将下列svg转为svg图片)
+
+```svg
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', width: '200px', borderRadius: '50%', backgroundColor: '#87CEEB', position: 'relative' }}>
+  <div style={{ height: '150px', width: '150px', borderRadius: '50%', backgroundColor: '#FFA07A', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
+    <div style={{ height: '100px', width: '100px', borderRadius: '50%', backgroundColor: '#98FB98', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
+      <span style={{ color: 'black', fontWeight: 'bold' }}>Why</span>
+    </div>
+    <span style={{ position: 'absolute', bottom: '20px', right: '20px', color: 'black', fontWeight: 'bold' }}>How</span>
+  </div>
+  <span style={{ position: 'absolute', bottom: '5px', right: '5px', color: 'black', fontWeight: 'bold' }}>What</span>
+</div>
+
+```

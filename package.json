@@ -1,0 +1,37 @@
+{
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "markdown-it-anchor": "^8.6.7",
+    "vitepress": "1.0.0-rc.45",
+    "vue": "^3.4.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^20.10.1",
+    "markdown-it-mathjax3": "^4.3.2",
+    "terser": "^5.14.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vitejs/plugin-vue": "5.0.0-beta.1"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "react",
+        "react-dom",
+        "@types/react",
+        "search-insights"
+      ]
+    }
+  }
+}
