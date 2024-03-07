@@ -8,11 +8,11 @@ hero:
   tagline: AI、软件与心理学
   actions:
     - theme: brand
-      text: Markdown 例子
-      link: /examples
+      text: AI·第一名
+      link: /AI/TOP1
     - theme: alt
-      text: API 例子
-      link: /
+      text: 沙盒例子
+      link: /examples
 
 features:
   - title: AI
