@@ -58,7 +58,7 @@ export default defineConfig({
         text: 'Startup',
         items: [
           { text: '黄金之问：Why', link: '/startup/on-why/' },
-          { text: '怎样成为一个“干大事”的人', link: '/startup/great-work-cn/' },
+          { text: '怎样成为一个“干大事”的人', link: '/startup/on-why/great-work-cn/' },
         ]
       },
     ],
