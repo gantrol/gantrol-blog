@@ -8,10 +8,10 @@ hero:
   tagline: AI、软件与心理学
   actions:
     - theme: brand
-      text: AI·第一名
+      text: 读文章
       link: /AI/TOP1
     - theme: alt
-      text: 沙盒例子
+      text: 学编程
       link: /examples
 
 features:
