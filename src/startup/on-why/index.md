@@ -1,3 +1,8 @@
+<script setup>
+    import TQ from "./three_question.vue";
+</script>
+
+
 # 黄金之问：为什么？
 
 如果突然冒出一位“登山王”，要手把手教你登珠穆朗玛峰，你会不会觉得很奇怪？问题就出在“为什么要去登珠峰”上。
@@ -24,17 +29,7 @@
 
 但另一方面，我们在保证温饱的前提下，是不是能将一些高层次的需求拉低，从而使自己更有动力去学习新知识，进而更……
 
-[//]: # (TODO: 补充文章，将下列svg转为svg图片)
+[//]: # (TODO: 补充文章)
 
-```svg
-<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', width: '200px', borderRadius: '50%', backgroundColor: '#87CEEB', position: 'relative' }}>
-  <div style={{ height: '150px', width: '150px', borderRadius: '50%', backgroundColor: '#FFA07A', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
-    <div style={{ height: '100px', width: '100px', borderRadius: '50%', backgroundColor: '#98FB98', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
-      <span style={{ color: 'black', fontWeight: 'bold' }}>Why</span>
-    </div>
-    <span style={{ position: 'absolute', bottom: '20px', right: '20px', color: 'black', fontWeight: 'bold' }}>How</span>
-  </div>
-  <span style={{ position: 'absolute', bottom: '5px', right: '5px', color: 'black', fontWeight: 'bold' }}>What</span>
-</div>
+<TQ />
 
-```
