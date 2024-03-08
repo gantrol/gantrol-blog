@@ -1,17 +1,25 @@
 <template>
-  <div>
+  <div class="editor">
     <div
-        ref="editor"
-        id="editor-target"
-        style="width: 800px; height: 600px"
+        :ref="props.id"
+        :id="props.id"
+        style="width: 600px; height: 400px"
     ></div>
   </div>
 </template>
+
+<style setup>
+   .editor {
+     margin: 2em;
+     overflow: auto;
+   }
+</style>
 
 <script setup>
 import {ref, onMounted, watch} from "vue";
 
 const props = defineProps({
+  id: String,
   initialValue: String,
   initialLanguage: String,
 });
@@ -50,7 +58,8 @@ self.MonacoEnvironment = {
 
 onMounted(() => {
   editorRef.value = monaco.editor.create(
-      document.getElementById("editor-target"),
+      // TODO: id需要……
+      document.getElementById(props.id),
       {
         value: props.initialValue || `const abc = 'abc';`, // 使用 props.initialValue 或默认值
         language: props.initialLanguage || "javascript", // 使用 props.initialLanguage 或默认语言

@@ -1,26 +1,61 @@
+# 在线代码编辑
 
-<MonacoEditor :initialValue="cssTestData" :initialLanguage="'css'" />
+## HTML
+
+<HTMLMonacoEditor :id="'html-editor'" :initialValue="HTMLTestData" :initialLanguage="'html'" />
+
+## CSS
+
+<CSSMonacoEditor :id="'css-editor'" :initialValue="cssTestData" :initialLanguage="'css'" />
+
+## JavaScript
+
+<JSMonacoEditor :id="'js-editor'" :initialValue="jsTestData" :initialLanguage="'javascript'" />
+
 
 <script setup>
     import { defineAsyncComponent, ref } from 'vue';
     import { inBrowser } from 'vitepress';
+
+    const getEditor = () => {
+        return inBrowser
+              ? defineAsyncComponent(() => import('./components/monaco.vue'))
+              : () => null;
+    }
     
     // Dynamically import the MonacoEditor component if in browser
-    const MonacoEditor = inBrowser
-      ? defineAsyncComponent(() => import('./components/monaco.vue'))
-      : () => null;
+    const HTMLMonacoEditor = getEditor();
+    const CSSMonacoEditor = getEditor();
+    const JSMonacoEditor = getEditor();
     
-    // Define some CSS test data as an example
+    const HTMLTestData = ref(`<html>
+<head>
+    <title>Color Changer</title>
+</head>
+<body>
+    <button id="changeColor">Change Background Color</button>
+</body>
+</html>`);
+
+
     const cssTestData = ref(`/* CSS example code */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 `);
+
+    const jsTestData = ref(`document.getElementById('changeColor').addEventListener('click', function() {
+    document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+});`);
+
 </script>
