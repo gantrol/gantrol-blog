@@ -32,5 +32,8 @@
         "search-insights"
       ]
     }
+  },
+  "dependencies": {
+    "monaco-editor": "^0.46.0"
   }
 }

@@ -1,8 +1,27 @@
 
+<MonacoEditor :initialValue="cssTestData" :initialLanguage="'css'" />
 
-<iframe
-        src="https://codesandbox.io/embed/new?codemirror=1&highlights=6,7,8,9"
-        style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<script setup>
+    import { defineAsyncComponent, ref } from 'vue';
+    import { inBrowser } from 'vitepress';
+    
+    // Dynamically import the MonacoEditor component if in browser
+    const MonacoEditor = inBrowser
+      ? defineAsyncComponent(() => import('./components/monaco.vue'))
+      : () => null;
+    
+    // Define some CSS test data as an example
+    const cssTestData = ref(`
+    /* CSS example code */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    `);
+</script>

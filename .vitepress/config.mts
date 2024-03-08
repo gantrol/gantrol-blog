@@ -3,7 +3,6 @@ import footnote from 'markdown-it-footnote';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  // title: 'Gantrol's Blog',
   lang: 'zh',
   title: '黄健楸',
   srcDir: 'src',
@@ -89,6 +88,11 @@ export default defineConfig({
     image: {
       // 图片懒加载
       lazyLoading: true
+    }
+  },
+  vite: {
+    ssr: {
+      noExternal: ['monaco-editor']
     }
   },
 })
