@@ -11,17 +11,16 @@
       : () => null;
     
     // Define some CSS test data as an example
-    const cssTestData = ref(`
-    /* CSS example code */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    `);
+    const cssTestData = ref(`/* CSS example code */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+`);
 </script>
