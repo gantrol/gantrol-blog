@@ -1,5 +1,5 @@
 <script setup>
-    import TQ from "./three_question.vue";
+    import TQ from "../../public/three_question.vue";
 </script>
 
 

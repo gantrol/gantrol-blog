@@ -43,6 +43,7 @@ export default defineConfig({
         text: 'AI',
         items: [
           { text: 'AI TOP 1', link: '/AI/TOP1' },
+          { text: 'AI 画 SVG', link: '/AI/use/svg/' },
         ]
       },
       {
