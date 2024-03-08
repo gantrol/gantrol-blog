@@ -3,7 +3,7 @@
     <div
         :ref="props.id"
         :id="props.id"
-        style="width: 600px; height: 400px"
+        style="width: 100%; height: 200px"
     ></div>
   </div>
 </template>
