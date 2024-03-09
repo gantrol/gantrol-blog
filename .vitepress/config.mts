@@ -107,4 +107,7 @@ export default defineConfig({
       noExternal: ['monaco-editor']
     }
   },
+  sitemap: {
+    hostname: 'https://gantrol.com'
+  },
 })
