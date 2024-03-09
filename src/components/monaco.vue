@@ -3,7 +3,7 @@
     <div
         :ref="props.id"
         :id="props.id"
-        style="width: 100%; height: 200px"
+        style="width: 100%; height: 45vh"
     ></div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <style setup>
 .editor {
   margin: 2em;
-  overflow: auto;
+  overflow: hidden;
 }
 </style>
 
