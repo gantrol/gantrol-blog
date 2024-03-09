@@ -19,9 +19,5 @@
 <TQ />
 
 
-## “参考”
-
-https://linear.app/q-laputa/issue/ZZZ-12/%E7%94%9F%E6%88%90svg%E5%9B%BE%E6%A0%87
-
 [^1]: 目前免费的 AI 转 SVG 工具是 [SVGCode](https://github.com/tomayac/SVGcode)，[官网](https://svgco.de/)。现在付费的 visualize 也行
 
