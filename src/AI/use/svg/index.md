@@ -11,7 +11,7 @@
 
 可能的流程是：
 
-- 用 Midjourney 或 Dalle 画出
+- 用 Midjourney 或 Dalle 画出[^2]
 - 若要 SVG 或想要透明图层，可用 Figma 描图或使用 AI 工具转为 SVG [^1]，前者的优势是方便调整
 
 甚至可以用ChatGPT直接画 SVG，如：
@@ -21,3 +21,4 @@
 
 [^1]: 目前免费的 AI 转 SVG 工具是 [SVGCode](https://github.com/tomayac/SVGcode)，[官网](https://svgco.de/)。现在付费的 visualize 也行
 
+[^2]: 个人会参考 AI 优化的结果，比如用自己的 GPTs：[Better Dalle](https://chat.openai.com/g/g-mFkQwa1cQ-betterdalle)  [AI Drawing Prompt Optimizer](https://chat.openai.com/g/g-53PrTHvwM-ai-drawing-prompt-optimizer)
