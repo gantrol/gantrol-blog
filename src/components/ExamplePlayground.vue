@@ -134,17 +134,6 @@ const jsCode = defineModel('jsCode', {
   font-weight: bold;
 }
 
-/* 以下是响应式设计的一些样式 */
-@media (max-width: 600px) {
-  .tabs {
-    display: block;
-  }
-
-  .tabs button {
-    width: 100%;
-  }
-}
-
 .editors {
   display: flex;
   flex-direction: column;
