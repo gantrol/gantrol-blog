@@ -25,6 +25,7 @@ const props = defineProps({
 });
 
 const iframeContent = computed(() => {
+  console.log(props.htmlCode)
   return `
     ${props.htmlCode}
     <style>${props.cssCode}</style>

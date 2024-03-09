@@ -9,22 +9,14 @@
 </template>
 
 <style setup>
-   .editor {
-     margin: 2em;
-     overflow: auto;
-   }
+.editor {
+  margin: 2em;
+  overflow: auto;
+}
 </style>
 
 <script setup>
-import {ref, onMounted, watch} from "vue";
-
-const props = defineProps({
-  id: String,
-  initialValue: String,
-  initialLanguage: String,
-});
-
-const editorRef = ref(null);
+import {onMounted} from "vue";
 /**
  * https://github.com/vuejs/vitepress/issues/1508
  * https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046
@@ -37,6 +29,17 @@ import jsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
 import cssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker";
 import htmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker";
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+
+const props = defineProps({
+  id: String,
+  initialValue: String,
+  initialLanguage: String,
+});
+
+const emit = defineEmits(['update:initialValue']);
+
+
+let editorManager;
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -57,7 +60,7 @@ self.MonacoEnvironment = {
 };
 
 onMounted(() => {
-  editorRef.value = monaco.editor.create(
+  editorManager = monaco.editor.create(
       // TODO: id需要……
       document.getElementById(props.id),
       {
@@ -65,19 +68,12 @@ onMounted(() => {
         language: props.initialLanguage || "javascript", // 使用 props.initialLanguage 或默认语言
       }
   );
+  // 监听编辑器内容变化
+  editorManager.onDidChangeModelContent(() => {
+    // 获取当前编辑器的值
+    const currentValue = editorManager.getValue();
+    // 发出事件，通知父组件更新 initialValue
+    emit('update:initialValue', currentValue);
+  });
 });
-
-// 监听 initialValue 和 initialLanguage 的变化
-watch(() => props.initialValue, (newValue) => {
-  if (editorRef.value) {
-    editorRef.value.setValue(newValue);
-  }
-});
-
-watch(() => props.initialLanguage, (newLanguage) => {
-  if (editorRef.value) {
-    monaco.editor.setModelLanguage(editorRef.value.getModel(), newLanguage);
-  }
-});
-
 </script>
