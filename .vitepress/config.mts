@@ -8,6 +8,7 @@ export default defineConfig({
   srcDir: 'src',
   description: 'Computer psychologist: AI, software, and psychology',
   head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
     [
       'script',
       { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
