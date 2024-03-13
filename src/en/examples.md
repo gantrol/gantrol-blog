@@ -1,6 +1,3 @@
----
-sidebar: false
----
 
 # Playground
 

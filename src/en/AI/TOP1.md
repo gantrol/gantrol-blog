@@ -1,6 +1,5 @@
 ---
 outline: deep
-sidebar: false
 ---
 
 # AI TOP1
