@@ -4,15 +4,15 @@ layout: home
 
 hero:
   name: "Computer psychologist"
-  text: ""
+  text: "（Website on building)"
   tagline: "Gantrol's Blog: AI, software, and psychology"
   actions:
     - theme: brand
       text: Read Articles
-      link: /AI/TOP1
+      link: /en/AI/TOP1
     - theme: alt
       text: Write Code
-      link: /examples
+      link: /en/examples
 
 features:
   - title: AI

@@ -68,7 +68,7 @@ const htmlCode = defineModel('htmlCode', {
     <title>Color Changer</title>
   </head>
   <body>
-    <button id="changeColor">点击变色</button>
+    <button id="changeColor">Click It</button>
   </body>
 </html>`
 });
