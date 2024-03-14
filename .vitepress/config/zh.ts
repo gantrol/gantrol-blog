@@ -69,7 +69,7 @@ function nav(): DefaultTheme.NavItem[] {
 
 function sidebar(): DefaultTheme.Sidebar {
     return {
-        '/': {base: '/', items: sidebarAll()},
+        '/': {base: '', items: sidebarAll()},
     }
 }
 
@@ -111,13 +111,19 @@ function sidebarCS(): DefaultTheme.SidebarItem {
 function sidebarSoftware(): DefaultTheme.SidebarItem {
     return {
         text: '软件杂谈',
-        base: '/software/',
         collapsed: true,
         items: [
-            {text: '“这个很简单，我也能做一个”', link: 'wheel/'},
-            {text: '谈笔记', link: 'tools/notes/too-much/'},
-            {text: 'Markdown能做发布', link: 'tools/markdown/MarkdownCanDoRelease'},
-            {text: '博客建站之选', link: 'tools/blog-builder/'},
+            {
+                text: '杂谈',
+                base: '/software',
+                collapsed: true,
+                items: [
+                    {text: '“这个很简单，我也能做一个”', link: '/wheel/'},
+                    {text: 'Markdown能做发布', link: '/tools/markdown/MarkdownCanDoRelease'},
+                    {text: '谈笔记', link: '/tools/notes/too-much/'},
+                    {text: '博客建站之选', link: '/tools/blog-builder/'},
+                ]
+            },
             {
                 text: '工具',
                 items: [
