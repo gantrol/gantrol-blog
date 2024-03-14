@@ -57,16 +57,12 @@ function nav(): DefaultTheme.NavItem[] {
             ]
         },
         {
-            items: [
-                {
-                    text: '创业',
-                    link: '/startup/'
-                },
-            ]
+            text: '创业',
+            link: '/startup/',
         },
         {
-            text: 'Playground',
-            link:  "/en/CS/examples",
+            text: '演练场',
+            link:  "/CS/examples",
         },
     ]
 }
