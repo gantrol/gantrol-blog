@@ -30,5 +30,7 @@
 
 - 观点大量参考了 OpenAI “掌门人”主持的 How to Start a Startup
   - 对的，开 OpenAI 这家公司，就是他解决AGI研究问题的唯一方式
-  - Recommended Readings for How to Start a Startup
+  - 其他阅读材料：
+    - [Recommended Readings for How to Start a Startup](https://startupclass.samaltman.com/lists/readings/)
+    - [Startup Playbook](https://playbook.samaltman.com/)
 
