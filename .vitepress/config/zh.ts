@@ -49,23 +49,35 @@ function nav(): DefaultTheme.NavItem[] {
     return [
         {text: '主页', link: '/'},
         {
+            text: '工具',
+            items: [
+                {text: "Markdown能做！", link:  "https://www.markdowncando.com/zh/"},
+                {text: "Claude3中文标点替换工具", link:  "https://p.gantrol.com"},
+                {text: "Cyberchef：小工具箱", link:  "https://gchq.github.io/CyberChef"},
+            ]
+        },
+        {
             items: [
                 {
                     text: '创业',
                     link: '/startup/'
                 },
             ]
-        }
+        },
+        {
+            text: 'Playground',
+            link:  "/en/CS/examples",
+        },
     ]
 }
 
 function sidebar(): DefaultTheme.Sidebar {
     return {
-        '/': {base: '/', items: sidebarSoftwareAndAI()},
+        '/': {base: '/', items: sidebarAll()},
     }
 }
 
-function sidebarSoftwareAndAI(): DefaultTheme.SidebarItem[] {
+function sidebarAll(): DefaultTheme.SidebarItem[] {
     return [
         sidebarAI(),
         sidebarSoftware(),
