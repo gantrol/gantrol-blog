@@ -12,7 +12,7 @@ hero:
       link: /AI/TOP1
     - theme: alt
       text: 学编程
-      link: /software/examples
+      link: /CS/examples
 
 features:
   - title: AI

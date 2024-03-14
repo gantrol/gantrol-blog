@@ -110,10 +110,12 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
             {text: '谈笔记', link: 'tools/notes/too-much/'},
             {text: 'Markdown能做发布', link: 'tools/markdown/MarkdownCanDoRelease'},
             {text: '博客建站之选', link: 'tools/blog-builder/'},
-            {text: '工具', items: [
+            {
+                text: '工具',
+                items: [
                     {text: "Markdown能做！", link:  "https://www.markdowncando.com/zh/"},
-                    {text: "Claude3中文标点替换工具", link:  "https://p.gantrol.com/"},
-                    {text: "Cyberchef：小工具箱", link:  "https://gchq.github.io/CyberChef/"},
+                    {text: "Claude3中文标点替换工具", link:  "https://p.gantrol.com"},
+                    {text: "Cyberchef：小工具箱", link:  "https://gchq.github.io/CyberChef"},
                 ]}
         ]
     }
