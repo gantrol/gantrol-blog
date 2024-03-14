@@ -8,12 +8,7 @@ export const en = defineConfig({
 
     themeConfig: {
         nav: nav(),
-
-        sidebar: {
-            '/en/AI/': { base: '/en/AI/', items: sidebarAI() },
-            // '/en/software/': { base: '/en/software/', items: sidebarSoftware() }
-        },
-
+        sidebar: sidebar(),
         editLink: {
             pattern: 'https://github.com/gantrol/gantrol.com/edit/main/src/:path',
             text: 'Edit this page on GitHub'
@@ -37,39 +32,93 @@ function nav(): DefaultTheme.NavItem[] {
         //     link: '/en/software/',
         //     activeMatch: '/en/software/'
         // }
-    ]
-}
-
-function sidebarAI(): DefaultTheme.SidebarItem[] {
-    return [
         {
-            text: 'AI',
-            collapsed: false,
+            text: 'Playground',
+            link:  "/en/CS/examples",
+        },
+        {
+            text: 'Tools',
             items: [
-                { text: 'AI TOP1', link: '/en/AI/TOP1' },
+                {text: "MarkdownCanDo", link:  "https://www.markdowncando.com/"},
+                {text: "Cyberchef", link:  "https://gchq.github.io/CyberChef"},
             ]
         },
-
     ]
 }
 
-function sidebarSoftware(): DefaultTheme.SidebarItem[] {
+
+function sidebar(): DefaultTheme.Sidebar {
+    return {
+        '/en': {base: '/en', items: sidebarAll()},
+    }
+}
+
+function sidebarAll(): DefaultTheme.SidebarItem[] {
     return [
-        {
-            text: 'Reference',
-            base: '/en/',
-            items: [
-                { text: 'Site Config', link: 'site-config' },
-                { text: 'Frontmatter Config', link: 'frontmatter-config' },
-                { text: 'Runtime API', link: 'runtime-api' },
-                { text: 'CLI', link: 'cli' },
-                {
-                    text: 'Default Theme',
-                    base: '/reference/default-theme-',
-                    items: [
-                    ]
-                }
-            ]
-        }
+        sidebarAI(),
+        sidebarSoftware(),
+        sidebarCS(),
+        // sidebarStartup(),
     ]
+
 }
+
+function sidebarAI(): DefaultTheme.SidebarItem {
+    return {
+        text: 'AI',
+        base: '/en/AI',
+        // link: '/',
+        collapsed: false,
+        items: [
+            {text: 'AI·TOP 1', link: '/TOP1'},
+            // {text: 'AI 画 SVG', link: '/use/svg/'},
+        ]
+    }
+}
+
+function sidebarCS(): DefaultTheme.SidebarItem {
+    return {
+        text: 'Computer Science',
+        base: '/en/CS/',
+        collapsed: false,
+        items: [
+            // {text: '自学计算机科学', link: 'learn'},
+            {text: 'Playground', link: 'examples'},
+        ]
+    }
+}
+
+function sidebarSoftware(): DefaultTheme.SidebarItem {
+    return {
+        text: 'Software',
+        base: '/en/software/',
+        collapsed: false,
+        items: [
+            // {text: '“这个很简单，我也能做一个”', link: 'wheel/'},
+            // {text: '谈笔记', link: 'tools/notes/too-much/'},
+            // {text: 'Markdown能做发布', link: 'tools/markdown/MarkdownCanDoRelease'},
+            // {text: '博客建站之选', link: 'tools/blog-builder/'},
+            {
+                text: 'Tools',
+                items: [
+                    {text: "MarkdownCanDo", link:  "https://www.markdowncando.com/"},
+                    {text: "Cyberchef", link:  "https://gchq.github.io/CyberChef"},
+                ]
+            },
+        ]
+    }
+}
+
+function sidebarStartup(): DefaultTheme.SidebarItem {
+    return {
+        text: '创业（Startup）',
+        base: '/en/startup',
+        link: '/',
+        items: [
+            {text: '黄金之问：Why', link: '/on-why/'},
+            {text: '怎样成为一个“干大事”的人', link: '/on-why/great-work-cn/'},
+        ]
+    }
+
+}
+
