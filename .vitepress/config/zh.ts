@@ -69,6 +69,7 @@ function sidebarSoftwareAndAI(): DefaultTheme.SidebarItem[] {
     return [
         sidebarAI(),
         sidebarSoftware(),
+        sidebarCS(),
         sidebarStartup(),
     ]
 
@@ -86,27 +87,40 @@ function sidebarAI(): DefaultTheme.SidebarItem {
     }
 }
 
-function sidebarSoftware(): DefaultTheme.SidebarItem {
+function sidebarCS(): DefaultTheme.SidebarItem {
     return {
-        text: '软件',
-        base: '/software/',
+        text: '计算机科学与工程',
+        base: '/CS/',
         collapsed: true,
         items: [
             {text: '自学计算机科学', link: 'cs/learn'},
-            {text: '“这个很简单，我也能做一个”', link: 'wheel/'},
             {text: '沙盒例子', link: 'examples'},
+        ]
+    }
+}
+
+function sidebarSoftware(): DefaultTheme.SidebarItem {
+    return {
+        text: '软件杂谈',
+        base: '/software/',
+        collapsed: true,
+        items: [
+            {text: '“这个很简单，我也能做一个”', link: 'wheel/'},
             {text: '谈笔记', link: 'tools/notes/too-much/'},
+            {text: 'Markdown能做发布', link: 'tools/markdown/MarkdownCanDoRelease'},
+            {text: '博客建站之选', link: 'tools/blog-builder/'},
         ]
     }
 }
 
 function sidebarStartup(): DefaultTheme.SidebarItem {
     return {
-        text: 'Startup',
-        base: '/startup/',
+        text: '创业（Startup）',
+        base: '/startup',
+        link: '/',
         items: [
-            {text: '黄金之问：Why', link: 'on-why/'},
-            {text: '怎样成为一个“干大事”的人', link: 'on-why/great-work-cn/'},
+            {text: '黄金之问：Why', link: '/on-why/'},
+            {text: '怎样成为一个“干大事”的人', link: '/on-why/great-work-cn/'},
         ]
     }
 

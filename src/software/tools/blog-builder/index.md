@@ -11,9 +11,11 @@
   - 希望能embed各社交平台或媒体平台
   - 需要内嵌代码演练场
 
+## 符合个人需求
+
 比较符合个人需求的有两派
 
-## MDX 配合 contentlayer
+### MDX 配合 contentlayer
 
 
 contentlayer能将各类非结构化文档转为JSON格式，弥补了前端框架对内容处理的不足，同时也不用处理其他CMS的麻烦事
@@ -37,7 +39,7 @@ contentlayer能将各类非结构化文档转为JSON格式，弥补了前端框�
 
 有趣的是，有位国人开发了一个类似框架，然后到几个contentlayer相关仓库去说可以用他的框架替代
 
-## Vitepress
+### Vitepress
 
 [//]: # (TODO 整理)
 
@@ -50,3 +52,10 @@ vue.js官网甚至植入了一个vue代码演练场，没有依赖什么sandbox�
 同时它有一个很适合做教程的特性，像图二那样step1到15，就直接组织好教程了
 
 - https://web.okjike.com/originalPost/65e9ac04de5f2873486c301d
+
+## 其他选择
+
+- Astro
+- Hexo
+- TailwindUI（付费）
+  - Cali.so
