@@ -78,11 +78,12 @@ function sidebarSoftwareAndAI(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
     return {
         text: 'AI',
-        base: '/AI/',
+        base: '/AI',
+        link: '/',
         collapsed: true,
         items: [
-            {text: 'AI·第一名', link: 'TOP1'},
-            {text: 'AI 画 SVG', link: 'use/svg/'},
+            {text: 'AI·第一名', link: '/TOP1'},
+            {text: 'AI 画 SVG', link: '/use/svg/'},
         ]
     }
 }
@@ -93,7 +94,7 @@ function sidebarCS(): DefaultTheme.SidebarItem {
         base: '/CS/',
         collapsed: true,
         items: [
-            {text: '自学计算机科学', link: 'cs/learn'},
+            {text: '自学计算机科学', link: 'learn'},
             {text: '沙盒例子', link: 'examples'},
         ]
     }
@@ -109,6 +110,11 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
             {text: '谈笔记', link: 'tools/notes/too-much/'},
             {text: 'Markdown能做发布', link: 'tools/markdown/MarkdownCanDoRelease'},
             {text: '博客建站之选', link: 'tools/blog-builder/'},
+            {text: '工具', items: [
+                    {text: "Markdown能做！", link:  "https://www.markdowncando.com/zh/"},
+                    {text: "Claude3中文标点替换工具", link:  "https://p.gantrol.com/"},
+                    {text: "Cyberchef：小工具箱", link:  "https://gchq.github.io/CyberChef/"},
+                ]}
         ]
     }
 }
