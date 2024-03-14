@@ -12,7 +12,7 @@ hero:
       link: /en/AI/TOP1
     - theme: alt
       text: Write Code
-      link: /en/examples
+      link: /en/CS/examples
 
 features:
   - title: AI
