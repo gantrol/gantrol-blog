@@ -1,4 +1,4 @@
-import { defineConfig, type DefaultTheme } from 'vitepress'
+import {type DefaultTheme, defineConfig} from 'vitepress'
 
 
 export const zh = defineConfig({
@@ -8,10 +8,7 @@ export const zh = defineConfig({
     themeConfig: {
         nav: nav(),
 
-        sidebar: {
-            '/software/': { base: '/software/', items: sidebarSoftware() },
-            '/AI/': { base: '/AI/', items: sidebarAI() },
-        },
+        sidebar: sidebar(),
 
         editLink: {
             pattern: 'https://github.com/gantrol/markdown-can-do/edit/main/:path',
@@ -50,7 +47,7 @@ export const zh = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
     return [
-        { text: '主页', link: '/' },
+        {text: '主页', link: '/'},
         {
             items: [
                 {
@@ -62,40 +59,57 @@ function nav(): DefaultTheme.NavItem[] {
     ]
 }
 
-function sidebarAI(): DefaultTheme.SidebarItem[] {
-    return [{
+function sidebar(): DefaultTheme.Sidebar {
+    return {
+        '/': {base: '/', items: sidebarSoftwareAndAI()},
+    }
+}
+
+function sidebarSoftwareAndAI(): DefaultTheme.SidebarItem[] {
+    return [
+        sidebarAI(),
+        sidebarSoftware(),
+        sidebarStartup(),
+    ]
+
+}
+
+function sidebarAI(): DefaultTheme.SidebarItem {
+    return {
         text: 'AI',
+        base: '/AI/',
+        collapsed: true,
         items: [
-            { text: 'AI TOP 1', link: '/TOP1' },
-            { text: 'AI 画 SVG', link: '/use/svg/' },
+            {text: 'AI·第一名', link: 'TOP1'},
+            {text: 'AI 画 SVG', link: 'use/svg/'},
         ]
-    },]
+    }
 }
 
-function sidebarSoftware(): DefaultTheme.SidebarItem[] {
-    return [
-        {
-            text: 'software',
-            items: [
-                { text: '自学计算机科学', link: '/software/cs/learn' },
-                { text: '“这个很简单，我也能做一个”', link: '/software/wheel/' },
-                { text: '沙盒例子', link: '/examples' },
-                { text: '谈笔记', link: '/software/tools/notes/too-much/' },
-            ]
-        },
-    ]
+function sidebarSoftware(): DefaultTheme.SidebarItem {
+    return {
+        text: '软件',
+        base: '/software/',
+        collapsed: true,
+        items: [
+            {text: '自学计算机科学', link: 'cs/learn'},
+            {text: '“这个很简单，我也能做一个”', link: 'wheel/'},
+            {text: '沙盒例子', link: 'examples'},
+            {text: '谈笔记', link: 'tools/notes/too-much/'},
+        ]
+    }
 }
 
-function sidebarStartup(): DefaultTheme.SidebarItem[] {
-    return [
-        {
-            text: 'Startup',
-            items: [
-                { text: '黄金之问：Why', link: '/startup/on-why/' },
-                { text: '怎样成为一个“干大事”的人', link: '/startup/on-why/great-work-cn/' },
-            ]
-        },
-    ]
+function sidebarStartup(): DefaultTheme.SidebarItem {
+    return {
+        text: 'Startup',
+        base: '/startup/',
+        items: [
+            {text: '黄金之问：Why', link: 'on-why/'},
+            {text: '怎样成为一个“干大事”的人', link: 'on-why/great-work-cn/'},
+        ]
+    }
+
 }
 
 export const search: DefaultTheme.AlgoliaSearchOptions['locales'] = {
