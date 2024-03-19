@@ -17,6 +17,11 @@ outline: deep
 
 JetbrainAI, ChatGPT3.5, Bard, Bing Chat, Notion AI, Google Docs AI
 
+
+## Other 
+
+- Image Translation, [Gemini Wins](https://gemini.google.com/), but [Google Translate](https://translate.google.com/?sl=auto&tl=en&op=images) can also do it
+
 ## Reference
 
 For more：
