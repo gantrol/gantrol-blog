@@ -16,9 +16,11 @@ hero:
 
 features:
   - title: AI
-    details: Prompt & dictionary, AI Top 1, (Human) Learning AI, Personal Views on AI
+    details: Prompt & dictionary, AI Top 1, (Human) Learning AI, Personal Views on AI    
+    link: '/AI/'
   - title: Software
     details: Playground for basic knowledge, cheat sheet for common commands, entrepreneurship and employment, whether to create or purchase software...
+    link: '/software/'
   - title: Psychology
     details: Cognitive psychology, how to learn, how to make decisions...
 ---

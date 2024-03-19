@@ -15,7 +15,11 @@ outline: deep
 
 ## 候选
 
-JetbrainAI, ChatGPT3.5, Bard, Bing Chat, Notion AI, Google Docs AI
+JetbrainAI, ChatGPT3.5, Bard(Gemini), Bing Chat, Notion AI, Google Docs AI
+
+## 其他方面
+
+- 图片翻译，[Gemini胜出](https://gemini.google.com/)，但[Google translate](https://translate.google.com/?sl=auto&tl=en&op=images)也可以做到
 
 ## 备注
 
