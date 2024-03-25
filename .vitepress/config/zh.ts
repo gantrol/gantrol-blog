@@ -86,13 +86,7 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
     return {
         text: 'AI',
-        base: '/AI',
-        link: '/',
-        collapsed: true,
-        items: [
-            {text: 'AI·第一名', link: '/TOP1'},
-            {text: 'AI 画 SVG', link: '/use/svg/'},
-        ]
+        link: 'https://www.aicando.xyz/',
     }
 }
 
