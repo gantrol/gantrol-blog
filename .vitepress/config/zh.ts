@@ -3,7 +3,7 @@ import {type DefaultTheme, defineConfig} from 'vitepress'
 
 export const zh = defineConfig({
     lang: 'zh-Hans',
-    description: '由 Vite 和 Vue 驱动的静态站点生成器',
+    description: 'AI能力全面盘点，ChatGPT、Midjourney 画图、Suno音乐',
 
     themeConfig: {
         nav: nav(),
