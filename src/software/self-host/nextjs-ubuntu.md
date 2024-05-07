@@ -79,7 +79,7 @@ wget -q -O - localhost:3000 | grep -q "next.js" && echo "Found 'next'" || echo "
 
 ## 配置 Nginx
 
-修改文件`/etc/nginx/sites-available/example.com`，替换成如下内容：
+修改文件`/etc/nginx/sites-available/default`，替换成如下内容：
 
 ```shell
 server {
@@ -125,11 +125,101 @@ sudo ufw allow OpenSSH
 
 此时，已经可以通过外部浏览器访问`<ip>`，从而访问 Next.js 对应的应用。
 
-## 施工中🚧
+## 为域名配置 SSL
 
-剩下SSH配置的部分。域名配置估计会省略
+> 域名一般需要购买。也有一些云部署的网站会下放子域名给用户。绑定 ip 一般都有方便的界面来配置。
 
-## 补充
+绑定域名后：
+
+```shell
+sudo certbot --nginx -d gantrol.com -d www.gantrol.com
+```
+
+:::details 一个例子
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Enter email address (used for urgent renewal and security notices)
+(Enter 'c' to cancel): xxx@?.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.4-April-3-2024.pdf. You must agree in
+order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: N
+Account registered.
+Requesting a certificate for tombkeeper.com and www.tombkeeper.com
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/tombkeeper.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/tombkeeper.com/privkey.pem
+This certificate expires on 2024-08-05.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+Deploying certificate
+Successfully deployed certificate for tombkeeper.com to /etc/nginx/sites-enabled/default
+Successfully deployed certificate for www.tombkeeper.com to /etc/nginx/sites-enabled/default
+Congratulations! You have successfully enabled HTTPS on https://xx.xx and https://www.xx.xx
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+* Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+* Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+:::
+
+测试证书自动续期
+
+```shell
+certbot renew --dry-run
+```
+
+更新 nginx：
+
+```text
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+SSL应当已经正常工作，更改 nginx 配置文件`/etc/nginx/sites-available/default`：
+
+```text
+server {
+        listen 80;
+        server_name gantrol.com www.gantrol.com;  # 记得换域名
+        location / {
+                proxy_pass             http://127.0.0.1:3000;  # 与 Next.js 对应
+                proxy_read_timeout     60;
+                proxy_connect_timeout  60;
+                proxy_redirect         off;
+                # Allow the use of websockets
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+```
+
+如果不是，应当更新后：
+
+```text
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+## 后续
 
 ### 代码更新怎么办？
 
