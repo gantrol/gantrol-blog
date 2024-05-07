@@ -128,3 +128,13 @@ sudo ufw allow OpenSSH
 ## 施工中🚧
 
 剩下SSH配置的部分。域名配置估计会省略
+
+## 补充
+
+### 代码更新怎么办？
+
+```shell
+git pull
+npm run build
+pm2 restart <app_name>
+```
