@@ -3,7 +3,7 @@ import {type DefaultTheme, defineConfig} from 'vitepress'
 
 export const zh = defineConfig({
     lang: 'zh-Hans',
-    description: 'AI能力全面盘点，ChatGPT、Midjourney 画图、Suno音乐',
+    description: '黄健楸的博客：AI、软件与心理学',
 
     themeConfig: {
         nav: nav(),
