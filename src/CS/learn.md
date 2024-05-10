@@ -1,8 +1,8 @@
 # 计算机、编程与计算机科学
 
-> 三支主干，越过拐点
-
-前提：至少会一点编程，不然先读这个：[faq - learnprogramming](https://www.reddit.com/r/learnprogramming/wiki/faq/#wiki_getting_started)
+::: info 前提
+至少会一点编程，不然先读这个：[faq - learnprogramming](https://www.reddit.com/r/learnprogramming/wiki/faq/#wiki_getting_started)
+:::
 
 如果是“传统”计算机科学，大概有如下三支主干，九个方面：
 
