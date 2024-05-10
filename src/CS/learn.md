@@ -2,15 +2,14 @@
 
 > 三支主干，越过拐点
 
-前提：至少会一点编程，不然先读这个：
+前提：至少会一点编程，不然先读这个：[faq - learnprogramming](https://www.reddit.com/r/learnprogramming/wiki/faq/#wiki_getting_started)
 
-[faq - learnprogramming](https://www.reddit.com/r/learnprogramming/wiki/faq/#wiki_getting_started)
+如果是“传统”计算机科学，大概有如下三支主干，九个方面：
 
 - 语言：人、机器的沟通
     - 编程语言
     - 网络
     - 编译原理
-    - AI
 - 计算机架构
     - 组成原理
     - 操作系统
@@ -20,9 +19,11 @@
     - 算法与数据结构
     - 数学
 
+近年来 AI 兴起，尤其是生成式 AI 大热。那是另一个话题了。详见[AI学习](/AI/#学习)
+
 # Reference
 
-[Teach Yourself Computer Science](https://teachyourselfcs.com/)
+[Teach Yourself Computer Science](https://teachyourselfcs.com/)的大纲表很不错，译文如下：
 
 | 科目       | 为何要学？                                       | 最佳书籍                                   | 最佳视频                              |
 |----------|---------------------------------------------|----------------------------------------|-----------------------------------|
@@ -36,9 +37,6 @@
 | 编程语言与编译器 | 若你懂得编程语言和编译器如何工作，你就能写出更好的代码，更轻松地学习新的编程语言。   | 《Crafting Interpreters》                | Alex Aiken’s course on Lagunita   |
 | 分布式系统    | 如今，多数系统都是分布式的。                              | 《数据密集型应用系统设计》                          | MIT 6.824                         |
 
-
-[原文搬运于自己的notion](https://gantrol.notion.site/0316a54b699f4d9f85e1ba2f1a3c1152?v=3fac5c289f6b4b689d2dc2545d7e8cc5)
-
----
-
-2023年初补充：算是“古典”计算机科学？
+> [译文搬运于站长自己的notion](https://gantrol.notion.site/0316a54b699f4d9f85e1ba2f1a3c1152?v=3fac5c289f6b4b689d2dc2545d7e8cc5)
+> 
+> 2023年初补充：算是“古典”计算机科学？
