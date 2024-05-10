@@ -22,7 +22,7 @@
 
 # Reference
 
-[Teach Yourself Computer Science](https://www.notion.so/Teach-Yourself-Computer-Science-6a3fa63b96284f21bcc0bf8aed0e821b?pvs=21)
+[Teach Yourself Computer Science](https://teachyourselfcs.com/)
 
 | 科目       | 为何要学？                                       | 最佳书籍                                   | 最佳视频                              |
 |----------|---------------------------------------------|----------------------------------------|-----------------------------------|
