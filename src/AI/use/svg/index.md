@@ -19,6 +19,6 @@
 <TQ />
 
 
-[^1]: 目前免费的 AI 转 SVG 工具是 [SVGCode](https://github.com/tomayac/SVGcode)，[官网](https://svgco.de/)。现在付费的 visualize 也行
+[^1]: 目前免费的 AI 转 SVG 工具是 [SVGCode](https://github.com/tomayac/SVGcode)，[官网](https://svgco.de/)。现在付费的 [Vectorizer.AI](https://vectorizer.ai/) 也行
 
 [^2]: 个人会参考 AI 优化的结果，比如用自己的 GPTs：[Better Dalle](https://chat.openai.com/g/g-mFkQwa1cQ-betterdalle)  [AI Drawing Prompt Optimizer](https://chat.openai.com/g/g-53PrTHvwM-ai-drawing-prompt-optimizer)
