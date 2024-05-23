@@ -1,5 +1,7 @@
 # 防止网页内容被复制：版本2
 
+<Version2 />
+
 针对上一个版本，剪贴可以绕过复制的问题，做了一个修复。
 
 :::details 具体实现
@@ -17,13 +19,8 @@ document.addEventListener('cut', function(e) {
 ```
 :::
 
-<script>
-document.addEventListener('copy', function(e) {
-    e.preventDefault();
-}, false);
 
-document.addEventListener('cut', function(e) {
-    e.preventDefault();
-}, false);
 
+<script setup>
+    import Version2 from "./Version2.vue";
 </script>
