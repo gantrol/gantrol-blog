@@ -139,6 +139,7 @@ function sidebarWebExtension(): DefaultTheme.SidebarItem[] {
                 {text: 'CopyQ 教程', base: '/software/WE/copy/', items: [
                         {text: '课前准备：下载并加载模板', link: 'environment'},
                         {text: '一个开关：模板代码解释', link: 'template'},
+                        {text: '复制攻防第一轮', link: 'version1'},
                         {text: '', link: ''},
                     ]},
                 {text: '防复制的示例', base: '/software/WE/test/copy/', items: [

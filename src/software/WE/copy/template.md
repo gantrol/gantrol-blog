@@ -89,7 +89,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 - `onClicked.addListener`为鼠标单击这一事件添加监听函数，输入为标签页对象（浏览器控制输入）；
 - 徽章（Badge）文本控制的API，可参考[文档](https://developer.chrome.google.cn/docs/extensions/reference/api/action?hl=zh-cn#badge)（注意机翻的“徽章”跟“标记”都有可能是 Badge;
 
-## 阅读代码与编写的差别
+## 阅读代码与编写的差别 {#ReadVsWrite}
 
 写代码其实比读代码难很多。比方说，现在让你把上面的代码擦掉，自己写一个开关的逻辑，就算你对上面的方案有印象，就算你借助了人工智能 ChatGPT，也没有那么容易——可能花很多时间在向 ChatGPT 描述问题上，而 ChatGPT 不一定对。
 
@@ -97,7 +97,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 
 再讨论细一点，怎么知道徽章（Badge）相关API呢？勤快一点就翻文档，偷懒一点就问 ChatGPT。但前提是你起码要知道有 Badge 这个概念，这或许也就是教程的作用，从“没有概念”到有一些，从有一些到有很多……
 
-下一篇会开始编写代码。
+下一篇会开始编写代码，不是说直接贴出作者自己写的代码，而是让读者自己写。只有自己开始写了，才学得会。
 
 [//]: # (解决难题，像走出一片森林。一开始不知道自己能不能走出来，最后不一定能走出来，)
 
