@@ -136,7 +136,11 @@ function sidebarWebExtension(): DefaultTheme.SidebarItem[] {
             text: '浏览器插件实战：CopyQ',
             collapsed: false,
             items: [
-                {text: '？', link: '/software/WE/copy/'},
+                {text: 'CopyQ 教程', base: '/software/WE/copy/', items: [
+                        {text: '课前准备：下载并加载模板', link: 'environment'},
+                        {text: '一个开关：模板代码解释', link: 'template'},
+                        {text: '', link: ''},
+                    ]},
                 {text: '防复制的示例', base: '/software/WE/test/copy/', items: [
                         {text: '版本1', link: 'version1'},
                         {text: '版本2', link: 'version2'},
