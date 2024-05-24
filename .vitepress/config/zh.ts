@@ -134,6 +134,7 @@ function sidebarWebExtension(): DefaultTheme.SidebarItem[] {
     return [
         {
             text: '浏览器插件实战：CopyQ',
+            link: '/software/WE/',
             collapsed: false,
             items: [
                 {text: 'CopyQ 教程', base: '/software/WE/copy/', items: [
