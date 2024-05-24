@@ -58,7 +58,7 @@
 - `action`是用来控制工具栏图标行为的，其下的`default_title`表示悬停在图标时显示的标题；
 - `manifest_version`也可以先不管，它是这份元数据文件（manifest）的版本，不同版本的文件格式要求、插件权限有所不同，但 Chrome 跟 Edge 只认 3 这个版本。之前一直是版本 2 的 [Firefox 也在迁移了](https://blog.mozilla.org/addons/2024/03/13/manifest-v3-manifest-v2-march-2024-update/)；
 - `permissions`是插件要申请的权限，不同权限代表着浏览器提供的不同应用接口（API）。`activeTab`能临时访问当前活跃的标签页[^1]，配合执行脚本的`scripting`权限，插件可以在这些网站上插入脚本；
-- `background`是后台脚本。可以用来沟通各个界面、处理跨域网络请求等。
+- `background`是后台脚本。可以用来沟通各个界面、处理跨域网络请求等。“worker”是在程序中执行特定任务的线程，`service_worker`在Edge被翻译成「服务工作进程」，这里的后台脚本是`service_worker.js`。
 
 ## 后台脚本
 
