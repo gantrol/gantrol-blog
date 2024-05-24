@@ -70,6 +70,7 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebar(): DefaultTheme.Sidebar {
     return {
         '/': {base: '', items: sidebarAll()},
+        '/software/WE/': {base: '', items: sidebarWebExtension()},
     }
 }
 
@@ -128,6 +129,32 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
         ]
     }
 }
+
+function sidebarWebExtension(): DefaultTheme.SidebarItem[] {
+    return [
+        {
+            text: '浏览器插件实战：CopyQ',
+            collapsed: false,
+            items: [
+                {text: '？', link: '/software/WE/copy/'},
+                {text: '防复制的示例', base: '/software/WE/test/copy/', items: [
+                        {text: '版本1', link: 'version1'},
+                        {text: '版本2', link: 'version2'},
+                        {text: '版本3', link: 'version3'},
+                        {text: '版本4', link: 'version4'},
+                    ]},
+                {text: '', link: ''},
+            ]
+        },
+        {
+            text: '手册',
+            items: [
+                {text: "Chrome 官方插件开发文档", link:  "https://developer.chrome.google.cn/docs/extensions"},
+                {text: "Edge 发布相关文档", link:  "https://learn.microsoft.com/zh-cn/microsoft-edge/extensions-chromium/publish/create-dev-account"},
+            ]}
+    ]
+}
+
 
 function sidebarStartup(): DefaultTheme.SidebarItem {
     return {
