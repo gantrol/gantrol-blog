@@ -17,7 +17,7 @@ chrome scripting api
 
 :::details 相关文档
 - [contenteditable | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/contenteditable)
-- [chrome.scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting?hl=zh-cn)
+- [chrome.scripting](https://developer.chrome.google.cn/docs/extensions/reference/api/scripting?hl=zh-cn)
 :::
 
 :::details 核心代码的参考实现
@@ -76,3 +76,9 @@ chrome.action.onClicked.addListener(async (tab) => {
 ```
 
 :::
+
+也许你也发现了，这样通过剪切绕过的方式，无法绕过[防复制网页第二版](https://www.gantrol.com/software/WE/test/copy/version1)的限制。
+
+复制攻防第二轮就将解决这个问题。考虑到制作难度，第二轮将采用偏传统教程的方式，在第二轮的基础上，将第三轮作为练习。
+
+顺带一提，由于实现思路有较大差异，第二轮会重新从模板开始，也不假设读者对`chrome.scripting`有所了解。如果你实在讨厌第一轮这种教学方式，也可以直接从第二轮开始读。
