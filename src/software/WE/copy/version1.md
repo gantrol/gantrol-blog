@@ -6,6 +6,8 @@
 
 核心思路是让用户可以编辑网页，然后用剪切绕过该网页对复制的限制。比方说，点击一下工具栏的图标，网站就变成可编辑的了。新手建议使用之前提到过的代码模板。
 
+## 逐步提示
+
 :::details 搜索关键词提示1
 JavaScript 网页可编辑
 :::
@@ -76,6 +78,14 @@ chrome.action.onClicked.addListener(async (tab) => {
 ```
 
 :::
+
+## 实现后总结
+
+背景脚本（background script）可以控制工具栏（`chrome.action` API）与影响用户正在查看的内容（content）。
+
+[//]: # (TODO: 画个图)
+
+## 下节预告
 
 也许你也发现了，这样通过剪切绕过的方式，无法绕过[防复制网页第二版](https://www.gantrol.com/software/WE/test/copy/version1)的限制。
 
