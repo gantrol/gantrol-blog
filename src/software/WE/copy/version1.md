@@ -14,6 +14,7 @@ JavaScript 网页可编辑
 
 :::details 搜索关键词提示2
 chrome scripting api
+
 注意可以在官方文档网站搜索。
 :::
 
