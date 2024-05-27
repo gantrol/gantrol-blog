@@ -82,7 +82,14 @@ chrome.action.onClicked.addListener(async (tab) => {
 
 ## 实现后总结
 
-背景脚本（background script）可以控制工具栏（`chrome.action` API）与影响用户正在查看的内容（content）。
+别忘了，你是来学习浏览器插件的，而不只是实现一个就能拍拍手走了。现在来挖掘一下这个插件相关的知识。
+
+表面上看：
+
+- 通过`chrome.action`，背景脚本（background script）可以控制工具栏
+- 通过`chrome.scripting.executeScript`，背景脚本可以直接影响到用户正在查看的内容（标签页、tab）
+
+思考更深一点，现在已经出现三类东西：背景脚本、工具栏、标签页。它们之间的关系是怎样的？再考虑到不同标签页、不同浏览器窗口呢？
 
 [//]: # (TODO: 画个图)
 
