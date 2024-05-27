@@ -1,6 +1,6 @@
 # 防止网页内容被复制：版本3
 
-<Version3 />
+
 
 折叠的内容是具体实现。在点开实现之前，你可以先试试看，它怎么防止复制的。
 
@@ -15,6 +15,8 @@ document.addEventListener('selectstart', function(e) {
 
 ```
 :::
+
+<Version3 />
 
 <script setup>
     import Version3 from "./Version3.vue";
