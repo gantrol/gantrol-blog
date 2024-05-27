@@ -39,7 +39,7 @@
 
 国内网络意味着：
 
-- 项目相关代码托管到gitee；
+- 项目相关代码托管到[gitee](https://gitee.com/jianqiu_huang/copyq)；
 - 推荐阅读文档要考虑到国内可访问性；
 - 发布渠道相关文章选择Edge为示例、而不是Chrome。
 
@@ -58,4 +58,4 @@
 
 ### 有学习交流群吗？会开课吗？
 
-微信不太适合交流代码，有问题在gitee上问吧。暂无开课打算。
+微信不太适合交流代码，有问题在[gitee](https://gitee.com/jianqiu_huang/copyq/issues)上问吧。暂无开课打算。
