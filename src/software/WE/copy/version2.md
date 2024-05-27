@@ -168,6 +168,6 @@ function bypassCopyProtection(isCopyable) {
 
 此外，本节还涉及了一点浏览器开发者工具跟调试相关的内容。
 
-## 接下来
+## 接下来 {#homework}
 
 根据本节的知识，解除版本3网页的复制限制——[防止网页内容被复制：版本3](../test/copy/version3)
