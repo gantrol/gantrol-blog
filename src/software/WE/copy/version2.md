@@ -170,4 +170,4 @@ function bypassCopyProtection(isCopyable) {
 
 ## 接下来
 
-根据本节的知识，接触版本3网页的复制限制——[防止网页内容被复制：版本3](../test/copy/version3)
+根据本节的知识，解除版本3网页的复制限制——[防止网页内容被复制：版本3](../test/copy/version3)
