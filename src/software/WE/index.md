@@ -39,7 +39,7 @@
 - CSS（可选）。如果把HTML比作用默认方式堆叠的积木，那么CSS是重新堆叠积木的语言。本教程不关注界面的美观，CSS也就很次要，而且确实有的插件是不需要CSS的。但功能复杂起来后，一般都会有；
 - JavaScript（必须）。让“积木”动起来的关键。至少明白变量、函数、循环、JSON、库等概念，写出相关代码。遇到不会的点，懂得翻文档或问AI。最好懂 npm 管理。
 
-对了，代码编辑器用自己喜欢的就好，Vscode、Zed、Sublime这些都不错。
+对了，代码编辑器用自己喜欢的就好，Vscode、Zed、Sublime这些都不错。如果你实在不知道去哪下载，而你电脑又是Windows系统，可以考虑我编译的[Zed](https://gitee.com/jianqiu_huang/zed/releases/download/0.139.0-alpha/Zed.zip)，点击即可下载`zip`文件，解压出来`exe`，双击即可运行。
 
 国内网络意味着：
 
