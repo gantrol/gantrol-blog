@@ -305,7 +305,8 @@ export default {
 .result-title {
     font-size: 20px;
     color: #8b4513;
-    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
