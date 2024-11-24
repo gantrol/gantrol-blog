@@ -126,9 +126,9 @@ export default {
             if (this.strategy === "mulligan") {
                 const notFoundProb =
                     this.combination(
-                        deckSize - targetCardsCount * 2,
-                        firstHandSize,
-                    ) / this.combination(deckSize, firstHandSize);
+                        deckSize - targetCardsCount,
+                        firstHandSize * 2,
+                    ) / this.combination(deckSize, firstHandSize * 2);
                 return 1 - notFoundProb;
             } else {
                 const notFoundProb =
@@ -147,9 +147,9 @@ export default {
             if (this.strategy === "mulligan") {
                 const notFoundProb =
                     this.combination(
-                        deckSize - targetCardsCount * 2,
-                        secondHandSize,
-                    ) / this.combination(deckSize, secondHandSize);
+                        deckSize - targetCardsCount,
+                        secondHandSize * 2,
+                    ) / this.combination(deckSize, secondHandSize * 2);
                 return 1 - notFoundProb;
             } else {
                 const notFoundProb =
