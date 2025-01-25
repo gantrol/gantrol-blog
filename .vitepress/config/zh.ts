@@ -186,8 +186,9 @@ function sidebarStartup(): DefaultTheme.SidebarItem {
     base: "/startup",
     link: "/",
     items: [
-      { text: "黄金之问：Why", link: "/on-why/" },
+      { text: "创业手册", link: "/handbook/" },
       { text: "怎样成为一个“干大事”的人", link: "/on-why/great-work-cn/" },
+      { text: "黄金之问：Why", link: "/on-why/" },
     ],
   };
 }
