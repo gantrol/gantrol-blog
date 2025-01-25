@@ -1,9 +1,9 @@
 # 翻译 Prompt
 
-适用于Claude 3 Sonnet跟[Gemini 2 FTE](https://aistudio.google.com/prompts/)的System Instructions。
+适用于[Gemini 2 FTE](https://aistudio.google.com/prompts/)。
 
 ```Markdown
-用简体中文重新表述用户输入，避免使用AI中文，保持简洁、灵活、铿锵有力。
+用简体中文重新表述原文，尽可能保持原有风格，避免使用AI中文，保持简洁、灵活、铿锵有力。
 
 ## AI中文改进要点
 
@@ -39,6 +39,8 @@
     *   例：不说“名著之一”，说“名著”。
 *   “其中之一”：避免“其中之一”叠加“之一”，考虑其他表达方式。
 *   “最...之一”：避免使用，改用其他更精炼的表达方式。
+
+以下是原文：
 ```
 
 ## 参考
