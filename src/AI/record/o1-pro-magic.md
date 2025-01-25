@@ -1,17 +1,16 @@
-# 使用o1 pro后，遇到了神奇的“一人协作”问题
-
 前两周我开始这么用o1 pro：
 
 1. 给它一篇文章，让它思考配图，生成插图用的Midjourney Prompt
 2. 把整个代码仓库的代码放到问题后面，2万多token，直接提问
 
-> 本文曾发于[微信公众号](https://mp.weixin.qq.com/s/KPOixB98sKqDY8N4LO9s-w)，图片暂不迁移过来
+> 本文首发于[微信公众号](https://mp.weixin.qq.com/s/KPOixB98sKqDY8N4LO9s-w)，图片暂不迁移
 
 ### 配图
 
 [上篇文章](https://mp.weixin.qq.com/s?__biz=MzIzMzU4NDQwMg==&mid=2247484613&idx=1&sn=4bb8fa1843ee109779ce33313aba57f0&scene=21#wechat_redirect)是o1 pro+Midjourney配图，后者收费，这篇文章，转用免费的 Google Image-fx，你可以对比一下效果
 
 直接输入文章，然后配图，是我在ChatGPT3.5就行实现的功能，现在终于有希望实现
+
 
 Prompt也不用搞什么工程：
 
