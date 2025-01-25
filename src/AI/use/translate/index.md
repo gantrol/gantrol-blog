@@ -1,6 +1,28 @@
 # 翻译 Prompt
 
-适用于[Gemini 2 FTE](https://aistudio.google.com/prompts/)。
+## 效果与适用范围
+
+上实际例子：
+
+> 公司内部，指标（财务也算上），越透明越好。 不知道为啥，很多创始人特别怕公开这些。 但公开透明，能让大家更聚焦增长。 员工对指标越上心，公司往往也越有起色， 这之间好像有直接关系。 指标藏着掖着，大家就没方向了。
+>
+> Extreme internal transparency around metrics (and financials) is a good thing to do. For some reason, founders are always really scared of this. But it’s great for keeping the whole company focused on growth. There seems to be a direct correlation between how focused on metrics employees at a company are and how well they’re doing. If you hide the metrics, it’s hard for people to focus on them.
+
+> Airbnb 的几个创始人，画了张增长目标图，贴得到处都是：冰箱上，办公桌上，甚至卫生间镜子上。 每周要是达标了，就庆祝。 没达标，大家就死磕这个问题。
+>
+> The founders of Airbnb drew a forward-looking graph of the growth they wanted to hit. They posted this everywhere—on their fridge, above their desks, on their bathroom mirror. If they hit the number that week, great. If not, it was all they talked about.
+
+适用于[Gemini 2 FTE](https://aistudio.google.com/prompts/)。有时候它还挺幽默：
+
+> 没问题，我来给你好好改改这段文字，保证改完之后，地道、简洁、有力，读起来就像人话，不像 AI 写的
+
+当然，它不只是能做翻译，润色中文也可以：
+
+> 朋友，听我一句劝吧，放下手机，关上电脑，走出网络的世界，读几页自己喜欢的书，出去阳光里走走，要么骑骑自行车，天黑了约几个好久不见的朋友喝喝茶，聊聊天，随便做些什么，一天下来，你就会发现------连还是上网打游戏有意思。
+>
+> 朋友，听我一句劝！放下手机电脑，走出网络。读几页书，晒晒太阳，骑车兜风，晚上约老友聚聚，随便干点啥。结果你发现——还是上网打游戏有意思！
+
+## Prompt
 
 ```Markdown
 用简体中文（白话文）重新表述原文，尽可能保持原有风格，避免使用AI中文，保持简洁、灵活、铿锵有力。
