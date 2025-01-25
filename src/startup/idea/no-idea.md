@@ -41,4 +41,4 @@
 
 ---
 
-我或许算“人微言轻”？要不看看OpenAI创始人写的[Startup Playbook](https://playbook.samaltman.com/) ？
+我或许算“人微言轻”？要不看看OpenAI创始人写的[Startup Playbook](https://playbook.samaltman.com/) ？[本站中文翻译](../handbook/)
