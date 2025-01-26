@@ -89,6 +89,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
     items: [
       { text: "AI TOP1", link: "TOP1" },
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
+      { text: "玩转Deepseek", link: "use/how-to-chat/deepseek.md" },
 
       {
         text: "Prompt在用",

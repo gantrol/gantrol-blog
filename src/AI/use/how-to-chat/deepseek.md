@@ -48,7 +48,7 @@ Deepseek出完结果了，回到「林黛玉问题」上来：
 
 言归正传，Deepseek其实能做对这道题，前提是你点一下左下角“深度思考”按钮，再提问。这里我们点击深度思考按钮后，点击前面提到的按钮2“重新生成”，让它重新回答。
 
-![深度模型回答林黛玉问题](assets%2Fdeepseek-chat-lin-2.png)
+![深度模型回答林黛玉问题](assets/deepseek-chat-lin-2.png)
 
 你看，它真列出了“思考”过程，还避免了之前的错误。
 
@@ -60,20 +60,20 @@ Deepseek出完结果了，回到「林黛玉问题」上来：
 
 可惜，重试两次之后，还没有触发搜索操作，这时可以考虑新开对话，可以点击问题左边的“编辑”按钮：
 
-![deepseek-chat-lin-3.png](assets%2Fdeepseek-chat-lin-3.png)
+![deepseek-chat-lin-3.png](assets/deepseek-chat-lin-3.png)
 
 > 你可以注意到这时左下角是「 4 / 4 」，还有箭头，表示你能点击箭头回到之前的回答。
 
 加上“请搜索后再回答”，点击发送：
 
-![deepseek-chat-lin-4.png](assets%2Fdeepseek-chat-lin-4.png)
+![deepseek-chat-lin-4.png](assets/deepseek-chat-lin-4.png)
 
 终于触发搜索操作，deepseek小鲸鱼也成功回答。你还可以点击鲸鱼右边的“一搜索到xx个网页”，来查看它搜索的链接。
 
-![deepseek-chat-lin-5.png](assets%2Fdeepseek-chat-lin-5.png)
+![deepseek-chat-lin-5.png](assets/deepseek-chat-lin-5.png)
 
 > 💭思考：这回是「 2 / 2 」，在提问这里，你能理解跟之前「 4 / 4 」的差别吗？现在回答底下应该还是「 4 / 4 」吗？
 
 粉框框起来的向下箭头按钮，可以帮你直达问题底部。
 
-大部分按钮都演示完了，收工！
+大部分按钮讲完，收工！
