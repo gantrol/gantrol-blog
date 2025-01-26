@@ -4,7 +4,7 @@
 
 考虑到这点，写个教程，尽可能简单，也足够有趣，玩转 deepseek。
 
-前往[聊天页面](chat.deepseek.com) ，手机登录即可，用微信登录也离不开手机。
+前往[聊天页面](https://chat.deepseek.com) ，手机登录即可，用微信登录也离不开手机。
 
 ![deepseek聊天界面](assets/deepseek-chat.png)
 
