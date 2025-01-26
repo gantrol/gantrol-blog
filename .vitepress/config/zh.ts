@@ -83,7 +83,22 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
   return {
     text: "AI",
-    link: "https://www.aicando.xyz/",
+    base:"/AI/",
+    link: "TOP1",
+    collapsed: true,
+    items: [
+      { text: "AI TOP1", link: "TOP1" },
+      { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
+
+      {
+        text: "Prompt在用",
+        items: [
+          { text: "去除AI中文（翻译、润色）", link: "use/translate/" },
+          { text: "Git Commit", link: "use/git/commit" },
+        ]
+      },
+
+    ],
   };
 }
 
