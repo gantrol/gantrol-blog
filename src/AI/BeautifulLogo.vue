@@ -18,8 +18,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 4vw 5vw; /* 使用vw单位使padding自适应 */
+  justify-content: space-around;
+  padding: 4vw 4vw; /* 使用vw单位使padding自适应 */
   background-color: #ffffff;
   border-radius: 25px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
@@ -27,6 +27,7 @@ body {
   transform: rotateX(5deg) rotateY(-5deg);
   transition: all 0.5s ease;
   width: 80vw; /* 容器宽度设置为视口宽度的80% */
+  aspect-ratio: 1;
   max-width: 900px; /* 限制容器最大宽度 */
 }
 
@@ -45,7 +46,7 @@ body {
 }
 
 .logo-svg {
-  width: 15vw; /* logo 宽度设置为视口宽度的15% */
+  width: 20vw; /* logo 宽度设置为视口宽度的15% */
   max-width: 180px; /* 限制logo最大宽度 */
   height: auto; /* 高度自适应 */
   transition: all 0.4s ease;
@@ -134,7 +135,7 @@ body {
 }
 
 .sub-logo-svg {
-  width: 18vw; /* logo 宽度设置为视口宽度的18% */
+  width: 20vw; /* logo 宽度设置为视口宽度的18% */
   max-width: 220px; /* 限制logo最大宽度 */
   height: auto; /* 高度自适应 */
   transition: all 0.4s ease;
