@@ -18,17 +18,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 4vw 4vw; /* 使用vw单位使padding自适应 */
+  justify-content: center;
+  padding: 3rem;
   background-color: #ffffff;
   border-radius: 25px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
   transform-style: preserve-3d;
   transform: rotateX(5deg) rotateY(-5deg);
   transition: all 0.5s ease;
-  width: 80vw; /* 容器宽度设置为视口宽度的80% */
+  width: 80%;
+  max-width: 700px;
   aspect-ratio: 1;
-  max-width: 900px; /* 限制容器最大宽度 */
 }
 
 .container:hover {
@@ -38,17 +38,17 @@ body {
 
 .logo-text-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 2vw; /* 使用vw单位使margin自适应 */
+  margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeInUp 0.8s forwards 0.2s;
 }
 
 .logo-svg {
-  width: 20vw; /* logo 宽度设置为视口宽度的15% */
-  max-width: 180px; /* 限制logo最大宽度 */
-  height: auto; /* 高度自适应 */
+  width: 4rem;
+  height: auto;
+  margin-right: 1rem;
   transition: all 0.4s ease;
   filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.1));
 }
@@ -59,9 +59,7 @@ body {
 
 .logo-text {
   font-family: 'Orbitron', sans-serif;
-  margin-left: 2vw; /* 使用vw单位使margin自适应 */
-  font-size: 5vw; /* 字体大小设置为视口宽度的5% */
-  max-font-size: 60px; /* 限制字体最大大小 */
+  font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 2px;
   color: #2c3e50;
@@ -69,14 +67,13 @@ body {
 
 .vs-separator {
   font-family: 'Chakra Petch', sans-serif;
-  font-size: 7vw; /* 字体大小设置为视口宽度的7% */
-  max-font-size: 85px; /* 限制字体最大大小 */
+  font-size: 3rem;
   font-weight: 900;
   color: #ff2d55;
   text-shadow: 0 0 8px rgba(255, 45, 85, 0.5),
   0 0 15px rgba(255, 45, 85, 0.3),
   2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin: 2vw 0; /* 使用vw单位使margin自适应 */
+  margin: 1.5rem 0;
   position: relative;
   opacity: 0;
   animation: fadeIn 0.8s forwards 0.6s, neonGlow 1.2s ease-in-out infinite alternate;
@@ -84,7 +81,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   letter-spacing: 2px;
-  padding: 0.6vw 1.5vw; /* 使用vw单位使padding自适应 */
+  padding: 0.5rem 1rem;
   box-shadow: inset 0 0 15px rgba(255, 45, 85, 0.2),
   0 0 20px rgba(255, 45, 85, 0.3);
 }
@@ -118,6 +115,7 @@ body {
 
 .sub-logo-text-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   opacity: 0;
   animation: fadeInUp 0.8s forwards 0.4s;
@@ -125,9 +123,8 @@ body {
 
 .sub-logo-text {
   font-family: 'Chakra Petch', sans-serif;
-  margin-right: 2vw; /* 使用vw单位使margin自适应 */
-  font-size: 5vw; /* 字体大小设置为视口宽度的5% */
-  max-font-size: 60px; /* 限制字体最大大小 */
+  margin-right: 1rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #3498db;
   letter-spacing: 2px;
@@ -135,9 +132,8 @@ body {
 }
 
 .sub-logo-svg {
-  width: 20vw; /* logo 宽度设置为视口宽度的18% */
-  max-width: 220px; /* 限制logo最大宽度 */
-  height: auto; /* 高度自适应 */
+  width: 4rem;
+  height: auto;
   transition: all 0.4s ease;
   filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.1));
 }
@@ -175,62 +171,64 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   .container {
-    width: 90vw; /* 在小屏幕上容器宽度增加 */
-    max-width: 600px; /* 限制容器最大宽度 */
-    padding: 3vw; /* 减小padding */
+    width: 90%;
+    max-width: 900px;
   }
 
-  .logo-svg {
-    max-width: 120px; /* 减小logo最大宽度 */
+  .logo-svg, .sub-logo-svg {
+    width: 12rem;
   }
 
-  .logo-text {
-    max-font-size: 40px; /* 减小字体最大大小 */
+  .logo-text, .sub-logo-text {
+    font-size: 5rem;
   }
-
-  .sub-logo-svg {
-    max-width: 160px; /* 减小logo最大宽度 */
-  }
-
-  .sub-logo-text {
-    max-font-size: 40px; /* 减小字体最大大小 */
-  }
-
 
   .vs-separator {
-    font-size: 5vw; /* 字体大小设置为视口宽度的5% */
-    max-font-size: 60px; /* 限制字体最大大小 */
-    padding: 0.5vw 1vw; /* 减小padding */
+    font-size: 6rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .logo-svg, .sub-logo-svg {
+    width: 8rem;
+  }
+
+  .logo-text, .sub-logo-text {
+    font-size: 4rem;
+  }
+
+  .vs-separator {
+    font-size: 5rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
 @media (max-width: 576px) {
   .container {
-    width: 95vw; /* 在更小的屏幕上容器宽度进一步增加 */
-    max-width: 400px; /* 限制容器最大宽度 */
-    padding: 2vw; /* 进一步减小padding */
-  }
-  .logo-svg {
-    max-width: 80px; /* 进一步减小logo最大宽度 */
+    width: 95%;
+    max-width: 350px;
+    padding: 1.5rem;
   }
 
-  .logo-text {
-    max-font-size: 30px; /* 进一步减小字体最大大小 */
-  }
-  .sub-logo-svg {
-    max-width: 120px; /* 进一步减小logo最大宽度 */
+  .logo-svg, .sub-logo-svg {
+    width: 5rem;
   }
 
-  .sub-logo-text {
-    max-font-size: 30px; /* 进一步减小字体最大大小 */
+  .logo-text, .sub-logo-text {
+    font-size: 3rem;
   }
 
   .vs-separator {
-    font-size: 4vw; /* 字体大小设置为视口宽度的4% */
-    max-font-size: 45px; /* 限制字体最大大小 */
-    padding: 0.4vw 0.8vw; /* 进一步减小padding */
+    font-size: 2.5rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 </style>
