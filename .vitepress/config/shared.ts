@@ -59,7 +59,7 @@ export const shared = defineConfig({
         logo: '/logo.svg',
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/gantrol/' }
+            { icon: 'github', link: 'https://github.com/gantrol/gantrol-blog' }
         ],
 
         search: {
