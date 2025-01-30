@@ -96,6 +96,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
         items: [
           { text: "去除AI中文（翻译、润色）", link: "use/translate/" },
           { text: "你值得一首诗", link: "use/poem/you-own-a-poem" },
+          { text: "中国名", link: "use/name/" },
           { text: "Git Commit", link: "use/git/commit" },
         ]
       },
