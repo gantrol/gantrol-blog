@@ -95,6 +95,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
         text: "Prompt在用",
         items: [
           { text: "去除AI中文（翻译、润色）", link: "use/translate/" },
+          { text: "你值得一首诗", link: "use/poem/you-own-a-poem" },
           { text: "Git Commit", link: "use/git/commit" },
         ]
       },
