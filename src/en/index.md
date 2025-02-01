@@ -10,9 +10,9 @@ hero:
     - theme: brand
       text: Read Articles
       link: /en/AI/TOP1
-    - theme: alt
-      text: Write Code
-      link: /en/CS/examples
+#    - theme: alt
+#      text: Write Code
+#      link: /en/CS/examples
 
 features:
   - title: AI

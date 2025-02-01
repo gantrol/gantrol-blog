@@ -10,9 +10,9 @@ hero:
     - theme: brand
       text: 读文章
       link: /AI/TOP1
-    - theme: alt
-      text: 学编程
-      link: /CS/examples
+#    - theme: alt
+#      text: 学编程
+#      link: /CS/examples
 
 features:
   - title: AI

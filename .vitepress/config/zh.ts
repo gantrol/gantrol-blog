@@ -62,10 +62,10 @@ function nav(): DefaultTheme.NavItem[] {
       text: "创业",
       link: "/startup/",
     },
-    {
-      text: "演练场",
-      link: "/CS/examples",
-    },
+    // {
+    //   text: "演练场",
+    //   link: "/CS/examples",
+    // },
   ];
 }
 
@@ -112,7 +112,6 @@ function sidebarCS(): DefaultTheme.SidebarItem {
     collapsed: true,
     items: [
       { text: "自学计算机科学", link: "learn" },
-      { text: "沙盒例子", link: "examples" },
     ],
   };
 }

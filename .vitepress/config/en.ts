@@ -31,10 +31,10 @@ function nav(): DefaultTheme.NavItem[] {
     //     link: '/en/software/',
     //     activeMatch: '/en/software/'
     // }
-    {
-      text: "Playground",
-      link: "/en/CS/examples",
-    },
+    // {
+    //   text: "Playground",
+    //   link: "/en/CS/examples",
+    // },
     {
       text: "Tools",
       items: [
@@ -80,7 +80,7 @@ function sidebarCS(): DefaultTheme.SidebarItem {
     collapsed: false,
     items: [
       // {text: '自学计算机科学', link: 'learn'},
-      { text: "Playground", link: "examples" },
+      // { text: "Playground", link: "examples" },
     ],
   };
 }
