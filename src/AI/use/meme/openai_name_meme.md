@@ -1,5 +1,6 @@
 <script setup>
    import XiCha from "./XiCha.vue";
+    import TwitterEmbed from '/components/TwitterEmbed.vue';
 </script>
 
 # OpenAI梗
@@ -32,4 +33,11 @@
 
 ## 结语
 
-Sam Altman表示今年内修复版本命名问题
+Sam Altman表示今年内修复版本命名问题，🔝最高优先级。
+
+<TwitterEmbed
+tweetContent='o3-mini-high is really good and it&#39;s cool to hear some people say it&#39;s their favorite model ever<br><br>but<br><br>it reminds me of when we used to have something internally called &quot;the little big run&quot;<br><br>a top 2025 goal is to fix our naming problem'
+username="Sam Altman (@sama)"
+userLink="https://twitter.com/sama/status/1885512831056986575?ref_src=twsrc%5Etfw"
+tweetDate="February 1, 2025"
+/>

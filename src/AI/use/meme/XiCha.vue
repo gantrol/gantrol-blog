@@ -43,7 +43,7 @@
           <span class="emoji">🥭</span>
           芒果o3 high
         </div>
-        <div class="item-desc">芝芝芒芒多云顶</div>
+        <div class="item-desc">芝芝芒芒-多云顶</div>
       </div>
 
       <div class="menu-item">
@@ -51,7 +51,7 @@
           <span class="emoji">🥭</span>
           芒果o3 medium
         </div>
-        <div class="item-desc">芝芝芒芒云顶</div>
+        <div class="item-desc">芝芝芒芒-云顶</div>
       </div>
 
       <div class="menu-item">
@@ -59,7 +59,7 @@
           <span class="emoji">🥭</span>
           芒果o3 low
         </div>
-        <div class="item-desc">芝芝芒芒少云顶</div>
+        <div class="item-desc">芝芝芒芒-少云顶</div>
       </div>
     </div>
 
