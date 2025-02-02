@@ -1,4 +1,4 @@
-# 在 AMD Ryzen™ AI 和 Radeon™ 上畅享 DeepSeek R1 提炼“推理”模型（翻译，双语）
+# 在 AMD Ryzen™ AI 和 Radeon™ 上畅享 DeepSeek R1 蒸馏“推理”模型（翻译，双语）
 
 > 原文：[Experience the DeepSeek R1 Distilled 'Reasoning' Models on AMD Ryzen™ AI and Radeon™](https://community.amd.com/t5/ai/experience-the-deepseek-r1-distilled-reasoning-models-on-amd/ba-p/740593)
 
@@ -6,7 +6,7 @@
 
 Reasoning models are a new class of large language models (LLMs) designed to tackle highly complex tasks by employing chain-of-thought (CoT) reasoning with the tradeoff of taking longer to respond. The DeepSeek R1 is a recently released frontier “reasoning” model which has been distilled into highly capable smaller models. Deploying these DeepSeek R1 distilled models on AMD Ryzen™ AI processors and Radeon™ graphics cards is incredibly easy and available now through LM Studio.
 
-推理模型是新型大型语言模型 (LLM)，旨在通过采用思维链 (CoT) 推理来处理极其复杂的任务，但缺点是响应时间较长。DeepSeek R1 是最近发布的先进“推理”模型，已被提炼成性能卓越的小型模型。现在，通过 LM Studio，即可在 AMD Ryzen™ AI 处理器和 Radeon™ 显卡上轻松部署这些 DeepSeek R1 提炼模型。
+推理模型是新型大型语言模型 (LLM)，旨在通过采用思维链 (CoT) 推理来处理极其复杂的任务，但缺点是响应时间较长。DeepSeek R1 是最近发布的先进“推理”模型，已被蒸馏成性能卓越的小型模型。现在，通过 LM Studio，即可在 AMD Ryzen™ AI 处理器和 Radeon™ 显卡上轻松部署这些 DeepSeek R1 蒸馏模型。
 
 *Demo showcasing DeepSeek R1 Qwen 1.5 Q4 K M model running on an AMD Ryzen™ HX 370 series processor in real time.
 
@@ -20,13 +20,13 @@ A reasoning model may first spend thousands of tokens (and you can view this cha
 
 推理模型可能会先花费数千 tokens（思维链过程可见！）来分析问题，然后才给出最终答案。这使得模型在解决涉及数学和科学的复杂问题时表现出色，并能从各个角度分析复杂难题，最终给出解答。根据您使用的 AMD 硬件，这些模型都能在 AMD Ryzen™ AI 处理器或 Radeon™ 显卡上提供一流的推理能力。
 
-## **如何在 AMD Ryzen™ AI 和 Radeon™ 显卡上运行 DeepSeek R1 提炼“推理”模型**
+## **如何在 AMD Ryzen™ AI 和 Radeon™ 显卡上运行 DeepSeek R1 蒸馏“推理”模型**
 
 > **How to run DeepSeek R1 Distilled “Reasoning” Models on AMD Ryzen™ AI and Radeon™ Graphics Cards**
 
 Follow these simple steps to get up and running with DeepSeek R1 distillations in just a few minutes (dependent upon download speed).
 
-只需几步，您就能在几分钟内开始使用 DeepSeek R1 提炼模型（时间取决于下载速度）。
+只需几步，您就能在几分钟内开始使用 DeepSeek R1 蒸馏模型（时间取决于下载速度）。
 
 **Please make sure you are using the** [**optional driver Adrenalin 25.1.1**](https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-25-1-1.html)**, which can be downloaded directly by clicking** [**this link**](https://drivers.amd.com/drivers/amd-software-adrenalin-edition-25.1.1-win10-win11-jan2025-rdna.exe)**.**
 
@@ -50,7 +50,7 @@ Follow these simple steps to get up and running with DeepSeek R1 distillations i
 
 **Step 5:** Choose your DeepSeek R1 Distill. Smaller distills like the Qwen 1.5B offer blazing fast performance (and are the recommended starting point) while bigger distills will offer superior reasoning capability. All of them are extremely capable. The table below details the maximum recommended DeepSeek R1 Distill size:
 
-**步骤 5：** 选择您的 DeepSeek R1 提炼模型。较小的模型，如 Qwen 1.5B，性能极快（推荐作为入门选择），而较大的模型则提供更强的推理能力。所有模型性能都非常出色。下表详细列出了最大推荐 DeepSeek R1 提炼模型大小：
+**步骤 5：** 选择您的 DeepSeek R1 蒸馏模型。较小的模型，如 Qwen 1.5B，性能极快（推荐作为入门选择），而较大的模型则提供更强的推理能力。所有模型性能都非常出色。下表详细列出了最大推荐 DeepSeek R1 蒸馏模型大小：
 
 | **Processor**                                   | **DeepSeek R1 Distill\* (Max Supported)**                    |
 | ----------------------------------------------- | ------------------------------------------------------------ |
@@ -64,13 +64,13 @@ Follow these simple steps to get up and running with DeepSeek R1 distillations i
 
 2= Requires Variable Graphics Memory set to High.
 
-| **处理器**                                     | **DeepSeek R1 提炼模型\*（最大支持）**                                                  |
+| **处理器**                                     | **DeepSeek R1 蒸馏模型\*（最大支持）**                                                  |
 | ------------------------------------------------ |-------------------------------------------------------------------------------|
 | AMD Ryzen™ AI Max+ 395 32GB1、64 GB2 和 128 GB | DeepSeek-R1-Distill-Llama-70B（仅限 64GB 和 128GB 版本）DeepSeek-R1-Distill-Qwen-32B |
 | AMD Ryzen™ AI HX 370 和 365 24GB 和 32 GB       | DeepSeek-R1-Distill-Qwen-14B                                                  |
 | AMD Ryzen™ 8040 和 Ryzen™ 7040 32 GB             | DeepSeek-R1-Distill-Llama-14B                                                 |
 
-*= AMD 建议所有提炼模型均在 Q4 K M 量化下运行。
+*= AMD 建议所有蒸馏模型均在 Q4 K M 量化下运行。
 
 1= 需要将可变显存设置为“自定义：24GB”。
 
@@ -90,7 +90,7 @@ Follow these simple steps to get up and running with DeepSeek R1 distillations i
 
 1= Lists the maximum supported distill without partial GPU offload.
 
-| **显卡**                 | **DeepSeek R1 提炼模型\*（最大支持$^1$）** |
+| **显卡**                 | **DeepSeek R1 蒸馏模型\*（最大支持$^1$）** |
 | ------------------------- |----------------------------------|
 | AMD Radeon™ RX 7900 XTX   | DeepSeek-R1-Distill-Qwen-32B     |
 | AMD Radeon™ RX 7900 XT    | DeepSeek-R1-Distill-Qwen-14B     |
@@ -100,7 +100,7 @@ Follow these simple steps to get up and running with DeepSeek R1 distillations i
 | AMD Radeon™ RX 7600 XT    | DeepSeek-R1-Distill-Qwen-14B     |
 | AMD Radeon™ RX 7600       | DeepSeek-R1-Distill-Llama-8B     |
 
-*= AMD 建议所有提炼模型均在 Q4 K M 量化下运行。
+*= AMD 建议所有蒸馏模型均在 Q4 K M 量化下运行。
 
 1= 列出了在不进行部分 GPU 卸载情况下的最大支持模型。
 
@@ -110,7 +110,7 @@ Follow these simple steps to get up and running with DeepSeek R1 distillations i
 
 **Step 7:** Once downloaded, head back to the chat tab and select the DeepSeek R1 distill from the drop-down menu and make sure “manually select parameters” is checked.
 
-**步骤 7：** 下载完成后，返回 “Chat”（聊天）选项卡，从下拉菜单中选择 DeepSeek R1 提炼模型，并确保勾选 “manually select parameters”（手动选择参数）。
+**步骤 7：** 下载完成后，返回 “Chat”（聊天）选项卡，从下拉菜单中选择 DeepSeek R1 蒸馏模型，并确保勾选 “manually select parameters”（手动选择参数）。
 
 **Step 8**: In the GPU offload layers – move the slider all the way to the max.
 
