@@ -3,7 +3,13 @@ outline: deep
 ---
 # 隆重推出深度研究（翻译）
 
-2025年2月2日
+> [原文](https://openai.com/index/introducing-deep-research/) 2025年2月2日
+
+::: warning 目前限额很少
+- Pro 每月100请求
+- Plus与Team 每月10请求左右
+- Free 原文是“很少”（难道是一条？）
+:::
 
 这是一款能运用推理能力，为你整合海量在线信息，完成多步骤研究任务的智能工具。今天起Pro用户即可使用，Plus和Team用户稍后跟上。
 
