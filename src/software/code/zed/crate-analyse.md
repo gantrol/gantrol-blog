@@ -6,7 +6,7 @@ outline: deep
 
 [Zed仓库](https://github.com/zed-industries/zed/issues)核心代码主要在`crates`目录下，大概四百万tokens，上下文目前最大200万，还要留出给响应空间。
 
-复制到界面肯定卡死，综合考虑，选择有附件上传的[AIStudio](https://aistudio.google.com/)
+综合考虑，选择[AIStudio](https://aistudio.google.com/)，几万行代码复制到界面容易卡死，注意用附件上传。
 
 ## 让大模型分类
 
