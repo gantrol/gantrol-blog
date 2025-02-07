@@ -89,7 +89,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
     items: [
       { text: "AI TOP1", link: "TOP1" },
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
-      { text: "玩转Deepseek", link: "use/how-to-chat/deepseek.md" },
+      { text: "玩转Deepseek", link: "use/how-to-chat/deepseek" },
       {
         text: "Prompt在用",
         items: [
@@ -102,8 +102,10 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       {
         text: "Deep Research",
         items: [
-          { text: "数据互联网", link: "record/gptdr/InternetOfData.md" },
-          { text: "机械意识？", link: "record/gptdr/mind-of-machine.md" },
+          { text: "AI谈爱", link: "record/gptdr/fall-in-love" },
+          { text: "机械意识？", link: "record/gptdr/mind-of-machine" },
+          { text: "数据互联网", link: "record/gptdr/InternetOfData" },
+          { text: "数据互联网", link: "record/gptdr/LearnerLLM" },
         ]
       },
 
