@@ -1,4 +1,8 @@
-# 大模型谈「谈恋爱」
+---
+outline: deep
+---
+
+# AI谈「爱」
 
 > 搜集「坠入爱河」相关研究，写一篇综述科普文。目的是为了让读者更好地爱人、享受被爱。然后不要用新闻这种低质量内容做论据
 
@@ -11,13 +15,13 @@
 
 **大脑中的爱恋：** 现代脑成像研究表明，坠入爱河会激活大脑的奖励系统。一项开创性的 **fMRI 实验** 中，研究人员向受试者展示爱人的照片，发现富含多巴胺的区域（如腹侧被盖区 (VTA) 和尾状核）活动强烈 [^1]。这些区域与 **动机和奖励** 相关，与美味食物或成瘾药物等愉悦刺激激活的回路相同。事实上，多项研究已证实，浪漫爱情的神经通路与 **成瘾和奖励** 的通路重叠 [^2]。这解释了为何热恋会让人感到兴奋，甚至“上瘾”——我们的大脑实际上是在奖励我们与那个特别的人在一起。
 
-**化学鸡尾酒：** 当我们爱上某人时，身体会释放出一系列化学物质，产生我们熟悉的爱的生理 *和* 情感感受。肾上腺素和皮质醇（应激激素）在 **最初的迷恋阶段** 飙升，这就是为何热恋会让人心跳加速、手心出汗、难以入眠的原因 [^3]。令人惊讶的是，早期的浪漫关系对身体来说可能有些压力——一项研究发现，刚坠入爱河的人皮质醇水平升高，仿佛身体正在应对挑战 [^4]。与此同时，**血清素**（一种调节情绪的神经递质）水平往往会下降，研究人员认为这会引发迷恋中常见的 *强迫性思维* 和对爱人的挥之不去的念头，近乎痴迷 [^5]。科学家们惊奇地发现，沉浸在热恋中的人，其血清素模式 *与强迫症患者相似* [^6]。一项研究表明，新坠入爱河者血液中的血清素转运蛋白水平，与强迫症患者一样低 [^7]——这有力地解释了为何热恋中的人常常 **“满脑子都是对方”**。
+**化学鸡尾酒：** 当我们爱上某人时，身体会释放出一系列化学物质，产生我们熟悉的爱的生理 *和* 情感感受。肾上腺素和皮质醇（应激激素）在 **最初的迷恋阶段** 飙升，这就是为何热恋会让人心跳加速、手心出汗、难以入眠的原因 [^3]。令人惊讶的是，早期的浪漫关系对身体来说可能有些压力——一项研究发现，刚坠入爱河的人皮质醇水平升高，仿佛身体正在应对挑战 [^3]。与此同时，**血清素**（一种调节情绪的神经递质）水平往往会下降，研究人员认为这会引发迷恋中常见的 *强迫性思维* 和对爱人的挥之不去的念头，近乎痴迷 [^3]。科学家们惊奇地发现，沉浸在热恋中的人，其血清素模式 *与强迫症患者相似* [^4]。一项研究表明，新坠入爱河者血液中的血清素转运蛋白水平，与强迫症患者一样低 [^4]——这有力地解释了为何热恋中的人常常 **“满脑子都是对方”**。
 
-从更积极的角度来看，坠入爱河也会让大脑充满 **多巴胺**，这种“感觉良好”的化学物质驱动着愉悦和渴望。多巴胺使与爱人相处感觉充满活力和欣快感 [^8]。它是上述奖励回路的一部分，强化了生物学上有利的行为（在这种情况下，是与伴侣的结合）。浪漫爱情带来的多巴胺激增，甚至会降低其他奖励的吸引力——例如，实验发现，被雌性果蝇拒绝的雄性果蝇会转向酒精，表明它们寻求另一种方式来刺激相同的奖励中心 [^9]！
+从更积极的角度来看，坠入爱河也会让大脑充满 **多巴胺**，这种“感觉良好”的化学物质驱动着愉悦和渴望。多巴胺使与爱人相处感觉充满活力和欣快感 [^3]。它是上述奖励回路的一部分，强化了生物学上有利的行为（在这种情况下，是与伴侣的结合）。浪漫爱情带来的多巴胺激增，甚至会降低其他奖励的吸引力——例如，实验发现，被雌性果蝇拒绝的雄性果蝇会转向酒精，表明它们寻求另一种方式来刺激相同的奖励中心 [^3]！
 
-**结合激素：** 随着激情之爱的发展，其他神经化学物质开始介入，加深依恋。其中最主要的是 **催产素**，常被称为 *“爱情荷尔蒙”* 或 *“拥抱化学物质”*。催产素（以及相关的血管加压素）以其在母婴依恋和信任中的作用而闻名。在浪漫关系中，身体接触会释放催产素——拥抱、依偎、亲吻和性行为都会使催产素水平飙升。研究发现，处于相互浪漫关系早期阶段的人，其催产素水平明显高于单身人士 [^10]。这与催产素的作用一致：它 **加深依恋感**，使情侣感到更亲近，对彼此更满意 [^11] [^12]。催产素会引发平静、安全和稳定的感觉 [^13]，平衡了多巴胺和肾上腺素引起的火热兴奋。简而言之，多巴胺高喊“我想要你！”，而催产素则温柔地安慰我们“我 *信任* 你，和你在一起很舒服。” 这种化学物质的组合，有助于将初生的浪漫关系转变为持久的纽带。
+**结合激素：** 随着激情之爱的发展，其他神经化学物质开始介入，加深依恋。其中最主要的是 **催产素**，常被称为 *“爱情荷尔蒙”* 或 *“拥抱化学物质”*。催产素（以及相关的血管加压素）以其在母婴依恋和信任中的作用而闻名。在浪漫关系中，身体接触会释放催产素——拥抱、依偎、亲吻和性行为都会使催产素水平飙升。研究发现，处于相互浪漫关系早期阶段的人，其催产素水平明显高于单身人士 [^3]。这与催产素的作用一致：它 **加深依恋感**，使情侣感到更亲近，对彼此更满意 [^3] [^3]。催产素会引发平静、安全和稳定的感觉 [^3]，平衡了多巴胺和肾上腺素引起的火热兴奋。简而言之，多巴胺高喊“我想要你！”，而催产素则温柔地安慰我们“我 *信任* 你，和你在一起很舒服。” 这种化学物质的组合，有助于将初生的浪漫关系转变为持久的纽带。
 
-*（值得注意的是，研究人员提出，浪漫爱情由以下部分组成：(1) 欲望，由性激素驱动；(2) 吸引力，由多巴胺和血清素的变化驱动；(3) 依恋，由催产素/血管加压素控制 [^14] [^15]。这些组成部分相互重叠和作用，共同产生完整的恋爱体验。）*
+*（值得注意的是，研究人员提出，浪漫爱情由以下部分组成：(1) 欲望，由性激素驱动；(2) 吸引力，由多巴胺和血清素的变化驱动；(3) 依恋，由催产素/血管加压素控制 [^1] [^4]。这些组成部分相互重叠和作用，共同产生完整的恋爱体验。）*
 
 从生物学角度来看，坠入爱河是一场 **全身心的体验**。它调动了原始的神经回路和神经化学物质，驱使我们走向连接。理解这一点，有助于我们更宽容地对待自己——如果你感到对新欢“上瘾”，或注意到情绪剧烈波动，这不仅仅是心理作用，更是生理反应！好消息是，最强烈的生物学效应（如压力和痴迷的迷恋）通常会随着时间推移而平息，为更稳定、更健康的爱情关系让路。
 
@@ -25,17 +29,17 @@
 
 坠入爱河不仅改变你的身体化学，也改变你的思维方式。**认知心理学** 研究发现，恋爱会强有力地影响我们的注意力、记忆和判断（通常是朝着好的方向！）。这些心理转变有助于培养感情，但也可能蒙蔽我们的客观性——经典的 *“爱情是盲目的”* 效应。以下是恋爱中的头脑内部发生的事情：
 
-**选择性视而不见（“爱情是盲目的”）：** 你是否注意到，当你迷恋某人时，你的爱人似乎 *毫无缺点* ——或者你很容易忽略它们？这有神经学上的道理。脑部扫描显示，当我们想到我们热恋的人时，负责批判性判断和社会评估的神经回路实际上会 *关闭*。一项研究中，当人们观看浪漫伴侣的照片时，他们大脑中负责负面情绪和社会判断的区域被抑制 [^16]。换句话说，大脑抑制了怀疑和恐惧，实际上使我们能够 **理想化** 我们的伴侣，而不受怀疑或批评的干扰。正如一位研究人员所说，这是古语 *“爱情是盲目的”* 的神经基础 [^17]。
+**选择性视而不见（“爱情是盲目的”）：** 你是否注意到，当你迷恋某人时，你的爱人似乎 *毫无缺点* ——或者你很容易忽略它们？这有神经学上的道理。脑部扫描显示，当我们想到我们热恋的人时，负责批判性判断和社会评估的神经回路实际上会 *关闭*。一项研究中，当人们观看浪漫伴侣的照片时，他们大脑中负责负面情绪和社会判断的区域被抑制 [^3]。换句话说，大脑抑制了怀疑和恐惧，实际上使我们能够 **理想化** 我们的伴侣，而不受怀疑或批评的干扰。正如一位研究人员所说，这是古语 *“爱情是盲目的”* 的神经基础 [^3]。
 
-这种认知盲点解释了为何朋友会对一些新恋人摇头——从旁观者的角度来看，你可能清楚地看到一个人的缺点，但恋爱中的人却在神经学上被调整为专注于积极方面。有趣的是，这并非全是坏事：对伴侣的 **积极错觉** 可以加强关系。心理学家爱德华·勒梅及其同事称之为 *“动机性扭曲”* ——我们对持久关系的强烈渴望，引导我们以最好的眼光解读伴侣的行为 [^18] [^19]。例如，如果你深深地爱着某人，你就会倾向于记住他们比实际更善于回应和支持，本质上是在说服自己，你的爱是相互的且坚固的 [^20]。勒梅在最近一次心理科学会议上展示的研究表明，那些有强烈结合动机的人，**回忆** 起伴侣在某一天比客观衡量更体贴 [^21]。他们甚至会责怪自己伴侣的冷淡行为（“也许我没有很好地表达我的需求”），而不是将过错归咎于伴侣 [^22]。
+这种认知盲点解释了为何朋友会对一些新恋人摇头——从旁观者的角度来看，你可能清楚地看到一个人的缺点，但恋爱中的人却在神经学上被调整为专注于积极方面。有趣的是，这并非全是坏事：对伴侣的 **积极错觉** 可以加强关系。心理学家爱德华·勒梅及其同事称之为 *“动机性扭曲”* ——我们对持久关系的强烈渴望，引导我们以最好的眼光解读伴侣的行为 [^5] [^5]。例如，如果你深深地爱着某人，你就会倾向于记住他们比实际更善于回应和支持，本质上是在说服自己，你的爱是相互的且坚固的 [^5] [^5]。勒梅在最近一次心理科学会议上展示的研究表明，那些有强烈结合动机的人，**回忆** 起伴侣在某一天比客观衡量更体贴 [^5]。他们甚至会责怪自己伴侣的冷淡行为（“也许我没有很好地表达我的需求”），而不是将过错归咎于伴侣 [^5]。
 
-令人惊讶的是，这些玫瑰色的信念有助于维系关系：那些对伴侣的爱和关怀持有 **积极偏见** 的人，报告了更高的满意度，并以促进关系稳定的方式行事 [^23]。换句话说，*将我们的伴侣看得比他们真实情况更好一点，可能会成为一种自我实现的预言*，使关系更幸福、更安全。因此，恋爱中的一些认知上的“小伎俩”不一定是坏事！
+令人惊讶的是，这些玫瑰色的信念有助于维系关系：那些对伴侣的爱和关怀持有 **积极偏见** 的人，报告了更高的满意度，并以促进关系稳定的方式行事 [^5]。换句话说，*将我们的伴侣看得比他们真实情况更好一点，可能会成为一种自我实现的预言*，使关系更幸福、更安全。因此，恋爱中的一些认知上的“小伎俩”不一定是坏事！
 
-**痴迷的关注：** 另一方面，恋爱的早期阶段也可能以近乎痴迷的方式占据我们的思想。如前所述，新恋情中血清素水平较低，与持续的、侵入性的对爱人的思考有关 [^24]。人们常常会不断地幻想对方，重播对话，并难以集中精力处理其他任务。心理学家将这种强烈的专注称为 *迷恋* ——一种全神贯注于赢得对方好感的执着。这几乎是坠入爱河的标志，现在我们知道，它与 **血清素系统** 有着生化联系（类似于强迫症的运作方式 [^25]）。了解这一点后，如果自己或朋友在新恋情中显得“痴迷”，我们可以对此表示理解——大脑暂时受到一种强效混合物的影响，将我们的精神焦点缩小到一个目标。（值得庆幸的是，这种情况通常会在几个月后放松下来，因为血清素逐渐恢复正常，关系进入更平静的阶段 [^26]。）
+**痴迷的关注：** 另一方面，恋爱的早期阶段也可能以近乎痴迷的方式占据我们的思想。如前所述，新恋情中血清素水平较低，与持续的、侵入性的对爱人的思考有关 [^3]。人们常常会不断地幻想对方，重播对话，并难以集中精力处理其他任务。心理学家将这种强烈的专注称为 *迷恋* ——一种全神贯注于赢得对方好感的执着。这几乎是坠入爱河的标志，现在我们知道，它与 **血清素系统** 有着生化联系（类似于强迫症的运作方式 [^4]）。了解这一点后，如果自己或朋友在新恋情中显得“痴迷”，我们可以对此表示理解——大脑暂时受到一种强效混合物的影响，将我们的精神焦点缩小到一个目标。（值得庆幸的是，这种情况通常会在几个月后放松下来，因为血清素逐渐恢复正常，关系进入更平静的阶段 [^3]。）
 
-**增强的同理心和连接：** 尽管早期的爱情可能是以自我为中心的（你沉浸在 *你的* 感受中），但它也促使我们为伴侣着想。一些 **认知启动** 理论认为，恋爱会激活与亲密和理解他人相关的心理图式。一项有趣的实验表明，仅仅 *提醒* 人们想起他们的爱人，就可以提高他们的社会认知能力。在该研究中，“深爱”中的个体被快速 **爱情启动** （例如，瞥见伴侣的名字或图像），然后执行一项任务，他们必须判断他人面部的情绪表达。在爱情启动后，与没有启动时相比，参与者在 **解读他人情绪** 方面明显更出色，尤其是负面情绪 [^27]。研究人员认为，想到爱人会激活 **同理心和心理理论** 的心理网络，这可能是因为处于恋爱关系中会激励我们去理解和回应对方的需求 [^28] [^29]。本质上，爱情可以调整我们的思维，使其更具同理心——这种效应可能有助于情侣协调和照顾彼此。
+**增强的同理心和连接：** 尽管早期的爱情可能是以自我为中心的（你沉浸在 *你的* 感受中），但它也促使我们为伴侣着想。一些 **认知启动** 理论认为，恋爱会激活与亲密和理解他人相关的心理图式。一项有趣的实验表明，仅仅 *提醒* 人们想起他们的爱人，就可以提高他们的社会认知能力。在该研究中，“深爱”中的个体被快速 **爱情启动** （例如，瞥见伴侣的名字或图像），然后执行一项任务，他们必须判断他人面部的情绪表达。在爱情启动后，与没有启动时相比，参与者在 **解读他人情绪** 方面明显更出色，尤其是负面情绪 [^6] [^6]. 研究人员认为，想到爱人会激活 **同理心和心理理论** 的心理网络，这可能是因为处于恋爱关系中会激励我们去理解和回应对方的需求 [^6] [^6]。本质上，爱情可以调整我们的思维，使其更具同理心——这种效应可能有助于情侣协调和照顾彼此。
 
-**身份融合：** 爱情的另一个认知层面是，我们开始将对方纳入自我意识中。你是否注意到情侣们更多地用“*我们*”而不是“我”来称呼自己？心理学家用 *自我包含他人量表* 来衡量这一点，脑部研究甚至将其与关系幸福感联系起来 [^30]。当我们坠入爱河时，我们开始在精神上将伴侣融入自我概念：你的目标、记忆，甚至身份都可能包含他们。这可以增强团结感，是亲密关系中自然的认知发展。
+**身份融合：** 爱情的另一个认知层面是，我们开始将对方纳入自我意识中。你是否注意到情侣们更多地用“*我们*”而不是“我”来称呼自己？心理学家用 *自我包含他人量表* 来衡量这一点，脑部研究甚至将其与关系幸福感联系起来 [^7]。当我们坠入爱河时，我们开始在精神上将伴侣融入自我概念：你的目标、记忆，甚至身份都可能包含他们。这可以增强团结感，是亲密关系中自然的认知发展。
 
 简而言之，我们的头脑以非凡的方式弯曲，以促进浪漫关系。**我们忽略缺点，放大优点，不断思考对方，并本能地开始以二重奏的方式思考。** 通过认识到这些偏见，我们可以更好地理解自己的感受，并防范潜在的陷阱（例如，忽略危险信号）。但总的来说，这些心理上的“小怪癖”正是 *为何* 坠入爱河感觉如此特别的原因——这是一种独特的精神状态，为深层连接奠定了基础。
 
@@ -43,27 +47,31 @@
 
 如果说爱情中有什么是确定的，那就是它是一种 **情感体验**。人们常常将早期浪漫关系描述为情感的过山车——令人眼花缭乱的高潮、焦虑的低谷、纯粹的快乐和彻底的恐惧时刻。对爱情情感特征的心理学研究证实，浪漫爱情包含着强烈的混合情感，其中一些情感会随着时间推移而演变。
 
-**激情与欣快感：** 在一段恋情的开始，主要的情感是 *热烈的渴望*。你感到与对方结合的强烈愿望。当爱情进展顺利，你的爱意得到回应时，随之而来的是狂喜和快乐。许多研究和理论（从哈特菲尔德的经典理论到现代神经影像学研究）都指出，**激情之爱** 会产生兴高采烈和乐观情绪——你可能会感觉自己飘飘然。考虑到我们讨论过的多巴胺驱动的奖励激活，这很合理：你的大脑实际上是在发出信号，表明美好的事情正在发生。一项神经科学研究发现，即使是长期已婚人士，当他们想到伴侣时，如果他们说自己仍然“疯狂地爱着”自己的配偶，他们的奖励中心也会表现出强烈的激活，**就像新恋人一样** [^31] [^32]。因此，爱情的 *刺激感* 并不局限于新情侣——在合适的条件下，这些兴奋感可以在多年后持续或重燃。
+**激情与欣快感：** 在一段恋情的开始，主要的情感是 *热烈的渴望*。你感到与对方结合的强烈愿望。当爱情进展顺利，你的爱意得到回应时，随之而来的是狂喜和快乐。许多研究和理论（从哈特菲尔德的经典理论到现代神经影像学研究）都指出，**激情之爱** 会产生兴高采烈和乐观情绪——你可能会感觉自己飘飘然。考虑到我们讨论过的多巴胺驱动的奖励激活，这很合理：你的大脑实际上是在发出信号，表明美好的事情正在发生。一项神经科学研究发现，即使是长期已婚人士，当他们想到伴侣时，如果他们说自己仍然“疯狂地爱着”自己的配偶，他们的奖励中心也会表现出强烈的激活，**就像新恋人一样** [^3] [^3]。因此，爱情的 *刺激感* 并不局限于新情侣——在合适的条件下，这些兴奋感可以在多年后持续或重燃。
 
-**焦虑与恐惧：** 另一方面，尤其是在新恋情中，积极情绪常常与焦虑交织在一起。经历被拒绝的恐惧或不安全感（“他/她爱我像我爱他们一样多吗？”）是很常见的。从心理学角度来看，这源于我们在萌芽关系中感知到的高风险——我们强烈地 *希望* 它能成功，因此任何模糊不清都可能造成压力。早期的爱情常常以情感 **波动性** 为特征：在一起时极度快乐，但分开或不确定时会感到孤独或担忧。事实上，从神经学角度来看，浪漫爱情已被证明可以 *抑制* 恐惧和社会判断回路 [^33]，如前所述，这似乎有些矛盾——*当专注于你的爱人时*，你感觉到的恐惧会减少。但与此同时，由于爱情对我们如此重要，失去爱情或得不到回应的可能性可能 *令人恐惧*。因此，迷恋会产生一种独特的 **欣快感** 和 **焦虑感** 的混合，人们将其描述为既令人兴奋又令人紧张。
+**焦虑与恐惧：** 另一方面，尤其是在新恋情中，积极情绪常常与焦虑交织在一起。经历被拒绝的恐惧或不安全感（“他/她爱我像我爱他们一样多吗？”）是很常见的。从心理学角度来看，这源于我们在萌芽关系中感知到的高风险——我们强烈地 *希望* 它能成功，因此任何模糊不清都可能造成压力。早期的爱情常常以情感 **波动性** 为特征：在一起时极度快乐，但分开或不确定时会感到孤独或担忧。事实上，从神经学角度来看，浪漫爱情已被证明可以 *抑制* 恐惧和社会判断回路 [^3]，这似乎有些矛盾——*当专注于你的爱人时*，你感觉到的恐惧会减少。但与此同时，由于爱情对我们如此重要，失去爱情或得不到回应的可能性可能 *令人恐惧*。因此，迷恋会产生一种独特的 **欣快感** 和 **焦虑感** 的混合，人们将其描述为既令人兴奋又令人紧张。
 
-**依恋与安全感：** 随着关系的成熟，如果一切顺利，情感基调会转向 **安全、舒适和深厚的感情**。研究人员常常区分 *激情之爱* （火热、全神贯注的那种）和 *伴侣之爱* （随着时间推移而建立的稳定、温柔的依恋）。通常，在相处约 **1-2 年** 后，迷恋的剧烈波动会趋于稳定 [^34]。当你对你们的关系充满信心时，“疯狂”的感觉就会消退。研究表明，在这个阶段前后，最初升高的应激激素皮质醇会恢复正常，血清素水平也会恢复正常 [^35]。关系成为 **对抗压力的缓冲**，而不是压力的来源 [^36]。你仍然感受到爱和激情，但它不再是情感过山车，而更像是一个安全基地。催产素和血管加压素在这里发挥着重要作用，在彼此面前培养信任、**满足感、平静和安全感** [^37]。情侣们常常报告说，与长期伴侣在一起有一种深深的平静或 *“归属感”* ——那种温暖的情感满足感是伴侣之爱的标志。
+**依恋与安全感：** 随着关系的成熟，如果一切顺利，情感基调会转向 **安全、舒适和深厚的感情**。研究人员常常区分 *激情之爱* （火热、全神贯注的那种）和 *伴侣之爱* （随着时间推移而建立的稳定、温柔的依恋）。通常，在相处约 **1-2 年** 后，迷恋的剧烈波动会趋于稳定 [^3]。当你对你们的关系充满信心时，“疯狂”的感觉就会消退。研究表明，在这个阶段前后，最初升高的应激激素皮质醇会恢复正常，血清素水平也会恢复正常 [^3]。关系成为 **对抗压力的缓冲**，而不是压力的来源 [^3]。你仍然感受到爱和激情，但它不再是情感过山车，而更像是一个安全基地。催产素和血管加压素在这里发挥着重要作用，在彼此面前培养信任、**满足感、平静和安全感** [^3]。情侣们常常报告说，与长期伴侣在一起有一种深深的平静或 *“归属感”* ——那种温暖的情感满足感是伴侣之爱的标志。
 
-重要的是要认识到，从令人陶醉的激情到更平静的依恋的转变是 *正常且通常是有益的*。“蜜月期”的强度自然会降低，但这并不意味着爱情消失了——而是意味着它正在改变形式。正如哈佛医学院的一份出版物指出的那样，激情并没有完全消失；相反，“持续的渴望和欲望”减少了，而与伴侣在一起的潜在快乐和奖励仍然存在 [^38]。许多爱情理论都认为，随着时间的推移，爱情会 **从激情之爱演变为伴侣之爱** [^39]。的确，这种充满同情心、安全的爱可以带来它自身类型的幸福，包括健康益处和在人生挑战中更强大的伙伴关系。
+重要的是要认识到，从令人陶醉的激情到更平静的依恋的转变是 *正常且通常是有益的*。“蜜月期”的强度自然会降低，但这并不意味着爱情消失了——而是意味着它正在改变形式。正如哈佛医学院的一份出版物指出的那样，激情并没有完全消失；相反，“持续的渴望和欲望”减少了，而与伴侣在一起的潜在快乐和奖励仍然存在 [^3]。许多爱情理论都认为，随着时间的推移，爱情会 **从激情之爱演变为伴侣之爱** [^3] [^3]。的确，这种充满同情心、安全的爱可以带来它自身类型的幸福，包括健康益处和在人生挑战中更强大的伙伴关系。
 
-**心碎和负面情绪：** 如果不承认单恋或失恋，对爱情情感的概述就不完整。当爱情没有得到回应，或者一段关系结束时，情绪可能会转向相反的极端：深深的悲伤、悲痛，甚至愤怒。对最近在爱情中 *被拒绝* 的人进行的大脑研究表明，令人惊讶的是，他们的奖励系统仍然活跃（他们仍然“渴望”离开的人），与痛苦和苦恼相关的区域也处于活跃状态 [^40]。这反映了心碎的真实痛苦。然而，随着时间的推移，这些感觉会消退，理解科学——你的大脑实际上处于戒断状态——至少可以使这种体验正常化。
+**心碎和负面情绪：** 如果不承认单恋或失恋，对爱情情感的概述就不完整。当爱情没有得到回应，或者一段关系结束时，情绪可能会转向相反的极端：深深的悲伤、悲痛，甚至愤怒。对最近在爱情中 *被拒绝* 的人进行的大脑研究表明，令人惊讶的是，他们的奖励系统仍然活跃（他们仍然“渴望”离开的人），与痛苦和苦恼相关的区域也处于活跃状态 [^1]。这反映了心碎的真实痛苦。然而，随着时间的推移，这些感觉会消退，理解科学——你的大脑实际上处于戒断状态——至少可以使这种体验正常化。
 
-**享受被爱：** 爱情情感方面一个经常被忽视的方面是，不仅要爱，还要 *接受爱* 的能力。许多人在感觉自己值得被爱，或真正内化伴侣的关怀方面挣扎。关于关系中感恩的研究表明，认识到并 **感激** 伴侣的付出，可以显著增强我们的情感联系。在一项针对长期情侣的研究中，那些 *感到被伴侣欣赏* 的人更满意、更投入，甚至不太可能考虑分手 [^41]。换句话说，感到被爱和被重视，会促进更大的信任和幸福的良性循环。因此，享受被爱并非自私——它是保持爱情牢固的情感纽带的关键组成部分。
+**享受被爱：** 爱情情感方面一个经常被忽视的方面是，不仅要爱，还要 *接受爱* 的能力。许多人在感觉自己值得被爱，或真正内化伴侣的关怀方面挣扎。关于关系中感恩的研究表明，认识到并 **感激** 伴侣的付出，可以显著增强我们的情感联系。在一项针对长期情侣的研究中，那些 *感到被伴侣欣赏* 的人更满意、更投入，甚至不太可能考虑分手 [^8]。换句话说，感到被爱和被重视，会促进更大的信任和幸福的良性循环 [^8]。因此，享受被爱并非自私——它是保持爱情牢固的情感纽带的关键组成部分。
 
 ### 行动中的爱：培养爱情的行为习惯
 
 到目前为止，我们已经讨论了爱情 *是什么* 以及 *感觉如何*。但爱情不仅仅是一种感觉——它也是一种 **行动**。某些行为可以激发爱情、加深爱情，或者反之，逐渐削弱爱情。研究人员已经确定了人们可以培养亲密关系和连接的实用方法。以下是一些有科学依据的行为，可以帮助人们坠入爱河 *并* 保持爱恋：
 
-- **深入沟通和坦诚：** *“拉近距离”* 归根结底是分享自我。心理学家亚瑟·阿伦的一项经典实验表明，**逐步加深自我表露** 可以加速两个陌生人之间的亲近感 [^42]。在该研究中，成对的人遵循一份包含 36 个逐渐深入的个人问题的脚本（从轻松的话题到私密的话题）。到 45 分钟结束时，这些配对报告说，与只进行闲聊的配对相比，他们感觉更亲近、更紧密 [^43]。诚实、脆弱的对话通过让每个人真正 *了解* 对方来创造亲密感。启示？**不要只谈论天气**。与某人敞开心扉，谈论你的感受、记忆、梦想，甚至恐惧——并让他们也这样做——是被证明可以建立爱的联系的途径。
-- **共同的新鲜体验：** 长期情侣很容易陷入例行公事（晚餐、电视、睡觉、重复），这会使兴奋感变得迟钝。研究表明，在共同生活中注入新鲜感或挑战，可以重燃火花。在多项研究中，一起参与 **新颖、刺激的活动** 的情侣（例如学习一项技能、探索一个新地方，或任何超出他们舒适区的事情），报告了 **更高的关系满意度** 和更少的厌倦感，而那些陷入更平凡习惯的情侣则不然 [^44]。例如，一项研究要求情侣一起完成有趣的活动，如障碍赛；与做熟悉、枯燥任务的情侣相比，这些配对在爱情和幸福感方面表现出更大的提升 [^45]。起作用的机制被称为 *自我扩展* ——我们通过体验新事物来成长，如果我们与伴侣一起这样做，我们会将兴奋感与他们联系起来。因此，如果你想 **保持爱情活力**，努力尝试作为情侣的新活动。即使是简单的改变，如一次说走就走的短途旅行、一起烹饪一道新菜，或培养一个爱好，都可以重燃亲近感和激情。
-- **身体上的爱抚和接触：** 爱的关系不仅建立在言语之上，也建立在接触之上。身体上的爱抚——从牵手和拥抱到亲吻和性亲密——与关系满意度密切相关，部分原因是它会触发前面讨论过的结合激素。即使是 **20 秒的拥抱** 或在沙发上依偎，也会导致催产素的释放，从而加强你们的情感纽带 [^46]。研究人员发现，保持定期爱抚接触的情侣，往往会感到 **更亲近，对彼此的爱更有安全感** [^47]。不要低估 *小* 接触的力量：一个热情的问候吻或一个安慰的拍背，随着时间的推移，可以积累积极情绪。当谈到性时，它不仅关乎身体上的愉悦，也关乎性行为后催产素的激增，从而加强依恋 [^48]。**提示：** 如果你想重新建立联系，尝试一些 **皮肤接触** ——这基本上是一种生物学上的爱的语言。
-- **积极性和赞赏：** 日常行为中你 *看待* 和 *对待* 伴侣的方式，会产生巨大的影响。我们之前讨论过积极偏见；一个实际应用是 **积极关注伴侣的优点**，并表达对他们的感激之情。这并不意味着忽略严重的问题，而是不要将好的方面视为理所当然。研究表明，向伴侣表达 **感激之情** 是关系健康的有力预测指标。感到被欣赏满足了深层的情感需求。在一项针对数百名已婚人士的研究中，那些 **感到被配偶重视** 的人更投入，并相信他们的婚姻会持久——即使夫妻面临冲突 [^49]。感激之情具有“助推器”效应，帮助夫妻度过难关，因为双方都知道自己被欣赏 [^50]。因此，养成习惯说“*谢谢你*”，并承认你的爱人所做的哪怕是微不足道的事情。真诚地赞美他们。赞扬他们的优点。这种积极的反馈循环既增加了伴侣的幸福感，也增加了你自己的幸福感。
-- **积极回应的支持和友善：** 爱在相互关怀的环境中茁壮成长。心理学研究强调了 **感知到的伴侣回应性** 的重要性——本质上，每个人都感觉到对方 *真正关心*、倾听和支持自己。当你的爱人情绪低落时表现出同情，庆祝他们的成功，并回应他们的需求，可以建立信任和亲密感。即使是最好的认知“错觉”，如果行动不匹配也无济于事！因此，更好地去爱的一个关键行为是 *在* 你的伴侣身边。例如，如果他们度过了糟糕的一天，放下干扰，倾听他们。如果他们有一个重要的目标，鼓励他们。实践这种积极回应支持的情侣，会体验到更大的亲近感，并且更有可能长期保持爱恋 [^51]（并非巧合的是，当这种支持存在时，人们也会 *感知到* 更多的爱）。简而言之：**友善待人**。友善和爱在一个美好的循环中相互加强。
+- **深入沟通和坦诚：** *“拉近距离”* 归根结底是分享自我。心理学家亚瑟·阿伦的一项经典实验表明，**逐步加深自我表露** 可以加速两个陌生人之间的亲近感 [^9]。在该研究中，成对的人遵循一份包含 36 个逐渐深入的个人问题的脚本（从轻松的话题到私密的话题）。到 45 分钟结束时，这些配对报告说，与只进行闲聊的配对相比，他们感觉更亲近、更紧密 [^9]。诚实、脆弱的对话通过让每个人真正 *了解* 对方来创造亲密感。启示？**不要只谈论天气**。与某人敞开心扉，谈论你的感受、记忆、梦想，甚至恐惧——并让他们也这样做——是被证明可以建立爱的联系的途径。
+
+- **共同的新鲜体验：** 长期情侣很容易陷入例行公事（晚餐、电视、睡觉、重复），这会使兴奋感变得迟钝。研究表明，在共同生活中注入新鲜感或挑战，可以重燃火花。在多项研究中，一起参与 **新颖、刺激的活动** 的情侣（例如学习一项技能、探索一个新地方，或任何超出他们舒适区的事情），报告了 **更高的关系满意度** 和更少的厌倦感，而那些陷入更平凡习惯的情侣则不然 [^10]。例如，一项研究要求情侣一起完成有趣的活动，如障碍赛；与做熟悉、枯燥任务的情侣相比，这些配对在爱情和幸福感方面表现出更大的提升 [^9]。起作用的机制被称为 *自我扩展* ——我们通过体验新事物来成长，如果我们与伴侣一起这样做，我们会将兴奋感与他们联系起来。因此，如果你想 **保持爱情活力**，努力尝试作为情侣的新活动。即使是简单的改变，如一次说走就走的短途旅行、一起烹饪一道新菜，或培养一个爱好，都可以重燃亲近感和激情。
+
+- **身体上的爱抚和接触：** 爱的关系不仅建立在言语之上，也建立在接触之上。身体上的爱抚——从牵手和拥抱到亲吻和性亲密——与关系满意度密切相关，部分原因是它会触发前面讨论过的结合激素。即使是 **20 秒的拥抱** 或在沙发上依偎，也会导致催产素的释放，从而加强你们的情感纽带 [^3]。研究人员发现，保持定期爱抚接触的情侣，往往会感到 **更亲近，对彼此的爱更有安全感** [^3]。不要低估 *小* 接触的力量：一个热情的问候吻或一个安慰的拍背，随着时间的推移，可以积累积极情绪。当谈到性时，它不仅关乎身体上的愉悦，也关乎性行为后催产素的激增，从而加强依恋 [^3]。
+
+- **积极性和赞赏：** 日常行为中你 *看待* 和 *对待* 伴侣的方式，会产生巨大的影响。我们之前讨论过积极偏见；一个实际应用是 **积极关注伴侣的优点**，并表达对他们的感激之情。这并不意味着忽略严重的问题，而是不要将好的方面视为理所当然。研究表明，向伴侣表达 **感激之情** 是关系健康的有力预测指标。感到被欣赏满足了深层的情感需求。在一项针对数百名已婚人士的研究中，那些 **感到被配偶重视** 的人更投入，并相信他们的婚姻会持久——即使夫妻面临冲突 [^8]。感激之情具有“助推器”效应，帮助夫妻度过难关，因为双方都知道自己被欣赏 [^8]。因此，养成习惯说“*谢谢你*”，并承认你的爱人所做的哪怕是微不足道的事情。真诚地赞美他们。赞扬他们的优点。这种积极的反馈循环既增加了伴侣的幸福感，也增加了你自己的幸福感。
+
+- **积极回应的支持和友善：** 爱在相互关怀的环境中茁壮成长。心理学研究强调了 **感知到的伴侣回应性** 的重要性——本质上，每个人都感觉到对方 *真正关心*、倾听和支持自己。当你的爱人情绪低落时表现出同情，庆祝他们的成功，并回应他们的需求，可以建立信任和亲密感。即使是最好的认知“错觉”，如果行动不匹配也无济于事！因此，更好地去爱的一个关键行为是 *在* 你的伴侣身边。例如，如果他们度过了糟糕的一天，放下干扰，倾听他们。如果他们有一个重要的目标，鼓励他们。实践这种积极回应支持的情侣，会体验到更大的亲近感，并且更有可能长期保持爱恋 [^5]（并非巧合的是，当这种支持存在时，人们也会 *感知到* 更多的爱）。简而言之：**友善待人**。友善和爱在一个美好的循环中相互加强。
 
 ### 结论：学习更好地去爱
 
@@ -75,70 +83,29 @@
 
 **关键要点——根据科学，如何更好地去爱：**
 
-- **拥抱这段旅程：** 理解疯狂的迷恋阶段是暂时的。享受激情，但要知道，随着你的爱情成熟，那些痴迷的感觉平静下来是正常的 [^52]。当“蜜月期”消退时不要惊慌——一种更稳定，甚至更深厚的爱常常会取而代之。
-- **沟通和敞开心扉：** 抽出时间进行有意义的谈话。与你的伴侣分享你的内心想法和感受（反之亦然）是被证明可以建立更紧密联系的方式 [^53]。坦诚建立亲密关系和信任——当你真正了解对方时，你会更深地爱上这个人。
-- **保持新鲜感：** 通过一起尝试新的或令人兴奋的活动来对抗关系的惯性。研究表明，**一起玩耍和探索** 的情侣在爱情中保持更高的满意度 [^54]。它可以像烹饪一道新菜或去一个新的地方旅行一样简单——关键是创造共同的积极体验。
-- **对你的伴侣保持积极态度：** 一点点“爱情是盲目的”也没什么不好。选择关注你伴侣的优点和善良的时刻。对小的缺点给予善意的理解。用玫瑰色眼镜看待伴侣的人往往拥有更牢固的关系 [^55]。换句话说，**珍惜优点**，而不是为缺点烦恼（除非是严重的问题）。
-- **表达爱意——包括身体上和语言上：** 拥抱、亲吻、牵手——不仅仅是作为一种例行公事，而是作为一种重新建立联系的方式。身体上的爱抚会释放结合激素，使你们都感到更亲近、更有安全感 [^56]。同样，**用语言表达爱意** ——说“我爱你”，给予赞美，并定期表达感激之情。感到被爱和被重视与关系中更高的投入度和幸福感有关 [^57]。
-- **友善和支持：** 在日常生活中，让你的伴侣知道你站在他们这边。提供帮助，积极倾听，并支持他们的目标。当冲突出现时，记住你们是伙伴，而不是敌人。友善和积极回应的基础将使你们的爱情经受住挑战，并加强你们的情感联系 [^58]。
-- **练习感恩：** 每天花一点时间注意并承认你的伴侣的付出，无论大小。说“谢谢你”，并对彼此心怀感激，会创造一个强大的积极反馈循环。研究发现，练习感恩的情侣拥有更令人满意和更有韧性的关系 [^59]——这是一个简单的习惯，可以点燃双方的温暖情感。
+- **拥抱这段旅程：** 理解疯狂的迷恋阶段是暂时的。享受激情，但要知道，随着你的爱情成熟，那些痴迷的感觉平静下来是正常的 [^3]。当“蜜月期”消退时不要惊慌——一种更稳定，甚至更深厚的爱常常会取而代之。
+- **沟通和敞开心扉：** 抽出时间进行有意义的谈话。与你的伴侣分享你的内心想法和感受（反之亦然）是被证明可以建立更紧密联系的方式 [^9]。坦诚建立亲密关系和信任——当你真正了解对方时，你会更深地爱上这个人 [^9]。
+- **保持新鲜感：** 通过一起尝试新的或令人兴奋的活动来对抗关系的惯性。研究表明，**一起玩耍和探索** 的情侣在爱情中保持更高的满意度 [^10]。
+- **对你的伴侣保持积极态度：** 一点点“爱情是盲目的”也没什么不好。选择关注你伴侣的优点和善良的时刻。用玫瑰色眼镜看待伴侣的人往往拥有更牢固的关系 [^5]。换句话说，**珍惜优点**，而不是为缺点烦恼（除非是严重的问题）。
+- **表达爱意——包括身体上和语言上：** 拥抱、亲吻、牵手——不仅仅是作为一种例行公事，而是作为一种重新建立联系的方式。身体上的爱抚会释放结合激素，使你们都感到更亲近、更有安全感 [^3]。同样，**用语言表达爱意** ——说“我爱你”，给予赞美，并定期表达感激之情。感到被爱和被重视与关系中更高的投入度和幸福感有关 [^8]。
+- **友善和支持：** 在日常生活中，让你的伴侣知道你站在他们这边。提供帮助，积极倾听，并支持他们的目标。当冲突出现时，记住你们是伙伴，而不是敌人。友善和积极回应的基础将使你们的爱情经受住挑战，并加强你们的情感联系 [^5]。
+- **练习感恩：** 每天花一点时间注意并承认你的伴侣的付出，无论大小。说“谢谢你”，并对彼此心怀感激，会创造一个强大的积极反馈循环。研究发现，练习感恩的情侣拥有更令人满意和更有韧性的关系 [^8]——这是一个简单的习惯，可以点燃双方的温暖情感。
 
-[^1]: [Romantic love: a mammalian brain system for mate choice - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC1764845/#:~:text=developed%20form%20of%20this%20attraction,the%20reward%20system%20associated%20with)
-[^2]: [Intense, Passionate, Romantic Love: A Natural Addiction? How the Fields That Investigate Romance and Substance Abuse Can Inform Each Other - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4861725/#:~:text=addictions%20,and%20appropriate%2C%20and%20a%20negative)
-[^3]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=When%20we%20are%20falling%20in,compulsive%20behaviors%20associated%20with%20infatuation)
-[^4]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=our%20brain%2C%20producing%20a%20variety,compulsive%20behaviors%20associated%20with%20infatuation)
-[^5]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=the%20stress%20hormone%20cortisol%20increase,compulsive%20behaviors%20associated%20with%20infatuation)
-[^6]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/#:~:text=match%20at%20L759%20similar%20levels,Hatfield%20and%20Sprecher%2C%201986)
-[^7]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/#:~:text=similar%20levels%20of%20serotonin%20transporter,Hatfield%20and%20Sprecher%2C%201986)
-[^8]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Being%20love%2C%E2%80%9DSame%20reward%20center%2C%E2%80%9D%20said)
-[^9]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Being%20love%2C%E2%80%9DSame%20reward%20center%2C%E2%80%9D%20said)
-[^10]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/#:~:text=However%2C%20studies%20(Schneiderman%20et%20al,Oxytocin%20receptors%20are)
-[^11]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Other%20chemicals%20at%20work%20during,love%20fades%20as%20attachment%20grows)
-[^12]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sex%2C%20love%20fades%20as%20attachment%20grows)
-[^13]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Released%20during%20sex%20and%20heightened,love%20fades%20as%20attachment%20grows)
-[^14]: [Romantic love: a mammalian brain system for mate choice - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC1764845/#:~:text=our%20view%20that%20romantic%20love,humans%20and%20its%20antecedent%20in)
-[^15]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/#:~:text=However%2C%20studies%20(Schneiderman%20et%20al,account%20for%20many%20of%20the)
-[^16]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=In%20addition%20to%20the%20positive,the%20ancient%20wisdom%20%E2%80%98love%20is)
-[^17]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=to%20the%20nucleus%20accumbens%2C%20while,%E2%80%98love%20is%20blind%E2%80%99%2C%E2%80%9D%20said%20Schwartz)
-[^18]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=At%20least%20that%E2%80%99s%20the%20theory,on%20this%20powerful%20cognitive%20bias)
-[^19]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=Many%20studies%20support%20the%20basic,see%20no%20evidence%20of%20supportiveness)
-[^20]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=Many%20studies%20support%20the%20basic,see%20no%20evidence%20of%20supportiveness)
-[^21]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=Other%20studies%20have%20examined%20the,and%20memories%20of%20their%20interactions)
-[^22]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=Other%20studies%20point%20to%20biased,their%20partners%20simply%20don%E2%80%99t%20care)
-[^23]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=So%20is%20all%20this%20cognitive,They%20are%20less%20emotionally)
-[^24]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=the%20stress%20hormone%20cortisol%20increase,compulsive%20behaviors%20associated%20with%20infatuation)
-[^25]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/#:~:text=match%20at%20L759%20similar%20levels,Hatfield%20and%20Sprecher%2C%201986)
-[^26]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sometimes%2C%20angst%2C%20calms%20within%20one,in%20romantic%20love%20often%20lessen)
-[^27]: [The Effects of Romantic Love on Mentalizing Abilities - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4496461/#:~:text=participants%20who%20stated%20they%20were,on%20conceptually%20related%20mentalizing%20tasks)
-[^28]: [The Effects of Romantic Love on Mentalizing Abilities - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4496461/#:~:text=participants%20who%20stated%20they%20were,presentation%20of%20a%20love%20stimulus)
-[^29]: [The Effects of Romantic Love on Mentalizing Abilities - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4496461/#:~:text=presentation%20of%20either%20a%20love,on%20conceptually%20related%20mentalizing%20tasks)
-[^30]: [Neural correlates of long-term intense romantic love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC3277362/#:~:text=,Overall%2C%20results%20suggest%20that)
-[^31]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=A%202011%20study%20conducted%20at,while%20the%20apprehension%20is%20lost)
-[^32]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=%E2%80%9CA%20state,stage%20romantic%20love)
-[^33]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=In%20addition%20to%20the%20positive,the%20ancient%20wisdom%20%E2%80%98love%20is)
-[^34]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=,in%20romantic%20love%20often%20lessen)
-[^35]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sometimes%2C%20angst%2C%20calms%20within%20one,in%20romantic%20love%20often%20lessen)
-[^36]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sometimes%2C%20angst%2C%20calms%20within%20one,in%20romantic%20love%20often%20lessen)
-[^37]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Released%20during%20sex%20and%20heightened,love%20fades%20as%20attachment%20grows)
-[^38]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sometimes%2C%20angst%2C%20calms%20within%20one,in%20romantic%20love%20often%20lessen)
-[^39]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Many%20theories%20of%20love%2C%20said,married%20couples)
-[^40]: [Romantic love: a mammalian brain system for mate choice - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC1764845/#:~:text=ventral%20tegmental%20area%20and%20right,three%20primary%20brain%20systems%20that)
-[^41]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/#:~:text=%E2%80%9CWe%20found%20that%20feeling%20appreciated,it%20will%20last%2C%E2%80%9D%20Futris%20said)
-[^42]: 亚瑟·阿伦的经典实验，具体信息需要补充完整，例如实验名称或相关文献链接，以便在此处添加准确的脚注引用。
-[^43]: 亚瑟·阿伦的经典实验，具体信息需要补充完整，例如实验名称或相关文献链接，以便在此处添加准确的脚注引用。
-[^44]: [Exciting Activities for Couples - Greater Good in Action](https://ggia.berkeley.edu/practice/practice_as_pdf/exciting_activities_for_couples?printPractice=Y#:~:text=In%20several%20studies%2C%20couples%20who,engaged%20in%20more%20mundane%20activities)
-[^45]: [Exciting Activities for Couples - Greater Good in Action](https://ggia.berkeley.edu/practice/practice_as_pdf/exciting_activities_for_couples?printPractice=Y#:~:text=In%20several%20studies%2C%20couples%20who,engaged%20in%20more%20mundane%20activities)
-[^46]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Other%20chemicals%20at%20work%20during,love%20fades%20as%20attachment%20grows)
-[^47]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Released%20during%20sex%20and%20heightened,love%20fades%20as%20attachment%20grows)
-[^48]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Other%20chemicals%20at%20work%20during,love%20fades%20as%20attachment%20grows)
-[^49]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/#:~:text=%E2%80%9CWe%20found%20that%20feeling%20appreciated,it%20will%20last%2C%E2%80%9D%20Futris%20said)
-[^50]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/#:~:text=Feelings%20of%20gratitude%20boosted%20marital,%E2%80%9D)
-[^51]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=So%20is%20all%20this%20cognitive,They%20are%20less%20emotionally)
-[^52]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=sometimes%2C%20angst%2C%20calms%20within%20one,in%20romantic%20love%20often%20lessen)
-[^53]: 亚瑟·阿伦的经典实验，具体信息需要补充完整，例如实验名称或相关文献链接，以便在此处添加准确的脚注引用。
-[^54]: [Exciting Activities for Couples - Greater Good in Action](https://ggia.berkeley.edu/practice/practice_as_pdf/exciting_activities_for_couples?printPractice=Y#:~:text=In%20several%20studies%2C%20couples%20who,engaged%20in%20more%20mundane%20activities)
-[^55]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=So%20is%20all%20this%20cognitive,They%20are%20less%20emotionally)
-[^56]: [Love and the Brain | Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain#:~:text=Other%20chemicals%20at%20work%20during,love%20fades%20as%20attachment%20grows)
-[^57]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/#:~:text=%E2%80%9CWe%20found%20that%20feeling%20appreciated,it%20will%20last%2C%E2%80%9D%20Futris%20said)
-[^58]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html#:~:text=So%20is%20all%20this%20cognitive,They%20are%20less%20emotionally)
-[^59]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/#:~:text=Feelings%20of%20gratitude%20boosted%20marital,%E2%80%9D)
+---
+
+## 参考文献
+
+[^1]: [Romantic love: a mammalian brain system for mate choice - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC1764845/)  
+[^2]: [Intense, Passionate, Romantic Love: A Natural Addiction? How the Fields That Investigate Romance and Substance Abuse Can Inform Each Other - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4861725/)  
+[^3]: [Love and the Brain \| Harvard Medical School](https://hms.harvard.edu/news-events/publications-archive/brain/love-brain)  
+[^4]: [Proximate and Ultimate Perspectives on Romantic Love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC8074860/)  
+[^5]: [Love in Mind: Cognitive Trickery – Association for Psychological Science – APS](https://www.psychologicalscience.org/news/were-only-human/love-in-mind-cognitive-trickery.html)  
+[^6]: [The Effects of Romantic Love on Mentalizing Abilities - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC4496461/)  
+[^7]: [Neural correlates of long-term intense romantic love - PMC](https://pmc.ncbi.nlm.nih.gov/pmc/articles/PMC3277362/)  
+[^8]: [Two words that go a long way in relationships: ‘Thank you’](https://news.uga.edu/news/gratitude-in-romantic-relationships/)  
+[^9]: [The Experimental Generation of Interpersonal Closeness: A Procedure and Some Preliminary Findings](https://journals.sagepub.com/doi/10.1177/0146167297234003)  
+[^10]: [Exciting Activities for Couples - Greater Good in Action](https://ggia.berkeley.edu/practice/practice_as_pdf/exciting_activities_for_couples?printPractice=Y)
+
+---  
+
+*以上内容由大模型结合学术研究汇总，仅供读者参考与学习。*
