@@ -90,7 +90,6 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       { text: "AI TOP1", link: "TOP1" },
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
       { text: "玩转Deepseek", link: "use/how-to-chat/deepseek.md" },
-
       {
         text: "Prompt在用",
         items: [
@@ -98,6 +97,13 @@ function sidebarAI(): DefaultTheme.SidebarItem {
           { text: "你值得一首诗", link: "use/poem/you-own-a-poem" },
           { text: "中国名", link: "use/name/" },
           { text: "Git Commit", link: "use/git/commit" },
+        ]
+      },
+      {
+        text: "Deep Research",
+        items: [
+          { text: "数据互联网", link: "record/gptdr/InternetOfData.md" },
+          { text: "机械意识？", link: "record/gptdr/mind-of-machine.md" },
         ]
       },
 
