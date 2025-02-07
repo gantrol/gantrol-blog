@@ -85,7 +85,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
     text: "AI",
     base:"/AI/",
     link: "TOP1",
-    collapsed: true,
+    collapsed: false,
     items: [
       { text: "AI TOP1", link: "TOP1" },
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
