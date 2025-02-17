@@ -11,7 +11,7 @@ outline: deep
 ## 让大模型分类
 
 :::details 部分问题
-```markdown
+````markdown
 现在下面文件共4百万tokens，超过大模型一百万限制，请你给这些代码分类，然后分别生成调用“repomix”的命令，方便生成大模型上下文
 
 格式要求：每种分类要有一个二级标题
@@ -28,7 +28,7 @@ To pack specific files or directories using glob patterns, 不同项目之间用
 
 ```
 repomix --include "src/**/*.ts,**/*.md"
-```
+````
 
 ### Files
 ```
