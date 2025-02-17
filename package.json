@@ -10,6 +10,7 @@
     "diff": "git diff > diff.md",
     "diff:md:gemini": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Gemini2FTE.md",
     "diff:md:dsr1": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Deepseek.md",
+    "diff:md:claudes": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Claude3.5sonnet.md",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
