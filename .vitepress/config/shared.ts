@@ -44,6 +44,10 @@ export const shared = defineConfig({
         ['meta', { property: 'og:title', content: 'Gantrol\'s Blog' }],
         ['meta', { property: 'og:site_name', content: 'gantrol' }],
         ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
+        ['meta', { property: 'twitter:card', content: 'summary' }],
+        ['meta', { property: 'twitter:site', content: '@gantrols' }],
+        ['meta', { property: 'twitter:creator', content: '@gantrols' }],
+        ['meta', { property: 'twitter:image', content: '/favicon.ico' }],
         [
             'script',
             { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
