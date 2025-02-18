@@ -8,9 +8,11 @@
     "build": "vitepress build",
     "preview": "vitepress preview",
     "diff": "git diff > diff.md",
+    "pyenv": ".venv/Scripts/activate",
     "diff:md:gemini": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Gemini2FTE.md",
     "diff:md:dsr1": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Deepseek.md",
     "diff:md:claudes": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Claude3.5sonnet.md",
+    "diff:md:grok3": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Grok3.md",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
