@@ -37,7 +37,7 @@ export const shared = defineConfig({
     },
 
     head: [
-        ['link', { rel: 'icon', href: '/favicon.ico' }],
+        ['link', { rel: 'icon', href: '/favicon.jpg' }],
         ['meta', { name: 'theme-color', content: '#5f67ee' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'en' }],
@@ -47,7 +47,7 @@ export const shared = defineConfig({
         ['meta', { property: 'twitter:card', content: 'summary' }],
         ['meta', { property: 'twitter:site', content: '@gantrols' }],
         ['meta', { property: 'twitter:creator', content: '@gantrols' }],
-        ['meta', { property: 'twitter:image', content: '/favicon.ico' }],
+        ['meta', { property: 'twitter:image', content: '/favicon.jpg' }],
         [
             'script',
             { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
