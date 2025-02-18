@@ -10,10 +10,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      monaco-editor:
-        specifier: ^0.46.0
-        version: 0.46.0
     devDependencies:
       '@types/markdown-it':
         specifier: ^12.2.3
@@ -788,9 +784,6 @@ packages:
 
   mj-context-menu@0.6.1:
     resolution: {integrity: sha512-7NO5s6n10TIV96d4g2uDpG7ZDpIhMh0QNfGdJw/W47JswFcosz457wqz/b5sAKvl12sxINGFCn80NZHKwxQEXA==}
-
-  monaco-editor@0.46.0:
-    resolution: {integrity: sha512-ADwtLIIww+9FKybWscd7OCfm9odsFYHImBRI1v9AviGce55QY8raT+9ihH8jX/E/e6QVSGM+pKj4jSUSRmALNQ==}
 
   nanoid@3.3.8:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
@@ -1767,8 +1760,6 @@ snapshots:
   mitt@3.0.1: {}
 
   mj-context-menu@0.6.1: {}
-
-  monaco-editor@0.46.0: {}
 
   nanoid@3.3.8: {}
 
