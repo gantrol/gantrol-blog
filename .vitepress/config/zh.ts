@@ -3,6 +3,24 @@ import { type DefaultTheme, defineConfig } from "vitepress";
 export const zh = defineConfig({
   lang: "zh-Hans",
   description: "黄健楸的博客：AI、软件与心理学",
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh-Hans' }],
+    // ['meta', { property: 'og:title', content: '黄健楸的博客' }],
+    ['meta', { property: 'og:site_name', content: 'gantrol' }],
+    ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
+    ],
+    [
+      'script',
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-0P7S4MY6FW');"
+    ]
+  ],
 
   themeConfig: {
     nav: nav(),

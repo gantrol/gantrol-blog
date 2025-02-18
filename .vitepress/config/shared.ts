@@ -41,13 +41,13 @@ export const shared = defineConfig({
         ['meta', { name: 'theme-color', content: '#5f67ee' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'en' }],
-        ['meta', { property: 'og:title', content: 'Gantrol\'s Blog' }],
+        // ['meta', { property: 'og:title', content: 'Gantrol\'s Blog' }],
         ['meta', { property: 'og:site_name', content: 'gantrol' }],
         ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
+        ['meta', { property: 'og:image', content: 'https://www.gantrol.com/favicon.jpg' }],
         ['meta', { property: 'twitter:card', content: 'summary' }],
         ['meta', { property: 'twitter:site', content: '@gantrols' }],
         ['meta', { property: 'twitter:creator', content: '@gantrols' }],
-        ['meta', { property: 'twitter:image', content: 'https://www.gantrol.com/favicon.jpg' }],
         [
             'script',
             { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
