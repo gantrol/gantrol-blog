@@ -120,10 +120,36 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       {
         text: "Deep Research",
         items: [
-          { text: "AI谈爱", link: "record/gptdr/fall-in-love" },
-          { text: "机械意识？", link: "record/gptdr/mind-of-machine" },
-          { text: "数据互联网", link: "record/gptdr/InternetOfData" },
-          { text: "数据互联网", link: "record/gptdr/LearnerLLM" },
+          { text: "AI谈爱", items: [
+              { text: "ChatGPT", link: "record/gptdr/fall-in-love" },
+              { text: "Perplexity", link: "record/deepresearch/perplexity/fall-in-love" },
+              { text: "Grok3", link: "record/deepresearch/grok3/fall-in-love" },
+            ]
+          },
+          { text: "机械意识？", items: [
+              { text: "ChatGPT", link: "record/gptdr/mind-of-machine" },
+              { text: "Perplexity", link: "record/deepresearch/perplexity/mind-of-machine" },
+              { text: "Grok3", link: "record/deepresearch/grok3/mind-of-machine" },
+            ]
+          },
+          { text: "数据互联网", items: [
+              { text: "ChatGPT", link: "record/gptdr/InternetOfData" },
+              { text: "Perplexity", link: "record/deepresearch/perplexity/InternetOfData" },
+              { text: "Grok3", link: "record/deepresearch/grok3/InternetOfData" },
+            ]
+          },
+          { text: "大模型理论基础（研究向）", items: [
+              { text: "ChatGPT", link: "record/gptdr/LearnerLLM" },
+              { text: "Perplexity", link: "record/deepresearch/perplexity/LearnerLLM" },
+              { text: "Grok3", link: "record/deepresearch/grok3/LearnerLLM" },
+            ]
+          },
+          // { text: "", items: [
+          //     { text: "ChatGPT", link: "record/gptdr/" },
+          //     { text: "Perplexity", link: "record/deepresearch/perplexity/" },
+          //     { text: "Grok3", link: "record/deepresearch/grok3/" },
+          //   ]
+          // },
         ]
       },
 
