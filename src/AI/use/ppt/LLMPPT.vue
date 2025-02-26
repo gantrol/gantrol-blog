@@ -196,6 +196,8 @@ const totalSlides = slides.length;
 const slideDirection = ref('next');
 const pageNumberInput = ref('');
 const pageInputError = ref(''); // 用于存放页码输入错误信息
+const isFullscreen = ref(false);
+const presentationContainerRef = ref(null); // 用于引用 presentation-container
 
 const nextSlide = () => {
   if (currentSlideIndex.value < totalSlides - 1) {
@@ -240,9 +242,53 @@ const handleKeydown = (e) => {
   }
 };
 
+const toggleFullscreen = () => {
+  const container = presentationContainerRef.value;
+  if (!isFullscreen.value) {
+    if (container.requestFullscreen) {
+      container.requestFullscreen();
+    } else if (container.mozRequestFullScreen) { /* Firefox */
+      container.mozRequestFullScreen();
+    } else if (container.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+      container.webkitRequestFullscreen();
+    } else if (container.msRequestFullscreen) { /* IE/Edge */
+      container.msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { /* Firefox */
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE/Edge */
+      document.msExitFullscreen();
+    }
+  }
+  isFullscreen.value = !isFullscreen.value;
+};
+
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
   pageNumberInput.value = String(currentSlideIndex.value + 1);
+
+  const fullscreenChangeHandler = () => {
+    isFullscreen.value = !!document.fullscreenElement;
+  };
+
+  document.addEventListener('fullscreenchange', fullscreenChangeHandler);
+  document.addEventListener('webkitfullscreenchange', fullscreenChangeHandler);
+  document.addEventListener('mozfullscreenchange', fullscreenChangeHandler);
+  document.addEventListener('MSFullscreenChange', fullscreenChangeHandler);
+
+  onUnmounted(() => {
+    document.removeEventListener('fullscreenchange', fullscreenChangeHandler);
+    document.removeEventListener('webkitfullscreenchange', fullscreenChangeHandler);
+    document.removeEventListener('mozfullscreenchange', fullscreenChangeHandler);
+    document.removeEventListener('MSFullscreenChange', fullscreenChangeHandler);
+  });
+
 });
 
 onUnmounted(() => {
@@ -256,7 +302,21 @@ watch(currentSlideIndex, (newIndex) => {
 </script>
 
 <template>
-  <div class="presentation-container">
+  <div class="presentation-container" ref="presentationContainerRef">
+    <button class="fullscreen-button" @click="toggleFullscreen" :title="isFullscreen ? '退出全屏' : '全屏'">
+      <svg v-if="!isFullscreen" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 14H5V19H10V17H7V14Z" fill="currentColor"/>
+        <path d="M5 10H7V7H10V5H5V10Z" fill="currentColor"/>
+        <path d="M17 17H14V19H19V14H17V17Z" fill="currentColor"/>
+        <path d="M14 5V7H17V10H19V5H14Z" fill="currentColor"/>
+      </svg>
+      <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 7H7V10H5V5H10V7Z" fill="currentColor"/>
+        <path d="M17 7H14V5H19V10H17V7Z" fill="currentColor"/>
+        <path d="M7 14H10V19H5V14H7V17Z" fill="currentColor"/>
+        <path d="M14 19V17H17V14H19V19H14Z" fill="currentColor"/>
+      </svg>
+    </button>
     <div class="slides-wrapper">
       <transition :name="slideDirection === 'next' ? 'slide-next' : 'slide-prev'">
         <div
@@ -493,6 +553,7 @@ watch(currentSlideIndex, (newIndex) => {
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom right, #ffffff, #fcf5fc);
+  overflow: visible; /* 修改 slide 的 overflow 为 visible */
 }
 
 .slide h2 {
@@ -532,6 +593,8 @@ watch(currentSlideIndex, (newIndex) => {
   gap: 0.5rem; /* 输入框和按钮之间的间距 */
   font-size: 0.9rem;
   color: #bfa6ff;
+  width: auto; /* 宽度设置为 auto，允许根据内容扩展 */
+  min-width: 200px; /* 设置最小宽度，防止过窄 */
 }
 
 .page-input {
@@ -626,36 +689,35 @@ watch(currentSlideIndex, (newIndex) => {
   cursor: not-allowed;
 }
 
-/* Page navigation input and button (移至 slide-number 样式中) */
-/* .page-navigation {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.page-input {
-  width: 50px;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #d6a4e2;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.go-button {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background-color: #b57bc4;
+/* Fullscreen button style */
+.fullscreen-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #d6a4e2;
   color: white;
   border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(214, 164, 226, 0.3);
+  z-index: 20; /* Ensure it's above other elements */
 }
 
-.go-button:hover {
-  background-color: #9a65c0;
-} */
+.fullscreen-button:hover {
+  background-color: #b57bc4;
+  transform: translateY(-2px);
+}
+
+.fullscreen-button svg {
+  width: 20px;
+  height: 20px;
+}
 
 
 /* Flex layouts */
@@ -1166,7 +1228,8 @@ ul li {
   color: #c9564a; /* Error text color, matching the "bad" tag color */
   font-size: 0.8rem;
   margin-left: 0.5rem;
-  position: absolute; /* Position to avoid layout shift */
-  bottom: -1.5rem; /* Adjust position as needed */
+  position: relative; /* 修改为 relative */
+  display: block; /* 确保占据空间，如果需要 */
+  margin-top: 0.25rem; /* 调整与输入框的距离 */
 }
 </style>
