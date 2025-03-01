@@ -68,7 +68,7 @@ DeepSeek-V3/R1 专家数量庞大——每层 256 个专家中仅激活 8 个—
 
 ### DeepSeek 在线推理系统示意图
 
-![DeepSeek 在线推理系统示意图](figures/Diagram%20of%20DeepSeek%27s%20Online%20Inference%20System.svg)
+![DeepSeek 在线推理系统示意图](figures/deepseek-online-inference-system.svg)
 
 ### DeepSeek 在线服务统计数据
 
@@ -76,7 +76,7 @@ DeepSeek-V3/R1 专家数量庞大——每层 256 个专家中仅激活 8 个—
 
 此外，考虑到白天服务负载高，夜间负载低，我们实施了一种机制，在白天高峰时段将推理服务部署到所有节点。在夜间低负载时段，我们减少推理节点，并将资源分配给研发和训练。在过去 24 小时内 (UTC+8 2025 年 2 月 27 日 12:00 PM 至 2025 年 2 月 28 日 12:00 PM)，V3 和 R1 推理服务的节点占用峰值达到 278 个，平均占用 226.75 个节点 (每个节点包含 8 张 H800 GPU)。假设单张 H800 GPU 的租用成本为每小时 2 美元，则每日总成本为 87,072 美元。
 
-![推理服务 H800 节点数量](figures/H800%20Node%20Count%20For%20Inference%20Service.svg)
+![推理服务 H800 节点数量](figures/h800-node-count-inference-service.svg)
 
 在 24 小时的统计周期内 (UTC+8 2025 年 2 月 27 日 12:00 PM 至 2025 年 2 月 28 日 12:00 PM)，V3 和 R1：
 
@@ -94,4 +94,4 @@ DeepSeek-V3/R1 专家数量庞大——每层 256 个专家中仅激活 8 个—
 *   只有一部分服务实现了商业化 (Web 和 APP 访问仍然免费)，
 *   夜间折扣在非高峰时段自动应用。
 
-![成本与理论收入](figures/Cost%20And%20Theoretical%20Income.jpg)
+![成本与理论收入](figures/cost-and-theoretical-income.jpg)
