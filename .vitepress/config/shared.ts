@@ -24,6 +24,7 @@ export const shared = defineConfig({
         }
     },
     vite: {
+        assetsInclude: ['**/*.svg'],
         ssr: {
             noExternal: ['monaco-editor']
         }
