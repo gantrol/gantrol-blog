@@ -35,10 +35,10 @@ DeepSeek-V3/R1 专家数量庞大——每层 256 个专家中仅激活 8 个—
 
 大规模跨节点 EP 带来了显著的通信开销。为缓解这个问题，我们采用双 batch 重叠策略来隐藏通信成本，并通过将一个 batch 的请求拆分为两个 microbatch 来提高整体吞吐。在 prefill 阶段，这两个 microbatch 交替执行，一个 microbatch 的通信成本被另一个 microbatch 的计算所掩盖。
 
-![Prefilling 阶段的通信-计算重叠.png](figures/Communication-Computation Overlapping during Prefilling Phase.svg)
+![Prefilling 阶段的通信-计算重叠.png](figures/Communication-Computation-Overlapping-during-Prefilling-Phase.svg)
 
 在 decoding 阶段，不同阶段的执行时长不均衡。因此，我们将 attention 层细分为两个步骤，并使用 5 阶段流水线来实现无缝的通信-计算重叠。
-![Decoding 阶段的通信-计算重叠](figures/Communication-Computation Overlapping during Decoding Phase.svg)
+![Decoding 阶段的通信-计算重叠](figures/Communication-Computation-Overlapping-during-Decoding-Phase.svg)
 
 更多关于我们的通信-计算重叠机制的细节，请访问 https://github.com/deepseek-ai/profile-data。
 
