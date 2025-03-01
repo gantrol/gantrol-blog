@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # 开源周第六天：再谈 DeepSeek-V3/R1 推理系统
 
 > [英文原文](https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md)
