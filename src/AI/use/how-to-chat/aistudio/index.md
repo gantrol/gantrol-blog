@@ -19,6 +19,6 @@
 
 - 模仿社媒风格写作（如小红书）：https://weibo.com/6083767801/PeZaHxo6U
 - 处理PDF：https://weibo.com/6083767801/PeJxZASQa
-- 去AI味儿，用于翻译、润色：https://weibo.com/6083767801/5126717142994574
+- [去AI味儿，用于翻译、润色](/AI/use/translate/)
 - 定位图片大体位置http://t.cn/A61D3S9a
 - 语音/视频对话、练习口语 http://t.cn/A61Pq0uW
