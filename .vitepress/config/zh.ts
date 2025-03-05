@@ -108,6 +108,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       { text: "AI TOP1", link: "TOP1" },
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
       { text: "玩转Deepseek", link: "use/how-to-chat/deepseek" },
+      { text: "AIStudio操作备忘", link: "use/how-to-chat/deepseek" },
       {
         text: "Prompt在用",
         items: [
@@ -119,6 +120,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       },
       {
         text: "Deep Research",
+        collapsed: true,
         items: [
           { text: "AI谈爱", items: [
               { text: "ChatGPT", link: "record/gptdr/fall-in-love" },
