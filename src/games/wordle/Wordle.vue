@@ -52,7 +52,7 @@
 
       <transition name="popup">
         <div class="game-message" v-if="gameOver">
-          <h2>{{ win ? '恭喜!' : '游戏结束' }}</h2>
+          <h2 style="margin: 0 0 16px; border-top: none">{{ win ? '恭喜!' : '游戏结束' }}</h2>
           <p>{{ win ? `你用了 ${currentRow + 1} 步猜出了单词!` : `正确答案是: ${targetWord}` }}</p>
           <button @click="resetGame">再玩一次</button>
         </div>

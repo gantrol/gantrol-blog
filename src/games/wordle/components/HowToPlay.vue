@@ -60,7 +60,7 @@
         <p>右上角💡按钮有提示，剩下三步后会列出可能的单词</p>
       </div>
 
-      <button class="play-button" @click="$emit('close')">开始游戏</button>
+      <button class="play-button" @click="$emit('close')">继续游戏</button>
     </div>
   </div>
 </template>
