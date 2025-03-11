@@ -28,7 +28,7 @@ head:
       content: "https://gantrol.com/images/twitter/wordle-preview.png"
   - - meta
     - property: og:url
-      content: "https://gantrol.com/wordle" # 替换为实际URL
+      content: "https://gantrol.com/wordle"
   - - meta
     - property: og:type
       content: "website"
