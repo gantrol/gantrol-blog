@@ -71,7 +71,7 @@
 // You can add any Vue component logic here if needed.
 </script>
 
-<style>
+<style scoped>
 .card {
   --card-width: 400px;
   --card-height: 600px;
