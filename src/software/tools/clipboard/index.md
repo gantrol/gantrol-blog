@@ -1,4 +1,24 @@
-# 剪切板管理器：同时复制十几个“对象”
+---
+title: "Wordle猜单词"
+head:
+  - - meta
+    - name: twitter:card
+      content: summary_large_image
+  - - meta
+    - name: twitter:site
+      content: "@gantrols"
+  - - meta
+    - property: og:title
+      content: "剪切历史管理器：同时复制十几个“对象”"
+  - - meta
+    - property: og:description
+      content: "系统剪切板一般只保留一项，有时想同时复制多项，怎么办？"
+  - - meta
+    - property: og:type
+      content: "website"
+---
+
+# 剪切历史管理器：同时复制十几个“对象”
 
 系统剪切板一般只保留一项，有时想同时复制多项，怎么办？Windows跟Mac操作系统都有自带，但都不太好用，可能内网电脑开来缓解一下也是好的[^1]
 
