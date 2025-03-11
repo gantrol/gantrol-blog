@@ -53,7 +53,7 @@
       <transition name="popup">
         <div class="game-message" v-if="gameOver">
           <h2>{{ win ? '恭喜!' : '游戏结束' }}</h2>
-          <p>{{ win ? `你用了 ${currentRow} 步猜出了单词!` : `正确答案是: ${targetWord}` }}</p>
+          <p>{{ win ? `你用了 ${currentRow + 1} 步猜出了单词!` : `正确答案是: ${targetWord}` }}</p>
           <button @click="resetGame">再玩一次</button>
         </div>
       </transition>
@@ -104,7 +104,7 @@ export default {
 
     // 过滤可能的单词列表
     const filteredWordList = computed(() => {
-      if (remainingAttempts.value > 2) return [];
+      if (remainingAttempts.value > 5) return [];
 
       return targetWords.filter(word => {
         const upperWord = word.toUpperCase();

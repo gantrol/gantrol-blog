@@ -9,10 +9,15 @@
         <!-- 动态提示内容 -->
         <div v-if="currentRow === 0">
             <p class="tip-text">尝试猜一个有效的5字母单词开始游戏。</p>
-        </div>
+        </div>  
         
-        <div v-else-if="remainingAttempts <= 3">
-            <p class="tip-text">只剩 {{ remainingAttempts }} 次机会了！可能选项：</p>
+        <div v-else-if="remainingAttempts <= 5">
+            <p class="tip-text">
+            🟩 绿色 - 位置正确<br>
+            🟨 黄色 - 存在但位置错误<br>
+            ⬛ 灰色 - 字母不存在
+            </p>
+            <p class="tip-text">还有 {{ remainingAttempts }} 次机会！可能选项：</p>
             
             <!-- 桌面端显示模式 -->
             <div class="desktop-words">
@@ -34,12 +39,7 @@
         </div>
 
         <div v-else>
-            <p class="tip-text">
-            观察颜色提示：<br>
-            🟩 绿色 - 位置正确<br>
-            🟨 黄色 - 存在但位置错误<br>
-            ⬛ 灰色 - 字母不存在
-            </p>
+            
         </div>
         </div>
 
