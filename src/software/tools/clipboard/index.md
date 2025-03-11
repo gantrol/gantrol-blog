@@ -4,7 +4,9 @@
 
 搜寻一番（以Windows为主），挑出CopyQ跟ClipboardFusion这俩。 其他软件可以参考文末表格。
 
-CopyQ能展示图片、带格式文本，有Windows跟Mac端、无移动端；ClipboardFusion付费后有同步功能，几乎全平台但Mac、iOS端很难用（评分1.5）。
+CopyQ能展示图片、带格式文本，有Windows跟Mac端、无移动端；ClipboardFusion付费后有同步功能[^2]，几乎全平台但Mac、iOS端很难用（评分1.5）。
+
+图中左边✂️logo图表的就是copyq，右边则是ClipboardFusion
 
 ![CopyQ能展示图片、带格式文本](img_1.png)
 
@@ -16,4 +18,5 @@ CopyQ能展示图片、带格式文本，有Windows跟Mac端、无移动端；Cl
     import ClipboardCompare from "./ClipboardCompare.vue";
 </script>
 
-[^1]: [Windows 使用剪贴板](https://support.microsoft.com/zh-cn/windows/%E4%BD%BF%E7%94%A8%E5%89%AA%E8%B4%B4%E6%9D%BF-30375039-ce71-9fe4-5b30-21b7aab6b13f) 
+[^1]: [Windows 使用剪贴板](https://support.microsoft.com/zh-cn/windows/使用剪贴板-30375039-ce71-9fe4-5b30-21b7aab6b13f)
+[^2]: 具体区别请自行到官网查看

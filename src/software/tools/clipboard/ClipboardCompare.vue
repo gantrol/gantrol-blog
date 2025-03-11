@@ -15,60 +15,73 @@
         </svg>
       </div>
     </div>
-
-    <transition-group
-        name="table-sort"
-        tag="tbody"
-        :css="false"
-        @before-leave="onBeforeLeave"
-        @leave="onLeave"
-        @enter="onSortEnter"
-        @after-enter="onAfterEnter"
-    >
-      <table class="app-table">
-        <thead>
-        <tr>
-          <th v-for="(header, index) in headers"
-              :key="index"
-              @click="sortBy(header.key)"
-              :class="{ 'active-sort': sortKey === header.key }"
-          >
-            {{ header.label }}
-            <span v-if="sortKey === header.key" class="sort-icon" :class="sortOrder">
+    <table class="app-table">
+      <thead>
+      <tr>
+        <th
+            v-for="(header, index) in headers"
+            :key="index"
+            @click="sortBy(header.key)"
+            :class="{ 'active-sort': sortKey === header.key }"
+        >
+          {{ header.label }}
+          <span v-if="sortKey === header.key" class="sort-icon" :class="sortOrder">
               {{ sortOrder === 'asc' ? '↑' : '↓' }}
             </span>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(app, index) in filteredAndSortedApps" :key="app.name"
+        </th>
+      </tr>
+      </thead>
+      <!-- 将过渡组放在tbody上，直接包裹tr -->
+      <transition-group
+          name="table-sort"
+          tag="tbody"
+          :css="false"
+          @before-leave="onBeforeLeave"
+          @leave="onLeave"
+          @enter="onSortEnter"
+          @after-enter="onAfterEnter"
+      >
+        <tr
+            v-for="(app, index) in filteredAndSortedApps"
+            :key="app.name"
             :style="{ animationDelay: `${index * 0.05}s` }"
             @mouseenter="hoveredRow = index"
             @mouseleave="hoveredRow = null"
-            :class="{ 'row-hovered': hoveredRow === index }">
-          <td v-for="(header, colIndex) in headers" :key="colIndex"
-              :class="{ 'cell-highlight': hoveredRow === index }">
+            :class="{ 'row-hovered': hoveredRow === index }"
+        >
+          <td
+              v-for="(header, colIndex) in headers"
+              :key="colIndex"
+              :class="{ 'cell-highlight': hoveredRow === index }"
+          >
             <div class="cell-content">
-                <span v-if="header.key === 'isOpenSource' || header.key === 'isPaid'">
-                  <svg v-if="app[header.key]" class="icon check-icon" viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
-                  </svg>
-                  <svg v-else class="icon x-icon" viewBox="0 0 24 24">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path>
-                  </svg>
-                </span>
+              <span v-if="header.key === 'isOpenSource' || header.key === 'isPaid'">
+                <svg
+                    v-if="app[header.key]"
+                    class="icon check-icon"
+                    viewBox="0 0 24 24"
+                >
+                  <path
+                      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  ></path>
+                </svg>
+                <svg v-else class="icon x-icon" viewBox="0 0 24 24">
+                  <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                  ></path>
+                </svg>
+              </span>
               <span v-else>{{ app[header.key] }}</span>
             </div>
           </td>
         </tr>
-        </tbody>
-      </table>
-    </transition-group>
+      </transition-group>
+    </table>
   </div>
 </template>
 
 <script setup>
-import {ref, computed, onMounted, watch} from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 
 const searchQuery = ref('');
 const sortKey = ref('name');
@@ -108,7 +121,7 @@ const apps = ref([
     syncFeature: '跨设备同步',
     isPaid: true,
     isOpenSource: false,
-    platforms: '几乎全平台'
+    platforms: 'Windows, Android，iOS'
   },
   {
     name: 'ClipClip',
@@ -155,7 +168,7 @@ const apps = ref([
 const filteredAndSortedApps = computed(() => {
   let result = apps.value;
 
-  // Filter
+  // 筛选
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
     result = result.filter(app =>
@@ -166,7 +179,7 @@ const filteredAndSortedApps = computed(() => {
     );
   }
 
-  // Sort
+  // 排序
   result = [...result].sort((a, b) => {
     const aValue = a[sortKey.value];
     const bValue = b[sortKey.value];
@@ -183,17 +196,18 @@ const filteredAndSortedApps = computed(() => {
   return result;
 });
 
+const prevPositions = ref(new Map());
+
 const sortBy = (key) => {
-  // 保存当前行的状态和位置信息
+  // 记录当前每一行的位置
   const rows = document.querySelectorAll('.app-table tbody tr');
   prevPositions.value.clear();
-
   rows.forEach(row => {
     const rect = row.getBoundingClientRect();
     prevPositions.value.set(row._uid, rect);
   });
 
-  // 更新排序状态
+  // 切换排序状态
   if (sortKey.value === key) {
     sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
   } else {
@@ -202,20 +216,9 @@ const sortBy = (key) => {
   }
 };
 
-
-const onBeforeEnter = (el) => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(30px)';
-};
-
-const onEnter = (el, done) => {
-  const delay = el.dataset.index * 50;
-  setTimeout(() => {
-    el.style.transition = 'all 0.4s ease-out';
-    el.style.opacity = 1;
-    el.style.transform = 'translateY(0)';
-    done();
-  }, delay);
+const onBeforeLeave = (el) => {
+  const rect = el.getBoundingClientRect();
+  prevPositions.value.set(el._uid, rect);
 };
 
 const onLeave = (el, done) => {
@@ -224,56 +227,37 @@ const onLeave = (el, done) => {
   setTimeout(done, 300);
 };
 
-// 保存元素位置信息
-const prevPositions = ref(new Map());
-
-// 在元素离开前记录位置
-const onBeforeLeave = (el) => {
-  const rect = el.getBoundingClientRect();
-  prevPositions.value.set(el._uid, rect);
-};
-
-// 排序动画
 const onSortEnter = (el, done) => {
   const prevPos = prevPositions.value.get(el._uid);
   if (!prevPos) {
     done();
     return;
   }
-
   const newRect = el.getBoundingClientRect();
   const dx = prevPos.left - newRect.left;
   const dy = prevPos.top - newRect.top;
-
   el.style.transform = `translate(${dx}px, ${dy}px)`;
   el.style.transition = 'none';
-
-  // 触发回流
-  el.offsetHeight;
-
+  el.offsetHeight; // 触发回流
   el.style.transition = 'all 0.5s ease';
   el.style.transform = 'translate(0, 0)';
-
   el.addEventListener('transitionend', done, { once: true });
 };
 
 const onAfterEnter = (el) => {
-  // 清除可能残留的内联样式
   el.style.transition = '';
   el.style.transform = '';
 };
 
 onMounted(() => {
-  // Add initial animation class
   const tableWrapper = document.querySelector('.table-wrapper');
   if (tableWrapper) {
     tableWrapper.classList.add('table-appear');
   }
 });
 
-// 在<script>部分的计算属性中添加
+// 搜索变化时重置动画
 watch(searchQuery, (newVal, oldVal) => {
-  // 当搜索查询变化时触发动画重置
   if (newVal !== oldVal) {
     const rows = document.querySelectorAll('.app-table tbody tr');
     rows.forEach((row, index) => {
@@ -284,7 +268,6 @@ watch(searchQuery, (newVal, oldVal) => {
     });
   }
 });
-
 </script>
 
 <style scoped>
@@ -310,7 +293,6 @@ watch(searchQuery, (newVal, oldVal) => {
 .app-table tr:nth-child(even) {
   background-color: rgba(245, 192, 208, 0.03);
 }
-
 
 .app-table-container {
   margin: 2rem 0;
@@ -364,6 +346,7 @@ watch(searchQuery, (newVal, oldVal) => {
 .search-focused {
   color: var(--macaron-lavender);
 }
+
 .app-table {
   width: 100%;
   border-collapse: separate;
@@ -414,7 +397,6 @@ watch(searchQuery, (newVal, oldVal) => {
   height: 3px;
   border-radius: 3px;
 }
-
 
 .row-hovered .cell-highlight::after {
   width: 80%;
@@ -514,7 +496,6 @@ watch(searchQuery, (newVal, oldVal) => {
   animation-fill-mode: both;
 }
 
-
 /* 搜索框动画效果 */
 .search-input {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -547,7 +528,6 @@ watch(searchQuery, (newVal, oldVal) => {
   }
 }
 
-/* 搜索匹配结果高亮动画 */
 .search-match {
   position: relative;
   animation: searchHighlight 2s ease infinite;
@@ -600,7 +580,6 @@ watch(searchQuery, (newVal, oldVal) => {
     opacity: 0;
   }
 }
-
 
 /* 搜索无结果动画 */
 @keyframes emptySearch {
@@ -661,7 +640,6 @@ watch(searchQuery, (newVal, oldVal) => {
   opacity: 1;
   transform: translateY(-50%) rotate(90deg);
 }
-
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
