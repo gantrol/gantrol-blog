@@ -1,45 +1,64 @@
 <template>
-  <div class="app-container" :class="{ 'mobile': isMobile }">
-    <header>
-      <h1>Wordle</h1>
-      <button class="help-button" @click="showHowToPlay = true">?</button>
-    </header>
-
-    <main>
-      <div class="game-section">
-        <GameBoard
-            :board="board"
-            :currentRow="currentRow"
-            :evaluation="evaluation"
-            ref="gameBoard"
-        />
-        <Keyboard
-            @key-pressed="handleKeyPress"
-            :evaluation="keyEvaluation"
-        />
+  <ClientOnly>
+    <div class="app-container" :class="{ 'mobile': isMobile }">
+      <header>
+        <h1>Wordle</h1>
+        <div class="header-buttons">
+          <button class="icon-button lightbulb-button" @click="showTips = !showTips" title="游戏提示">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </button>
+        <button class="icon-button help-button" @click="showHowToPlay = true" title="如何游玩">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
       </div>
+      </header>
 
-      <transition name="fade">
-        <WordList
-            v-if="remainingAttempts <= 2 && !gameOver"
-            :words="filteredWordList"
-            :isMobile="isMobile"
-        />
+      <main>
+        <div class="game-section">
+          <GameBoard
+              :board="board"
+              :currentRow="currentRow"
+              :evaluation="evaluation"
+              ref="gameBoard"
+          />
+          <Keyboard
+              @key-pressed="handleKeyPress"
+              :evaluation="keyEvaluation"
+          />
+        </div>
+      </main>
+
+      <TipBox 
+        :show="showTips" 
+        :currentRow="currentRow"
+        :words="filteredWordList"
+        :isMobile="isMobile"
+        :remainingAttempts="remainingAttempts"
+        @close="showTips = false"
+      />
+
+
+      <transition name="slide">
+        <HowToPlay v-if="showHowToPlay" @close="showHowToPlay = false" />
       </transition>
-    </main>
 
-    <transition name="slide">
-      <HowToPlay v-if="showHowToPlay" @close="showHowToPlay = false" />
-    </transition>
-
-    <transition name="popup">
-      <div class="game-message" v-if="gameOver">
-        <h2>{{ win ? '恭喜!' : '游戏结束' }}</h2>
-        <p>{{ win ? `你用了 ${currentRow} 步猜出了单词!` : `正确答案是: ${targetWord}` }}</p>
-        <button @click="resetGame">再玩一次</button>
-      </div>
-    </transition>
-  </div>
+      <transition name="popup">
+        <div class="game-message" v-if="gameOver">
+          <h2>{{ win ? '恭喜!' : '游戏结束' }}</h2>
+          <p>{{ win ? `你用了 ${currentRow} 步猜出了单词!` : `正确答案是: ${targetWord}` }}</p>
+          <button @click="resetGame">再玩一次</button>
+        </div>
+      </transition>
+    </div>
+  </ClientOnly>
 </template>
 
 <script>
@@ -47,7 +66,7 @@ import { ref, computed, onMounted, reactive, watch } from 'vue';
 import GameBoard from './components/GameBoard.vue';
 import Keyboard from './components/Keyboard.vue';
 import HowToPlay from './components/HowToPlay.vue';
-import WordList from './components/WordList.vue';
+import TipBox from './components/TipBox.vue';
 import { wordList, targetWords } from './assets/words.js';
 
 export default {
@@ -55,7 +74,7 @@ export default {
     GameBoard,
     Keyboard,
     HowToPlay,
-    WordList
+    TipBox,
   },
   setup() {
     const MAX_ATTEMPTS = 6;
@@ -63,6 +82,7 @@ export default {
 
     const isMobile = ref(false);
     const showHowToPlay = ref(false);
+    const showTips = ref(false); 
     const targetWord = ref('');
     const currentRow = ref(0);
     const currentCol = ref(0);
@@ -266,9 +286,9 @@ export default {
       checkMobile();
 
       // 首次打开时显示游戏规则
-      setTimeout(() => {
-        showHowToPlay.value = true;
-      }, 500);
+      // setTimeout(() => {
+      //   showHowToPlay.value = true;
+      // }, 500);
     });
 
     return {
@@ -285,6 +305,7 @@ export default {
       showHowToPlay,
       handleKeyPress,
       resetGame,
+      showTips,
       gameBoard
     };
   }
@@ -318,10 +339,6 @@ h1 {
 }
 
 .help-button {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -333,7 +350,7 @@ h1 {
 }
 
 .help-button:hover {
-  background-color: #d0d0d0;
+  background-color: #faf8f8;
 }
 
 main {
@@ -417,4 +434,42 @@ main {
     padding: 0.5rem;
   }
 }
+
+.header-buttons {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1rem;
+  width: auto;
+}
+
+.icon-button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1;
+}
+
+.icon-button:hover {
+  background-color: #d0d0d0;
+}
+
+.lightbulb-button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.help-button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 </style>
