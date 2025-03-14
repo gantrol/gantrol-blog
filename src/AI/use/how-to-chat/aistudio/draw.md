@@ -1,5 +1,5 @@
 ---
-title: "Wordle猜单词"
+title: "原生画图大模型：Gemini 2 FT"
 head:
   - - meta
     - name: twitter:card
@@ -19,13 +19,13 @@ head:
   # Open Graph标签
   - - meta
     - property: og:title
-      content: "泡沫卡片：让AI戳破人类客套泡沫"
+      content: "原生画图大模型：Gemini 2 FT"
   - - meta
     - property: og:description
-      content: "来感受GPT4.5的“情商”"
+      content: "大模型原生画图能力，突破纯文字输出，动嘴改图"
   - - meta
     - property: og:image
-      content: "assets/NavieImageGen.png"
+      content: "https://gantrol.com/images/twitter/catgirl.png"
   - - meta
     - property: og:type
       content: "website"
