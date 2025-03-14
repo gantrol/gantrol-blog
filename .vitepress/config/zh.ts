@@ -109,6 +109,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
       { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
       { text: "玩转Deepseek", link: "use/how-to-chat/deepseek" },
       { text: "AIStudio操作备忘", link: "use/how-to-chat/aistudio/" },
+      { text: "最灵活的AI画图模型", link: "use/how-to-chat/aistudio/draw" },
       {
         text: "Prompt在用",
         items: [
