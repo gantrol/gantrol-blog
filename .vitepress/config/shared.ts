@@ -36,7 +36,6 @@ export const shared = defineConfig({
             return items.filter((item) => !item.url.includes('migration'))
         }
     },
-
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['meta', { name: 'theme-color', content: '#5f67ee' }],
@@ -49,6 +48,14 @@ export const shared = defineConfig({
         ['meta', { property: 'twitter:card', content: 'summary' }],
         ['meta', { property: 'twitter:site', content: '@gantrols' }],
         ['meta', { property: 'twitter:creator', content: '@gantrols' }],
+        [
+            'script',
+            {
+                async: '',
+                src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4459589195034801",
+                crossorigin: "anonymous",
+            }
+        ],
         [
             'script',
             { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
