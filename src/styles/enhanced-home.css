@@ -1,0 +1,323 @@
+/*
+ * 高级现代化科技风格 VitePress 主页样式
+ * 自适应白天/夜间模式，带有视差效果和动画
+ */
+
+:root {
+    /* 基础颜色变量 */
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: linear-gradient(120deg, #5f67ee 30%, #41d1ff);
+
+    /* 亮色模式下的设置 */
+    --vp-home-hero-image-background-image: linear-gradient(135deg, #5f67ee 10%, #41d1ff 100%);
+    --vp-home-hero-image-filter: blur(72px);
+
+    /* 自定义变量 */
+    --gantrol-primary: #5f67ee;
+    --gantrol-secondary: #41d1ff;
+    --gantrol-accent: #ff6b6b;
+    --gantrol-text: #2c3e50;
+    --gantrol-background: #f8f9fa;
+    --gantrol-card-shadow: 0 8px 24px rgba(95, 103, 238, 0.1);
+    --gantrol-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 夜间模式变量 */
+.dark {
+    --gantrol-text: #e2e8f0;
+    --gantrol-background: #111827;
+    --gantrol-card-shadow: 0 8px 24px rgba(65, 209, 255, 0.1);
+}
+
+/* 全局背景样式 */
+.VPHome {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 自定义背景 - 亮色主题 */
+.VPHome::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/home/light-tech-bg.jpg');  /* 使用你的Image 1 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+}
+
+/* 自定义背景 - 暗色主题 */
+.dark .VPHome::before {
+    background-image: url('/images/home/dark-tech-bg.jpg');  /* 使用你的Image 2 */
+    opacity: 0.15;
+}
+
+/* Hero 区域样式增强 */
+.VPHero {
+    position: relative;
+}
+
+.VPHero .container {
+    z-index: 10;
+    position: relative;
+}
+
+/* 名称文字特效 */
+.VPHero .name {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background-size: 400% 400%;
+    animation: gradientName 10s ease infinite;
+    text-shadow: 0 2px 10px rgba(95, 103, 238, 0.3);
+}
+
+@keyframes gradientName {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero 图片区域效果 */
+.VPHero .image-container {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: var(--gantrol-transition);
+}
+
+.VPHero .image-container:hover {
+    transform: translateY(-5px);
+}
+
+/*.VPHero .image {*/
+/*    border-radius: 12px;*/
+/*    box-shadow: 0 20px 80px -20px rgba(95, 103, 238, 0.25);*/
+/*    overflow: hidden;*/
+/*    position: relative;*/
+/*    transition: var(--gantrol-transition);*/
+/*}*/
+
+.dark .VPHero .image {
+    box-shadow: 0 20px 80px -20px rgba(65, 209, 255, 0.25);
+}
+
+/* 特性部分增强 */
+.VPFeatures {
+    position: relative;
+    z-index: 10;
+    margin: 3rem auto !important;
+}
+
+.VPFeature {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem !important;
+    transition: var(--gantrol-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .VPFeature {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(65, 209, 255, 0.1);
+}
+
+.VPFeature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(95, 103, 238, 0.15);
+}
+
+.dark .VPFeature:hover {
+    box-shadow: 0 15px 30px rgba(65, 209, 255, 0.15);
+}
+
+/* 特性卡片闪光效果 */
+.VPFeature::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            to bottom right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 1.5s;
+    opacity: 0;
+}
+
+.VPFeature:hover::after {
+    left: 100%;
+    opacity: 0.7;
+}
+
+/* 特性图标增强 */
+.VPFeature .icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--gantrol-primary), var(--gantrol-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform-origin: center;
+    transition: var(--gantrol-transition);
+}
+
+.VPFeature:hover .icon {
+    transform: scale(1.1);
+}
+
+/* 标题增强 */
+.VPFeature .title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--gantrol-primary), var(--gantrol-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Highlights 部分样式 */
+.VPHome .VPHomeHero + .VPHomeFeatures + .VPHomeFeatures {
+    position: relative;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    margin: 4rem auto !important;
+    border-radius: 20px;
+    box-shadow: var(--gantrol-card-shadow);
+}
+
+.dark .VPHome .VPHomeHero + .VPHomeFeatures + .VPHomeFeatures {
+    background: rgba(17, 24, 39, 0.7);
+}
+
+/* 响应式调整 */
+@media (min-width: 640px) {
+    :root {
+        --vp-home-hero-image-filter: blur(56px);
+    }
+
+    .VPFeature {
+        padding: 2rem !important;
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --vp-home-hero-image-filter: blur(68px);
+    }
+
+    .VPHero .name {
+        font-size: 3.8rem;
+    }
+
+    .VPHero .text {
+        font-size: 3.2rem;
+        margin-top: 0.5rem;
+    }
+
+    .VPHero .tagline {
+        font-size: 1.3rem;
+    }
+}
+
+/* 自定义动画 */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.VPHero .image {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 订阅区域样式 */
+.VPHomeSubscribe {
+    background: linear-gradient(135deg, rgba(95, 103, 238, 0.1), rgba(65, 209, 255, 0.1));
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem !important;
+    margin: 4rem auto !important;
+    box-shadow: var(--gantrol-card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .VPHomeSubscribe {
+    background: linear-gradient(135deg, rgba(95, 103, 238, 0.05), rgba(65, 209, 255, 0.05));
+    border: 1px solid rgba(65, 209, 255, 0.1);
+}
+
+/* 按钮样式增强 */
+.VPButton.brand {
+    background: linear-gradient(90deg, var(--gantrol-primary), var(--gantrol-secondary));
+    border: none !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.VPButton.brand:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(95, 103, 238, 0.3);
+}
+
+.VPButton.brand::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s;
+    z-index: -1;
+}
+
+.VPButton.brand:hover::before {
+    left: 100%;
+}
+
+.VPButton.alt {
+    border: 1px solid var(--gantrol-primary) !important;
+    color: var(--gantrol-primary) !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s ease, transform 0.3s ease !important;
+}
+
+.VPButton.alt:hover {
+    color: white !important;
+    transform: translateY(-3px);
+}
+
+.VPButton.alt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(90deg, var(--gantrol-primary), var(--gantrol-secondary));
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.VPButton.alt:hover::before {
+    height: 100%;
+}
