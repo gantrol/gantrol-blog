@@ -46,7 +46,7 @@
     background-image: url('/images/home/light-tech-bg.jpg');  /* 使用你的Image 1 */
     background-size: cover;
     background-position: center;
-    opacity: 0.12;
+    opacity: 0.25;
     z-index: -1;
     transition: opacity 0.5s ease;
 }
@@ -54,7 +54,7 @@
 /* 自定义背景 - 暗色主题 */
 .dark .VPHome::before {
     background-image: url('/images/home/dark-tech-bg.jpg');  /* 使用你的Image 2 */
-    opacity: 0.15;
+    opacity: 0.1;
 }
 
 /* Hero 区域样式增强 */
