@@ -54,7 +54,11 @@ head:
 
 ### AIStudio
 
-如果是国外网络，点击进入[AIStudio](https://aistudio.google.com/prompts/new_chat)，模型选Gemini 2.0 Flash Experimental（25年3月17日：目前官方已经默认选择此模型）。
+如果是国外网络，点击进入[AIStudio](https://aistudio.google.com/prompts/new_chat)
+
+:::details 模型选择 Gemini 2.0 Flash Experimental（25年3月17日：目前官方已经默认选择此模型）。
+![chooseModel](assets/chooseModel.png)
+:::
 
 如果是国内网络，只好用别人搭建好的，比如本人的小玩具[这衣服像窗帘吗](https://curtain.aicando.xyz/)，但这样一般有限额。或者托别人用新的免费账号生成一个API KEY，对个人完全够用。
 
@@ -75,18 +79,26 @@ head:
 :::
 ![catgirl](assets/catgirl.png)
 2️⃣小孩连环画，故事集<br/>
-3️⃣改字（一些简单中文）http://t.cn/A6BV1vpy
-
+:::details 3️⃣改字（一些简单中文，如“有内鬼终止交易”改成“有猫猫可以交易”）
+<TwitterEmbed
+tweetContent='<p lang="zh" dir="ltr">AI改图，“有内鬼终止交易”改成“有猫猫可以交易” <a href="https://t.co/nZjuxK5pHj">pic.twitter.com/nZjuxK5pHj</a></p>'
+username="Gantrol (@gantrols)"
+userLink="https://twitter.com/gantrols/status/1900112932123664859?ref_src=twsrc%5Etfw"
+tweetDate="March 13, 2025"
+/>
+:::
 
 ## 局限
 
-- 有些字不行，还会出现缺笔画，字多的话，问题会更严重。而英文字母有限，比较好处理
-- 改图有时不好用怎么办？http://t.cn/A6BVo0KZ
-- 美感不如专业文生图模型，比如 image-fx http://t.cn/A6BV3ZMc
-- 审核比较重，关闭所有审核选项后，人像也特别敏感 http://t.cn/A6BfXxsd
-
-![chooseModel](assets/chooseModel.png)
+1️⃣有些字不行，还会出现缺笔画，字多的话，问题会更严重。而英文字母有限，比较好处理<br/>
+2️⃣改图有时不好用怎么办？http://t.cn/A6BVo0KZ <br/>
+3️⃣美感不如专业文生图模型，比如 image-fx http://t.cn/A6BV3ZMc <br/>
+4️⃣审核比较重，关闭所有审核选项后，人像也特别敏感 http://t.cn/A6BfXxsd
 
 [该功能官方发布文章](https://developers.googleblog.com/en/experiment-with-gemini-20-flash-native-image-generation/)
 
 本文初稿首发微博[点击查看](https://weibo.com/6083767801/Pih7B2lG9)
+
+<script setup>
+    import TwitterEmbed from '/components/TwitterEmbed.vue';
+</script>
