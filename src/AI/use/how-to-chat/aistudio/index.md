@@ -51,7 +51,7 @@ Compare在右上角，桌面端宽屏时才会出现。点击后会变成两栏�
 :::
 
 :::details 当英语口语陪练
-### 把AI Studio（Gemini 2）当英语口语陪练
+### 把AI Studio（Gemini 2）当英语口语陪练{#English}
 
 进入[网站](aistudio.google.com/live) 登录后，先别说话，输入下面的prompt
 
@@ -98,12 +98,13 @@ Google AIStudio也能有“聊天记录”，去设置把 Autosaving Enabled 打
 
 ### [画图](./draw#在哪里用)
 
-### [阅读大型仓库代码+上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse)
+### [上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse)
 
 ## 常用用例
 
-- 模仿社媒风格写作（如小红书）：https://weibo.com/6083767801/PeZaHxo6U
-- 处理PDF：https://weibo.com/6083767801/PeJxZASQa
-### [去AI味儿，用于翻译、润色](/AI/use/translate/)
-- 定位图片大体位置http://t.cn/A61D3S9a
-- 语音/视频对话、练习口语 http://t.cn/A61Pq0uW
+- [阅读大型仓库代码+上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse)
+- [模仿社媒风格写作（如小红书）](/AI/use/social/xiaohongshu)
+- [去AI味儿，用于翻译、润色](/AI/use/translate/)
+- [处理PDF](https://weibo.com/6083767801/PeJxZASQa)
+- [定位图片大体位置](https://weibo.com/6083767801/5140447313005885)
+- [语音/视频对话、练习口语](#English)
