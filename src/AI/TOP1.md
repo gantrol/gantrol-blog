@@ -9,7 +9,7 @@ outline: deep
 | **类别** | **收费**                   | **免费**                                                                                        | **国内**                  |
 |--------|--------------------------|-----------------------------------------------------------------------------------------------|-------------------------|
 | 🌐 通用  | ChatGPT pro              | [Gemini 2 FTE](https://aistudio.google.com)、[Deepseek R1][deepseek]、[Claude3 sonnet][claude3] | [Deepseek R1][deepseek] |
-| 🎨 绘画  | [Midjourney][midjourney] | [imageFX][imagefx], [Flux][flux][^1]                                                          | ？                       |
+| 🎨 绘画  | [Midjourney][midjourney] | [imageFX][imagefx], [Flux][flux][^1]、[Gemini 2 FE][Gemini2FE]                                 | ？                       |
 | 🔍 搜索  | [Perplexity][perplexity] | [Deepseek R1][deepseek]、秘塔搜索、[Gemini](https://gemini.google.com)                              | [Deepseek R1][deepseek] |
 | ✍️ 长文  | ChatGPT pro              | [Deepseek R1][deepseek]                                                                       | [Deepseek R1][deepseek] |
 | 🎨 设计  | Canva AI                 | Microsoft Designer                                                                            | ？                       |
@@ -33,6 +33,8 @@ outline: deep
 [suno]: https://suno.ai/
 
 [flux]: https://github.com/black-forest-labs/flux
+
+[Gemini2FE]: /AI/use/how-to-chat/aistudio/draw.md
 
 [^1]: 配合 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)，LayerDiffusion等
 <BeautifulLogo />
