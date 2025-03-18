@@ -13,6 +13,7 @@
 - 怎么切换白天/夜间模式：http://t.cn/A63pFzxu
 - 怎么有“聊天记录”：http://t.cn/A63pFzxm
 - 语音聊天：http://t.cn/A61Pq0uW
+- [画图](./draw#在哪里用)
 - 阅读大型仓库代码+上传附件📎http://t.cn/A61hTrsz
 
 ## 常用用例
