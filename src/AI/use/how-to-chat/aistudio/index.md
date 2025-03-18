@@ -51,7 +51,7 @@ Compare在右上角，桌面端宽屏时才会出现。点击后会变成两栏�
 :::
 
 :::details 当英语口语陪练
-### 把AI Studio（Gemini 2）当英语口语陪练{#English}
+### 音频、视频对话：把AI Studio（Gemini 2）当英语口语陪练{#English}
 
 进入[网站](aistudio.google.com/live) 登录后，先别说话，输入下面的prompt
 
@@ -98,13 +98,37 @@ Google AIStudio也能有“聊天记录”，去设置把 Autosaving Enabled 打
 
 ### [画图](./draw#在哪里用)
 
-### [上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse)
+1️⃣不刚需英文提示词<br/>
+2️⃣能画出文本，包括中文❗️<br/>
+3️⃣可以对话修改，有很多玩法。同样，可以用中文<br/>
+:::details 4️⃣能拷贝风格<br/>
+![copystyle](assets/copystyle.png)
+:::
+5️⃣能描述图片，给自己生成提示词<br/>
+6️⃣能生成故事集+插图
+
+### [上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse){#file}
 
 ## 常用用例
 
-- [阅读大型仓库代码+上传附件📎](https://www.gantrol.com/software/code/zed/crate-analyse)
-- [模仿社媒风格写作（如小红书）](/AI/use/social/xiaohongshu)
-- [去AI味儿，用于翻译、润色](/AI/use/translate/)
 - [处理PDF](https://weibo.com/6083767801/PeJxZASQa)
-- [定位图片大体位置](https://weibo.com/6083767801/5140447313005885)
-- [语音/视频对话、练习口语](#English)
+
+:::details 根据图片定位
+### 定位图片大体位置
+
+给你下图，你能判定图中是什么地方吗？Gemini 2 FTE可以直接判定
+
+![图寻题目1](assets/tuxun.png)
+
+有个网站叫[图寻](https://tuxun.fun)，这题是今天挑战的一题，每提限时五分钟，在Gemini协助下（给出大概范围后点中间），满分五千获得四千九。另外今日五题两万出头，排行95%+
+
+首发于[微博](https://weibo.com/6083767801/5140447313005885)
+:::
+
+### [阅读大型仓库代码](https://www.gantrol.com/software/code/zed/crate-analyse)
+
+### [去AI味儿，用于翻译、润色](/AI/use/translate/)
+
+### [模仿社媒风格写作（如小红书）](/AI/use/social/xiaohongshu)
+
+### [语音/视频对话、练习口语（在上面↑）](#English)
