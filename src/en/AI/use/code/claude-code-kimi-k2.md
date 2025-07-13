@@ -37,7 +37,7 @@ Open `~/.claude.json` with your preferred editor, delete the third line (the one
   "hasCompletedOnboarding": true,
   "env": {
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 8192,
-    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic/",
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.ai/anthropic/",
     "ANTHROPIC_API_KEY": "YOUR_API_KEY_HERE"
   }
   //...
@@ -68,7 +68,7 @@ Although we successfully configured the environment variables in the "Claude Cod
 {
   "env": {
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 8192,
-    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic/",
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.ai/anthropic/",
     "ANTHROPIC_API_KEY": "sk-..."
   }
 }
@@ -83,14 +83,14 @@ You need to configure environment variables. Replace `YOUR_API_KEY_HERE` with yo
 For Linux and macOS:
 
 ```sh
-export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic/
+export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic/
 export ANTHROPIC_API_KEY=YOUR_API_KEY_HERE
 ```
 
 For Windows PowerShell:
 
 ```powershell
-$env:ANTHROPIC_BASE_URL = "https://api.moonshot.cn/anthropic/"
+$env:ANTHROPIC_BASE_URL = "https://api.moonshot.ai/anthropic/"
 $env:ANTHROPIC_API_KEY = "YOUR_API_KEY_HERE"
 ```
 
