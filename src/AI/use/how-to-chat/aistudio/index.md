@@ -53,7 +53,7 @@ Compare在右上角，桌面端宽屏时才会出现。点击后会变成两栏�
 :::details 当英语口语陪练
 ### 音频、视频对话：把AI Studio（Gemini 2）当英语口语陪练{#English}
 
-进入[网站](aistudio.google.com/live) 登录后，先别说话，输入下面的prompt
+进入[网站](https://aistudio.google.com/live) 登录后，先别说话，输入下面的prompt
 
 #### Prompt开始
 Hello, as my English speaking coach, please help me practice spoken English communication. When I speak English, please pay attention to my pronunciation, and promptly point out any errors you notice, providing correct pronunciation demonstrations and pronunciation tips.
