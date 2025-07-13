@@ -8,7 +8,7 @@ Log in to the [Moonshot AI - Open Platform](https://platform.moonshot.ai/playgro
 
 ## Claude Code
 
-The prerequisite is to install Node.js, version 18 or higher. Beginners can just go to the [official Node.js website](https://nodejs.org/en) and download the LTS version to get started. After installation, paste the following into your command line and press Enter:
+The prerequisite is to install Node.js, version 18 or higher(Windows Need to install [Git](https://git-scm.com/downloads/win)). Beginners can just go to the [official Node.js website](https://nodejs.org/en) and download the LTS version to get started. After installation, paste the following into your command line and press Enter:
 
 ```shell
 npm install -g  @anthropic-ai/claude-code

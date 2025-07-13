@@ -8,7 +8,7 @@
 
 ## Claude Code
 
-安装前置需求node，版本18或更高版本。新手直接去[node官网](https://nodejs.org/en)下载带LTS版本就行了，先上手了再说。安装后在命令行粘贴并回车：
+安装前置需求node，版本18或更高版本（Windows需要安装[Git](https://git-scm.com/downloads/win)）。新手直接去[node官网](https://nodejs.org/en)下载带LTS版本就行了，先上手了再说。安装后在命令行粘贴并回车：
 
 ```shell
 npm install -g  @anthropic-ai/claude-code
