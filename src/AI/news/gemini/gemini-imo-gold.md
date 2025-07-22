@@ -1,5 +1,7 @@
 # [翻译]Gemini高版本深度研究达到国际奥数金牌水平
 
+> 原文[链接](https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/)
+
 国际数学奥林匹克竞赛（简称“IMO”）是全球顶尖青年数学家赛事，自1959年起每年举办。每个参赛国派出六名中学精英数学高手，他们要解六道极难的题目，涵盖代数、组合数学、几何和数论。赛事前一半选手可获颁奖牌，其中约8%赢得含金量极高的金牌。
 
 近年来，IMO也成了考验AI系统的一大挑战，借此检验AI系统高阶数学解题与推理能力。去年，谷歌DeepMind旗下的AlphaProof和AlphaGeometry 2系统联手[达到银牌水平](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/)，六题解出四道，拿到28分。这套系统利用专用形式语言，这项突破显示AI正逐渐接近人类顶尖数学推理水平。
