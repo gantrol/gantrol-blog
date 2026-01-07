@@ -58,7 +58,7 @@
     overflow-x: hidden;
 }
 
-/* 自定义背景 - 亮色主题 */
+/* 自定义背景 - 亮色主题 - 使用 CSS 渐变代替图片以提升 LCP */
 .VPHome::before {
     content: "";
     position: fixed;
@@ -66,20 +66,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/home/light-tech-bg.jpg');
-    /* 使用你的Image 1 */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25;
+    /* 使用轻量级 CSS 渐变代替大图片 */
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(230, 126, 34, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(243, 156, 18, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(39, 174, 96, 0.08) 0%, transparent 60%),
+        linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
     z-index: -1;
-    transition: opacity 0.5s ease;
 }
 
 /* 自定义背景 - 暗色主题 */
 .dark .VPHome::before {
-    background-image: url('/images/home/dark-tech-bg.jpg');
-    /* 使用你的Image 2 */
-    opacity: 0.1;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(243, 156, 18, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, rgba(230, 126, 34, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(39, 174, 96, 0.05) 0%, transparent 60%),
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
 /* Hero 区域样式增强 */
