@@ -40,7 +40,7 @@ export const shared = defineConfig({
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['meta', { name: 'theme-color', content: '#5f67ee' }],
         ['meta', { property: 'og:type', content: 'website' }],
-        ['meta', { property: 'og:locale', content: 'en' }],
+        ['meta', { property: 'og:locale', content: 'zh-Hans' }],
         ['meta', { property: 'og:title', content: 'Gantrol\'s Blog' }],
         ['meta', { property: 'og:site_name', content: 'gantrol' }],
         ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
