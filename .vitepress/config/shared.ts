@@ -37,14 +37,14 @@ export const shared = defineConfig({
         }
     },
     head: [
-        ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['meta', { name: 'theme-color', content: '#5f67ee' }],
+        ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+        ['meta', { name: 'theme-color', content: '#e67e22' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'zh-Hans' }],
         ['meta', { property: 'og:title', content: 'Gantrol\'s Blog' }],
         ['meta', { property: 'og:site_name', content: 'gantrol' }],
         ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
-        ['meta', { property: 'og:image', content: 'https://www.gantrol.com/favicon.jpg' }],
+        ['meta', { property: 'og:image', content: 'https://www.gantrol.com/logo.svg' }],
         ['meta', { property: 'twitter:card', content: 'summary' }],
         ['meta', { property: 'twitter:site', content: '@gantrols' }],
         ['meta', { property: 'twitter:creator', content: '@gantrols' }],
