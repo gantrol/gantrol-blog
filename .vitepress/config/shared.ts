@@ -38,6 +38,8 @@ export const shared = defineConfig({
     },
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+        ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+        ['link', { rel: 'shortcut icon', href: '/favicon.svg' }],
         ['meta', { name: 'theme-color', content: '#e67e22' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'zh-Hans' }],
