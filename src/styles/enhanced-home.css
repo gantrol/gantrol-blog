@@ -4,6 +4,16 @@
  */
 
 :root {
+    /* VitePress 品牌色覆盖 */
+    --vp-c-brand-1: #e67e22;
+    --vp-c-brand-2: #d35400;
+    --vp-c-brand-3: #f39c12;
+    --vp-c-brand-soft: rgba(230, 126, 34, 0.14);
+
+    /* 链接颜色 */
+    --vp-c-text-1: #2c3e50;
+    --vp-c-text-2: rgba(44, 62, 80, 0.78);
+
     /* 基础颜色变量 */
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: linear-gradient(120deg, #e67e22 30%, #f39c12);
@@ -25,6 +35,11 @@
 
 /* 夜间模式变量 */
 .dark {
+    --vp-c-brand-1: #f39c12;
+    --vp-c-brand-2: #e67e22;
+    --vp-c-brand-3: #f5b041;
+    --vp-c-brand-soft: rgba(243, 156, 18, 0.16);
+
     --gantrol-text: #e2e8f0;
     --gantrol-background: #1a1a2e;
     --gantrol-card-shadow: 0 8px 24px rgba(243, 156, 18, 0.1);
