@@ -8,7 +8,7 @@
 
 还有，它是纯文本，意思是，ChatGPT也能做。它也不算难，就算是啃文档，啃个几个小时也“精通”Markdown了
 
-积累着上面这些想法，这几天做了一个小网站，就叫“Markdown 能做” https://www.markdowncando.com/zh/ ，展示Markdown的用法
+积累着上面这些想法，这几天做了一个小网站，就叫“Markdown 能做” https://github.com/gantrol/MarkdownCanDo ，展示Markdown的用法
 
 这个网站也是图二这个问题的谜底
 
@@ -26,7 +26,7 @@ Github 仓库在这，中文readme看图四，github.com/gantrol/markdown-can-do
 
 网站还不够完善，日后会慢慢更新，关键待办可以看仓库主页。不会再因为这个熬夜搬砖了🐶
 
-【本文用 [MarkdownCanDo](https://www.markdowncando.com/playground/) 编辑（图片除外）】
+【本文用 [MarkdownCanDo](https://www.github.com/gantrol/MarkdownCanDoplayground/) 编辑（图片除外）】
 
 ![image-20240312001640190](.\image-20240312001640190.png)
 

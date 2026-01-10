@@ -68,7 +68,7 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: "工具",
       items: [
-        { text: "Markdown能做！", link: "https://www.markdowncando.com/zh/" },
+        { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
         { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
         {
           text: "Cyberchef：小工具箱",
@@ -101,7 +101,7 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
   return {
     text: "AI",
-    base:"/AI/",
+    base: "/AI/",
     link: "TOP1",
     collapsed: false,
     items: [
@@ -123,25 +123,29 @@ function sidebarAI(): DefaultTheme.SidebarItem {
         text: "Deep Research",
         collapsed: true,
         items: [
-          { text: "AI谈爱", items: [
+          {
+            text: "AI谈爱", items: [
               { text: "ChatGPT", link: "record/gptdr/fall-in-love" },
               { text: "Perplexity", link: "record/deepresearch/perplexity/fall-in-love" },
               { text: "Grok3", link: "record/deepresearch/grok3/fall-in-love" },
             ]
           },
-          { text: "机械意识？", items: [
+          {
+            text: "机械意识？", items: [
               { text: "ChatGPT", link: "record/gptdr/mind-of-machine" },
               { text: "Perplexity", link: "record/deepresearch/perplexity/mind-of-machine" },
               { text: "Grok3", link: "record/deepresearch/grok3/mind-of-machine" },
             ]
           },
-          { text: "数据互联网", items: [
+          {
+            text: "数据互联网", items: [
               { text: "ChatGPT", link: "record/gptdr/InternetOfData" },
               { text: "Perplexity", link: "record/deepresearch/perplexity/InternetOfData" },
               { text: "Grok3", link: "record/deepresearch/grok3/InternetOfData" },
             ]
           },
-          { text: "大模型理论基础（研究向）", items: [
+          {
+            text: "大模型理论基础（研究向）", items: [
               { text: "ChatGPT", link: "record/gptdr/LearnerLLM" },
               { text: "Perplexity", link: "record/deepresearch/perplexity/LearnerLLM" },
               { text: "Grok3", link: "record/deepresearch/grok3/LearnerLLM" },
@@ -193,7 +197,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
       {
         text: "工具",
         items: [
-          { text: "Markdown能做！", link: "https://www.markdowncando.com/zh/" },
+          { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
           { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
           {
             text: "Cyberchef：小工具箱",

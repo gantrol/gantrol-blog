@@ -95,21 +95,21 @@ _You **can** combine them_
 
 ### Links
 ```
-[Markdown Can Do](https://www.markdowncando.com/)
+[Markdown Can Do](https://www.github.com/gantrol/MarkdownCanDo)
 ```
 
 ```
 [Markdown Can Do][MDCD]
 
-[MDCD]:https://www.markdowncando.com/
+[MDCD]:https://www.github.com/gantrol/MarkdownCanDo
 ```
 
 ### Images
 
-![Markdown 能做的 Logo](https://www.markdowncando.com/logo-mini.png "MarkdownCanDo Logo")
+![Markdown 能做的 Logo](https://www.github.com/gantrol/MarkdownCanDologo-mini.png "MarkdownCanDo Logo")
 
 ```
-![Markdown Can Do Logo](https://www.markdowncando.com/ "MarkdownCanDo Logo")
+![Markdown Can Do Logo](https://www.github.com/gantrol/MarkdownCanDo "MarkdownCanDo Logo")
 ```
 
 ### Block Quote
