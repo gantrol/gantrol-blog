@@ -2,6 +2,17 @@
 /assets/*
   Cache-Control: public, max-age=31556952, immutable
 
+# The standalone project orbit is intentionally embeddable by AiCanDo.
+/embed/projects*
+  Content-Security-Policy: frame-ancestors 'self' https://aicando.xyz https://*.aicando.xyz
+  Cross-Origin-Resource-Policy: cross-origin
+  X-Robots-Tag: noindex
+
+/en/embed/projects*
+  Content-Security-Policy: frame-ancestors 'self' https://aicando.xyz https://*.aicando.xyz
+  Cross-Origin-Resource-Policy: cross-origin
+  X-Robots-Tag: noindex
+
 # Keep Cloudflare's deployment aliases out of search indexes.
 https://gantrol-blog.pages.dev/*
   X-Robots-Tag: noindex

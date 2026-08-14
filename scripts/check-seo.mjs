@@ -50,7 +50,7 @@ for (const file of htmlFiles) {
     if (titles.length !== 1 || !titles[0][1].trim()) fail(file, 'expected one non-empty <title>')
     if (descriptions.length !== 1 || !descriptions[0][1].trim()) fail(file, 'expected one meta description')
     if (!/<html\s+lang="(?:zh-Hans|en-US)"/i.test(html)) fail(file, 'missing supported html lang')
-    if (!is404 && !/role="main"\s+class="VPContent/i.test(html)) fail(file, 'missing main landmark')
+    if (!is404 && !/<main\b|role="main"/i.test(html)) fail(file, 'missing main landmark')
     if (analyticsLoaders.length !== 1) fail(file, `expected one GA loader, found ${analyticsLoaders.length}`)
 
     if (is404) {

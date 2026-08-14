@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { homeContent, type HomeContent, type HomeLocale } from '../home-content'
 
 const props = withDefaults(defineProps<{ locale?: HomeLocale }>(), {
@@ -15,17 +15,88 @@ const activeProjectId = ref<string | null>(null)
 const needleRotation = ref(0)
 const touchPreviewProjectId = ref<string | null>(null)
 const blockedTouchClickId = ref<string | null>(null)
+const orbitProgress = ref(0)
+const orbitWidth = ref(680)
+
+const ORBIT_DURATION_MS = 120_000
+const ORBIT_RADIUS_X = 42
+const ORBIT_RADIUS_Y = 33
+
+let animationFrame = 0
+let lastAnimationTime = 0
+let prefersReducedMotion = false
+let orbitResizeObserver: ResizeObserver | null = null
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
 )
 
-function projectPosition(project: Project) {
+function projectCoordinates(project: Project) {
+  const normalizedX = (project.x - 50) / ORBIT_RADIUS_X
+  const normalizedY = (project.y - 50) / ORBIT_RADIUS_Y
+  const radius = Math.hypot(normalizedX, normalizedY)
+  const initialAngle = Math.atan2(normalizedY, normalizedX)
+  const angle = initialAngle + orbitProgress.value * Math.PI * 2
+  const responsiveRadiusScale = Math.min(1, Math.max(0.82, orbitWidth.value / 520))
+
   return {
-    left: `${project.x}%`,
-    top: `${project.y}%`
+    x: 50 + Math.cos(angle) * ORBIT_RADIUS_X * radius * responsiveRadiusScale,
+    y: 50 + Math.sin(angle) * ORBIT_RADIUS_Y * radius * responsiveRadiusScale
   }
 }
+
+function projectPosition(project: Project) {
+  const { x, y } = projectCoordinates(project)
+
+  return {
+    left: `${x}%`,
+    top: `${y}%`
+  }
+}
+
+function projectLabelPlacement(project: Project) {
+  const { x, y } = projectCoordinates(project)
+
+  if (y < 25) return 'bottom'
+  if (y > 75) return 'top'
+  if (x < 24) return 'right'
+  if (x > 76) return 'left'
+  return y < 50 ? 'bottom' : 'top'
+}
+
+function animateOrbit(timestamp: number) {
+  if (lastAnimationTime) {
+    const elapsed = Math.min(timestamp - lastAnimationTime, 100)
+    if (!prefersReducedMotion && !activeProjectId.value) {
+      orbitProgress.value = (orbitProgress.value + elapsed / ORBIT_DURATION_MS) % 1
+    }
+  }
+
+  lastAnimationTime = timestamp
+  animationFrame = window.requestAnimationFrame(animateOrbit)
+}
+
+onMounted(() => {
+  prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const updateOrbitWidth = () => {
+    orbitWidth.value = orbitRef.value?.clientWidth ?? 680
+  }
+
+  updateOrbitWidth()
+  if (orbitRef.value) {
+    orbitResizeObserver = new ResizeObserver(updateOrbitWidth)
+    orbitResizeObserver.observe(orbitRef.value)
+  }
+
+  if (!prefersReducedMotion) {
+    animationFrame = window.requestAnimationFrame(animateOrbit)
+  }
+})
+
+onBeforeUnmount(() => {
+  window.cancelAnimationFrame(animationFrame)
+  orbitResizeObserver?.disconnect()
+})
 
 function pointNeedleAt(clientX: number, clientY: number) {
   const orbit = orbitRef.value
@@ -203,7 +274,7 @@ function handleOrbitFocusOut(event: FocusEvent) {
               v-for="project in projects"
               :key="project.id"
               class="satellite"
-              :class="[`satellite-${project.id}`, `label-${project.placement}`, { active: activeProjectId === project.id }]"
+              :class="[`satellite-${project.id}`, `label-${projectLabelPlacement(project)}`, { active: activeProjectId === project.id }]"
               :style="projectPosition(project)"
             >
               <a
@@ -611,6 +682,7 @@ function handleOrbitFocusOut(event: FocusEvent) {
   z-index: 5;
   transform: translate(-50%, -50%);
   pointer-events: auto;
+  will-change: left, top;
 }
 
 .satellite-link {

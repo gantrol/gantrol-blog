@@ -99,7 +99,7 @@ export const shared = defineConfig({
     // Keep it out of production until the page and component can ship together.
     srcExclude: [
         'en/AI/use/image/compress.md',
-        // AI TOP 1 now lives at AiCanDo. Vercel permanently redirects these routes.
+        // AI TOP 1 now lives at AiCanDo. Cloudflare Pages permanently redirects these routes.
         'AI/TOP1.md',
         'en/AI/TOP1.md'
     ],
@@ -132,6 +132,7 @@ export const shared = defineConfig({
         transformItems(items) {
             return items.filter((item) => (
                 !item.url.includes('migration') &&
+                !/(^|\/)embed\//.test(item.url) &&
                 !/^\/?(?:en\/)?AI\/TOP1\/?$/.test(item.url)
             ))
         }
