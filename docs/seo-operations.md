@@ -1,6 +1,8 @@
 # SEO 数据接入与日常操作手册（新手版）
 
 适用范围：`gantrol.com`、其子站、`aicando.xyz` 及其子站。  
+
+> 2026-08-13 更新：`markdown.aicando.xyz` 已停止作为公开入口，站内链接统一改为 [MarkdownCanDo GitHub 仓库](https://github.com/gantrol/MarkdownCanDo)。文中旧域数据只作为历史记录。
 最后核对：2026-08-12（America/Los_Angeles）。后台菜单可能随产品更新略有变化。
 
 ## 0. 这次的基线
@@ -11,8 +13,8 @@
 | 标点工具 | `https://p.gantrol.com/` | 两者均为 200；旧 sitemap 错把主站也列入 | 旧版关闭 SSR，HTML 源码没有标题与正文；本次源码已修复 |
 | AI 能做 | `https://www.aicando.xyz/` | sitemap 可访问；robots 仅显示 Cloudflare Content Signals Policy | 移动 Lighthouse SEO 92；LCP 2.70 秒、CLS 0，主要瓶颈是约 2.35 秒 TTFB |
 | AI 时间线 | `https://timeline.aicando.xyz/` | robots 与 sitemap 正常，包含中英 hreflang | 当前技术 SEO 基础完整 |
-| MarkdownCanDo | `https://markdown.aicando.xyz/` | robots 与 sitemap 正常，包含中英葡 hreflang | 当前技术 SEO 基础完整；这是正式 Worker 与 canonical 域 |
-| Markdown 短域 | `https://md.aicando.xyz/` | 301 到 `markdown.aicando.xyz` | 当前是别名/旧域跳转，不应作为 canonical 或站内链接目标 |
+| MarkdownCanDo | `https://github.com/gantrol/MarkdownCanDo` | 原自定义域已停止使用 | 站内入口已统一指向 GitHub 仓库 |
+| Markdown 旧域 | `markdown.aicando.xyz`、`md.aicando.xyz` | 已退出公开入口 | 不再作为 canonical、sitemap 或站内链接目标 |
 | 更早的外部域名 | `markdowncando.com` | TLS 握手失败，且不在当前 Cloudflare 账号的两个 Zone 中 | 若仍持有，应在其 DNS/托管账号恢复证书，并永久跳到当前 canonical 域 |
 
 “已改源码”不等于“线上已生效”。部署后重新运行本文末尾的验收清单。
@@ -96,7 +98,6 @@ https://www.gantrol.com/sitemap.xml
 https://p.gantrol.com/sitemap.xml
 https://www.aicando.xyz/sitemap.xml
 https://timeline.aicando.xyz/sitemap.xml
-https://markdown.aicando.xyz/sitemap.xml
 ```
 
 操作：GSC → 选对应 Domain property → Sitemaps → 输入完整 URL → Submit。
@@ -329,8 +330,7 @@ $urls = @(
   'https://www.gantrol.com/',
   'https://p.gantrol.com/',
   'https://www.aicando.xyz/',
-  'https://timeline.aicando.xyz/',
-  'https://markdown.aicando.xyz/'
+  'https://timeline.aicando.xyz/'
 )
 
 foreach ($url in $urls) {

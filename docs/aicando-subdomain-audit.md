@@ -1,6 +1,8 @@
 # aicando.xyz 子域审计
 
 审计时间：2026-08-12（America/Los_Angeles）  
+
+> 2026-08-13 更新：`markdown.aicando.xyz` 域名已不再续费，站内入口已切换到 [MarkdownCanDo GitHub 仓库](https://github.com/gantrol/MarkdownCanDo)。下文关于该子域的状态仅保留为历史审计记录。
 数据来源：当前 Cloudflare 账号的 DNS、Workers Custom Domains、过去 7 个完整 UTC 日的 Zone Analytics，以及匿名线上抓取。全程只读，未修改 Cloudflare。
 
 ## 先说结论

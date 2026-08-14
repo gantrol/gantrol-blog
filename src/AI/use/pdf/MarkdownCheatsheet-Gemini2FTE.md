@@ -65,14 +65,14 @@ _You **can** combine them_
 
 ### Links
 
-[Markdown Can Do](https://markdown.aicando.xyz/)
+[Markdown Can Do](https://github.com/gantrol/MarkdownCanDo)
 [Markdown Can Do] [MDCD]
 
-[MDCD]:https://markdown.aicando.xyz/
+[MDCD]:https://github.com/gantrol/MarkdownCanDo
 
 ### Images
 
-![Markdown Can Do Logo](https://markdown.aicando.xyz/ "MarkdownCanDo Logo")
+![Markdown Can Do Logo](https://raw.githubusercontent.com/gantrol/MarkdownCanDo/main/public/logo-mini.png "MarkdownCanDo Logo")
 
 ### Block Quote
 

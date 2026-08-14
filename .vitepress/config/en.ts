@@ -37,7 +37,7 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: "Tools",
       items: [
-        { text: "MarkdownCanDo", link: "https://markdown.aicando.xyz/" },
+        { text: "MarkdownCanDo", link: "https://github.com/gantrol/MarkdownCanDo" },
         { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
       ],
     },
@@ -92,7 +92,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
       {
         text: "Tools",
         items: [
-          { text: "MarkdownCanDo", link: "https://markdown.aicando.xyz/" },
+          { text: "MarkdownCanDo", link: "https://github.com/gantrol/MarkdownCanDo" },
           { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
         ],
       },

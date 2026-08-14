@@ -50,7 +50,7 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: "工具",
       items: [
-        { text: "Markdown能做！", link: "https://markdown.aicando.xyz/zh/" },
+        { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
         { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
         {
           text: "Cyberchef：小工具箱",
@@ -138,7 +138,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
       {
         text: "工具",
         items: [
-          { text: "Markdown能做！", link: "https://markdown.aicando.xyz/zh/" },
+          { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
           { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
           {
             text: "Cyberchef：小工具箱",

@@ -246,6 +246,7 @@ export const shared = defineConfig({
     },
 
     head: [
+        ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
         ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
         ['link', { rel: 'apple-touch-icon', href: '/avatar.png' }],
         ['meta', { name: 'theme-color', content: '#f8f7f3' }],
