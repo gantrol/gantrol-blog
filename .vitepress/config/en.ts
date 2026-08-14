@@ -41,7 +41,6 @@ function nav(): DefaultTheme.NavItem[] {
         { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
       ],
     },
-    { text: "中文", link: "/" },
   ];
 }
 

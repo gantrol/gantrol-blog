@@ -122,18 +122,6 @@ export const shared = defineConfig({
     },
     vite: {
         assetsInclude: ['**/*.svg'],
-        resolve: {
-            alias: [
-                {
-                    find: /^\.\/VPNavBarTranslations\.vue$/,
-                    replacement: resolve(process.cwd(), '.vitepress/theme/components/EmptyTranslations.vue')
-                },
-                {
-                    find: /^\.\/VPNavScreenTranslations\.vue$/,
-                    replacement: resolve(process.cwd(), '.vitepress/theme/components/EmptyTranslations.vue')
-                }
-            ]
-        },
         ssr: {
             noExternal: ['monaco-editor']
         }

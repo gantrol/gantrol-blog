@@ -62,7 +62,6 @@ function nav(): DefaultTheme.NavItem[] {
       text: "创业",
       link: "/startup/",
     },
-    { text: "English", link: "/en/" },
     // {
     //   text: "演练场",
     //   link: "/CS/examples",

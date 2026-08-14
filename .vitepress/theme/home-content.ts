@@ -178,8 +178,7 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
       kicker: 'Reader favorites',
       items: [
         { number: '01', title: 'AI TOP 1', href: 'https://www.aicando.xyz/' },
-        { number: '02', title: 'Open source and the DeepSeek moment', href: '/AI/record/deepseek' },
-        { number: '03', title: 'How to do great work', href: '/startup/on-why/great-work-cn/' }
+        { number: '02', title: 'Open source and the DeepSeek moment', href: '/AI/record/deepseek' }
       ]
     },
     projects: [
