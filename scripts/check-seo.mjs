@@ -16,7 +16,7 @@ const migratedPaths = [
 const failures = []
 
 if (!existsSync(dist)) {
-    console.error('SEO check needs a production build. Run `pnpm build` first.')
+    console.error('SEO check needs a production build. Run `npm run build` first.')
     process.exit(1)
 }
 
@@ -101,12 +101,21 @@ if (!existsSync(sitemapFile)) {
     }
 }
 
-const vercelFile = resolve(root, 'vercel.json')
-const redirects = JSON.parse(readFileSync(vercelFile, 'utf8')).redirects ?? []
-for (const path of migratedPaths) {
-    const redirect = redirects.find((item) => item.source === path)
-    if (!redirect || redirect.destination !== migratedDestination || redirect.permanent !== true) {
-        fail(vercelFile, `missing permanent AiCanDo redirect for ${path}`)
+const redirectsFile = resolve(dist, '_redirects')
+if (!existsSync(redirectsFile)) {
+    fail(redirectsFile, 'missing Cloudflare Pages redirects')
+} else {
+    const redirects = readFileSync(redirectsFile, 'utf8')
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith('#'))
+        .map((line) => line.split(/\s+/))
+
+    for (const path of migratedPaths) {
+        const redirect = redirects.find(([source]) => source === path)
+        if (!redirect || redirect[1] !== migratedDestination || redirect[2] !== '308') {
+            fail(redirectsFile, `missing permanent AiCanDo redirect for ${path}`)
+        }
     }
 }
 

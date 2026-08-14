@@ -7,6 +7,8 @@
     "dev": "vitepress",
     "build": "vitepress build",
     "preview": "vitepress preview",
+    "preview:cloudflare": "wrangler pages dev .vitepress/dist",
+    "deploy:cloudflare": "npm run build && wrangler pages deploy .vitepress/dist --project-name gantrol-blog --branch main",
     "seo:check": "node scripts/check-seo.mjs",
     "seo:audit": "vitepress build && node scripts/check-seo.mjs",
     "diff": "git diff > diff.md",
@@ -25,6 +27,7 @@
     "markdown-it-mathjax3": "^4.3.2",
     "terser": "^5.14.2",
     "vitepress": "1.6.3",
-    "vue": "^3.4.0"
+    "vue": "^3.4.0",
+    "wrangler": "^4.123.0"
   }
 }

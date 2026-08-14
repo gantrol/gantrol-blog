@@ -99,6 +99,10 @@ dist/
 .vitepress/dist
 .vitepress/cache
 
+# Cloudflare Wrangler local state
+.wrangler/
+.dev.vars*
+
 # Serverless directories
 .serverless/
 

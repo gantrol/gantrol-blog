@@ -1,0 +1,10 @@
+# Fingerprinted VitePress assets can be cached indefinitely.
+/assets/*
+  Cache-Control: public, max-age=31556952, immutable
+
+# Keep Cloudflare's deployment aliases out of search indexes.
+https://gantrol-blog.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.gantrol-blog.pages.dev/*
+  X-Robots-Tag: noindex
