@@ -15,7 +15,7 @@ head:
       content: "大模型原生画图能力，突破纯文字输出，动嘴改图"
   - - meta
     - name: twitter:image
-      content: "https://gantrol.com/images/twitter/catgirl.png"
+      content: "https://www.gantrol.com/images/twitter/catgirl.png"
   # Open Graph标签
   - - meta
     - property: og:title
@@ -25,7 +25,7 @@ head:
       content: "大模型原生画图能力，突破纯文字输出，动嘴改图"
   - - meta
     - property: og:image
-      content: "https://gantrol.com/images/twitter/catgirl.png"
+      content: "https://www.gantrol.com/images/twitter/catgirl.png"
   - - meta
     - property: og:type
       content: "website"

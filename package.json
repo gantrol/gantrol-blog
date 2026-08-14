@@ -7,6 +7,8 @@
     "dev": "vitepress",
     "build": "vitepress build",
     "preview": "vitepress preview",
+    "seo:check": "node scripts/check-seo.mjs",
+    "seo:audit": "vitepress build && node scripts/check-seo.mjs",
     "diff": "git diff > diff.md",
     "pyenv": ".venv/Scripts/activate",
     "diff:md:gemini": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Gemini2FTE.md",

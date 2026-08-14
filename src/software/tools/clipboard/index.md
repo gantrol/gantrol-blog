@@ -1,5 +1,6 @@
 ---
-title: "Wordle猜单词"
+title: "剪贴板历史管理器：CopyQ 与 ClipboardFusion 对比"
+description: "对比 Windows 与 Mac 上的 CopyQ、ClipboardFusion 等剪贴板历史管理工具，了解多项复制、图片与同步能力。"
 head:
   - - meta
     - name: twitter:card

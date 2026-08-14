@@ -23,8 +23,7 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: "AI",
-      link: "/en/AI/TOP1",
-      activeMatch: "/en/AI/",
+      link: "https://www.aicando.xyz/",
     },
     // {
     //     text: 'Software',
@@ -38,10 +37,11 @@ function nav(): DefaultTheme.NavItem[] {
     {
       text: "Tools",
       items: [
-        { text: "MarkdownCanDo", link: "https://www.markdowncando.com/" },
+        { text: "MarkdownCanDo", link: "https://markdown.aicando.xyz/" },
         { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
       ],
     },
+    { text: "中文", link: "/" },
   ];
 }
 
@@ -63,11 +63,10 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
   return {
     text: "AI",
-    base: "/en/AI",
     // link: '/',
     collapsed: false,
     items: [
-      { text: "AI·TOP 1", link: "/TOP1" },
+      { text: "AI·TOP 1 (moved)", link: "https://www.aicando.xyz/" },
       // {text: 'AI 画 SVG', link: '/use/svg/'},
     ],
   };
@@ -93,7 +92,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
       {
         text: "Tools",
         items: [
-          { text: "MarkdownCanDo", link: "https://www.markdowncando.com/" },
+          { text: "MarkdownCanDo", link: "https://markdown.aicando.xyz/" },
           { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
         ],
       },

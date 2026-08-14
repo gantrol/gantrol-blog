@@ -14,6 +14,7 @@
 
     /* 自定义变量 */
     --gantrol-primary: #5f67ee;
+    --gantrol-primary-accessible: #454cc4;
     --gantrol-secondary: #41d1ff;
     --gantrol-accent: #ff6b6b;
     --gantrol-text: #2c3e50;
@@ -27,6 +28,7 @@
     --gantrol-text: #e2e8f0;
     --gantrol-background: #111827;
     --gantrol-card-shadow: 0 8px 24px rgba(65, 209, 255, 0.1);
+    --gantrol-primary-accessible: #b8bdff;
 }
 
 /* 全局背景样式 */
@@ -293,8 +295,8 @@
 }
 
 .VPButton.alt {
-    border: 1px solid var(--gantrol-primary) !important;
-    color: var(--gantrol-primary) !important;
+    border: 1px solid var(--gantrol-primary-accessible) !important;
+    color: var(--gantrol-primary-accessible) !important;
     position: relative;
     overflow: hidden;
     z-index: 1;

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+  <defs>
+    <radialGradient id="compound-grad-1" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0.8" />
+    </radialGradient>
+    <radialGradient id="compound-grad-2" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ff9a9e" stop-opacity="0.8" />
+    </radialGradient>
+    <radialGradient id="compound-grad-3" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#a18cd1" stop-opacity="0.8" />
+    </radialGradient>
+  </defs>
+  <circle cx="9" cy="18" r="6" fill="url(#compound-grad-1)" stroke="rgba(255,255,255,0.5)" stroke-width="0.5" />
+  <circle cx="19" cy="14" r="5" fill="url(#compound-grad-2)" stroke="rgba(255,255,255,0.5)" stroke-width="0.5" />
+  <circle cx="14" cy="8" r="4" fill="url(#compound-grad-3)" stroke="rgba(255,255,255,0.5)" stroke-width="0.5" />
+</svg>

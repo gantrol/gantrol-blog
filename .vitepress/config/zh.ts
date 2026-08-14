@@ -3,24 +3,6 @@ import { type DefaultTheme, defineConfig } from "vitepress";
 export const zh = defineConfig({
   lang: "zh-Hans",
   description: "黄健楸的博客：AI、软件与心理学",
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#5f67ee' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:locale', content: 'zh-Hans' }],
-    // ['meta', { property: 'og:title', content: '黄健楸的博客' }],
-    ['meta', { property: 'og:site_name', content: 'gantrol' }],
-    ['meta', { property: 'og:url', content: 'https://gantrol.com/' }],
-    [
-      'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
-    ],
-    [
-      'script',
-      {},
-      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-0P7S4MY6FW');"
-    ]
-  ],
 
   themeConfig: {
     nav: nav(),
@@ -64,11 +46,11 @@ export const zh = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
-    { text: "主页", link: "/" },
+    // { text: "主页", link: "/" },
     {
       text: "工具",
       items: [
-        { text: "Markdown能做！", link: "https://www.markdowncando.com/zh/" },
+        { text: "Markdown能做！", link: "https://markdown.aicando.xyz/zh/" },
         { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
         {
           text: "Cyberchef：小工具箱",
@@ -80,6 +62,7 @@ function nav(): DefaultTheme.NavItem[] {
       text: "创业",
       link: "/startup/",
     },
+    { text: "English", link: "/en/" },
     // {
     //   text: "演练场",
     //   link: "/CS/examples",
@@ -101,61 +84,23 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
   return {
     text: "AI",
-    base:"/AI/",
-    link: "TOP1",
+    link: "https://www.aicando.xyz/",
     collapsed: false,
     items: [
-      { text: "AI TOP1", link: "TOP1" },
-      { text: "热爱开源，引爆Deepseek", link: "record/deepseek" },
-      { text: "玩转Deepseek", link: "use/how-to-chat/deepseek" },
-      { text: "AIStudio操作备忘", link: "use/how-to-chat/aistudio/" },
-      { text: "最灵活的AI画图模型", link: "use/how-to-chat/aistudio/draw" },
+      { text: "AI TOP1（已迁移）", link: "https://www.aicando.xyz/" },
+      { text: "热爱开源，引爆Deepseek", link: "/AI/record/deepseek" },
+      { text: "玩转Deepseek", link: "/AI/use/how-to-chat/deepseek" },
+      { text: "AIStudio操作备忘", link: "/AI/use/how-to-chat/aistudio/" },
+      { text: "最灵活的AI画图模型", link: "/AI/use/how-to-chat/aistudio/draw" },
       {
         text: "Prompt在用",
         items: [
-          { text: "去除AI中文（翻译、润色）", link: "use/translate/" },
-          { text: "你值得一首诗", link: "use/poem/you-own-a-poem" },
-          { text: "中国名", link: "use/name/" },
-          { text: "Git Commit", link: "use/git/commit" },
+          { text: "去除AI中文（翻译、润色）", link: "/AI/use/translate/" },
+          { text: "你值得一首诗", link: "/AI/use/poem/you-own-a-poem" },
+          { text: "中国名", link: "/AI/use/name/" },
+          { text: "Git Commit", link: "/AI/use/git/commit" },
         ]
       },
-      {
-        text: "Deep Research",
-        collapsed: true,
-        items: [
-          { text: "AI谈爱", items: [
-              { text: "ChatGPT", link: "record/gptdr/fall-in-love" },
-              { text: "Perplexity", link: "record/deepresearch/perplexity/fall-in-love" },
-              { text: "Grok3", link: "record/deepresearch/grok3/fall-in-love" },
-            ]
-          },
-          { text: "机械意识？", items: [
-              { text: "ChatGPT", link: "record/gptdr/mind-of-machine" },
-              { text: "Perplexity", link: "record/deepresearch/perplexity/mind-of-machine" },
-              { text: "Grok3", link: "record/deepresearch/grok3/mind-of-machine" },
-            ]
-          },
-          { text: "数据互联网", items: [
-              { text: "ChatGPT", link: "record/gptdr/InternetOfData" },
-              { text: "Perplexity", link: "record/deepresearch/perplexity/InternetOfData" },
-              { text: "Grok3", link: "record/deepresearch/grok3/InternetOfData" },
-            ]
-          },
-          { text: "大模型理论基础（研究向）", items: [
-              { text: "ChatGPT", link: "record/gptdr/LearnerLLM" },
-              { text: "Perplexity", link: "record/deepresearch/perplexity/LearnerLLM" },
-              { text: "Grok3", link: "record/deepresearch/grok3/LearnerLLM" },
-            ]
-          },
-          // { text: "", items: [
-          //     { text: "ChatGPT", link: "record/gptdr/" },
-          //     { text: "Perplexity", link: "record/deepresearch/perplexity/" },
-          //     { text: "Grok3", link: "record/deepresearch/grok3/" },
-          //   ]
-          // },
-        ]
-      },
-
     ],
   };
 }
@@ -193,7 +138,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
       {
         text: "工具",
         items: [
-          { text: "Markdown能做！", link: "https://www.markdowncando.com/zh/" },
+          { text: "Markdown能做！", link: "https://markdown.aicando.xyz/zh/" },
           { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
           {
             text: "Cyberchef：小工具箱",

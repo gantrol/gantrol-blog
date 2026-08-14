@@ -44,12 +44,12 @@ _You **can** combine them_
 - Item 2
 
 ### Links
-[Markdown Can Do](https://www.markdowncando.com/)
+[Markdown Can Do](https://markdown.aicando.xyz/)
 [Markdown Can Do][MDCD]
-[MDCD]:https://www.markdowncando.com/
+[MDCD]:https://markdown.aicando.xyz/
 
 ### Images
-![Markdown Can Do Logo](https://www.markdowncando.com/ "MarkdownCanDo Logo")
+![Markdown Can Do Logo](https://markdown.aicando.xyz/ "MarkdownCanDo Logo")
 
 ### Block Quote
 > Block Quote

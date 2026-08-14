@@ -1,3 +1,8 @@
+---
+title: "Claude Code 配置 Kimi K2：国内使用教程"
+description: "国内如何用 Kimi K2 配置 Claude Code：从安装、Moonshot API Key、ANTHROPIC_BASE_URL 到常见 429 限额问题的完整步骤。"
+---
+
 # 国内用Claude Code的Kimi K2方案
 
 > 当看到Kimi K2兼容Claude接口的时候，我是不太明白的。可后来看到个别宣传材料中有Claude Code用Kimi K2，我就完全悟了

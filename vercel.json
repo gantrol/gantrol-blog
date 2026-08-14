@@ -20,6 +20,38 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/AI/TOP1",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    },
+    {
+      "source": "/AI/TOP1/",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    },
+    {
+      "source": "/AI/TOP1.html",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    },
+    {
+      "source": "/en/AI/TOP1",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    },
+    {
+      "source": "/en/AI/TOP1/",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    },
+    {
+      "source": "/en/AI/TOP1.html",
+      "destination": "https://www.aicando.xyz/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/:path*",
