@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": ">=14.0.0"
+    "node": "22.x"
   },
   "type": "module",
   "scripts": {
@@ -15,8 +15,7 @@
     "diff:md:dsr1": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Deepseek.md",
     "diff:md:claudes": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Claude3.5sonnet.md",
     "diff:md:grok3": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Grok3.md",
-    "diff:md:grok3t": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Grok3Think.md",
-    "preinstall": "npx only-allow pnpm"
+    "diff:md:grok3t": "python src/AI/use/pdf/diff_md.py src/AI/use/pdf/MarkdownCheatsheet.md src/AI/use/pdf/MarkdownCheatsheet-Grok3Think.md"
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
@@ -27,19 +26,5 @@
     "terser": "^5.14.2",
     "vitepress": "1.6.3",
     "vue": "^3.4.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@vitejs/plugin-vue": "5.0.0-beta.1"
-    },
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search",
-        "react",
-        "react-dom",
-        "@types/react",
-        "search-insights"
-      ]
-    }
   }
 }
