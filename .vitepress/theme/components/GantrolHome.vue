@@ -17,12 +17,12 @@ const stampRotation = ref(0)
 
 const projectOrder = ['timeline', 'aicando', 'agent-controller', 'aiy', 'markdowncando', 'paopao']
 const cookieLayouts = [
-  { x: -7, y: 3, tilt: -2 },
-  { x: 4, y: -2, tilt: 1.8 },
-  { x: 8, y: 4, tilt: -1.4 },
-  { x: 5, y: -4, tilt: 2.4 },
-  { x: -4, y: 3, tilt: -2.5 },
-  { x: 7, y: -2, tilt: 1.2 }
+  { x: -13, y: -9, tilt: -2 },
+  { x: 1, y: 9, tilt: 1.8 },
+  { x: 14, y: -7, tilt: -1.4 },
+  { x: -14, y: 9, tilt: 2.4 },
+  { x: 0, y: -8, tilt: -2.5 },
+  { x: 13, y: 9, tilt: 1.2 }
 ]
 const stampAngles: Record<string, number> = {
   timeline: -122,
@@ -100,7 +100,6 @@ function isExternalLink(href: string) {
       <div class="hero-copy">
         <p class="eyebrow">{{ content.author }}</p>
         <h1 id="home-title">{{ content.title }}</h1>
-        <p class="hero-summary">{{ content.summary }}</p>
         <div class="hero-actions">
           <a class="primary-action" :href="content.primaryAction.href">{{ content.primaryAction.label }}</a>
           <a class="text-action" :href="content.secondaryAction.href" target="_blank" rel="noopener">
@@ -125,19 +124,18 @@ function isExternalLink(href: string) {
           <div class="project-tray" @click="handleTraySurfaceClick">
             <div class="project-tray-paper">
               <div class="project-cookie-grid">
-                <button
+                <a
                   v-for="(project, index) in trayProjects"
                   :key="project.id"
-                  type="button"
                   class="project-cookie"
                   :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
                   :style="projectCookieStyle(index)"
+                  :href="project.href"
+                  :target="isExternalLink(project.href) ? '_blank' : undefined"
+                  :rel="isExternalLink(project.href) ? 'noopener' : undefined"
                   :aria-label="`${project.name}：${project.description}`"
-                  :aria-controls="activeProjectId === project.id ? 'project-preview' : undefined"
-                  :aria-expanded="activeProjectId === project.id"
                   @mouseenter="activateProject(project)"
                   @focus="activateProject(project)"
-                  @click="activateProject(project)"
                 >
                   <span class="project-cookie-visual" aria-hidden="true">
                     <img
@@ -160,7 +158,7 @@ function isExternalLink(href: string) {
                     </template>
                   </span>
                   <span class="project-cookie-label">{{ project.name }}</span>
-                </button>
+                </a>
               </div>
 
               <span
@@ -200,8 +198,10 @@ function isExternalLink(href: string) {
                 />
               </span>
               <span class="project-ticket-copy">
-                <small>{{ activeProject.eyebrow }}</small>
-                <strong>{{ activeProject.name }}</strong>
+                <span class="project-ticket-title">
+                  <strong>{{ activeProject.name }}</strong>
+                  <small>{{ activeProject.eyebrow }}</small>
+                </span>
                 <span>{{ activeProject.description }}</span>
               </span>
               <a
@@ -209,9 +209,10 @@ function isExternalLink(href: string) {
                 :href="activeProject.href"
                 :target="isExternalLink(activeProject.href) ? '_blank' : undefined"
                 :rel="isExternalLink(activeProject.href) ? 'noopener' : undefined"
-                :aria-label="`打开 ${activeProject.name}`"
+                :aria-label="`${content.previewAction} ${activeProject.name}`"
               >
-                {{ content.previewAction }} <span aria-hidden="true">→</span>
+                <span class="project-ticket-link-plus" aria-hidden="true">＋</span>
+                {{ content.previewAction }}
               </a>
             </aside>
           </Transition>
@@ -220,7 +221,6 @@ function isExternalLink(href: string) {
             {{ activeProject ? `${content.projectsTitle}: ${activeProject.name}` : content.projectsIdleAnnouncement }}
           </p>
         </div>
-        <figcaption>{{ content.projectsCaption }}</figcaption>
       </figure>
     </section>
 
@@ -500,13 +500,6 @@ function isExternalLink(href: string) {
   white-space: nowrap;
 }
 
-.hero-summary {
-  margin: 28px 0 0;
-  color: var(--home-secondary);
-  font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.7;
-}
-
 .hero-actions {
   display: flex;
   align-items: center;
@@ -574,7 +567,7 @@ function isExternalLink(href: string) {
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 510px;
+  min-height: 690px;
   flex-direction: column;
   align-items: center;
   scroll-margin-top: 90px;
@@ -632,18 +625,21 @@ function isExternalLink(href: string) {
   grid-template-rows: repeat(2, minmax(0, 1fr));
   align-items: center;
   justify-items: center;
-  gap: 6px 14px;
+  gap: 8px 18px;
 }
 
 .project-cookie {
   position: relative;
-  width: 128px;
-  min-height: 132px;
+  display: block;
+  width: 112px;
+  min-height: 112px;
   padding: 0;
   border: 0;
   color: var(--home-ink);
   background: transparent;
   cursor: pointer;
+  text-decoration: none;
+  transform: translate(var(--cookie-x, 0), var(--cookie-y, 0));
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -657,9 +653,7 @@ function isExternalLink(href: string) {
   margin: 0 auto 3px;
   opacity: 1;
   filter: drop-shadow(0 7px 5px rgb(89 57 23 / 15%));
-  transform:
-    translate(var(--cookie-x, 0), var(--cookie-y, 0))
-    rotate(var(--cookie-tilt, 0deg));
+  transform: rotate(var(--cookie-tilt, 0deg));
   transform-origin: 50% 56%;
   transition:
     transform 220ms cubic-bezier(.2, .8, .2, 1),
@@ -736,7 +730,7 @@ function isExternalLink(href: string) {
 .project-cookie.is-active .project-cookie-visual {
   filter: drop-shadow(0 13px 8px rgb(89 57 23 / 21%));
   transform:
-    translate(var(--cookie-x, 0), calc(var(--cookie-y, 0) - 8px))
+    translateY(-8px)
     rotate(0deg)
     scale(1.045);
 }
@@ -787,32 +781,43 @@ function isExternalLink(href: string) {
 
 .project-ticket {
   position: relative;
+  z-index: 3;
+  display: block;
+  width: min(92%, 590px);
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  margin-top: -30px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 36%);
+  border-radius: 19px;
+  color: #fff;
+  background: #181715;
+  box-shadow:
+    0 24px 44px rgb(57 38 17 / 20%),
+    0 4px 12px rgb(57 38 17 / 12%);
+  isolation: isolate;
+}
+
+.project-ticket::after {
+  position: absolute;
   z-index: 1;
-  display: grid;
-  width: min(84%, 520px);
-  min-height: 122px;
-  grid-template-columns: 96px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 15px;
-  margin-top: -34px;
-  padding: 45px 20px 16px;
-  border: 1px solid color-mix(in srgb, var(--tray-rim-mid) 52%, var(--home-line));
-  border-radius: 0 0 18px 18px;
-  color: var(--home-ink);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--tray-rim-light) 52%, var(--home-surface)) 0 18px, var(--home-surface) 18px 100%);
-  box-shadow: 0 18px 32px rgb(76 49 20 / 11%);
+  inset: 32% 0 0;
+  background: linear-gradient(180deg, transparent, rgb(10 9 9 / 36%) 30%, rgb(10 9 9 / 86%));
+  content: "";
+  pointer-events: none;
 }
 
 .project-ticket-media {
-  position: relative;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
   display: block;
-  width: 96px;
-  height: 66px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 10px;
-  background: var(--home-surface-muted);
+  border-radius: inherit;
+  background: #181715;
 }
 
 .project-ticket-image {
@@ -820,85 +825,113 @@ function isExternalLink(href: string) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 280ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.project-ticket:hover .project-ticket-image {
+  transform: scale(1.018);
 }
 
 .project-ticket-image.is-contained {
-  padding: 9px;
-  background: var(--home-surface);
+  padding: clamp(38px, 9%, 62px);
+  background: color-mix(in srgb, var(--home-surface) 90%, #e7e0d5);
   object-fit: contain;
 }
 
 .project-ticket-overlay {
   position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 34%;
+  right: 18px;
+  bottom: 18px;
+  width: 25%;
   height: auto;
   aspect-ratio: 1;
-  border: 1px solid rgb(255 254 251 / 90%);
-  border-radius: 6px;
+  border: 1px solid rgb(255 254 251 / 74%);
+  border-radius: 13px;
+  box-shadow: 0 9px 24px rgb(0 0 0 / 22%);
   object-fit: cover;
 }
 
 .project-ticket-copy {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 18px;
+  left: 22px;
   display: flex;
   min-width: 0;
   flex-direction: column;
+  gap: 5px;
+  color: #fff;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 52%);
 }
 
-.project-ticket-copy small {
-  overflow: hidden;
-  color: var(--home-muted);
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: .04em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.project-ticket-title {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
 }
 
-.project-ticket-copy strong {
-  margin-top: 2px;
-  overflow: hidden;
-  color: var(--home-ink);
-  font-size: 15px;
-  font-weight: 650;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.project-ticket-title strong {
+  color: #fff;
+  font-size: clamp(17px, 2.1vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.project-ticket-copy > span {
+.project-ticket-title small {
+  color: rgb(255 255 255 / 72%);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.project-ticket-copy > span:last-child {
   display: -webkit-box;
   overflow: hidden;
-  margin-top: 3px;
-  color: var(--home-muted);
-  font-size: 11px;
-  line-height: 1.45;
+  color: rgb(255 255 255 / 86%);
+  font-size: 13px;
+  line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .project-ticket-link {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  right: 14px;
   display: inline-flex;
-  min-height: 38px;
+  min-height: 40px;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 0 13px;
-  border: 1px solid color-mix(in srgb, var(--home-coral) 48%, var(--home-line));
-  border-radius: 999px;
-  color: var(--home-coral-hover);
-  background: color-mix(in srgb, var(--home-coral) 9%, var(--home-surface));
-  font-size: 11px;
+  gap: 7px;
+  padding: 0 14px;
+  border: 1px solid rgb(255 255 255 / 72%);
+  border-radius: 9px;
+  color: #211f1c;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 5px 16px rgb(0 0 0 / 16%);
+  font-size: 13px;
   font-weight: 650;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  backdrop-filter: blur(8px);
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .project-ticket-link:hover {
-  border-color: var(--home-coral);
-  color: var(--home-coral-hover);
-  background: color-mix(in srgb, var(--home-coral) 15%, var(--home-surface));
+  color: #211f1c;
+  background: #fff;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 22%);
+  transform: translateY(-1px);
+}
+
+.project-ticket-link-plus {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .project-ticket-link:focus-visible {
@@ -1243,11 +1276,6 @@ function isExternalLink(href: string) {
     font-size: clamp(42px, 12vw, 54px);
   }
 
-  .hero-summary {
-    margin-top: 20px;
-    font-size: 17px;
-  }
-
   .project-tray-figure {
     width: min(350px, 100%);
   }
@@ -1280,8 +1308,8 @@ function isExternalLink(href: string) {
   }
 
   .project-cookie {
-    width: 118px;
-    min-height: 118px;
+    width: 104px;
+    min-height: 104px;
   }
 
   .project-cookie-visual {
@@ -1332,22 +1360,44 @@ function isExternalLink(href: string) {
   }
 
   .project-ticket {
-    width: 94%;
-    min-height: 164px;
-    grid-template-columns: 62px minmax(0, 1fr);
-    gap: 12px;
-    margin-top: -28px;
-    padding: 39px 15px 15px;
-  }
-
-  .project-ticket-media {
-    width: 62px;
-    height: 62px;
+    width: 96%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    margin-top: -24px;
   }
 
   .project-ticket-link {
-    grid-column: 1 / -1;
-    min-height: 40px;
+    top: 10px;
+    right: 10px;
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  .project-ticket-copy {
+    right: 14px;
+    bottom: 13px;
+    left: 14px;
+    gap: 3px;
+  }
+
+  .project-ticket-title {
+    gap: 7px;
+  }
+
+  .project-ticket-title strong {
+    font-size: 16px;
+  }
+
+  .project-ticket-title small,
+  .project-ticket-copy > span:last-child {
+    font-size: 11px;
+  }
+
+  .project-ticket-overlay {
+    right: 12px;
+    bottom: 12px;
+    border-radius: 10px;
   }
 
   .project-tray-figure figcaption {

@@ -41,12 +41,10 @@ export type HomeContent = {
   locale: HomeLocale
   author: string
   title: string
-  summary: string
   primaryAction: { label: string; href: string }
   secondaryAction: { label: string; href: string }
   projectsTitle: string
   previewAction: string
-  projectsCaption: string
   projectsIdleAnnouncement: string
   directions: { title: string; kicker: string; items: DirectionContent[] }
   popular: { title: string; kicker: string; items: PopularContent[] }
@@ -83,7 +81,7 @@ const projectAssets = {
     image: '/images/home/projects/markdowncando-og.webp'
   },
   aiy: {
-    logo: '/images/home/projects/aiy-logo.webp',
+    logo: '/images/home/projects/aiy-logo-transparent.png',
     image: '/images/home/projects/aiy-og.webp'
   }
 }
@@ -125,12 +123,10 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
     locale: 'zh',
     author: '黄健楸 · GANTROL',
     title: '计算机心理学',
-    summary: '写 AI 与软件，也用计算机理解人。',
     primaryAction: { label: '阅读文章', href: '/articles/' },
     secondaryAction: { label: 'GitHub', href: 'https://github.com/gantrol' },
     projectsTitle: '作品',
-    previewAction: '查看介绍',
-    projectsCaption: '六个主要产品与作品 · 悬停、聚焦或轻点一枚饼干',
+    previewAction: '打开网站',
     projectsIdleAnnouncement: '悬停、聚焦或轻点一枚饼干可查看项目预览',
     directions: {
       title: '内容方向',
@@ -185,12 +181,10 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
     locale: 'en',
     author: 'GANTROL · HUANG JIANQIU',
     title: 'Computer Psychology',
-    summary: 'Writing about AI and software—and using computers to understand people.',
     primaryAction: { label: 'Read articles', href: '/en/articles/' },
     secondaryAction: { label: 'GitHub', href: 'https://github.com/gantrol' },
     projectsTitle: 'Projects',
-    previewAction: 'View profile',
-    projectsCaption: 'Six primary products and works · Hover, focus, or tap a cookie',
+    previewAction: 'Open site',
     projectsIdleAnnouncement: 'Hover, focus, or tap a cookie to preview a project',
     directions: {
       title: 'Directions',
