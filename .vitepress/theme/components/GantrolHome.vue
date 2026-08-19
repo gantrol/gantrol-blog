@@ -35,6 +35,7 @@ const stampAngles: Record<string, number> = {
 }
 
 let clearTimer = 0
+let lastProjectPointerType: PointerEvent['pointerType'] | null = null
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
@@ -85,6 +86,22 @@ function scheduleProjectClear(event: PointerEvent) {
 function handleTraySurfaceClick(event: MouseEvent) {
   if (event.target instanceof Element && event.target.closest('.project-cookie')) return
   clearProject()
+}
+
+function rememberProjectPointer(event: PointerEvent) {
+  lastProjectPointerType = event.pointerType
+}
+
+function handleProjectClick(event: MouseEvent, project: Project) {
+  const isTouch = lastProjectPointerType === 'touch' ||
+    (typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
+
+  lastProjectPointerType = null
+
+  if (!isTouch) return
+
+  event.preventDefault()
+  activateProject(project)
 }
 
 function handleTrayFocusOut(event: FocusEvent) {
@@ -145,6 +162,10 @@ function isExternalLink(href: string) {
                     :target="isExternalLink(project.href) ? '_blank' : undefined"
                     :rel="isExternalLink(project.href) ? 'noopener' : undefined"
                     :aria-label="`${project.name}：${project.description}`"
+                    :aria-expanded="activeProjectId === project.id"
+                    aria-controls="project-preview"
+                    @pointerdown="rememberProjectPointer"
+                    @click="handleProjectClick($event, project)"
                     @mouseenter="activateProject(project)"
                     @focus="activateProject(project)"
                   >
