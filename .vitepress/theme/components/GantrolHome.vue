@@ -14,6 +14,7 @@ type Project = HomeContent['projects'][number]
 const trayStageRef = ref<HTMLElement | null>(null)
 const activeProjectId = ref<string | null>(null)
 const stampRotation = ref(0)
+const trayJoltPhase = ref<'a' | 'b'>('a')
 
 const projectOrder = ['timeline', 'aicando', 'agent-controller', 'aiy', 'markdowncando', 'paopao']
 const cookieLayouts = [
@@ -60,6 +61,11 @@ function cancelScheduledClear() {
 
 function activateProject(project: Project) {
   cancelScheduledClear()
+
+  if (activeProjectId.value !== project.id) {
+    trayJoltPhase.value = trayJoltPhase.value === 'a' ? 'b' : 'a'
+  }
+
   activeProjectId.value = project.id
   stampRotation.value = stampAngles[project.id] ?? 0
 }
@@ -114,108 +120,115 @@ function isExternalLink(href: string) {
           id="projects"
           ref="trayStageRef"
           class="project-tray-stage"
-          :class="{ 'has-selection': activeProject }"
+          :class="{
+            'has-selection': activeProject,
+            'jolt-phase-a': trayJoltPhase === 'a',
+            'jolt-phase-b': trayJoltPhase === 'b'
+          }"
           tabindex="-1"
           @pointerenter="cancelScheduledClear"
           @pointerleave="scheduleProjectClear"
           @focusout="handleTrayFocusOut"
           @keydown.esc.prevent="clearProject"
         >
-          <div class="project-tray" @click="handleTraySurfaceClick">
-            <div class="project-tray-paper">
-              <div class="project-cookie-grid">
-                <a
-                  v-for="(project, index) in trayProjects"
-                  :key="project.id"
-                  class="project-cookie"
-                  :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
-                  :style="projectCookieStyle(index)"
-                  :href="project.href"
-                  :target="isExternalLink(project.href) ? '_blank' : undefined"
-                  :rel="isExternalLink(project.href) ? 'noopener' : undefined"
-                  :aria-label="`${project.name}：${project.description}`"
-                  @mouseenter="activateProject(project)"
-                  @focus="activateProject(project)"
-                >
-                  <span class="project-cookie-visual" aria-hidden="true">
-                    <img
-                      v-if="project.id === 'timeline'"
-                      class="timeline-cookie"
-                      :src="project.logo"
-                      alt=""
-                      width="100"
-                      height="100"
-                    />
-                    <template v-else>
+          <div class="project-plate-stack">
+            <div class="project-tray" @click="handleTraySurfaceClick">
+              <div class="project-tray-paper">
+                <div class="project-cookie-grid">
+                  <a
+                    v-for="(project, index) in trayProjects"
+                    :key="project.id"
+                    class="project-cookie"
+                    :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
+                    :style="projectCookieStyle(index)"
+                    :href="project.href"
+                    :target="isExternalLink(project.href) ? '_blank' : undefined"
+                    :rel="isExternalLink(project.href) ? 'noopener' : undefined"
+                    :aria-label="`${project.name}：${project.description}`"
+                    @mouseenter="activateProject(project)"
+                    @focus="activateProject(project)"
+                  >
+                    <span class="project-cookie-visual" aria-hidden="true">
                       <img
-                        class="project-cookie-shell"
-                        src="/images/home/projects/project-cookie-shell.svg"
+                        v-if="project.id === 'timeline'"
+                        class="timeline-cookie"
+                        :src="project.logo"
                         alt=""
                         width="100"
                         height="100"
                       />
-                      <img class="project-cookie-logo" :src="project.logo" alt="" width="38" height="38" />
-                    </template>
-                  </span>
-                  <span class="project-cookie-label">{{ project.name }}</span>
-                </a>
-              </div>
+                      <template v-else>
+                        <img
+                          class="project-cookie-shell"
+                          src="/images/home/projects/project-cookie-shell.svg"
+                          alt=""
+                          width="100"
+                          height="100"
+                        />
+                        <img class="project-cookie-logo" :src="project.logo" alt="" width="38" height="38" />
+                      </template>
+                    </span>
+                    <span class="project-cookie-label">{{ project.name }}</span>
+                  </a>
+                </div>
 
-              <span
-                class="tray-maker-stamp"
-                :style="{ transform: `rotate(${stampRotation}deg)` }"
-                aria-hidden="true"
-              >
-                <img src="/avatar.png" alt="" width="30" height="30" />
-              </span>
-            </div>
-          </div>
-
-          <Transition name="tray-ticket">
-            <aside
-              v-if="activeProject"
-              id="project-preview"
-              class="project-ticket"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <span class="project-ticket-media">
-                <img
-                  class="project-ticket-image"
-                  :class="{ 'is-contained': activeProject.imageFit === 'contain' }"
-                  :src="activeProject.image"
-                  :alt="`${activeProject.name} 项目预览`"
-                  width="720"
-                  height="378"
-                />
-                <img
-                  v-if="activeProject.overlayImage"
-                  class="project-ticket-overlay"
-                  :src="activeProject.overlayImage"
-                  alt=""
-                  width="564"
-                  height="564"
-                />
-              </span>
-              <span class="project-ticket-copy">
-                <span class="project-ticket-title">
-                  <strong>{{ activeProject.name }}</strong>
-                  <small>{{ activeProject.eyebrow }}</small>
+                <span
+                  class="tray-maker-stamp"
+                  :style="{ transform: `rotate(${stampRotation}deg)` }"
+                  aria-hidden="true"
+                >
+                  <img src="/avatar.png" alt="" width="30" height="30" />
                 </span>
-                <span>{{ activeProject.description }}</span>
-              </span>
-              <a
-                class="project-ticket-link"
-                :href="activeProject.href"
-                :target="isExternalLink(activeProject.href) ? '_blank' : undefined"
-                :rel="isExternalLink(activeProject.href) ? 'noopener' : undefined"
-                :aria-label="`${content.previewAction} ${activeProject.name}`"
+              </div>
+            </div>
+
+            <Transition name="tray-ticket" mode="out-in">
+              <aside
+                v-if="activeProject"
+                :key="activeProject.id"
+                id="project-preview"
+                class="project-ticket"
+                aria-live="polite"
+                aria-atomic="true"
               >
-                <span class="project-ticket-link-plus" aria-hidden="true">＋</span>
-                {{ content.previewAction }}
-              </a>
-            </aside>
-          </Transition>
+                <span class="project-ticket-media">
+                  <img
+                    class="project-ticket-image"
+                    :class="{ 'is-contained': activeProject.imageFit === 'contain' }"
+                    :src="activeProject.image"
+                    :alt="`${activeProject.name} 项目预览`"
+                    width="720"
+                    height="378"
+                  />
+                  <img
+                    v-if="activeProject.overlayImage"
+                    class="project-ticket-overlay"
+                    :src="activeProject.overlayImage"
+                    alt=""
+                    width="564"
+                    height="564"
+                  />
+                </span>
+                <span class="project-ticket-copy">
+                  <span class="project-ticket-title">
+                    <strong>{{ activeProject.name }}</strong>
+                    <small>{{ activeProject.eyebrow }}</small>
+                  </span>
+                  <span>{{ activeProject.description }}</span>
+                </span>
+                <a
+                  class="project-ticket-link"
+                  :href="activeProject.href"
+                  :target="isExternalLink(activeProject.href) ? '_blank' : undefined"
+                  :rel="isExternalLink(activeProject.href) ? 'noopener' : undefined"
+                  :aria-label="`${content.previewAction} ${activeProject.name}`"
+                >
+                  {{ content.previewAction }}
+                  <span class="project-ticket-link-arrow" aria-hidden="true">↗</span>
+                </a>
+              </aside>
+            </Transition>
+          </div>
 
           <p class="sr-only" aria-live="polite">
             {{ activeProject ? `${content.projectsTitle}: ${activeProject.name}` : content.projectsIdleAnnouncement }}
@@ -467,18 +480,21 @@ function isExternalLink(href: string) {
 }
 
 .home-hero {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(340px, 0.78fr) minmax(560px, 1.22fr);
   align-items: center;
   gap: clamp(28px, 4vw, 64px);
-  min-height: min(760px, calc(100vh - var(--vp-nav-height)));
+  min-height: 0;
   padding-top: clamp(48px, 6vw, 88px);
-  padding-bottom: clamp(64px, 7vw, 92px);
+  padding-bottom: clamp(12px, 1.5vw, 18px);
 }
 
 .hero-copy {
   position: relative;
   z-index: 2;
+  transform: translateY(-72px);
 }
 
 .eyebrow {
@@ -542,6 +558,7 @@ function isExternalLink(href: string) {
 
 .project-tray-figure {
   position: relative;
+  z-index: 2;
   margin: 0;
   min-width: 0;
 }
@@ -567,7 +584,7 @@ function isExternalLink(href: string) {
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 690px;
+  min-height: 0;
   flex-direction: column;
   align-items: center;
   scroll-margin-top: 90px;
@@ -575,10 +592,16 @@ function isExternalLink(href: string) {
   outline: none;
 }
 
+.project-plate-stack {
+  position: relative;
+  width: min(100%, 640px);
+  isolation: isolate;
+}
+
 .project-tray {
   position: relative;
   z-index: 2;
-  width: min(100%, 640px);
+  width: 100%;
   aspect-ratio: 1.58;
   flex: none;
   padding: 16px;
@@ -735,6 +758,10 @@ function isExternalLink(href: string) {
     scale(1.045);
 }
 
+.project-cookie.is-active .project-cookie-visual {
+  animation: cookie-jolt 480ms cubic-bezier(.2, .8, .2, 1);
+}
+
 .project-cookie:hover::after,
 .project-cookie:focus-visible::after,
 .project-cookie.is-active::after {
@@ -755,6 +782,15 @@ function isExternalLink(href: string) {
 
 .project-tray-stage.has-selection .project-cookie:not(.is-active) .project-cookie-visual {
   opacity: .7;
+}
+
+/* Alternate names restart the short jolt when the hovered cookie changes. */
+.project-tray-stage.has-selection.jolt-phase-a .project-tray {
+  animation: tray-jolt-a 430ms 70ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.project-tray-stage.has-selection.jolt-phase-b .project-tray {
+  animation: tray-jolt-b 430ms 70ms cubic-bezier(.2, .8, .2, 1) both;
 }
 
 .tray-maker-stamp {
@@ -780,43 +816,57 @@ function isExternalLink(href: string) {
 }
 
 .project-ticket {
-  position: relative;
-  z-index: 3;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 50%;
+  z-index: 1;
   display: block;
   width: min(92%, 590px);
   aspect-ratio: 16 / 9;
   min-height: 0;
-  margin-top: -30px;
-  padding: 0;
+  padding: 9px;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 36%);
-  border-radius: 19px;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-dark) 76%, var(--home-line));
+  border-radius: 23px;
   color: #fff;
-  background: #181715;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 66%), transparent 22%),
+    linear-gradient(145deg, var(--tray-rim-light), var(--tray-rim-mid) 58%, var(--tray-rim-dark));
   box-shadow:
-    0 24px 44px rgb(57 38 17 / 20%),
-    0 4px 12px rgb(57 38 17 / 12%);
+    0 28px 44px var(--tray-shadow),
+    0 4px 8px rgb(80 55 25 / 10%),
+    inset 0 1px 1px rgb(255 255 255 / 72%);
+  transform: translateX(-50%) rotate(-.18deg);
+  transform-origin: 50% 0;
   isolation: isolate;
 }
 
 .project-ticket::after {
   position: absolute;
   z-index: 1;
-  inset: 32% 0 0;
-  background: linear-gradient(180deg, transparent, rgb(10 9 9 / 36%) 30%, rgb(10 9 9 / 86%));
+  inset: 54% 9px 9px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, transparent, rgb(10 9 9 / 46%) 26%, rgb(10 9 9 / 86%));
+  opacity: 1;
   content: "";
   pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.project-ticket:focus-within::after,
+.project-ticket:hover::after {
+  opacity: 0;
 }
 
 .project-ticket-media {
   position: absolute;
   z-index: 0;
-  inset: 0;
+  inset: 9px;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   overflow: hidden;
-  border-radius: inherit;
+  border-radius: 14px;
   background: #181715;
 }
 
@@ -900,38 +950,71 @@ function isExternalLink(href: string) {
 .project-ticket-link {
   position: absolute;
   z-index: 3;
-  top: 14px;
-  right: 14px;
+  top: 22px;
+  right: 22px;
   display: inline-flex;
-  min-height: 40px;
+  min-height: 38px;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 0 14px;
-  border: 1px solid rgb(255 255 255 / 72%);
-  border-radius: 9px;
-  color: #211f1c;
-  background: rgb(255 255 255 / 94%);
-  box-shadow: 0 5px 16px rgb(0 0 0 / 16%);
-  font-size: 13px;
-  font-weight: 650;
+  gap: 8px;
+  padding: 0 13px 0 15px;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-dark) 82%, #6f4d20);
+  border-radius: 999px;
+  color: #4e3518;
+  background:
+    linear-gradient(180deg, rgb(255 251 235 / 96%), rgb(238 213 165 / 96%));
+  box-shadow:
+    0 5px 13px rgb(45 27 8 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 88%),
+    inset 0 -1px 0 rgb(126 88 38 / 15%);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .015em;
   text-decoration: none;
   white-space: nowrap;
-  backdrop-filter: blur(8px);
-  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  backdrop-filter: blur(6px);
+  transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+@keyframes tray-jolt-a {
+  0%, 100% { transform: rotate(.35deg) translateY(0); }
+  24% { transform: rotate(-.35deg) translateY(-2px); }
+  48% { transform: rotate(.48deg) translateY(1px); }
+  72% { transform: rotate(.1deg) translateY(0); }
+}
+
+@keyframes tray-jolt-b {
+  0%, 100% { transform: rotate(.35deg) translateY(0); }
+  24% { transform: rotate(-.35deg) translateY(-2px); }
+  48% { transform: rotate(.48deg) translateY(1px); }
+  72% { transform: rotate(.1deg) translateY(0); }
+}
+
+@keyframes cookie-jolt {
+  0%, 100% { transform: translateY(-8px) rotate(0deg) scale(1.045); }
+  22% { transform: translateY(-10px) rotate(-2.2deg) scale(1.045); }
+  44% { transform: translateY(-7px) rotate(1.6deg) scale(1.045); }
+  66% { transform: translateY(-8px) rotate(-.6deg) scale(1.045); }
 }
 
 .project-ticket-link:hover {
-  color: #211f1c;
-  background: #fff;
-  box-shadow: 0 7px 20px rgb(0 0 0 / 22%);
-  transform: translateY(-1px);
+  color: #38230f;
+  background: linear-gradient(180deg, #fffdf2, #f4dca9);
+  box-shadow:
+    0 7px 17px rgb(45 27 8 / 24%),
+    inset 0 1px 0 #fff;
+  transform: translateY(-1px) scale(1.015);
 }
 
-.project-ticket-link-plus {
-  font-size: 19px;
-  font-weight: 400;
+.project-ticket-link-arrow {
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.project-ticket-link:hover .project-ticket-link-arrow {
+  transform: translate(1px, -1px);
 }
 
 .project-ticket-link:focus-visible {
@@ -939,17 +1022,22 @@ function isExternalLink(href: string) {
   outline-offset: 3px;
 }
 
-.tray-ticket-enter-active,
+.tray-ticket-enter-active {
+  transition:
+    opacity 140ms ease,
+    transform 420ms cubic-bezier(.16, .84, .24, 1);
+}
+
 .tray-ticket-leave-active {
   transition:
-    opacity 180ms ease,
-    transform 260ms cubic-bezier(.2, .8, .2, 1);
+    opacity 120ms ease,
+    transform 260ms cubic-bezier(.55, .06, .82, .24);
 }
 
 .tray-ticket-enter-from,
 .tray-ticket-leave-to {
-  opacity: 0;
-  transform: translateY(-54px) scale(.985);
+  opacity: .96;
+  transform: translate(-50%, calc(-100% + 10px)) rotate(.15deg) scale(.985);
 }
 
 :global(.dark .timeline-cookie),
@@ -968,6 +1056,12 @@ function isExternalLink(href: string) {
   padding-top: 72px;
   padding-bottom: 72px;
   scroll-margin-top: 84px;
+}
+
+.home-section.directions {
+  position: relative;
+  z-index: 0;
+  padding-top: clamp(24px, 2.5vw, 30px);
 }
 
 .section-heading {
@@ -1245,6 +1339,7 @@ function isExternalLink(href: string) {
 
   .hero-copy {
     max-width: 620px;
+    transform: none;
   }
 
   .hero-copy h1 {
@@ -1265,7 +1360,7 @@ function isExternalLink(href: string) {
   .home-hero {
     gap: 46px;
     padding-top: 48px;
-    padding-bottom: 64px;
+    padding-bottom: 16px;
   }
 
   .eyebrow {
@@ -1281,11 +1376,15 @@ function isExternalLink(href: string) {
   }
 
   .project-tray-stage {
-    min-height: 650px;
+    min-height: 0;
+  }
+
+  .project-plate-stack {
+    width: min(100%, 340px);
   }
 
   .project-tray {
-    width: min(100%, 340px);
+    width: 100%;
     aspect-ratio: .71;
     padding: 12px;
     border-radius: 26px;
@@ -1363,15 +1462,14 @@ function isExternalLink(href: string) {
     width: 96%;
     aspect-ratio: 16 / 9;
     min-height: 0;
-    margin-top: -24px;
   }
 
   .project-ticket-link {
-    top: 10px;
-    right: 10px;
-    min-height: 36px;
-    padding: 0 11px;
-    font-size: 12px;
+    top: 17px;
+    right: 17px;
+    min-height: 34px;
+    padding: 0 11px 0 13px;
+    font-size: 11px;
   }
 
   .project-ticket-copy {
@@ -1460,11 +1558,14 @@ function isExternalLink(href: string) {
 
 @media (prefers-reduced-motion: reduce) {
   .project-cookie-visual,
+  .project-tray,
+  .project-cookie.is-active .project-cookie-visual,
   .project-cookie::after,
   .tray-maker-stamp,
   .primary-action,
   .tray-ticket-enter-active,
   .tray-ticket-leave-active {
+    animation: none !important;
     transition: none;
   }
 }
