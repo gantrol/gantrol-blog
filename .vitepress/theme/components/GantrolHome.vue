@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import { homeContent, type HomeContent, type HomeLocale } from '../home-content'
 
 const props = withDefaults(defineProps<{ locale?: HomeLocale }>(), {
@@ -8,159 +8,89 @@ const props = withDefaults(defineProps<{ locale?: HomeLocale }>(), {
 
 const content = computed<HomeContent>(() => homeContent[props.locale])
 const projects = computed(() => content.value.projects)
+const tools = computed(() => content.value.tools.items)
 type Project = HomeContent['projects'][number]
 
-const orbitRef = ref<HTMLElement | null>(null)
+const trayStageRef = ref<HTMLElement | null>(null)
 const activeProjectId = ref<string | null>(null)
-const needleRotation = ref(0)
-const touchPreviewProjectId = ref<string | null>(null)
-const blockedTouchClickId = ref<string | null>(null)
-const orbitProgress = ref(0)
-const orbitWidth = ref(680)
+const stampRotation = ref(0)
 
-const ORBIT_DURATION_MS = 120_000
-const ORBIT_RADIUS_X = 42
-const ORBIT_RADIUS_Y = 33
+const projectOrder = ['timeline', 'aicando', 'agent-controller', 'aiy', 'markdowncando', 'paopao']
+const cookieLayouts = [
+  { x: -7, y: 3, tilt: -2 },
+  { x: 4, y: -2, tilt: 1.8 },
+  { x: 8, y: 4, tilt: -1.4 },
+  { x: 5, y: -4, tilt: 2.4 },
+  { x: -4, y: 3, tilt: -2.5 },
+  { x: 7, y: -2, tilt: 1.2 }
+]
+const stampAngles: Record<string, number> = {
+  timeline: -122,
+  aicando: -82,
+  'agent-controller': -42,
+  aiy: -154,
+  markdowncando: -116,
+  paopao: -72
+}
 
-let animationFrame = 0
-let lastAnimationTime = 0
-let prefersReducedMotion = false
-let orbitResizeObserver: ResizeObserver | null = null
+let clearTimer = 0
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
 )
 
-function projectCoordinates(project: Project) {
-  const normalizedX = (project.x - 50) / ORBIT_RADIUS_X
-  const normalizedY = (project.y - 50) / ORBIT_RADIUS_Y
-  const radius = Math.hypot(normalizedX, normalizedY)
-  const initialAngle = Math.atan2(normalizedY, normalizedX)
-  const angle = initialAngle + orbitProgress.value * Math.PI * 2
-  const responsiveRadiusScale = Math.min(1, Math.max(0.82, orbitWidth.value / 520))
+const trayProjects = computed<Project[]>(() =>
+  projectOrder
+    .map((id) => projects.value.find((project) => project.id === id))
+    .filter((project): project is Project => project != null)
+)
 
+function projectCookieStyle(index: number) {
+  const layout = cookieLayouts[index % cookieLayouts.length]
   return {
-    x: 50 + Math.cos(angle) * ORBIT_RADIUS_X * radius * responsiveRadiusScale,
-    y: 50 + Math.sin(angle) * ORBIT_RADIUS_Y * radius * responsiveRadiusScale
+    '--cookie-x': `${layout.x}px`,
+    '--cookie-y': `${layout.y}px`,
+    '--cookie-tilt': `${layout.tilt}deg`
   }
 }
 
-function projectPosition(project: Project) {
-  const { x, y } = projectCoordinates(project)
-
-  return {
-    left: `${x}%`,
-    top: `${y}%`
-  }
+function cancelScheduledClear() {
+  window.clearTimeout(clearTimer)
 }
 
-function projectLabelPlacement(project: Project) {
-  const { x, y } = projectCoordinates(project)
-
-  if (y < 25) return 'bottom'
-  if (y > 75) return 'top'
-  if (x < 24) return 'right'
-  if (x > 76) return 'left'
-  return y < 50 ? 'bottom' : 'top'
-}
-
-function animateOrbit(timestamp: number) {
-  if (lastAnimationTime) {
-    const elapsed = Math.min(timestamp - lastAnimationTime, 100)
-    if (!prefersReducedMotion && !activeProjectId.value) {
-      orbitProgress.value = (orbitProgress.value + elapsed / ORBIT_DURATION_MS) % 1
-    }
-  }
-
-  lastAnimationTime = timestamp
-  animationFrame = window.requestAnimationFrame(animateOrbit)
-}
-
-onMounted(() => {
-  prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const updateOrbitWidth = () => {
-    orbitWidth.value = orbitRef.value?.clientWidth ?? 680
-  }
-
-  updateOrbitWidth()
-  if (orbitRef.value) {
-    orbitResizeObserver = new ResizeObserver(updateOrbitWidth)
-    orbitResizeObserver.observe(orbitRef.value)
-  }
-
-  if (!prefersReducedMotion) {
-    animationFrame = window.requestAnimationFrame(animateOrbit)
-  }
-})
-
-onBeforeUnmount(() => {
-  window.cancelAnimationFrame(animationFrame)
-  orbitResizeObserver?.disconnect()
-})
-
-function pointNeedleAt(clientX: number, clientY: number) {
-  const orbit = orbitRef.value
-  if (!orbit) return
-
-  const rect = orbit.getBoundingClientRect()
-  const centerX = rect.left + rect.width / 2
-  const centerY = rect.top + rect.height / 2
-  const pointerAngle = Math.atan2(clientY - centerY, clientX - centerX) * (180 / Math.PI)
-
-  // The source needle points roughly 52.5° above the positive x axis.
-  needleRotation.value = pointerAngle + 52.5
-}
-
-function activateProject(project: Project, event: Event) {
+function activateProject(project: Project) {
+  cancelScheduledClear()
   activeProjectId.value = project.id
-
-  const target = event.currentTarget as HTMLElement | null
-  if (!target) return
-
-  const rect = target.getBoundingClientRect()
-  pointNeedleAt(rect.left + rect.width / 2, rect.top + rect.height / 2)
-}
-
-function handleOrbitPointerMove(event: PointerEvent) {
-  if (activeProjectId.value || event.pointerType === 'touch') return
-  pointNeedleAt(event.clientX, event.clientY)
+  stampRotation.value = stampAngles[project.id] ?? 0
 }
 
 function clearProject() {
+  cancelScheduledClear()
   activeProjectId.value = null
-  touchPreviewProjectId.value = null
-  blockedTouchClickId.value = null
-  needleRotation.value = 0
+  stampRotation.value = 0
 }
 
-function handleOrbitPointerLeave(event: PointerEvent) {
+function scheduleProjectClear(event: PointerEvent) {
   if (event.pointerType === 'touch') return
+  cancelScheduledClear()
+  clearTimer = window.setTimeout(clearProject, 220)
+}
+
+function handleTraySurfaceClick(event: MouseEvent) {
+  if (event.target instanceof Element && event.target.closest('.project-cookie')) return
   clearProject()
 }
 
-function handleProjectPointerDown(project: Project, event: PointerEvent) {
-  if (event.pointerType !== 'touch') return
-
-  if (touchPreviewProjectId.value !== project.id) {
-    touchPreviewProjectId.value = project.id
-    blockedTouchClickId.value = project.id
-    activateProject(project, event)
-    return
-  }
-
-  blockedTouchClickId.value = null
-}
-
-function handleProjectClick(project: Project, event: MouseEvent) {
-  if (blockedTouchClickId.value !== project.id) return
-  event.preventDefault()
-  blockedTouchClickId.value = null
-}
-
-function handleOrbitFocusOut(event: FocusEvent) {
+function handleTrayFocusOut(event: FocusEvent) {
   const next = event.relatedTarget as Node | null
-  if (next && orbitRef.value?.contains(next)) return
+  if (next && trayStageRef.value?.contains(next)) return
   clearProject()
+}
+
+onBeforeUnmount(cancelScheduledClear)
+
+function isExternalLink(href: string) {
+  return /^https?:\/\//.test(href)
 }
 </script>
 
@@ -179,126 +109,118 @@ function handleOrbitFocusOut(event: FocusEvent) {
         </div>
       </div>
 
-      <figure class="project-orbit-figure" aria-labelledby="projects-title">
+      <figure class="project-tray-figure" aria-labelledby="projects-title">
         <h2 id="projects-title" class="sr-only">{{ content.projectsTitle }}</h2>
         <div
           id="projects"
-          ref="orbitRef"
-          class="project-orbit"
-          :class="{ 'is-previewing': activeProject }"
+          ref="trayStageRef"
+          class="project-tray-stage"
+          :class="{ 'has-selection': activeProject }"
           tabindex="-1"
-          @pointermove="handleOrbitPointerMove"
-          @pointerleave="handleOrbitPointerLeave"
-          @focusout="handleOrbitFocusOut"
-          @keydown.esc="clearProject"
+          @pointerenter="cancelScheduledClear"
+          @pointerleave="scheduleProjectClear"
+          @focusout="handleTrayFocusOut"
+          @keydown.esc.prevent="clearProject"
         >
-          <svg class="orbit-line orbit-line-back" viewBox="0 0 680 480" aria-hidden="true">
-            <ellipse cx="340" cy="240" rx="285" ry="158" />
-          </svg>
-
-          <div class="orbit-core" :class="{ 'is-previewing': activeProject }">
-            <Transition name="orbit-content" mode="out-in">
-              <a
-                v-if="activeProject"
-                :key="activeProject.id"
-                class="project-preview"
-                :href="activeProject.href"
-                target="_blank"
-                rel="noopener"
-                :aria-label="`打开 ${activeProject.name}`"
-              >
-                <span class="project-preview-media">
-                  <img
-                    class="project-preview-image"
-                    :class="{ 'is-contained': activeProject.imageFit === 'contain' }"
-                    :src="activeProject.image"
-                    :alt="`${activeProject.name} 项目预览`"
-                    width="720"
-                    height="378"
-                  />
-                  <img
-                    v-if="activeProject.overlayImage"
-                    class="project-preview-overlay"
-                    :src="activeProject.overlayImage"
-                    :alt="`${activeProject.name} Codex Micro 控制器`"
-                    width="564"
-                    height="564"
-                  />
-                </span>
-                <span class="project-preview-body">
-                  <span class="project-preview-heading">
-                    <img :src="activeProject.logo" alt="" width="28" height="28" />
-                    <span>
-                      <small>{{ activeProject.eyebrow }}</small>
-                      <strong>{{ activeProject.name }}</strong>
-                    </span>
+          <div class="project-tray" @click="handleTraySurfaceClick">
+            <div class="project-tray-paper">
+              <div class="project-cookie-grid">
+                <button
+                  v-for="(project, index) in trayProjects"
+                  :key="project.id"
+                  type="button"
+                  class="project-cookie"
+                  :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
+                  :style="projectCookieStyle(index)"
+                  :aria-label="`${project.name}：${project.description}`"
+                  :aria-controls="activeProjectId === project.id ? 'project-preview' : undefined"
+                  :aria-expanded="activeProjectId === project.id"
+                  @mouseenter="activateProject(project)"
+                  @focus="activateProject(project)"
+                  @click="activateProject(project)"
+                >
+                  <span class="project-cookie-visual" aria-hidden="true">
+                    <img
+                      v-if="project.id === 'timeline'"
+                      class="timeline-cookie"
+                      :src="project.logo"
+                      alt=""
+                      width="100"
+                      height="100"
+                    />
+                    <template v-else>
+                      <img
+                        class="project-cookie-shell"
+                        src="/images/home/projects/project-cookie-shell.svg"
+                        alt=""
+                        width="100"
+                        height="100"
+                      />
+                      <img class="project-cookie-logo" :src="project.logo" alt="" width="38" height="38" />
+                    </template>
                   </span>
-                  <span class="project-preview-description">{{ activeProject.description }}</span>
-                  <span class="project-preview-link">{{ content.previewAction }} <span aria-hidden="true">↗</span></span>
-                </span>
-              </a>
-
-              <div v-else key="compass" class="hero-compass" aria-hidden="true">
-                <svg viewBox="0 0 512 512" role="presentation">
-                  <defs>
-                    <mask id="home-ring-mask">
-                      <rect width="512" height="512" fill="black" />
-                      <circle cx="256" cy="256" r="256" fill="white" />
-                      <circle cx="256" cy="256" r="219" fill="black" />
-                    </mask>
-                    <mask id="home-needle-mask">
-                      <rect width="512" height="512" fill="black" />
-                      <path d="M212.369 226.171C212.918 224.593 213.948 223.226 215.314 222.263L335.811 137.289C342.167 132.807 350.533 139.112 347.977 146.457L299.509 285.708C298.959 287.287 297.93 288.653 296.564 289.617L176.066 374.59C169.711 379.072 161.344 372.767 163.9 365.422L212.369 226.171Z" fill="white" />
-                      <circle cx="256" cy="256" r="20" fill="white" />
-                    </mask>
-                  </defs>
-                  <circle cx="256" cy="256" r="219" fill="var(--home-surface)" />
-                  <image href="/avatar.png" width="512" height="512" mask="url(#home-ring-mask)" />
-                  <g
-                    class="hero-compass-needle"
-                    :style="{ transform: `rotate(${needleRotation}deg)` }"
-                  >
-                    <image href="/avatar.png" width="512" height="512" mask="url(#home-needle-mask)" />
-                  </g>
-                </svg>
+                  <span class="project-cookie-label">{{ project.name }}</span>
+                </button>
               </div>
-            </Transition>
-          </div>
 
-          <svg class="orbit-line orbit-line-front" viewBox="0 0 680 480" aria-hidden="true">
-            <path d="M55 240a285 158 0 0 0 570 0" />
-          </svg>
-
-          <div class="satellite-layer">
-            <div
-              v-for="project in projects"
-              :key="project.id"
-              class="satellite"
-              :class="[`satellite-${project.id}`, `label-${projectLabelPlacement(project)}`, { active: activeProjectId === project.id }]"
-              :style="projectPosition(project)"
-            >
-              <a
-                class="satellite-link"
-                :href="project.href"
-                target="_blank"
-                rel="noopener"
-                :aria-label="`${project.name}：${project.description}`"
-                @mouseenter="activateProject(project, $event)"
-                @focus="activateProject(project, $event)"
-                @pointerdown="handleProjectPointerDown(project, $event)"
-                @click="handleProjectClick(project, $event)"
+              <span
+                class="tray-maker-stamp"
+                :style="{ transform: `rotate(${stampRotation}deg)` }"
+                aria-hidden="true"
               >
-                <img :src="project.logo" alt="" width="38" height="38" />
-              </a>
-              <span class="satellite-label">{{ project.name }}</span>
+                <img src="/avatar.png" alt="" width="30" height="30" />
+              </span>
             </div>
           </div>
 
+          <Transition name="tray-ticket">
+            <aside
+              v-if="activeProject"
+              id="project-preview"
+              class="project-ticket"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span class="project-ticket-media">
+                <img
+                  class="project-ticket-image"
+                  :class="{ 'is-contained': activeProject.imageFit === 'contain' }"
+                  :src="activeProject.image"
+                  :alt="`${activeProject.name} 项目预览`"
+                  width="720"
+                  height="378"
+                />
+                <img
+                  v-if="activeProject.overlayImage"
+                  class="project-ticket-overlay"
+                  :src="activeProject.overlayImage"
+                  alt=""
+                  width="564"
+                  height="564"
+                />
+              </span>
+              <span class="project-ticket-copy">
+                <small>{{ activeProject.eyebrow }}</small>
+                <strong>{{ activeProject.name }}</strong>
+                <span>{{ activeProject.description }}</span>
+              </span>
+              <a
+                class="project-ticket-link"
+                :href="activeProject.href"
+                :target="isExternalLink(activeProject.href) ? '_blank' : undefined"
+                :rel="isExternalLink(activeProject.href) ? 'noopener' : undefined"
+                :aria-label="`打开 ${activeProject.name}`"
+              >
+                {{ content.previewAction }} <span aria-hidden="true">→</span>
+              </a>
+            </aside>
+          </Transition>
+
           <p class="sr-only" aria-live="polite">
-            {{ activeProject ? `${content.projectsTitle}: ${activeProject.name}` : content.orbitIdleAnnouncement }}
+            {{ activeProject ? `${content.projectsTitle}: ${activeProject.name}` : content.projectsIdleAnnouncement }}
           </p>
         </div>
-        <figcaption>{{ content.orbitCaption }}</figcaption>
+        <figcaption>{{ content.projectsCaption }}</figcaption>
       </figure>
     </section>
 
@@ -359,6 +281,28 @@ function handleOrbitFocusOut(event: FocusEvent) {
         </a>
       </div>
     </section>
+
+    <section class="home-section home-shell home-tools" aria-labelledby="tools-title">
+      <div class="section-heading home-tools-heading">
+        <div>
+          <h2 id="tools-title">{{ content.tools.title }}</h2>
+          <p>{{ content.tools.kicker }}</p>
+        </div>
+        <a :href="content.tools.action.href">{{ content.tools.action.label }} <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="home-tool-grid">
+        <a v-for="tool in tools" :key="tool.id" :href="tool.href">
+          <span class="home-tool-mark" aria-hidden="true">{{ tool.mark }}</span>
+          <span class="home-tool-copy">
+            <small>{{ tool.status }}</small>
+            <strong>{{ tool.name }}</strong>
+            <span>{{ tool.description }}</span>
+          </span>
+          <span class="home-tool-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -374,6 +318,12 @@ function handleOrbitFocusOut(event: FocusEvent) {
   --home-line-strong: #c8c2b8;
   --home-coral: #fb7370;
   --home-coral-hover: #d95d5a;
+  --tray-rim-light: #ead9bb;
+  --tray-rim-mid: #c9ac78;
+  --tray-rim-dark: #9b7949;
+  --tray-paper: #fff9ef;
+  --tray-paper-dot: rgb(145 104 48 / 3%);
+  --tray-shadow: rgb(80 55 25 / 14%);
   position: relative;
   min-height: 100vh;
   color: var(--home-ink);
@@ -384,7 +334,7 @@ function handleOrbitFocusOut(event: FocusEvent) {
   font-family: Inter, "Segoe UI Variable", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
 }
 
-:global(.dark) .gantrol-home {
+:global(.dark .gantrol-home) {
   --home-bg: #181715;
   --home-surface: #211f1c;
   --home-surface-muted: #292621;
@@ -395,6 +345,16 @@ function handleOrbitFocusOut(event: FocusEvent) {
   --home-line-strong: #575047;
   --home-coral: #ff8783;
   --home-coral-hover: #ff9c98;
+  --tray-rim-light: #7b6950;
+  --tray-rim-mid: #5f513f;
+  --tray-rim-dark: #3d342a;
+  --tray-paper: #342b22;
+  --tray-paper-dot: rgb(236 204 154 / 4%);
+  --tray-shadow: rgb(0 0 0 / 36%);
+  background:
+    radial-gradient(circle at 82% 12%, rgb(255 135 131 / 6%), transparent 25rem),
+    linear-gradient(180deg, rgb(33 31 28 / 72%), transparent 18rem),
+    var(--home-bg);
 }
 
 :global(.gantrol-home-page .VPContent),
@@ -467,6 +427,10 @@ function handleOrbitFocusOut(event: FocusEvent) {
   padding: 0 10px;
   color: #4a453e;
   font-size: 13px;
+}
+
+:global(.dark .gantrol-home-page .VPNavBarMenuLink) {
+  color: #d5cec4;
 }
 
 :global(.dark .gantrol-home-page .VPContent),
@@ -583,317 +547,385 @@ function handleOrbitFocusOut(event: FocusEvent) {
   color: var(--home-coral-hover);
 }
 
-.project-orbit-figure {
+.project-tray-figure {
   position: relative;
   margin: 0;
   min-width: 0;
 }
 
-.project-orbit-figure::before {
+.project-tray-figure::before {
   position: absolute;
-  top: 12%;
-  left: 14%;
-  width: 72%;
-  height: 72%;
-  border-radius: 50%;
-  background: rgb(255 254 251 / 58%);
-  filter: blur(26px);
+  top: 7%;
+  left: 8%;
+  width: 84%;
+  height: 70%;
+  border-radius: 28%;
+  background: rgb(255 248 235 / 62%);
+  filter: blur(32px);
   content: "";
   pointer-events: none;
 }
 
-.project-orbit {
+:global(.dark .project-tray-figure::before) {
+  background: rgb(159 111 54 / 8%);
+}
+
+.project-tray-stage {
   position: relative;
+  display: flex;
   width: 100%;
-  aspect-ratio: 680 / 480;
-  min-height: 430px;
+  min-height: 510px;
+  flex-direction: column;
+  align-items: center;
   scroll-margin-top: 90px;
+  isolation: isolate;
   outline: none;
 }
 
-.orbit-line {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.orbit-line ellipse,
-.orbit-line path {
-  fill: none;
-  stroke: var(--home-line-strong);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.orbit-line-back {
-  z-index: 1;
-  opacity: 0.86;
-}
-
-.orbit-line-front {
-  z-index: 3;
-}
-
-.orbit-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.project-tray {
+  position: relative;
   z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 370px;
-  height: 292px;
-  transform: translate(-50%, -50%);
+  width: min(100%, 640px);
+  aspect-ratio: 1.58;
+  flex: none;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-dark) 78%, var(--home-line));
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 70%), transparent 22%),
+    linear-gradient(145deg, var(--tray-rim-light), var(--tray-rim-mid) 58%, var(--tray-rim-dark));
+  box-shadow:
+    0 28px 44px var(--tray-shadow),
+    0 4px 8px rgb(80 55 25 / 10%),
+    inset 0 1px 1px rgb(255 255 255 / 72%);
+  transform: rotate(.35deg);
 }
 
-.orbit-core.is-previewing {
-  z-index: 4;
-}
-
-.hero-compass {
-  width: 190px;
-  height: 190px;
-}
-
-.hero-compass svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 18px 26px rgb(38 35 32 / 12%));
-}
-
-.hero-compass-needle {
-  transform-box: view-box;
-  transform-origin: 256px 256px;
-  transition: transform 180ms cubic-bezier(.2, 0, 0, 1);
-}
-
-.satellite-layer {
+.project-tray::before {
   position: absolute;
-  inset: 0;
+  inset: 7px;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-dark) 60%, transparent);
+  border-radius: 24px;
+  content: "";
   pointer-events: none;
 }
 
-.satellite {
-  position: absolute;
-  z-index: 5;
-  transform: translate(-50%, -50%);
-  pointer-events: auto;
-  will-change: left, top;
+.project-tray-paper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-dark) 28%, transparent);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 15% 12%, var(--tray-paper-dot) 0 1px, transparent 1.4px) 0 0 / 13px 13px,
+    radial-gradient(circle at 84% 65%, var(--tray-paper-dot) 0 1px, transparent 1.4px) 0 0 / 17px 17px,
+    var(--tray-paper);
+  box-shadow: inset 0 4px 12px rgb(93 65 29 / 7%);
 }
 
-.satellite-link {
+.project-cookie-grid {
+  position: absolute;
+  inset: 24px 34px 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 6px 14px;
+}
+
+.project-cookie {
+  position: relative;
+  width: 128px;
+  min-height: 132px;
+  padding: 0;
+  border: 0;
+  color: var(--home-ink);
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.project-cookie-visual {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
-  width: 58px;
-  height: 58px;
-  overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 50%;
-  background: var(--home-surface);
-  box-shadow: 0 12px 26px -20px rgb(38 35 32 / 45%);
-  transition: border-color 180ms, transform 180ms, box-shadow 180ms;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 3px;
+  opacity: 1;
+  filter: drop-shadow(0 7px 5px rgb(89 57 23 / 15%));
+  transform:
+    translate(var(--cookie-x, 0), var(--cookie-y, 0))
+    rotate(var(--cookie-tilt, 0deg));
+  transform-origin: 50% 56%;
+  transition:
+    transform 220ms cubic-bezier(.2, .8, .2, 1),
+    filter 220ms ease,
+    opacity 160ms ease;
 }
 
-.satellite-link img {
+.timeline-cookie,
+.project-cookie-shell {
+  position: absolute;
+  inset: 0;
   display: block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.satellite-aiy .satellite-link img {
-  width: 44px;
-  height: 44px;
-}
-
-.satellite-aicando .satellite-link img {
-  width: 42px;
-  height: 42px;
-}
-
-.satellite-markdowncando .satellite-link img {
-  width: 34px;
-  height: 34px;
-}
-
-.satellite.active {
-  z-index: 6;
-}
-
-.project-orbit.is-previewing .satellite:not(.active) .satellite-label {
-  opacity: 0;
-}
-
-.satellite.active .satellite-link,
-.satellite-link:hover,
-.satellite-link:focus-visible {
-  border-color: var(--home-coral);
-  box-shadow: 0 0 0 2px var(--home-coral), 0 12px 24px -18px rgb(38 35 32 / 45%);
-  transform: scale(1.06);
-  outline: none;
-}
-
-.satellite-label {
-  position: absolute;
-  display: block;
-  width: max-content;
-  max-width: 150px;
-  color: var(--home-secondary);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.3;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 120ms;
-}
-
-.label-bottom .satellite-label {
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.label-top .satellite-label {
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.label-right .satellite-label {
-  top: 50%;
-  left: calc(100% + 10px);
-  transform: translateY(-50%);
-}
-
-.label-left .satellite-label {
-  top: 50%;
-  right: calc(100% + 10px);
-  transform: translateY(-50%);
-}
-
-.project-preview {
-  display: block;
-  width: min(356px, 100%);
-  overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 14px;
-  color: var(--home-ink);
-  background: var(--home-surface);
-  box-shadow: 0 22px 54px -28px rgb(38 35 32 / 38%);
-  text-decoration: none;
-}
-
-.project-preview:hover {
-  border-color: var(--home-coral);
-  color: var(--home-ink);
-}
-
-.project-preview-media {
+.project-cookie-logo {
   position: relative;
+  z-index: 1;
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.project-cookie-aicando .project-cookie-logo {
+  width: 46px;
+  height: 46px;
+}
+
+.project-cookie-aiy .project-cookie-logo {
+  width: 45px;
+  height: 45px;
+}
+
+.project-cookie-markdowncando .project-cookie-logo {
+  width: 36px;
+  height: 36px;
+}
+
+.project-cookie::after {
+  position: absolute;
+  top: 78px;
+  left: 50%;
+  z-index: 0;
+  width: 66px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgb(111 69 25 / 14%);
+  filter: blur(6px);
+  opacity: 0;
+  content: "";
+  transform: translateX(-50%) scale(.55);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.project-cookie-label {
   display: block;
   width: 100%;
-  aspect-ratio: 720 / 378;
   overflow: hidden;
-  border-bottom: 1px solid var(--home-line);
+  color: var(--home-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 160ms ease, transform 220ms ease;
+}
+
+.project-cookie:hover .project-cookie-visual,
+.project-cookie:focus-visible .project-cookie-visual,
+.project-cookie.is-active .project-cookie-visual {
+  filter: drop-shadow(0 13px 8px rgb(89 57 23 / 21%));
+  transform:
+    translate(var(--cookie-x, 0), calc(var(--cookie-y, 0) - 8px))
+    rotate(0deg)
+    scale(1.045);
+}
+
+.project-cookie:hover::after,
+.project-cookie:focus-visible::after,
+.project-cookie.is-active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.project-cookie.is-active .project-cookie-label {
+  color: var(--home-coral-hover);
+  transform: translateY(1px);
+}
+
+.project-cookie:focus-visible {
+  border-radius: 16px;
+  outline: 2px solid var(--home-coral);
+  outline-offset: 2px;
+}
+
+.project-tray-stage.has-selection .project-cookie:not(.is-active) .project-cookie-visual {
+  opacity: .7;
+}
+
+.tray-maker-stamp {
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--home-coral) 72%, var(--tray-rim-mid));
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tray-paper) 88%, transparent);
+  opacity: .86;
+  transition: transform 260ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.tray-maker-stamp img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.project-ticket {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(84%, 520px);
+  min-height: 122px;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 15px;
+  margin-top: -34px;
+  padding: 45px 20px 16px;
+  border: 1px solid color-mix(in srgb, var(--tray-rim-mid) 52%, var(--home-line));
+  border-radius: 0 0 18px 18px;
+  color: var(--home-ink);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tray-rim-light) 52%, var(--home-surface)) 0 18px, var(--home-surface) 18px 100%);
+  box-shadow: 0 18px 32px rgb(76 49 20 / 11%);
+}
+
+.project-ticket-media {
+  position: relative;
+  display: block;
+  width: 96px;
+  height: 66px;
+  overflow: hidden;
+  border: 1px solid var(--home-line);
+  border-radius: 10px;
   background: var(--home-surface-muted);
 }
 
-.project-preview-image {
+.project-ticket-image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-preview-image.is-contained {
-  box-sizing: border-box;
-  padding: 32px;
+.project-ticket-image.is-contained {
+  padding: 9px;
   background: var(--home-surface);
   object-fit: contain;
 }
 
-.project-preview-overlay {
+.project-ticket-overlay {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 4px;
+  bottom: 4px;
   width: 34%;
   height: auto;
   aspect-ratio: 1;
-  border: 2px solid rgb(255 254 251 / 92%);
-  border-radius: 18px;
+  border: 1px solid rgb(255 254 251 / 90%);
+  border-radius: 6px;
   object-fit: cover;
-  box-shadow: 0 10px 24px -10px rgb(38 35 32 / 34%);
 }
 
-.project-preview-body {
-  display: block;
-  padding: 14px 16px 16px;
-}
-
-.project-preview-heading {
+.project-ticket-copy {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  min-width: 0;
+  flex-direction: column;
 }
 
-.project-preview-heading > img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: contain;
-}
-
-.project-preview-heading span {
-  display: grid;
-  gap: 2px;
-}
-
-.project-preview-heading small {
+.project-ticket-copy small {
+  overflow: hidden;
   color: var(--home-muted);
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.project-preview-heading strong {
+.project-ticket-copy strong {
+  margin-top: 2px;
+  overflow: hidden;
   color: var(--home-ink);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.project-preview-description {
-  display: block;
-  margin-top: 10px;
-  color: var(--home-secondary);
-  font-size: 12px;
-  line-height: 1.65;
-}
-
-.project-preview-link {
-  display: block;
-  margin-top: 10px;
-  color: var(--home-coral-hover);
+.project-ticket-copy > span {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 3px;
+  color: var(--home-muted);
   font-size: 11px;
-  font-weight: 600;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
-.orbit-content-enter-active,
-.orbit-content-leave-active {
-  transition: opacity 180ms cubic-bezier(.2, 0, 0, 1), transform 180ms cubic-bezier(.2, 0, 0, 1);
+.project-ticket-link {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 13px;
+  border: 1px solid color-mix(in srgb, var(--home-coral) 48%, var(--home-line));
+  border-radius: 999px;
+  color: var(--home-coral-hover);
+  background: color-mix(in srgb, var(--home-coral) 9%, var(--home-surface));
+  font-size: 11px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
-.orbit-content-enter-from,
-.orbit-content-leave-to {
+.project-ticket-link:hover {
+  border-color: var(--home-coral);
+  color: var(--home-coral-hover);
+  background: color-mix(in srgb, var(--home-coral) 15%, var(--home-surface));
+}
+
+.project-ticket-link:focus-visible {
+  outline: 2px solid var(--home-coral);
+  outline-offset: 3px;
+}
+
+.tray-ticket-enter-active,
+.tray-ticket-leave-active {
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.tray-ticket-enter-from,
+.tray-ticket-leave-to {
   opacity: 0;
-  transform: scale(.97);
+  transform: translateY(-54px) scale(.985);
 }
 
-.project-orbit-figure figcaption {
-  margin-top: -8px;
+:global(.dark .timeline-cookie),
+:global(.dark .project-cookie-shell) {
+  filter: brightness(.76) saturate(.82);
+}
+
+.project-tray-figure figcaption {
+  margin-top: -4px;
   color: var(--home-muted);
   font-size: 11px;
   text-align: center;
@@ -1052,11 +1084,98 @@ function handleOrbitFocusOut(event: FocusEvent) {
   border-color: var(--home-line);
 }
 
+.home-tools-heading {
+  align-items: center;
+}
+
+.home-tools-heading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.home-tools-heading > a {
+  color: var(--home-coral-hover);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-tool-grid > a {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 122px;
+  border: 1px solid var(--home-line);
+  border-radius: 16px;
+  padding: 18px;
+  color: var(--home-ink);
+  background: color-mix(in srgb, var(--home-surface) 82%, transparent);
+  text-decoration: none;
+  transition: border-color 180ms, background-color 180ms, transform 180ms;
+}
+
+.home-tool-grid > a:hover {
+  border-color: color-mix(in srgb, var(--home-coral) 58%, var(--home-line));
+  background: var(--home-surface);
+  transform: translateY(-2px);
+}
+
+.home-tool-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  color: var(--home-coral-hover);
+  background: color-mix(in srgb, var(--home-coral) 11%, var(--home-surface));
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.home-tool-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.home-tool-copy small {
+  color: var(--home-muted);
+  font-size: 10px;
+}
+
+.home-tool-copy strong {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.home-tool-copy > span {
+  margin-top: 5px;
+  color: var(--home-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.home-tool-arrow {
+  color: var(--home-coral-hover);
+  font-size: 15px;
+}
+
 .primary-action:focus-visible,
 .text-action:focus-visible,
-.project-preview:focus-visible,
 .direction-item:focus-visible,
-.popular-list a:focus-visible {
+.popular-list a:focus-visible,
+.home-tools-heading > a:focus-visible,
+.home-tool-grid > a:focus-visible {
   border-radius: 8px;
   outline: 2px solid var(--home-coral);
   outline-offset: 3px;
@@ -1079,10 +1198,6 @@ function handleOrbitFocusOut(event: FocusEvent) {
     grid-template-columns: minmax(300px, .8fr) minmax(480px, 1.2fr);
   }
 
-  .satellite-label {
-    font-size: 11px;
-  }
-
   .direction-item {
     grid-template-columns: 40px minmax(0, 1fr);
   }
@@ -1103,7 +1218,7 @@ function handleOrbitFocusOut(event: FocusEvent) {
     max-width: none;
   }
 
-  .project-orbit-figure {
+  .project-tray-figure {
     width: min(680px, 100%);
     margin: 12px auto 0;
   }
@@ -1133,62 +1248,110 @@ function handleOrbitFocusOut(event: FocusEvent) {
     font-size: 17px;
   }
 
-  .project-orbit {
-    min-height: 0;
-    aspect-ratio: 1;
+  .project-tray-figure {
+    width: min(350px, 100%);
   }
 
-  .orbit-line {
-    display: block;
+  .project-tray-stage {
+    min-height: 650px;
   }
 
-  .orbit-core {
-    width: min(292px, 85%);
-    height: min(292px, 85%);
+  .project-tray {
+    width: min(100%, 340px);
+    aspect-ratio: .71;
+    padding: 12px;
+    border-radius: 26px;
   }
 
-  .hero-compass {
-    width: 138px;
-    height: 138px;
+  .project-tray::before {
+    inset: 5px;
+    border-radius: 21px;
   }
 
-  .project-preview {
-    width: min(286px, 100%);
+  .project-tray-paper {
+    border-radius: 17px;
   }
 
-  .satellite-layer {
-    position: absolute;
+  .project-cookie-grid {
+    inset: 25px 14px 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 0 4px;
   }
 
-  .satellite {
-    position: absolute;
-    transform: translate(-50%, -50%);
+  .project-cookie {
+    width: 118px;
+    min-height: 118px;
   }
 
-  .satellite-link {
-    width: 48px;
-    height: 48px;
+  .project-cookie-visual {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 2px;
   }
 
-  .satellite-link img {
+  .project-cookie-logo {
+    width: 31px;
+    height: 31px;
+  }
+
+  .project-cookie-aicando .project-cookie-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .project-cookie-aiy .project-cookie-logo {
+    width: 37px;
+    height: 37px;
+  }
+
+  .project-cookie-markdowncando .project-cookie-logo {
     width: 30px;
     height: 30px;
   }
 
-  .satellite-aiy .satellite-link img,
-  .satellite-aicando .satellite-link img {
-    width: 36px;
-    height: 36px;
+  .project-cookie::after {
+    top: 66px;
+    width: 58px;
   }
 
-  .satellite-label {
-    max-width: 96px;
-    font-size: 9px;
-    text-align: center;
+  .project-cookie-label {
+    font-size: 11px;
   }
 
-  .project-orbit-figure figcaption {
-    margin-top: 4px;
+  .tray-maker-stamp {
+    right: 12px;
+    bottom: 10px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .tray-maker-stamp img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .project-ticket {
+    width: 94%;
+    min-height: 164px;
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 12px;
+    margin-top: -28px;
+    padding: 39px 15px 15px;
+  }
+
+  .project-ticket-media {
+    width: 62px;
+    height: 62px;
+  }
+
+  .project-ticket-link {
+    grid-column: 1 / -1;
+    min-height: 40px;
+  }
+
+  .project-tray-figure figcaption {
+    margin-top: 0;
   }
 
   .home-section {
@@ -1197,7 +1360,8 @@ function handleOrbitFocusOut(event: FocusEvent) {
   }
 
   .direction-grid,
-  .popular-list {
+  .popular-list,
+  .home-tool-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1212,6 +1376,18 @@ function handleOrbitFocusOut(event: FocusEvent) {
   .popular-list a,
   .popular-list a:first-child {
     padding: 17px 16px;
+  }
+
+  .home-tools-heading {
+    align-items: flex-end;
+  }
+
+  .home-tools-heading > div {
+    display: block;
+  }
+
+  .home-tools-heading > div p {
+    margin-top: 6px;
   }
 
 }
@@ -1233,11 +1409,12 @@ function handleOrbitFocusOut(event: FocusEvent) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-compass-needle,
-  .satellite-link,
+  .project-cookie-visual,
+  .project-cookie::after,
+  .tray-maker-stamp,
   .primary-action,
-  .orbit-content-enter-active,
-  .orbit-content-leave-active {
+  .tray-ticket-enter-active,
+  .tray-ticket-leave-active {
     transition: none;
   }
 }
