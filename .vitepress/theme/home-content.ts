@@ -34,6 +34,7 @@ type ToolContent = {
   description: string
   href: string
   mark: string
+  logo: string
   status: string
 }
 
@@ -113,6 +114,7 @@ function tools(locale: HomeLocale): ToolContent[] {
       description: copy.tagline,
       href: entry.paths[locale],
       mark: entry.mark,
+      logo: entry.logo,
       status: copy.statusLabel
     }
   })

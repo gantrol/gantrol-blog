@@ -12,6 +12,7 @@ const tools = computed(() => content.value.tools.items)
 type Project = HomeContent['projects'][number]
 
 const trayStageRef = ref<HTMLElement | null>(null)
+const projectTicketRef = ref<HTMLElement | null>(null)
 const activeProjectId = ref<string | null>(null)
 const stampRotation = ref(0)
 const trayJoltPhase = ref<'a' | 'b'>('a')
@@ -35,7 +36,19 @@ const stampAngles: Record<string, number> = {
 }
 
 let clearTimer = 0
+let resumeProjectHoverFrame = 0
+let isProjectHoverSuspended = false
+let pendingProjectTicketRevealId: string | null = null
+let lastEnteredProjectId: string | null = null
 let lastProjectPointerType: PointerEvent['pointerType'] | null = null
+let lastProjectTouchAt = 0
+let ignoreProjectClickUntil = 0
+let projectTouchStart: {
+  pointerId: number
+  projectId: string
+  clientX: number
+  clientY: number
+} | null = null
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
@@ -60,6 +73,38 @@ function cancelScheduledClear() {
   window.clearTimeout(clearTimer)
 }
 
+function releaseProjectHoverSuspension() {
+  window.cancelAnimationFrame(resumeProjectHoverFrame)
+  resumeProjectHoverFrame = 0
+  isProjectHoverSuspended = false
+}
+
+// Scrolling can move a different cookie under a stationary pointer and emit mouseenter.
+function suspendProjectHoverUntilScrollSettles() {
+  releaseProjectHoverSuspension()
+  isProjectHoverSuspended = true
+
+  const startedAt = performance.now()
+  let lastScrollTop = window.scrollY
+  let stableFrames = 0
+
+  const checkScrollPosition = (now: number) => {
+    const scrollTop = window.scrollY
+    stableFrames = Math.abs(scrollTop - lastScrollTop) < 0.5 ? stableFrames + 1 : 0
+    lastScrollTop = scrollTop
+
+    if ((now - startedAt >= 100 && stableFrames >= 3) || now - startedAt >= 1500) {
+      resumeProjectHoverFrame = 0
+      isProjectHoverSuspended = false
+      return
+    }
+
+    resumeProjectHoverFrame = window.requestAnimationFrame(checkScrollPosition)
+  }
+
+  resumeProjectHoverFrame = window.requestAnimationFrame(checkScrollPosition)
+}
+
 function activateProject(project: Project) {
   cancelScheduledClear()
 
@@ -73,12 +118,14 @@ function activateProject(project: Project) {
 
 function clearProject() {
   cancelScheduledClear()
+  pendingProjectTicketRevealId = null
   activeProjectId.value = null
   stampRotation.value = 0
 }
 
 function scheduleProjectClear(event: PointerEvent) {
-  if (event.pointerType === 'touch') return
+  if (event.pointerType === 'touch' || isProjectHoverSuspended) return
+  pendingProjectTicketRevealId = null
   cancelScheduledClear()
   clearTimer = window.setTimeout(clearProject, 220)
 }
@@ -88,12 +135,121 @@ function handleTraySurfaceClick(event: MouseEvent) {
   clearProject()
 }
 
-function rememberProjectPointer(event: PointerEvent) {
+function handleProjectPointerDown(event: PointerEvent, project: Project) {
   lastProjectPointerType = event.pointerType
+
+  if (event.pointerType !== 'touch') {
+    projectTouchStart = null
+    return
+  }
+
+  ignoreProjectClickUntil = 0
+  projectTouchStart = {
+    pointerId: event.pointerId,
+    projectId: project.id,
+    clientX: event.clientX,
+    clientY: event.clientY
+  }
+}
+
+function revealProjectTicketIfNeeded(selectedProjectId: string) {
+  if (activeProjectId.value !== selectedProjectId) return
+
+  const ticket = projectTicketRef.value
+  if (!ticket) return
+
+  const rect = ticket.getBoundingClientRect()
+  const viewport = window.visualViewport
+  const viewportTop = viewport?.offsetTop ?? 0
+  const viewportBottom = viewportTop + (viewport?.height ?? window.innerHeight)
+  const isVisible = rect.top >= viewportTop && rect.bottom <= viewportBottom
+
+  if (isVisible) return
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  suspendProjectHoverUntilScrollSettles()
+  ticket.scrollIntoView({
+    behavior: reduceMotion ? 'auto' : 'smooth',
+    block: 'nearest',
+    inline: 'nearest'
+  })
+}
+
+function activateProjectAndReveal(project: Project) {
+  const isSettledTicket = activeProjectId.value === project.id &&
+    lastEnteredProjectId === project.id
+
+  pendingProjectTicketRevealId = project.id
+  activateProject(project)
+
+  if (!isSettledTicket) return
+
+  pendingProjectTicketRevealId = null
+  revealProjectTicketIfNeeded(project.id)
+}
+
+function handleProjectTicketAfterEnter(element: Element) {
+  const enteredProjectId = (element as HTMLElement).dataset.projectId ?? null
+  lastEnteredProjectId = enteredProjectId
+
+  if (!enteredProjectId ||
+    activeProjectId.value !== enteredProjectId ||
+    pendingProjectTicketRevealId !== enteredProjectId) return
+
+  pendingProjectTicketRevealId = null
+  revealProjectTicketIfNeeded(enteredProjectId)
+}
+
+function handleProjectPointerUp(event: PointerEvent, project: Project) {
+  if (event.pointerType !== 'touch') return
+
+  const touchStart = projectTouchStart
+  projectTouchStart = null
+  const moved = !touchStart ||
+    touchStart.pointerId !== event.pointerId ||
+    touchStart.projectId !== project.id ||
+    Math.hypot(event.clientX - touchStart.clientX, event.clientY - touchStart.clientY) > 12
+
+  if (moved) {
+    lastProjectPointerType = null
+    ignoreProjectClickUntil = Date.now() + 1000
+    return
+  }
+
+  event.preventDefault()
+  lastProjectTouchAt = Date.now()
+  ignoreProjectClickUntil = 0
+  lastProjectPointerType = null
+  activateProjectAndReveal(project)
+}
+
+function handleProjectPointerCancel(event: PointerEvent) {
+  if (event.pointerType !== 'touch' || projectTouchStart?.pointerId !== event.pointerId) return
+
+  projectTouchStart = null
+  lastProjectPointerType = null
+  ignoreProjectClickUntil = Date.now() + 1000
+}
+
+function handleProjectMouseEnter(project: Project) {
+  if (isProjectHoverSuspended) return
+  activateProjectAndReveal(project)
 }
 
 function handleProjectClick(event: MouseEvent, project: Project) {
-  const isTouch = lastProjectPointerType === 'touch' ||
+  if (Date.now() < ignoreProjectClickUntil) {
+    event.preventDefault()
+    ignoreProjectClickUntil = 0
+    lastProjectPointerType = null
+    return
+  }
+
+  const pointerType = 'pointerType' in event
+    ? (event as PointerEvent).pointerType
+    : null
+  const isTouch = pointerType === 'touch' ||
+    lastProjectPointerType === 'touch' ||
+    Date.now() - lastProjectTouchAt < 1000 ||
     (typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
 
   lastProjectPointerType = null
@@ -101,7 +257,7 @@ function handleProjectClick(event: MouseEvent, project: Project) {
   if (!isTouch) return
 
   event.preventDefault()
-  activateProject(project)
+  activateProjectAndReveal(project)
 }
 
 function handleTrayFocusOut(event: FocusEvent) {
@@ -110,7 +266,10 @@ function handleTrayFocusOut(event: FocusEvent) {
   clearProject()
 }
 
-onBeforeUnmount(cancelScheduledClear)
+onBeforeUnmount(() => {
+  cancelScheduledClear()
+  releaseProjectHoverSuspension()
+})
 
 function isExternalLink(href: string) {
   return /^https?:\/\//.test(href)
@@ -164,9 +323,11 @@ function isExternalLink(href: string) {
                     :aria-label="`${project.name}：${project.description}`"
                     :aria-expanded="activeProjectId === project.id"
                     aria-controls="project-preview"
-                    @pointerdown="rememberProjectPointer"
+                    @pointerdown="handleProjectPointerDown($event, project)"
+                    @pointerup="handleProjectPointerUp($event, project)"
+                    @pointercancel="handleProjectPointerCancel"
                     @click="handleProjectClick($event, project)"
-                    @mouseenter="activateProject(project)"
+                    @mouseenter="handleProjectMouseEnter(project)"
                     @focus="activateProject(project)"
                   >
                     <span class="project-cookie-visual" aria-hidden="true">
@@ -203,12 +364,14 @@ function isExternalLink(href: string) {
               </div>
             </div>
 
-            <Transition name="tray-ticket" mode="out-in">
+            <Transition name="tray-ticket" mode="out-in" @after-enter="handleProjectTicketAfterEnter">
               <aside
                 v-if="activeProject"
                 :key="activeProject.id"
                 id="project-preview"
+                ref="projectTicketRef"
                 class="project-ticket"
+                :data-project-id="activeProject.id"
                 aria-live="polite"
                 aria-atomic="true"
               >
@@ -230,13 +393,6 @@ function isExternalLink(href: string) {
                     height="564"
                   />
                 </span>
-                <span class="project-ticket-copy">
-                  <span class="project-ticket-title">
-                    <strong>{{ activeProject.name }}</strong>
-                    <small>{{ activeProject.eyebrow }}</small>
-                  </span>
-                  <span>{{ activeProject.description }}</span>
-                </span>
                 <a
                   class="project-ticket-link"
                   :href="activeProject.href"
@@ -244,7 +400,6 @@ function isExternalLink(href: string) {
                   :rel="isExternalLink(activeProject.href) ? 'noopener' : undefined"
                   :aria-label="`${content.previewAction} ${activeProject.name}`"
                 >
-                  {{ content.previewAction }}
                   <span class="project-ticket-link-arrow" aria-hidden="true">↗</span>
                 </a>
               </aside>
@@ -273,19 +428,33 @@ function isExternalLink(href: string) {
           :class="{ 'direction-item-muted': !direction.href }"
           :href="direction.href"
         >
-          <span class="direction-icon" aria-hidden="true">
+          <span
+            class="direction-icon"
+            :class="{ 'direction-icon-aicando': direction.id === 'ai' }"
+            aria-hidden="true"
+          >
             <svg v-if="direction.id === 'software'" viewBox="0 0 32 32">
               <rect x="3.5" y="5" width="22" height="17" rx="4" />
               <path d="M4 10h21M9.5 14.5l-3 2.5 3 2.5M14 14.5l3 2.5-3 2.5" />
               <circle cx="25" cy="24" r="4" />
               <path d="M25 18.5v2M25 27.5v2M19.5 24h2M28.5 24h2" />
             </svg>
-            <svg v-else-if="direction.id === 'ai'" viewBox="0 0 32 32">
-              <path d="M16 3.5c.7 6.1 3.9 9.3 10 10-6.1.7-9.3 3.9-10 10-.7-6.1-3.9-9.3-10-10 6.1-.7 9.3-3.9 10-10Z" />
-              <circle cx="7" cy="25" r="2.5" />
-              <circle cx="25" cy="25" r="2.5" />
-              <path d="M9.5 25h13" />
-            </svg>
+            <template v-else-if="direction.id === 'ai'">
+              <img
+                class="direction-aicando-cookie"
+                src="/images/home/projects/project-cookie-shell.svg"
+                alt=""
+                width="44"
+                height="44"
+              />
+              <img
+                class="direction-aicando-logo"
+                src="/images/home/projects/aicando-logo.webp"
+                alt=""
+                width="22"
+                height="22"
+              />
+            </template>
             <svg v-else viewBox="0 0 32 32">
               <path d="M5 6.5h16a5 5 0 0 1 5 5v5a5 5 0 0 1-5 5h-7l-5.5 4v-4H5a5 5 0 0 1-5-5v-5a5 5 0 0 1 5-5Z" transform="translate(3)" />
               <path d="M12 13.5c1.2-2.1 4.3-1.2 4.3 1.1 0-2.3 3.1-3.2 4.3-1.1 1.5 2.6-1.3 5-4.3 7-3-2-5.8-4.4-4.3-7Z" />
@@ -326,8 +495,17 @@ function isExternalLink(href: string) {
       </div>
 
       <div class="home-tool-grid">
-        <a v-for="tool in tools" :key="tool.id" :href="tool.href">
-          <span class="home-tool-mark" aria-hidden="true">{{ tool.mark }}</span>
+        <a
+          v-for="tool in tools"
+          :key="tool.id"
+          :class="`home-tool-${tool.id}`"
+          :href="tool.href"
+          :target="isExternalLink(tool.href) ? '_blank' : undefined"
+          :rel="isExternalLink(tool.href) ? 'noopener' : undefined"
+        >
+          <span class="home-tool-mark" aria-hidden="true">
+            <img :src="tool.logo" :alt="`${tool.name} logo`" width="48" height="48" />
+          </span>
           <span class="home-tool-copy">
             <small>{{ tool.status }}</small>
             <strong>{{ tool.name }}</strong>
@@ -859,24 +1037,8 @@ function isExternalLink(href: string) {
     inset 0 1px 1px rgb(255 255 255 / 72%);
   transform: translateX(-50%) rotate(-.18deg);
   transform-origin: 50% 0;
+  scroll-margin-block: 88px 20px;
   isolation: isolate;
-}
-
-.project-ticket::after {
-  position: absolute;
-  z-index: 1;
-  inset: 54% 9px 9px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, transparent, rgb(10 9 9 / 46%) 26%, rgb(10 9 9 / 86%));
-  opacity: 1;
-  content: "";
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-.project-ticket:focus-within::after,
-.project-ticket:hover::after {
-  opacity: 0;
 }
 
 .project-ticket-media {
@@ -920,52 +1082,6 @@ function isExternalLink(href: string) {
   border-radius: 13px;
   box-shadow: 0 9px 24px rgb(0 0 0 / 22%);
   object-fit: cover;
-}
-
-.project-ticket-copy {
-  position: absolute;
-  z-index: 2;
-  right: 22px;
-  bottom: 18px;
-  left: 22px;
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 5px;
-  color: #fff;
-  text-shadow: 0 1px 8px rgb(0 0 0 / 52%);
-}
-
-.project-ticket-title {
-  display: flex;
-  min-width: 0;
-  align-items: baseline;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-.project-ticket-title strong {
-  color: #fff;
-  font-size: clamp(17px, 2.1vw, 22px);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.project-ticket-title small {
-  color: rgb(255 255 255 / 72%);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .02em;
-}
-
-.project-ticket-copy > span:last-child {
-  display: -webkit-box;
-  overflow: hidden;
-  color: rgb(255 255 255 / 86%);
-  font-size: 13px;
-  line-height: 1.5;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .project-ticket-link {
@@ -1149,6 +1265,35 @@ function isExternalLink(href: string) {
   stroke-linejoin: round;
 }
 
+.direction-icon-aicando {
+  position: relative;
+  background: transparent;
+}
+
+.direction-aicando-cookie,
+.direction-aicando-logo {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+}
+
+.direction-aicando-cookie {
+  inset: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.direction-aicando-logo {
+  inset: 50% auto auto 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+}
+
+:global(.dark .direction-aicando-cookie) {
+  filter: brightness(.76) saturate(.82);
+}
+
 .direction-copy {
   display: grid;
   gap: 8px;
@@ -1287,6 +1432,20 @@ function isExternalLink(href: string) {
   background: color-mix(in srgb, var(--home-coral) 11%, var(--home-surface));
   font-size: 18px;
   font-weight: 650;
+}
+
+.home-tool-mark img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 14px;
+  transform: rotate(0deg);
+  transition: transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.home-tool-punctuation:hover .home-tool-mark img {
+  transform: rotate(360deg);
 }
 
 .home-tool-copy {
@@ -1490,26 +1649,6 @@ function isExternalLink(href: string) {
     right: 17px;
     min-height: 34px;
     padding: 0 11px 0 13px;
-    font-size: 11px;
-  }
-
-  .project-ticket-copy {
-    right: 14px;
-    bottom: 13px;
-    left: 14px;
-    gap: 3px;
-  }
-
-  .project-ticket-title {
-    gap: 7px;
-  }
-
-  .project-ticket-title strong {
-    font-size: 16px;
-  }
-
-  .project-ticket-title small,
-  .project-ticket-copy > span:last-child {
     font-size: 11px;
   }
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Input Hint</title>
+  <rect width="256" height="256" rx="54" fill="#fcfdfd" stroke="#d2d8d4" stroke-width="8"/>
+  <rect x="64" y="59" width="45" height="138" rx="22" fill="#c63b40"/>
+  <rect x="147" y="59" width="45" height="138" rx="22" fill="#247a53"/>
+</svg>

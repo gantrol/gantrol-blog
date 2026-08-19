@@ -11,6 +11,7 @@ type CatalogCopy = {
 type CatalogEntry = {
   id: string
   mark: string
+  logo: string
   paths: Record<CatalogLocale, string>
   copy: Record<CatalogLocale, CatalogCopy>
 }
@@ -73,7 +74,8 @@ const entries: CatalogEntry[] = [
   {
     id: 'input-hint',
     mark: '⌨',
-    paths: { zh: '/tools/input-hint/', en: '/en/tools/input-hint/' },
+    logo: '/images/home/tools/input-hint-logo.svg',
+    paths: { zh: 'https://github.com/gantrol/input-hint', en: 'https://github.com/gantrol/input-hint' },
     copy: {
       zh: { name: 'Input Hint', eyebrow: '输入辅助', summary: '显示当前输入法状态的小工具。', tagline: '随时知道当前输入状态', statusLabel: '可用' },
       en: { name: 'Input Hint', eyebrow: 'Input helper', summary: 'A small tool that shows your input method state.', tagline: 'Know your input state at a glance', statusLabel: 'Available' }
@@ -82,7 +84,8 @@ const entries: CatalogEntry[] = [
   {
     id: 'codex-reset-watch',
     mark: '↻',
-    paths: { zh: '/tools/codex-reset-watch/', en: '/en/tools/codex-reset-watch/' },
+    logo: '/images/home/tools/codex-reset-watch-logo.svg',
+    paths: { zh: 'https://github.com/gantrol/codex-reset-watch', en: 'https://github.com/gantrol/codex-reset-watch' },
     copy: {
       zh: { name: 'Codex Reset Watch', eyebrow: '开发工具', summary: '监视 Codex 使用状态与重置时间。', tagline: '掌握你的 Codex 配额', statusLabel: '可用' },
       en: { name: 'Codex Reset Watch', eyebrow: 'Dev tool', summary: 'Monitor Codex usage and reset times.', tagline: 'Keep track of your Codex quota', statusLabel: 'Available' }
@@ -91,7 +94,8 @@ const entries: CatalogEntry[] = [
   {
     id: 'punctuation',
     mark: '，',
-    paths: { zh: '/tools/punctuation/', en: '/en/tools/punctuation/' },
+    logo: '/images/home/tools/punctuation-logo.svg',
+    paths: { zh: 'https://p.gantrol.com/', en: 'https://p.gantrol.com/' },
     copy: {
       zh: { name: '标点转换', eyebrow: '文字工具', summary: '快速处理中英文标点和格式。', tagline: '让标点转换更简单', statusLabel: '可用' },
       en: { name: 'Punctuation', eyebrow: 'Writing tool', summary: 'Quickly convert Chinese and English punctuation.', tagline: 'Simplify punctuation conversion', statusLabel: 'Available' }
