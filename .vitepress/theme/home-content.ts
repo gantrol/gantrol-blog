@@ -116,7 +116,7 @@ function project(id: string, locale: HomeLocale, assets: ProjectAsset): ProjectC
 }
 
 function tools(locale: HomeLocale): ToolContent[] {
-  return ['input-hint', 'codex-reset-watch', 'punctuation'].map((id) => {
+  return ['input-hint', 'codex-reset-watch', 'punctuation', 'math-format'].map((id) => {
     const entry = getCatalogEntry(id)
     const copy = entry.copy[locale]
 
@@ -137,7 +137,7 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
     locale: 'zh',
     author: '黄健楸 · GANTROL',
     title: '计算机心理学',
-    primaryAction: { label: '阅读文章', href: '/articles/' },
+    primaryAction: { label: '阅读文章', href: '#popular' },
     secondaryAction: { label: 'GitHub', href: 'https://github.com/gantrol' },
     projectsTitle: '作品',
     previewAction: '打开网站',
@@ -195,7 +195,7 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
     locale: 'en',
     author: 'GANTROL · HUANG JIANQIU',
     title: 'Computer Psychology',
-    primaryAction: { label: 'Read articles', href: '/en/articles/' },
+    primaryAction: { label: 'Read articles', href: '#popular' },
     secondaryAction: { label: 'GitHub', href: 'https://github.com/gantrol' },
     projectsTitle: 'Projects',
     previewAction: 'Open site',

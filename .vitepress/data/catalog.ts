@@ -100,6 +100,31 @@ const entries: CatalogEntry[] = [
       zh: { name: '标点转换', eyebrow: '文字工具', summary: '快速处理中英文标点和格式。', tagline: '让标点转换更简单', statusLabel: '可用' },
       en: { name: 'Punctuation', eyebrow: 'Writing tool', summary: 'Quickly convert Chinese and English punctuation.', tagline: 'Simplify punctuation conversion', statusLabel: 'Available' }
     }
+  },
+  {
+    id: 'math-format',
+    mark: '$$',
+    logo: '/images/home/tools/math-format-logo.svg',
+    paths: {
+      zh: 'https://www.aicando.xyz/chatgpt/gpt4o/math-format',
+      en: 'https://www.aicando.xyz/chatgpt/gpt4o/math-format'
+    },
+    copy: {
+      zh: {
+        name: 'ChatGPT Markdown 数学公式格式整理器',
+        eyebrow: 'Markdown 工具',
+        summary: '把 ChatGPT 数学公式分隔符转成 Markdown 常用格式。',
+        tagline: '一键整理 ChatGPT 数学公式格式',
+        statusLabel: '可用'
+      },
+      en: {
+        name: 'ChatGPT Math Format',
+        eyebrow: 'Markdown tool',
+        summary: 'Convert ChatGPT math delimiters to common Markdown syntax.',
+        tagline: 'Fix ChatGPT math delimiters for Markdown',
+        statusLabel: 'Available'
+      }
+    }
   }
 ]
 

@@ -50,6 +50,10 @@ function nav(): DefaultTheme.NavItem[] {
         { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
         { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
         {
+          text: "ChatGPT Markdown 数学公式格式整理器",
+          link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+        },
+        {
           text: "Cyberchef：小工具箱",
           link: "https://gchq.github.io/CyberChef",
         },
@@ -136,6 +140,10 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
         items: [
           { text: "Markdown能做！", link: "https://github.com/gantrol/MarkdownCanDo" },
           { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
+          {
+            text: "ChatGPT Markdown 数学公式格式整理器",
+            link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+          },
           {
             text: "Cyberchef：小工具箱",
             link: "https://gchq.github.io/CyberChef",
