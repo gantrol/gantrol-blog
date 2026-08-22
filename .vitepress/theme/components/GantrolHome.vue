@@ -14,8 +14,8 @@ type Project = HomeContent['projects'][number]
 const trayStageRef = ref<HTMLElement | null>(null)
 const projectTicketRef = ref<HTMLElement | null>(null)
 const activeProjectId = ref<string | null>(null)
+const pinnedProjectId = ref<string | null>(null)
 const stampRotation = ref(0)
-const trayJoltPhase = ref<'a' | 'b'>('a')
 
 const projectOrder = ['timeline', 'aicando', 'agent-controller', 'aiy', 'markdowncando', 'paopao']
 const cookieLayouts = [
@@ -36,10 +36,8 @@ const stampAngles: Record<string, number> = {
 }
 
 let clearTimer = 0
-let resumeProjectHoverFrame = 0
-let isProjectHoverSuspended = false
 let pendingProjectTicketRevealId: string | null = null
-let lastEnteredProjectId: string | null = null
+let isProjectTicketEntering = false
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
@@ -64,61 +62,26 @@ function cancelScheduledClear() {
   window.clearTimeout(clearTimer)
 }
 
-function releaseProjectHoverSuspension() {
-  window.cancelAnimationFrame(resumeProjectHoverFrame)
-  resumeProjectHoverFrame = 0
-  isProjectHoverSuspended = false
-}
-
-// Scrolling can move a different cookie under a stationary pointer and emit mouseenter.
-function suspendProjectHoverUntilScrollSettles() {
-  releaseProjectHoverSuspension()
-  isProjectHoverSuspended = true
-
-  const startedAt = performance.now()
-  let lastScrollTop = window.scrollY
-  let stableFrames = 0
-
-  const checkScrollPosition = (now: number) => {
-    const scrollTop = window.scrollY
-    stableFrames = Math.abs(scrollTop - lastScrollTop) < 0.5 ? stableFrames + 1 : 0
-    lastScrollTop = scrollTop
-
-    if ((now - startedAt >= 100 && stableFrames >= 3) || now - startedAt >= 1500) {
-      resumeProjectHoverFrame = 0
-      isProjectHoverSuspended = false
-      return
-    }
-
-    resumeProjectHoverFrame = window.requestAnimationFrame(checkScrollPosition)
-  }
-
-  resumeProjectHoverFrame = window.requestAnimationFrame(checkScrollPosition)
-}
-
 function activateProject(project: Project) {
   cancelScheduledClear()
-
-  if (activeProjectId.value !== project.id) {
-    trayJoltPhase.value = trayJoltPhase.value === 'a' ? 'b' : 'a'
-  }
-
   activeProjectId.value = project.id
-  stampRotation.value = stampAngles[project.id] ?? 0
 }
 
 function clearProject() {
   cancelScheduledClear()
   pendingProjectTicketRevealId = null
+  pinnedProjectId.value = null
   activeProjectId.value = null
   stampRotation.value = 0
 }
 
 function scheduleProjectClear(event: PointerEvent) {
-  if (event.pointerType === 'touch' || isProjectHoverSuspended) return
+  if (event.pointerType === 'touch' || pinnedProjectId.value) return
   pendingProjectTicketRevealId = null
   cancelScheduledClear()
-  clearTimer = window.setTimeout(clearProject, 220)
+  clearTimer = window.setTimeout(() => {
+    if (!pinnedProjectId.value) clearProject()
+  }, 220)
 }
 
 function handleTraySurfaceClick(event: MouseEvent) {
@@ -141,7 +104,6 @@ function revealProjectTicketIfNeeded(selectedProjectId: string) {
   if (isVisible) return
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  suspendProjectHoverUntilScrollSettles()
   ticket.scrollIntoView({
     behavior: reduceMotion ? 'auto' : 'smooth',
     block: 'nearest',
@@ -149,46 +111,76 @@ function revealProjectTicketIfNeeded(selectedProjectId: string) {
   })
 }
 
-function activateProjectAndReveal(project: Project) {
-  const isSettledTicket = activeProjectId.value === project.id &&
-    lastEnteredProjectId === project.id
+function pinProject(project: Project) {
+  const isTicketStable = activeProjectId.value !== null &&
+    projectTicketRef.value !== null &&
+    !isProjectTicketEntering
 
+  pinnedProjectId.value = project.id
   pendingProjectTicketRevealId = project.id
   activateProject(project)
+  stampRotation.value = stampAngles[project.id] ?? 0
 
-  if (!isSettledTicket) return
+  if (!isTicketStable) return
 
   pendingProjectTicketRevealId = null
-  revealProjectTicketIfNeeded(project.id)
+  window.requestAnimationFrame(() => revealProjectTicketIfNeeded(project.id))
 }
 
-function handleProjectTicketAfterEnter(element: Element) {
-  const enteredProjectId = (element as HTMLElement).dataset.projectId ?? null
-  lastEnteredProjectId = enteredProjectId
+function openProject(project: Project) {
+  if (isExternalLink(project.href)) {
+    window.open(project.href, '_blank', 'noopener,noreferrer')
+    return
+  }
 
-  if (!enteredProjectId ||
-    activeProjectId.value !== enteredProjectId ||
-    pendingProjectTicketRevealId !== enteredProjectId) return
+  window.location.assign(project.href)
+}
+
+function handleProjectClick(project: Project) {
+  if (pinnedProjectId.value === project.id) {
+    openProject(project)
+    return
+  }
+
+  pinProject(project)
+}
+
+function handleProjectTicketBeforeEnter() {
+  isProjectTicketEntering = true
+}
+
+function handleProjectTicketEnterCancelled() {
+  isProjectTicketEntering = false
+}
+
+function handleProjectTicketAfterEnter() {
+  isProjectTicketEntering = false
+
+  const projectId = pendingProjectTicketRevealId
+  if (!projectId || pinnedProjectId.value !== projectId) return
 
   pendingProjectTicketRevealId = null
-  revealProjectTicketIfNeeded(enteredProjectId)
+  revealProjectTicketIfNeeded(projectId)
 }
 
 function handleProjectMouseEnter(project: Project) {
-  if (isProjectHoverSuspended) return
-  activateProjectAndReveal(project)
+  if (pinnedProjectId.value) return
+  activateProject(project)
+}
+
+function handleProjectFocus(project: Project) {
+  if (pinnedProjectId.value) return
+  activateProject(project)
 }
 
 function handleTrayFocusOut(event: FocusEvent) {
   const next = event.relatedTarget as Node | null
   if (next && trayStageRef.value?.contains(next)) return
+  if (pinnedProjectId.value) return
   clearProject()
 }
 
-onBeforeUnmount(() => {
-  cancelScheduledClear()
-  releaseProjectHoverSuspension()
-})
+onBeforeUnmount(cancelScheduledClear)
 
 function isExternalLink(href: string) {
   return /^https?:\/\//.test(href)
@@ -217,8 +209,7 @@ function isExternalLink(href: string) {
           class="project-tray-stage"
           :class="{
             'has-selection': activeProject,
-            'jolt-phase-a': trayJoltPhase === 'a',
-            'jolt-phase-b': trayJoltPhase === 'b'
+            'has-pinned-selection': pinnedProjectId
           }"
           tabindex="-1"
           @pointerenter="cancelScheduledClear"
@@ -235,14 +226,23 @@ function isExternalLink(href: string) {
                     :key="project.id"
                     type="button"
                     class="project-cookie"
-                    :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
+                    :class="[
+                      `project-cookie-${project.id}`,
+                      {
+                        'is-active': activeProjectId === project.id,
+                        'is-pinned': pinnedProjectId === project.id
+                      }
+                    ]"
                     :style="projectCookieStyle(index)"
-                    :aria-label="`${project.name}：${project.description}`"
+                    :aria-label="pinnedProjectId === project.id
+                      ? `${content.previewAction} ${project.name}`
+                      : `${project.name}：${project.description}`"
                     :aria-expanded="activeProjectId === project.id"
+                    :aria-pressed="pinnedProjectId === project.id"
                     aria-controls="project-preview"
-                    @click="activateProjectAndReveal(project)"
+                    @click="handleProjectClick(project)"
                     @mouseenter="handleProjectMouseEnter(project)"
-                    @focus="activateProject(project)"
+                    @focus="handleProjectFocus(project)"
                   >
                     <span class="project-cookie-visual" aria-hidden="true">
                       <img
@@ -278,10 +278,14 @@ function isExternalLink(href: string) {
               </div>
             </div>
 
-            <Transition name="tray-ticket" mode="out-in" @after-enter="handleProjectTicketAfterEnter">
+            <Transition
+              name="tray-ticket"
+              @before-enter="handleProjectTicketBeforeEnter"
+              @enter-cancelled="handleProjectTicketEnterCancelled"
+              @after-enter="handleProjectTicketAfterEnter"
+            >
               <aside
                 v-if="activeProject"
-                :key="activeProject.id"
                 id="project-preview"
                 ref="projectTicketRef"
                 class="project-ticket"
@@ -865,29 +869,28 @@ function isExternalLink(href: string) {
   transition: color 160ms ease, transform 220ms ease;
 }
 
-.project-cookie:hover .project-cookie-visual,
-.project-cookie:focus-visible .project-cookie-visual,
 .project-cookie.is-active .project-cookie-visual {
   filter: drop-shadow(0 13px 8px rgb(89 57 23 / 21%));
+}
+
+.project-cookie.is-pinned .project-cookie-visual {
   transform:
     translateY(-8px)
     rotate(0deg)
     scale(1.045);
-}
-
-.project-cookie.is-active .project-cookie-visual {
   animation: cookie-jolt 480ms cubic-bezier(.2, .8, .2, 1);
 }
 
-.project-cookie:hover::after,
-.project-cookie:focus-visible::after,
-.project-cookie.is-active::after {
+.project-cookie.is-pinned::after {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
 .project-cookie.is-active .project-cookie-label {
   color: var(--home-coral-hover);
+}
+
+.project-cookie.is-pinned .project-cookie-label {
   transform: translateY(1px);
 }
 
@@ -899,15 +902,6 @@ function isExternalLink(href: string) {
 
 .project-tray-stage.has-selection .project-cookie:not(.is-active) .project-cookie-visual {
   opacity: .7;
-}
-
-/* Alternate names restart the short jolt when the hovered cookie changes. */
-.project-tray-stage.has-selection.jolt-phase-a .project-tray {
-  animation: tray-jolt-a 430ms 70ms cubic-bezier(.2, .8, .2, 1) both;
-}
-
-.project-tray-stage.has-selection.jolt-phase-b .project-tray {
-  animation: tray-jolt-b 430ms 70ms cubic-bezier(.2, .8, .2, 1) both;
 }
 
 .tray-maker-stamp {
@@ -1029,20 +1023,6 @@ function isExternalLink(href: string) {
   white-space: nowrap;
   backdrop-filter: blur(6px);
   transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-@keyframes tray-jolt-a {
-  0%, 100% { transform: rotate(.35deg) translateY(0); }
-  24% { transform: rotate(-.35deg) translateY(-2px); }
-  48% { transform: rotate(.48deg) translateY(1px); }
-  72% { transform: rotate(.1deg) translateY(0); }
-}
-
-@keyframes tray-jolt-b {
-  0%, 100% { transform: rotate(.35deg) translateY(0); }
-  24% { transform: rotate(-.35deg) translateY(-2px); }
-  48% { transform: rotate(.48deg) translateY(1px); }
-  72% { transform: rotate(.1deg) translateY(0); }
 }
 
 @keyframes cookie-jolt {
@@ -1637,7 +1617,7 @@ function isExternalLink(href: string) {
 @media (prefers-reduced-motion: reduce) {
   .project-cookie-visual,
   .project-tray,
-  .project-cookie.is-active .project-cookie-visual,
+  .project-cookie.is-pinned .project-cookie-visual,
   .project-cookie::after,
   .tray-maker-stamp,
   .primary-action,

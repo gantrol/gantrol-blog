@@ -61,11 +61,17 @@ export type HomeContent = {
 const projectAssets = {
   timeline: {
     logo: '/images/home/projects/timeline-logo.svg',
-    image: '/images/home/projects/timeline-og.webp'
+    image: {
+      zh: '/images/home/projects/timeline-og.svg',
+      en: '/images/home/projects/timeline-og-en.svg'
+    }
   },
   aicando: {
     logo: '/images/home/projects/aicando-logo.webp',
-    image: '/images/home/projects/aicando-og.svg'
+    image: {
+      zh: '/images/home/projects/aicando-og.svg',
+      en: '/images/home/projects/aicando-og-en.svg'
+    }
   },
   agentController: {
     logo: '/images/home/projects/agent-controller-logo.svg',
@@ -74,8 +80,10 @@ const projectAssets = {
   },
   paopao: {
     logo: '/images/home/projects/paopao-logo.svg',
-    image: '/images/home/projects/paopao-logo.svg',
-    imageFit: 'contain' as const
+    image: {
+      zh: '/images/home/projects/paopao-og.svg',
+      en: '/images/home/projects/paopao-og-en.svg'
+    }
   },
   markdownCanDo: {
     logo: '/images/home/projects/markdowncando-logo.png',
@@ -87,11 +95,14 @@ const projectAssets = {
   }
 }
 
-type ProjectAsset = Omit<ProjectContent, 'id' | 'name' | 'eyebrow' | 'description' | 'href'>
+type ProjectAsset = Omit<ProjectContent, 'id' | 'name' | 'eyebrow' | 'description' | 'href' | 'image'> & {
+  image: string | Record<HomeLocale, string>
+}
 
 function project(id: string, locale: HomeLocale, assets: ProjectAsset): ProjectContent {
   const entry = getCatalogEntry(id)
   const copy = entry.copy[locale]
+  const { image, ...sharedAssets } = assets
 
   return {
     id,
@@ -99,7 +110,8 @@ function project(id: string, locale: HomeLocale, assets: ProjectAsset): ProjectC
     eyebrow: copy.eyebrow,
     description: copy.summary,
     href: entry.paths[locale],
-    ...assets
+    ...sharedAssets,
+    image: typeof image === 'string' ? image : image[locale]
   }
 }
 

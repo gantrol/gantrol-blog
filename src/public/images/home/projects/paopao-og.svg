@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+<defs>
+  <radialGradient id="wash1"><stop offset="0" stop-color="#e0ede5" stop-opacity=".72"/><stop offset="1" stop-color="#e0ede5" stop-opacity="0"/></radialGradient>
+  <radialGradient id="wash2"><stop offset="0" stop-color="#c2dbcc" stop-opacity=".45"/><stop offset="1" stop-color="#c2dbcc" stop-opacity="0"/></radialGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#16271f" flood-opacity=".10"/></filter>
+  <style>
+    .cn { font-family: "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; }
+    .latin { font-family: Inter,"Space Grotesk",sans-serif; }
+  </style>
+</defs>
+<rect width="1280" height="640" fill="#fbfcfb"/>
+<circle cx="1040" cy="115" r="400" fill="url(#wash1)"/>
+<circle cx="1125" cy="560" r="330" fill="url(#wash2)"/>
+
+<image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyOCIgZmlsbD0ibm9uZSI+DQogIDxkZWZzPg0KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iY29tcG91bmQtZ3JhZC0xIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiIGZ4PSIzMCUiIGZ5PSIzMCUiPg0KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjkiIC8+DQogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZmFjZmUiIHN0b3Atb3BhY2l0eT0iMC44IiAvPg0KICAgIDwvcmFkaWFsR3JhZGllbnQ+DQogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJjb21wb3VuZC1ncmFkLTIiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSIgZng9IjMwJSIgZnk9IjMwJSI+DQogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuOSIgLz4NCiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOWE5ZSIgc3RvcC1vcGFjaXR5PSIwLjgiIC8+DQogICAgPC9yYWRpYWxHcmFkaWVudD4NCiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImNvbXBvdW5kLWdyYWQtMyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIiBmeD0iMzAlIiBmeT0iMzAlIj4NCiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC45IiAvPg0KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTE4Y2QxIiBzdG9wLW9wYWNpdHk9IjAuOCIgLz4NCiAgICA8L3JhZGlhbEdyYWRpZW50Pg0KICA8L2RlZnM+DQogIDxjaXJjbGUgY3g9IjkiIGN5PSIxOCIgcj0iNiIgZmlsbD0idXJsKCNjb21wb3VuZC1ncmFkLTEpIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC41KSIgc3Ryb2tlLXdpZHRoPSIwLjUiIC8+DQogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTQiIHI9IjUiIGZpbGw9InVybCgjY29tcG91bmQtZ3JhZC0yKSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNSkiIHN0cm9rZS13aWR0aD0iMC41IiAvPg0KICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjgiIHI9IjQiIGZpbGw9InVybCgjY29tcG91bmQtZ3JhZC0zKSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNSkiIHN0cm9rZS13aWR0aD0iMC41IiAvPg0KPC9zdmc+DQo=" x="76" y="55" width="63" height="63" preserveAspectRatio="xMidYMid meet"/>
+<text x="158" y="87" class="latin" font-size="16" font-weight="600" fill="#3f7259">PAOPAO · DESKTOP</text>
+
+<text x="78" y="220" class="cn" font-size="72" font-weight="700" fill="#212622">泡泡</text>
+<text x="82" y="288" class="cn" font-size="34" fill="#3f7259">让思绪流动</text>
+<text x="82" y="346" class="cn" font-size="20" fill="#717a74">整理思绪，激发表达欲</text>
+
+<rect x="82" y="410" width="350" height="48" rx="24" fill="#fff" stroke="#e0ede5"/>
+<circle cx="106" cy="430" r="4" fill="#5e9b7a"/>
+<text x="122" y="437" class="latin" font-size="15" font-weight="600" fill="#16271f">gantrol/paopao-desktop</text>
+<text x="84" y="506" class="cn" font-size="15" fill="#99a19c">如流   ·   分箱   ·   泡泡机</text>
+
+<g filter="url(#shadow)">
+  <rect x="612" y="94" width="568" height="454" rx="28" fill="#fff" stroke="#e0ede5"/>
+</g>
+<circle cx="644" cy="123.5" r="4.5" fill="#dde1de"/><circle cx="666" cy="123.5" r="4.5" fill="#c2dbcc"/><circle cx="688" cy="123.5" r="4.5" fill="#9cc2ab"/>
+<text x="717" y="126" class="latin" font-size="13" font-weight="600" fill="#717a74">paopao</text>
+<line x1="612" y1="149" x2="1180" y2="149" stroke="#eceeec"/>
+
+<rect x="628" y="169" width="56" height="351" rx="18" fill="#f5f7f6"/>
+<image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyOCIgZmlsbD0ibm9uZSI+DQogIDxkZWZzPg0KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iY29tcG91bmQtZ3JhZC0xIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiIGZ4PSIzMCUiIGZ5PSIzMCUiPg0KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjkiIC8+DQogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZmFjZmUiIHN0b3Atb3BhY2l0eT0iMC44IiAvPg0KICAgIDwvcmFkaWFsR3JhZGllbnQ+DQogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJjb21wb3VuZC1ncmFkLTIiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSIgZng9IjMwJSIgZnk9IjMwJSI+DQogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuOSIgLz4NCiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmOWE5ZSIgc3RvcC1vcGFjaXR5PSIwLjgiIC8+DQogICAgPC9yYWRpYWxHcmFkaWVudD4NCiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImNvbXBvdW5kLWdyYWQtMyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIiBmeD0iMzAlIiBmeT0iMzAlIj4NCiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC45IiAvPg0KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTE4Y2QxIiBzdG9wLW9wYWNpdHk9IjAuOCIgLz4NCiAgICA8L3JhZGlhbEdyYWRpZW50Pg0KICA8L2RlZnM+DQogIDxjaXJjbGUgY3g9IjkiIGN5PSIxOCIgcj0iNiIgZmlsbD0idXJsKCNjb21wb3VuZC1ncmFkLTEpIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC41KSIgc3Ryb2tlLXdpZHRoPSIwLjUiIC8+DQogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTQiIHI9IjUiIGZpbGw9InVybCgjY29tcG91bmQtZ3JhZC0yKSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNSkiIHN0cm9rZS13aWR0aD0iMC41IiAvPg0KICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjgiIHI9IjQiIGZpbGw9InVybCgjY29tcG91bmQtZ3JhZC0zKSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNSkiIHN0cm9rZS13aWR0aD0iMC41IiAvPg0KPC9zdmc+DQo=" x="645" y="191" width="22.4" height="22.4" preserveAspectRatio="xMidYMid meet"/>
+<circle cx="656" cy="252" r="10" fill="#eceeec"/><circle cx="656" cy="302" r="10" fill="#eceeec"/><circle cx="656" cy="352" r="10" fill="#eceeec"/>
+
+<rect x="718" y="177" width="254" height="74" rx="18" fill="#e0ede5"/>
+<text x="736" y="209" class="cn" font-size="14" fill="#717a74">想到什么，先冒个泡。</text>
+<text x="736" y="231" class="cn" font-size="14" fill="#717a74">思绪如流，信息分箱</text>
+
+<rect x="812" y="274" width="290" height="72" rx="18" fill="#f5f7f6" stroke="#eceeec"/>
+<text x="830" y="316" class="cn" font-size="14" fill="#717a74">有用的信息，不该被时间冲走。</text>
+
+<rect x="731" y="371" width="220" height="72" rx="18" fill="#f2f7f4" stroke="#e0ede5"/>
+<text x="749" y="413" class="cn" font-size="14" fill="#717a74">把它放进泡泡箱。</text>
+
+<rect x="716" y="470" width="422" height="44" rx="22" fill="#f5f7f6" stroke="#eceeec"/>
+<text x="738" y="497" class="cn" font-size="13" fill="#99a19c">现在想到什么？</text>
+<circle cx="1109" cy="497" r="15" fill="#5e9b7a"/>
+<path d="M1104 497h11m-5-5 5 5-5 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+<circle cx="1172" cy="78" r="34" fill="#e0ede5" fill-opacity=".35" stroke="#9cc2ab" stroke-width="2"/>
+<circle cx="1160" cy="66" r="7" fill="#fff" fill-opacity=".85"/>
+<circle cx="1210" cy="248" r="18" fill="#fff" fill-opacity=".55" stroke="#c2dbcc" stroke-width="2"/>
+<circle cx="1108" cy="573" r="26" fill="#f2f7f4" fill-opacity=".55" stroke="#9cc2ab" stroke-width="2"/>
+<circle cx="682" cy="557" r="15" fill="#fff" fill-opacity=".55" stroke="#c2dbcc" stroke-width="2"/>
+
+<text x="82" y="592" class="latin" font-size="11" font-weight="600" fill="#99a19c">PERSONAL INFORMATION FLOW · ELECTRON</text>
+</svg>

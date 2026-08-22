@@ -95,6 +95,9 @@ function hasLink(head: HeadConfig[], rel: string): boolean {
 }
 
 export const shared = defineConfig({
+    // The site is intentionally light-only. Do not follow the OS theme or persist a dark preference.
+    appearance: false,
+
     // This draft page references a component that is not in the repository yet.
     // Keep it out of production until the page and component can ship together.
     srcExclude: [
@@ -150,6 +153,8 @@ export const shared = defineConfig({
         const isEnglish = pageData.relativePath.startsWith('en/')
         const locale = isEnglish ? 'en_US' : 'zh_CN'
         const language = isEnglish ? 'en-US' : 'zh-Hans'
+        const localizedSiteName = isEnglish ? 'Gantrol' : siteName
+        const defaultImageAlt = isEnglish ? 'Gantrol logo' : `${siteName} 标志`
         const title = context.title || pageData.title || siteName
         const description = context.description || pageData.description
 
@@ -168,16 +173,17 @@ export const shared = defineConfig({
         const meta: Array<[string, 'name' | 'property', string, string]> = [
             ['og:type', 'property', 'og:type', 'website'],
             ['og:locale', 'property', 'og:locale', locale],
-            ['og:site_name', 'property', 'og:site_name', siteName],
+            ['og:site_name', 'property', 'og:site_name', localizedSiteName],
             ['og:url', 'property', 'og:url', url],
             ['og:title', 'property', 'og:title', title],
             ['og:description', 'property', 'og:description', description],
             ['og:image', 'property', 'og:image', defaultImage],
-            ['og:image:alt', 'property', 'og:image:alt', `${siteName} 标志`],
+            ['og:image:alt', 'property', 'og:image:alt', defaultImageAlt],
             ['twitter:card', 'name', 'twitter:card', 'summary_large_image'],
             ['twitter:title', 'name', 'twitter:title', title],
             ['twitter:description', 'name', 'twitter:description', description],
-            ['twitter:image', 'name', 'twitter:image', defaultImage]
+            ['twitter:image', 'name', 'twitter:image', defaultImage],
+            ['twitter:image:alt', 'name', 'twitter:image:alt', defaultImageAlt]
         ]
 
         for (const [, key, value, content] of meta) {

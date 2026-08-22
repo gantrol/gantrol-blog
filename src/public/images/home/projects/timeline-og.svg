@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">模型纪年</title>
+  <desc id="description">一周不刷 AI 新闻，十分钟补回来</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf9"/>
+      <stop offset="1" stop-color="#fff8ef"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#7a281a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <path d="M0 520 C240 468 420 566 650 510 C850 461 1010 455 1200 492" fill="none" stroke="#f04425" stroke-width="3" opacity="0.9"/>
+  <circle cx="178" cy="493" r="8" fill="#fffdf9" stroke="#f04425" stroke-width="3"/>
+  <circle cx="529" cy="528" r="8" fill="#fffdf9" stroke="#f04425" stroke-width="3"/>
+  <circle cx="907" cy="474" r="8" fill="#fffdf9" stroke="#f04425" stroke-width="3"/>
+  <path d="M178 493 V448 M529 528 V566 M907 474 V430" stroke="#f04425" stroke-width="2" opacity="0.72"/>
+
+  <g transform="translate(68 58)">
+    <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iY29va2llLWZhY2UiIGN4PSIzOCUiIGN5PSIzMyUiIHI9IjY4JSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjllZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNCIgc3RvcC1jb2xvcj0iI2ZkZjRlNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNzIiIHN0b3AtY29sb3I9IiNmY2VmZGMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjZkZmJkIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJjb29raWUtc2lkZSIgeDE9IjI4IiB5MT0iOSIgeDI9IjY3IiB5Mj0iMTAxIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2YyZDZhYiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTgiIHN0b3AtY29sb3I9IiNkYWE0NWQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTg2NjIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJjb29raWUtZWRnZSIgeDE9IjQiIHkxPSIzIiB4Mj0iOTciIHkyPSI5OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmM2Q0OWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjMiIHN0b3AtY29sb3I9IiNlYWM1ODciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU4IiBzdG9wLWNvbG9yPSIjZGFhNDVkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC44IiBzdG9wLWNvbG9yPSIjYmQ3ZjMxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzkyNTUxNSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icmlkZ2UtZmFjZSIgeDE9IjI3IiB5MT0iMjYiIHgyPSI3NCIgeTI9Ijc1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2Y4ZTJiZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTIiIHN0b3AtY29sb3I9IiNlYWM1ODciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZGFhNDVkIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJjb29raWUta25vYiIgY3g9IjQ3LjUiIGN5PSI0NyIgcj0iOCIgZng9IjQ2LjUiIGZ5PSI0NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmY5ZWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjQyIiBzdG9wLWNvbG9yPSIjZmRmNGU3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC43MiIgc3RvcC1jb2xvcj0iI2YzZDQ5ZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYWE0NWQiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCA1MCkgc2NhbGUoLjc4KSB0cmFuc2xhdGUoLTUwIC01MCkiPgogICAgPHBhdGgKICAgICAgZD0iTTM1LjA3IDcuODcgQTE2LjY3IDE2LjY3IDAgMCAxIDYxLjk5IDYuOTQgQTQ0LjcwIDQ0LjcwIDAgMCAxIDY0Ljk0IDcuODcgQTIwLjMyIDIwLjMyIDAgMCAxIDg2Ljk0IDI0Ljg0IEE0NC43MCA0NC43MCAwIDAgMSA4OC42OSAyNy42MSBBMTkuNzMgMTkuNzMgMCAwIDEgOTQuMTIgNTcuMTkgQTQ0LjcwIDQ0LjcwIDAgMCAxIDkzLjQ1IDYwLjQ5IEExOS4wMiAxOS4wMiAwIDAgMSA3Ny41NSA4NS4yMCBBNDQuNzAgNDQuNzAgMCAwIDEgNzUuMDYgODcuMDEgQTE3Ljc5IDE3Ljc5IDAgMCAxIDUxLjE2IDk0LjY5IEE0NC43MCA0NC43MCAwIDAgMSA0OC4yNiA5NC42NyBBMTcuMTQgMTcuMTQgMCAwIDEgMjMuNTIgODYuMDEgQTQ0LjcwIDQ0LjcwIDAgMCAxIDIxLjExIDg0LjExIEEyMC4yOCAyMC4yOCAwIDAgMSA2LjQ0IDYwLjAyIEE0NC43MCA0NC43MCAwIDAgMSA1LjgyIDU2Ljc3IEEyMS4zOSAyMS4zOSAwIDAgMSAxMS42MyAyNy4wNyBBNDQuNzAgNDQuNzAgMCAwIDEgMTMuMzEgMjQuNDYgQTE2LjIwIDE2LjIwIDAgMCAxIDMyLjM2IDguOTMgQTQ0LjcwIDQ0LjcwIDAgMCAxIDM1LjA3IDcuODcgWiIKICAgICAgZmlsbD0idXJsKCNjb29raWUtc2lkZSkiCiAgICAgIG9wYWNpdHk9Ii44NCIKICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAyLjE1KSIKICAgIC8+CiAgICA8cGF0aAogICAgICBkPSJNMzUuMDcgNy44NyBBMTYuNjcgMTYuNjcgMCAwIDEgNjEuOTkgNi45NCBBNDQuNzAgNDQuNzAgMCAwIDEgNjQuOTQgNy44NyBBMjAuMzIgMjAuMzIgMCAwIDEgODYuOTQgMjQuODQgQTQ0LjcwIDQ0LjcwIDAgMCAxIDg4LjY5IDI3LjYxIEExOS43MyAxOS43MyAwIDAgMSA5NC4xMiA1Ny4xOSBBNDQuNzAgNDQuNzAgMCAwIDEgOTMuNDUgNjAuNDkgQTE5LjAyIDE5LjAyIDAgMCAxIDc3LjU1IDg1LjIwIEE0NC43MCA0NC43MCAwIDAgMSA3NS4wNiA4Ny4wMSBBMTcuNzkgMTcuNzkgMCAwIDEgNTEuMTYgOTQuNjkgQTQ0LjcwIDQ0LjcwIDAgMCAxIDQ4LjI2IDk0LjY3IEExNy4xNCAxNy4xNCAwIDAgMSAyMy41MiA4Ni4wMSBBNDQuNzAgNDQuNzAgMCAwIDEgMjEuMTEgODQuMTEgQTIwLjI4IDIwLjI4IDAgMCAxIDYuNDQgNjAuMDIgQTQ0LjcwIDQ0LjcwIDAgMCAxIDUuODIgNTYuNzcgQTIxLjM5IDIxLjM5IDAgMCAxIDExLjYzIDI3LjA3IEE0NC43MCA0NC43MCAwIDAgMSAxMy4zMSAyNC40NiBBMTYuMjAgMTYuMjAgMCAwIDEgMzIuMzYgOC45MyBBNDQuNzAgNDQuNzAgMCAwIDEgMzUuMDcgNy44NyBaIgogICAgICBmaWxsPSJ1cmwoI2Nvb2tpZS1mYWNlKSIKICAgICAgc3Ryb2tlPSJ1cmwoI2Nvb2tpZS1lZGdlKSIKICAgICAgc3Ryb2tlLXdpZHRoPSI1LjUiCiAgICAgIHN0cm9rZS1saW5lam9pbj0icm91bmQiCiAgICAvPgogIDwvZz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjMuNSIgc3Ryb2tlPSJ1cmwoI3JpZGdlLWZhY2UpIiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEyLjUiIHN0cm9rZT0idXJsKCNyaWRnZS1mYWNlKSIgc3Ryb2tlLXdpZHRoPSIzLjYiLz4KICA8L2c+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNSIgZmlsbD0idXJsKCNjb29raWUta25vYikiIHN0cm9rZT0idXJsKCNjb29raWUtZWRnZSkiIHN0cm9rZS13aWR0aD0iLjkiLz4KPC9zdmc+Cg==" x="3" y="3" width="50" height="50" preserveAspectRatio="xMidYMid meet"/>
+    <text x="76" y="39" fill="#171512" font-family="Noto Sans SC, Source Han Sans SC, Microsoft YaHei, sans-serif" font-size="38" font-weight="700">模型纪年</text>
+    <text x="78" y="66" fill="#7b7168" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="13" letter-spacing="5">LLM TIMELINE</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="68" y="166" width="1064" height="264" rx="24" fill="#ffffff" fill-opacity="0.78" stroke="#eadfd4"/>
+  </g>
+  <text x="112" y="261" fill="#181512" font-family="Noto Sans SC, Source Han Sans SC, Microsoft YaHei, sans-serif" font-size="66" font-weight="700">一周不刷 AI 新闻，</text>
+  <text x="112" y="350" fill="#181512" font-family="Noto Sans SC, Source Han Sans SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="700">十分钟补回来。</text>
+  <rect x="112" y="387" width="92" height="6" rx="3" fill="#f04425"/>
+  <text x="226" y="400" fill="#665d55" font-family="Noto Sans SC, Source Han Sans SC, Microsoft YaHei, sans-serif" font-size="25">想引用重要AI新闻？随时能找到。</text>
+
+  <text x="68" y="589" fill="#8a7f75" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="17" letter-spacing="1.5">TIMELINE.AICANDO.XYZ  ·  原始来源  ·  影响脉络  ·  后续核验</text>
+</svg>

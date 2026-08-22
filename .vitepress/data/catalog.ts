@@ -47,7 +47,7 @@ const entries: CatalogEntry[] = [
   {
     id: 'paopao',
     mark: '◌',
-    paths: { zh: 'https://github.com/gantrol/paopao', en: 'https://github.com/gantrol/paopao' },
+    paths: { zh: 'https://github.com/gantrol/paopao-desktop', en: 'https://github.com/gantrol/paopao-desktop' },
     copy: {
       zh: { name: '泡泡', eyebrow: '桌面应用', summary: '一个轻巧、好玩的桌面工具。', tagline: '把想法变成泡泡', statusLabel: '开源' },
       en: { name: 'Paopao', eyebrow: 'Desktop app', summary: 'A small and playful desktop tool.', tagline: 'Turn ideas into bubbles', statusLabel: 'Open source' }

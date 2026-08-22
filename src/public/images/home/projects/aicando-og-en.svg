@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-labelledby="title description">
   <title id="title">AICanDo</title>
-  <desc id="description">AI 能力全面盘点：文本程序、图像视频、音乐语音</desc>
+  <desc id="description">A map of AI capabilities across text and code, image and video, music and voice</desc>
   <rect width="1200" height="630" rx="32" fill="#FFFEFB"/>
   <circle cx="1080" cy="50" r="270" fill="#F7F9E7"/>
   <circle cx="80" cy="650" r="300" fill="#F1F9FA"/>
@@ -12,13 +12,14 @@
     height="282"
     preserveAspectRatio="xMidYMid meet"
   />
-  <text x="392" y="245" fill="#262320" font-family="Inter, Segoe UI, Microsoft YaHei UI, sans-serif" font-size="88" font-weight="700">AI能力全面盘点</text>
+  <text x="392" y="245" fill="#262320" font-family="Inter, Segoe UI, sans-serif" font-size="82" font-weight="700">AI Capability Map</text>
   <g transform="translate(392 326)" font-family="Inter, Segoe UI, Microsoft YaHei UI, sans-serif">
     <rect width="214" height="104" rx="24" fill="#EFF8FB" stroke="#CDE5EB" stroke-width="2"/>
-    <text x="26" y="67" fill="#0284C7" font-size="32" font-weight="700">X:文本程序</text>
+    <text x="107" y="66" fill="#0284C7" font-size="22" font-weight="700" text-anchor="middle">X · Text &amp; Code</text>
     <rect x="238" width="214" height="104" rx="24" fill="#F5F9E8" stroke="#DFE8BF" stroke-width="2"/>
-    <text x="264" y="67" fill="#65A30D" font-size="32" font-weight="700">Y:图像视频</text>
+    <text x="345" y="66" fill="#65A30D" font-size="22" font-weight="700" text-anchor="middle">Y · Image &amp; Video</text>
     <rect x="476" width="214" height="104" rx="24" fill="#FCF0F6" stroke="#F0D3E1" stroke-width="2"/>
-    <text x="502" y="67" fill="#DB2777" font-size="32" font-weight="700">Z:音乐语音</text>
+    <text x="583" y="66" fill="#DB2777" font-size="22" font-weight="700" text-anchor="middle">Z · Music &amp; Voice</text>
   </g>
 </svg>
+
