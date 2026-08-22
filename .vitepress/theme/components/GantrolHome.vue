@@ -40,15 +40,6 @@ let resumeProjectHoverFrame = 0
 let isProjectHoverSuspended = false
 let pendingProjectTicketRevealId: string | null = null
 let lastEnteredProjectId: string | null = null
-let lastProjectPointerType: PointerEvent['pointerType'] | null = null
-let lastProjectTouchAt = 0
-let ignoreProjectClickUntil = 0
-let projectTouchStart: {
-  pointerId: number
-  projectId: string
-  clientX: number
-  clientY: number
-} | null = null
 
 const activeProject = computed(() =>
   projects.value.find((project) => project.id === activeProjectId.value) ?? null
@@ -135,23 +126,6 @@ function handleTraySurfaceClick(event: MouseEvent) {
   clearProject()
 }
 
-function handleProjectPointerDown(event: PointerEvent, project: Project) {
-  lastProjectPointerType = event.pointerType
-
-  if (event.pointerType !== 'touch') {
-    projectTouchStart = null
-    return
-  }
-
-  ignoreProjectClickUntil = 0
-  projectTouchStart = {
-    pointerId: event.pointerId,
-    projectId: project.id,
-    clientX: event.clientX,
-    clientY: event.clientY
-  }
-}
-
 function revealProjectTicketIfNeeded(selectedProjectId: string) {
   if (activeProjectId.value !== selectedProjectId) return
 
@@ -200,63 +174,8 @@ function handleProjectTicketAfterEnter(element: Element) {
   revealProjectTicketIfNeeded(enteredProjectId)
 }
 
-function handleProjectPointerUp(event: PointerEvent, project: Project) {
-  if (event.pointerType !== 'touch') return
-
-  const touchStart = projectTouchStart
-  projectTouchStart = null
-  const moved = !touchStart ||
-    touchStart.pointerId !== event.pointerId ||
-    touchStart.projectId !== project.id ||
-    Math.hypot(event.clientX - touchStart.clientX, event.clientY - touchStart.clientY) > 12
-
-  if (moved) {
-    lastProjectPointerType = null
-    ignoreProjectClickUntil = Date.now() + 1000
-    return
-  }
-
-  event.preventDefault()
-  lastProjectTouchAt = Date.now()
-  ignoreProjectClickUntil = 0
-  lastProjectPointerType = null
-  activateProjectAndReveal(project)
-}
-
-function handleProjectPointerCancel(event: PointerEvent) {
-  if (event.pointerType !== 'touch' || projectTouchStart?.pointerId !== event.pointerId) return
-
-  projectTouchStart = null
-  lastProjectPointerType = null
-  ignoreProjectClickUntil = Date.now() + 1000
-}
-
 function handleProjectMouseEnter(project: Project) {
   if (isProjectHoverSuspended) return
-  activateProjectAndReveal(project)
-}
-
-function handleProjectClick(event: MouseEvent, project: Project) {
-  if (Date.now() < ignoreProjectClickUntil) {
-    event.preventDefault()
-    ignoreProjectClickUntil = 0
-    lastProjectPointerType = null
-    return
-  }
-
-  const pointerType = 'pointerType' in event
-    ? (event as PointerEvent).pointerType
-    : null
-  const isTouch = pointerType === 'touch' ||
-    lastProjectPointerType === 'touch' ||
-    Date.now() - lastProjectTouchAt < 1000 ||
-    (typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
-
-  lastProjectPointerType = null
-
-  if (!isTouch) return
-
-  event.preventDefault()
   activateProjectAndReveal(project)
 }
 
@@ -311,22 +230,17 @@ function isExternalLink(href: string) {
             <div class="project-tray" @click="handleTraySurfaceClick">
               <div class="project-tray-paper">
                 <div class="project-cookie-grid">
-                  <a
+                  <button
                     v-for="(project, index) in trayProjects"
                     :key="project.id"
+                    type="button"
                     class="project-cookie"
                     :class="[`project-cookie-${project.id}`, { 'is-active': activeProjectId === project.id }]"
                     :style="projectCookieStyle(index)"
-                    :href="project.href"
-                    :target="isExternalLink(project.href) ? '_blank' : undefined"
-                    :rel="isExternalLink(project.href) ? 'noopener' : undefined"
                     :aria-label="`${project.name}：${project.description}`"
                     :aria-expanded="activeProjectId === project.id"
                     aria-controls="project-preview"
-                    @pointerdown="handleProjectPointerDown($event, project)"
-                    @pointerup="handleProjectPointerUp($event, project)"
-                    @pointercancel="handleProjectPointerCancel"
-                    @click="handleProjectClick($event, project)"
+                    @click="activateProjectAndReveal(project)"
                     @mouseenter="handleProjectMouseEnter(project)"
                     @focus="activateProject(project)"
                   >
@@ -351,7 +265,7 @@ function isExternalLink(href: string) {
                       </template>
                     </span>
                     <span class="project-cookie-label">{{ project.name }}</span>
-                  </a>
+                  </button>
                 </div>
 
                 <span
@@ -859,9 +773,13 @@ function isExternalLink(href: string) {
   border: 0;
   color: var(--home-ink);
   background: transparent;
+  appearance: none;
   cursor: pointer;
+  font: inherit;
   text-decoration: none;
+  touch-action: manipulation;
   transform: translate(var(--cookie-x, 0), var(--cookie-y, 0));
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
 
