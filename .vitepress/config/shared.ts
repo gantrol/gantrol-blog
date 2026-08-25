@@ -2,12 +2,19 @@ import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig, type HeadConfig, type PageData } from 'vitepress'
 import { search as zhSearch } from './zh'
+import { getSeoPolicy } from './seo-policy'
 import footnote from 'markdown-it-footnote'
 
 const hostname = 'https://www.gantrol.com'
 const siteName = '计算之心'
 const defaultImage = `${hostname}/avatar.png`
 const sourceRoot = resolve(process.cwd(), 'src')
+const excludedSourcePaths = new Set([
+    'en/AI/use/image/compress.md',
+    'AI/TOP1.md',
+    'en/AI/TOP1.md'
+])
+const socialIconCss = `.vpi-social-github{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='black' d='M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")}`
 
 function getPageUrl(relativePath: string): string {
     const pagePath = relativePath
@@ -18,7 +25,7 @@ function getPageUrl(relativePath: string): string {
 }
 
 function sourceExists(relativePath: string): boolean {
-    return existsSync(resolve(sourceRoot, relativePath))
+    return !excludedSourcePaths.has(relativePath) && existsSync(resolve(sourceRoot, relativePath))
 }
 
 function getLanguageAlternates(relativePath: string) {
@@ -55,6 +62,10 @@ function cleanMarkdown(value: string): string {
         .replace(/<[^>]+>/g, ' ')
         .replace(/[`*_~]/g, '')
         .replace(/\[\^[^\]]+]/g, '')
+        .replace(/^\s*:::\s*(?:info|tip|warning|danger|details|raw)?\s*/gim, '')
+        .replace(/^\s*(?:>\s*)+/gm, '')
+        .replace(/^\s*#{1,6}\s+/gm, '')
+        .replace(/^\s*(?:[-+]\s+|\d+\.\s+)/gm, '')
 }
 
 function truncate(value: string, maxLength = 155): string {
@@ -100,12 +111,7 @@ export const shared = defineConfig({
 
     // This draft page references a component that is not in the repository yet.
     // Keep it out of production until the page and component can ship together.
-    srcExclude: [
-        'en/AI/use/image/compress.md',
-        // AI TOP 1 now lives at AiCanDo. Cloudflare Pages permanently redirects these routes.
-        'AI/TOP1.md',
-        'en/AI/TOP1.md'
-    ],
+    srcExclude: [...excludedSourcePaths],
     title: '黄健楸',
     srcDir: 'src',
 
@@ -134,9 +140,9 @@ export const shared = defineConfig({
         hostname,
         transformItems(items) {
             return items.filter((item) => (
+                getSeoPolicy(item.url) === 'index' &&
                 !item.url.includes('migration') &&
-                !/(^|\/)embed\//.test(item.url) &&
-                !/^\/?(?:en\/)?AI\/TOP1\/?$/.test(item.url)
+                !/(^|\/)embed\//.test(item.url)
             ))
         }
     },
@@ -157,17 +163,28 @@ export const shared = defineConfig({
         const defaultImageAlt = isEnglish ? 'Gantrol logo' : `${siteName} 标志`
         const title = context.title || pageData.title || siteName
         const description = context.description || pageData.description
+        const seoPolicy = getSeoPolicy(pageData.relativePath)
 
         if (pageData.isNotFound) {
             if (!hasMeta(context.head, 'name', 'robots')) {
                 head.push(['meta', { name: 'robots', content: 'noindex,nofollow' }])
             }
+        } else if (seoPolicy !== 'index') {
+            if (!hasMeta(context.head, 'name', 'robots')) {
+                head.push(['meta', { name: 'robots', content: 'noindex,follow' }])
+            }
         } else if (!hasLink(context.head, 'canonical')) {
             head.push(['link', { rel: 'canonical', href: url }])
         }
 
-        for (const alternate of getLanguageAlternates(pageData.relativePath)) {
-            head.push(['link', { rel: 'alternate', ...alternate }])
+        if (!pageData.isNotFound && seoPolicy !== 'index' && !hasLink(context.head, 'canonical')) {
+            head.push(['link', { rel: 'canonical', href: url }])
+        }
+
+        if (seoPolicy === 'index') {
+            for (const alternate of getLanguageAlternates(pageData.relativePath)) {
+                head.push(['link', { rel: 'alternate', ...alternate }])
+            }
         }
 
         const meta: Array<[string, 'name' | 'property', string, string]> = [
@@ -237,7 +254,15 @@ export const shared = defineConfig({
     },
 
     transformHtml(code) {
-        return code.replace('<div class="VPContent', '<div role="main" class="VPContent')
+        return code
+            .replace(
+                /<link rel="preload" href="\/assets\/inter-roman-latin\.[^"]+\.woff2"[^>]*>/,
+                ''
+            )
+            .replace(
+                '<link rel="preload stylesheet" href="/vp-icons.css" as="style">',
+                `<style>${socialIconCss}</style>`
+            )
     },
 
     head: [
@@ -249,28 +274,12 @@ export const shared = defineConfig({
         ['meta', { name: 'google-adsense-account', content: 'ca-pub-4459589195034801' }],
         ['meta', { name: 'twitter:site', content: '@gantrols' }],
         ['meta', { name: 'twitter:creator', content: '@gantrols' }],
-        [
-            'script',
-            {
-                async: '',
-                src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4459589195034801',
-                crossorigin: 'anonymous'
-            }
-        ],
-        [
-            'script',
-            { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-0P7S4MY6FW' }
-        ],
-        [
-            'script',
-            {},
-            "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-0P7S4MY6FW');"
-        ]
     ],
 
     themeConfig: {
-        logo: '/avatar.png',
+        logo: '/avatar-ui.webp',
         siteTitle: 'Gantrol',
+        i18nRouting: false,
 
         socialLinks: [
             { icon: 'github', link: 'https://github.com/gantrol/gantrol-blog' }

@@ -29,7 +29,7 @@ const entries: CatalogEntry[] = [
   {
     id: 'aicando',
     mark: '✦',
-    paths: { zh: 'https://www.aicando.xyz/', en: 'https://www.aicando.xyz/' },
+    paths: { zh: 'https://aicando.xyz/', en: 'https://aicando.xyz/' },
     copy: {
       zh: { name: 'AICanDo', eyebrow: 'AI 探索', summary: '探索 AI 能做什么，以及如何把它用好。', tagline: '发现 AI 的可能性', statusLabel: '在线' },
       en: { name: 'AICanDo', eyebrow: 'AI exploration', summary: 'Explore what AI can do and how to use it well.', tagline: 'Discover what AI can do', statusLabel: 'Live' }
@@ -65,7 +65,7 @@ const entries: CatalogEntry[] = [
   {
     id: 'aiy',
     mark: 'AI',
-    paths: { zh: '/products/aiy/', en: '/en/products/aiy/' },
+    paths: { zh: '/products/aiy/', en: 'https://github.com/gantrol/aiy-desktop' },
     copy: {
       zh: { name: 'AIY', eyebrow: '创作工具', summary: '面向 AI 工作流的桌面创作工具。', tagline: '把 AI 带进创作流程', statusLabel: '开源' },
       en: { name: 'AIY', eyebrow: 'Creative tool', summary: 'A desktop creative tool for AI workflows.', tagline: 'Bring AI into your creative workflow', statusLabel: 'Open source' }
@@ -97,8 +97,8 @@ const entries: CatalogEntry[] = [
     logo: '/images/home/tools/punctuation-logo.svg',
     paths: { zh: 'https://p.gantrol.com/', en: 'https://p.gantrol.com/' },
     copy: {
-      zh: { name: '标点转换', eyebrow: '文字工具', summary: '快速处理中英文标点和格式。', tagline: '让标点转换更简单', statusLabel: '可用' },
-      en: { name: 'Punctuation', eyebrow: 'Writing tool', summary: 'Quickly convert Chinese and English punctuation.', tagline: 'Simplify punctuation conversion', statusLabel: 'Available' }
+      zh: { name: 'Claude中文内容英文标点转换', eyebrow: '文字工具', summary: '快速处理中英文标点和格式。', tagline: 'Claude中文回答英文标点转中文', statusLabel: '可用' },
+      en: { name: 'Claude Chinese Text Punctuation Converter', eyebrow: 'Writing tool', summary: "Convert English punctuation in Claude's Chinese responses to Chinese punctuation.", tagline: "Turn Claude's English punctuation into Chinese punctuation", statusLabel: 'Available' }
     }
   },
   {
@@ -106,22 +106,22 @@ const entries: CatalogEntry[] = [
     mark: '$$',
     logo: '/images/home/tools/math-format-logo.svg',
     paths: {
-      zh: 'https://www.aicando.xyz/chatgpt/gpt4o/math-format',
-      en: 'https://www.aicando.xyz/chatgpt/gpt4o/math-format'
+      zh: 'https://aicando.xyz/chatgpt/gpt4o/math-format',
+      en: 'https://aicando.xyz/chatgpt/gpt4o/math-format'
     },
     copy: {
       zh: {
-        name: 'ChatGPT Markdown 数学公式格式整理器',
+        name: 'ChatGPT Markdown 数学公式处理',
         eyebrow: 'Markdown 工具',
-        summary: '把 ChatGPT 数学公式分隔符转成 Markdown 常用格式。',
+        summary: '将 ChatGPT 数学公式起手的[处理成 $ 格式，用于 Typora 等。',
         tagline: '一键整理 ChatGPT 数学公式格式',
         statusLabel: '可用'
       },
       en: {
-        name: 'ChatGPT Math Format',
+        name: 'ChatGPT Markdown Math Formula Converter',
         eyebrow: 'Markdown tool',
-        summary: 'Convert ChatGPT math delimiters to common Markdown syntax.',
-        tagline: 'Fix ChatGPT math delimiters for Markdown',
+        summary: 'Convert ChatGPT math formulas to $$ format for Typora and similar editors.',
+        tagline: 'Format ChatGPT math formulas for Markdown',
         statusLabel: 'Available'
       }
     }

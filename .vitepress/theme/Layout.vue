@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import OrbitEmbed from './components/OrbitEmbed.vue'
-import SiteBackToTop from './components/SiteBackToTop.vue'
 
 const DefaultLayout = DefaultTheme.Layout
+const OrbitEmbed = defineAsyncComponent(() => import('./components/OrbitEmbed.vue'))
+const SiteBackToTop = defineAsyncComponent(() => import('./components/SiteBackToTop.vue'))
 const { frontmatter } = useData()
 const isOrbitEmbed = computed(() => frontmatter.value.layout === 'orbit-embed')
 const orbitLocale = computed(() => frontmatter.value.orbitLocale === 'en' ? 'en' : 'zh')

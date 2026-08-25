@@ -23,7 +23,7 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: "AI",
-      link: "https://www.aicando.xyz/",
+      link: "https://aicando.xyz/",
     },
     // {
     //     text: 'Software',
@@ -40,7 +40,7 @@ function nav(): DefaultTheme.NavItem[] {
         { text: "MarkdownCanDo", link: "https://github.com/gantrol/MarkdownCanDo" },
         {
           text: "ChatGPT Math Format",
-          link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+          link: "https://aicando.xyz/chatgpt/gpt4o/math-format",
         },
         { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
       ],
@@ -69,7 +69,7 @@ function sidebarAI(): DefaultTheme.SidebarItem {
     // link: '/',
     collapsed: false,
     items: [
-      { text: "AI·TOP 1 (moved)", link: "https://www.aicando.xyz/" },
+      { text: "AI·TOP 1 (moved)", link: "https://aicando.xyz/" },
       // {text: 'AI 画 SVG', link: '/use/svg/'},
     ],
   };
@@ -98,7 +98,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
           { text: "MarkdownCanDo", link: "https://github.com/gantrol/MarkdownCanDo" },
           {
             text: "ChatGPT Math Format",
-            link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+            link: "https://aicando.xyz/chatgpt/gpt4o/math-format",
           },
           { text: "Cyberchef", link: "https://gchq.github.io/CyberChef" },
         ],

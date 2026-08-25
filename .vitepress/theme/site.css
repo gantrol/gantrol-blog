@@ -1,6 +1,6 @@
 :root {
   color-scheme: only light;
-  --vp-font-family-base: Inter, "Segoe UI Variable", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  --vp-font-family-base: "Segoe UI Variable", "SF Pro Text", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
   --vp-c-bg: #f8f7f3;
   --vp-c-bg-alt: #f1efea;
   --vp-c-bg-elv: #fffefb;

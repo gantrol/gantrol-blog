@@ -10,4 +10,8 @@ outline: false
 footer: true
 ---
 
+<script setup>
+import GantrolHome from '../.vitepress/theme/components/GantrolHome.vue'
+</script>
+
 <GantrolHome />

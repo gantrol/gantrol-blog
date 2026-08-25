@@ -65,6 +65,7 @@ function cancelScheduledClear() {
 function activateProject(project: Project) {
   cancelScheduledClear()
   activeProjectId.value = project.id
+  stampRotation.value = stampAngles[project.id] ?? 0
 }
 
 function clearProject() {
@@ -119,7 +120,6 @@ function pinProject(project: Project) {
   pinnedProjectId.value = project.id
   pendingProjectTicketRevealId = project.id
   activateProject(project)
-  stampRotation.value = stampAngles[project.id] ?? 0
 
   if (!isTicketStable) return
 
@@ -127,21 +127,11 @@ function pinProject(project: Project) {
   window.requestAnimationFrame(() => revealProjectTicketIfNeeded(project.id))
 }
 
-function openProject(project: Project) {
-  if (isExternalLink(project.href)) {
-    window.open(project.href, '_blank', 'noopener,noreferrer')
-    return
-  }
+function handleProjectClick(event: MouseEvent, project: Project) {
+  const isModifiedClick = event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+  if (isModifiedClick || pinnedProjectId.value === project.id) return
 
-  window.location.assign(project.href)
-}
-
-function handleProjectClick(project: Project) {
-  if (pinnedProjectId.value === project.id) {
-    openProject(project)
-    return
-  }
-
+  event.preventDefault()
   pinProject(project)
 }
 
@@ -221,10 +211,9 @@ function isExternalLink(href: string) {
             <div class="project-tray" @click="handleTraySurfaceClick">
               <div class="project-tray-paper">
                 <div class="project-cookie-grid">
-                  <button
+                  <a
                     v-for="(project, index) in trayProjects"
                     :key="project.id"
-                    type="button"
                     class="project-cookie"
                     :class="[
                       `project-cookie-${project.id}`,
@@ -234,13 +223,15 @@ function isExternalLink(href: string) {
                       }
                     ]"
                     :style="projectCookieStyle(index)"
+                    :href="project.href"
+                    :target="isExternalLink(project.href) ? '_blank' : undefined"
+                    :rel="isExternalLink(project.href) ? 'noopener' : undefined"
                     :aria-label="pinnedProjectId === project.id
                       ? `${content.previewAction} ${project.name}`
                       : `${project.name}：${project.description}`"
                     :aria-expanded="activeProjectId === project.id"
-                    :aria-pressed="pinnedProjectId === project.id"
                     aria-controls="project-preview"
-                    @click="handleProjectClick(project)"
+                    @click="handleProjectClick($event, project)"
                     @mouseenter="handleProjectMouseEnter(project)"
                     @focus="handleProjectFocus(project)"
                   >
@@ -252,6 +243,7 @@ function isExternalLink(href: string) {
                         alt=""
                         width="100"
                         height="100"
+                        decoding="async"
                       />
                       <template v-else>
                         <img
@@ -260,12 +252,20 @@ function isExternalLink(href: string) {
                           alt=""
                           width="100"
                           height="100"
+                          decoding="async"
                         />
-                        <img class="project-cookie-logo" :src="project.logo" alt="" width="38" height="38" />
+                        <img
+                          class="project-cookie-logo"
+                          :src="project.logo"
+                          alt=""
+                          width="38"
+                          height="38"
+                          decoding="async"
+                        />
                       </template>
                     </span>
                     <span class="project-cookie-label">{{ project.name }}</span>
-                  </button>
+                  </a>
                 </div>
 
                 <span
@@ -273,7 +273,7 @@ function isExternalLink(href: string) {
                   :style="{ transform: `rotate(${stampRotation}deg)` }"
                   aria-hidden="true"
                 >
-                  <img src="/avatar.png" alt="" width="30" height="30" />
+                  <img src="/avatar-ui.webp" alt="" width="30" height="30" decoding="async" />
                 </span>
               </div>
             </div>
@@ -301,6 +301,8 @@ function isExternalLink(href: string) {
                     :alt="`${activeProject.name} 项目预览`"
                     width="720"
                     height="378"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <img
                     v-if="activeProject.overlayImage"
@@ -309,6 +311,8 @@ function isExternalLink(href: string) {
                     alt=""
                     width="564"
                     height="564"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </span>
                 <a
@@ -364,6 +368,8 @@ function isExternalLink(href: string) {
                 alt=""
                 width="44"
                 height="44"
+                loading="lazy"
+                decoding="async"
               />
               <img
                 class="direction-aicando-logo"
@@ -371,6 +377,8 @@ function isExternalLink(href: string) {
                 alt=""
                 width="22"
                 height="22"
+                loading="lazy"
+                decoding="async"
               />
             </template>
             <svg v-else viewBox="0 0 32 32">
@@ -409,7 +417,6 @@ function isExternalLink(href: string) {
           <h2 id="tools-title">{{ content.tools.title }}</h2>
           <p>{{ content.tools.kicker }}</p>
         </div>
-        <a :href="content.tools.action.href">{{ content.tools.action.label }} <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="home-tool-grid">
@@ -422,7 +429,14 @@ function isExternalLink(href: string) {
           :rel="isExternalLink(tool.href) ? 'noopener' : undefined"
         >
           <span class="home-tool-mark" aria-hidden="true">
-            <img :src="tool.logo" :alt="`${tool.name} logo`" width="48" height="48" />
+            <img
+              :src="tool.logo"
+              :alt="`${tool.name} logo`"
+              width="48"
+              height="48"
+              loading="lazy"
+              decoding="async"
+            />
           </span>
           <span class="home-tool-copy">
             <small>{{ tool.status }}</small>
@@ -461,7 +475,7 @@ function isExternalLink(href: string) {
     radial-gradient(circle at 82% 12%, rgb(251 115 112 / 7%), transparent 25rem),
     linear-gradient(180deg, rgb(255 254 251 / 72%), transparent 18rem),
     var(--home-bg);
-  font-family: Inter, "Segoe UI Variable", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  font-family: "Segoe UI Variable", "SF Pro Text", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
 }
 
 :global(.dark .gantrol-home) {
@@ -990,7 +1004,6 @@ function isExternalLink(href: string) {
   width: 25%;
   height: auto;
   aspect-ratio: 1;
-  border: 1px solid rgb(255 254 251 / 74%);
   border-radius: 13px;
   box-shadow: 0 9px 24px rgb(0 0 0 / 22%);
   object-fit: cover;
@@ -1285,13 +1298,6 @@ function isExternalLink(href: string) {
   gap: 24px;
 }
 
-.home-tools-heading > a {
-  color: var(--home-coral-hover);
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
 .home-tool-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1379,7 +1385,6 @@ function isExternalLink(href: string) {
 .text-action:focus-visible,
 .direction-item:focus-visible,
 .popular-list a:focus-visible,
-.home-tools-heading > a:focus-visible,
 .home-tool-grid > a:focus-visible {
   border-radius: 8px;
   outline: 2px solid var(--home-coral);

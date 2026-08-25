@@ -51,7 +51,7 @@ function nav(): DefaultTheme.NavItem[] {
         { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
         {
           text: "ChatGPT Markdown 数学公式格式整理器",
-          link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+          link: "https://aicando.xyz/chatgpt/gpt4o/math-format",
         },
         {
           text: "Cyberchef：小工具箱",
@@ -84,10 +84,10 @@ function sidebarAll(): DefaultTheme.SidebarItem[] {
 function sidebarAI(): DefaultTheme.SidebarItem {
   return {
     text: "AI",
-    link: "https://www.aicando.xyz/",
+    link: "https://aicando.xyz/",
     collapsed: false,
     items: [
-      { text: "AI TOP1（已迁移）", link: "https://www.aicando.xyz/" },
+      { text: "AI TOP1（已迁移）", link: "https://aicando.xyz/" },
       { text: "热爱开源，引爆Deepseek", link: "/AI/record/deepseek" },
       { text: "玩转Deepseek", link: "/AI/use/how-to-chat/deepseek" },
       { text: "AIStudio操作备忘", link: "/AI/use/how-to-chat/aistudio/" },
@@ -98,7 +98,6 @@ function sidebarAI(): DefaultTheme.SidebarItem {
           { text: "去除AI中文（翻译、润色）", link: "/AI/use/translate/" },
           { text: "你值得一首诗", link: "/AI/use/poem/you-own-a-poem" },
           { text: "中国名", link: "/AI/use/name/" },
-          { text: "Git Commit", link: "/AI/use/git/commit" },
         ]
       },
     ],
@@ -142,7 +141,7 @@ function sidebarSoftware(): DefaultTheme.SidebarItem {
           { text: "Claude3中文标点替换工具", link: "https://p.gantrol.com" },
           {
             text: "ChatGPT Markdown 数学公式格式整理器",
-            link: "https://www.aicando.xyz/chatgpt/gpt4o/math-format",
+            link: "https://aicando.xyz/chatgpt/gpt4o/math-format",
           },
           {
             text: "Cyberchef：小工具箱",
@@ -170,16 +169,6 @@ function sidebarWebExtension(): DefaultTheme.SidebarItem[] {
             { text: "复制攻防第一轮", link: "version1" },
             { text: "复制攻防第二轮", link: "version2" },
             { text: "", link: "" },
-          ],
-        },
-        {
-          text: "防复制的示例",
-          base: "/software/WE/test/copy/",
-          items: [
-            { text: "版本1", link: "version1" },
-            { text: "版本2", link: "version2" },
-            { text: "版本3", link: "version3" },
-            { text: "版本4", link: "version4" },
           ],
         },
         { text: "", link: "" },

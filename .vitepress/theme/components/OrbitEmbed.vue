@@ -339,7 +339,7 @@ function handleOrbitFocusOut(event: FocusEvent) {
   padding: 8px;
   color: var(--home-ink);
   background: var(--home-bg);
-  font-family: Inter, "Segoe UI Variable", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  font-family: "Segoe UI Variable", "SF Pro Text", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
 }
 
 :global(.dark) .orbit-embed {

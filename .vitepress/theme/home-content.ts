@@ -52,7 +52,6 @@ export type HomeContent = {
   tools: {
     title: string
     kicker: string
-    action: { label: string; href: string }
     items: ToolContent[]
   }
   projects: ProjectContent[]
@@ -90,7 +89,7 @@ const projectAssets = {
     image: '/images/home/projects/markdowncando-og.webp'
   },
   aiy: {
-    logo: '/images/home/projects/aiy-logo-transparent.png',
+    logo: '/images/home/projects/aiy-logo.webp',
     image: '/images/home/projects/aiy-og.webp'
   }
 }
@@ -156,13 +155,13 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
           id: 'ai',
           title: 'AI探索',
           description: '迁移到AICanDo.xyz',
-          href: 'https://www.aicando.xyz/'
+          href: 'https://aicando.xyz/'
         },
         {
           id: 'psychology',
           title: '心理爱好',
           description: '认知心理学，高效学习方法，决策理论',
-          status: '施工中'
+          href: '/psychology/'
         }
       ]
     },
@@ -170,7 +169,7 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
       title: '历史热门',
       kicker: '10万+阅读',
       items: [
-        { number: '01', title: 'AI能做什么？', href: 'https://www.aicando.xyz/blog/ai-capabilities' },
+        { number: '01', title: 'AI能做什么？', href: 'https://aicando.xyz/blog/ai-capabilities' },
         { number: '02', title: '热爱开源，引爆Deepseek', href: '/AI/record/deepseek' },
         { number: '03', title: '[译]怎样成为一个“干大事”的人', href: '/startup/on-why/great-work-cn/' },
         { number: '04', title: '[译]创业手册 [著]Sam Altman', href: '/startup/handbook/' },
@@ -179,7 +178,6 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
     tools: {
       title: '小工具',
       kicker: '解决一个具体问题',
-      action: { label: '查看全部工具', href: '/tools/' },
       items: tools('zh')
     },
     projects: [
@@ -205,22 +203,21 @@ export const homeContent: Record<HomeLocale, HomeContent> = {
       kicker: 'Three threads',
       items: [
         { id: 'software', title: 'Software engineering', description: 'From fundamentals to practice, exploring how useful software gets built.' },
-        { id: 'ai', title: 'AI exploration', description: 'Prompts, AI Top 1, Deep Research, and hands-on work with foundation models.', href: 'https://www.aicando.xyz/' },
-        { id: 'psychology', title: 'Psychology', description: 'Cognition, learning, and decision-making for clearer thinking.', status: 'In progress' }
+        { id: 'ai', title: 'AI exploration', description: 'Prompts, AI Top 1, Deep Research, and hands-on work with foundation models.', href: 'https://aicando.xyz/' },
+        { id: 'psychology', title: 'Psychology', description: 'Cognition, learning, and decision-making for clearer thinking.', href: '/psychology/' }
       ]
     },
     popular: {
       title: 'Popular essays',
       kicker: 'Reader favorites',
       items: [
-        { number: '01', title: 'AI TOP 1', href: 'https://www.aicando.xyz/' },
+        { number: '01', title: 'AI TOP 1', href: 'https://aicando.xyz/' },
         { number: '02', title: 'Open source and the DeepSeek moment', href: '/AI/record/deepseek' }
       ]
     },
     tools: {
       title: 'Small tools',
       kicker: 'One focused problem at a time',
-      action: { label: 'View all tools', href: '/en/tools/' },
       items: tools('en')
     },
     projects: [

@@ -10,5 +10,5 @@ footer: false
 head:
   - - meta
     - name: robots
-      content: noindex,nofollow
+      content: noindex,follow
 ---
