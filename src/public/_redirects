@@ -1,7 +1,20 @@
-# AI TOP 1 has moved permanently to AiCanDo.
-/AI/TOP1         https://www.aicando.xyz/  308
-/AI/TOP1/        https://www.aicando.xyz/  308
-/AI/TOP1.html    https://www.aicando.xyz/  308
-/en/AI/TOP1      https://www.aicando.xyz/  308
-/en/AI/TOP1/     https://www.aicando.xyz/  308
-/en/AI/TOP1.html https://www.aicando.xyz/  308
+# AI landing pages now have matching canonical pages on AICanDo.
+/AI                 https://aicando.xyz/ai/                 308
+/AI/                https://aicando.xyz/ai/                 308
+/AI/index.html      https://aicando.xyz/ai/                 308
+/AI/use/svg         https://aicando.xyz/image/in-use/icon/  308
+/AI/use/svg/        https://aicando.xyz/image/in-use/icon/  308
+/AI/use/svg/index.html https://aicando.xyz/image/in-use/icon/ 308
+
+# AI TOP 1 has moved permanently to AICanDo.
+/AI/TOP1         https://aicando.xyz/  308
+/AI/TOP1/        https://aicando.xyz/  308
+/AI/TOP1.html    https://aicando.xyz/  308
+/en/AI/TOP1      https://aicando.xyz/  308
+/en/AI/TOP1/     https://aicando.xyz/  308
+/en/AI/TOP1.html https://aicando.xyz/  308
+
+# The empty CopyQ section index is superseded by the first useful lesson.
+/software/WE/copy            /software/WE/copy/environment  308
+/software/WE/copy/           /software/WE/copy/environment  308
+/software/WE/copy/index.html /software/WE/copy/environment  308
