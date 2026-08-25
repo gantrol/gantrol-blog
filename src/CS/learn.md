@@ -21,7 +21,7 @@
 
 近年来 AI 兴起，尤其是生成式 AI 大热。那是另一个话题了。详见[AI学习](/AI/#学习)
 
-# Reference
+## Reference
 
 [Teach Yourself Computer Science](https://teachyourselfcs.com/)的大纲表很不错，译文如下：
 

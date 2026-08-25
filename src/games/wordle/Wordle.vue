@@ -2,7 +2,7 @@
   <ClientOnly>
     <div class="app-container" :class="{ 'mobile': isMobile }">
       <header>
-        <h1>Wordle</h1>
+        <h2>Wordle</h2>
         <div class="header-buttons">
           <button class="icon-button lightbulb-button" @click="showTips = !showTips" title="游戏提示">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -320,7 +320,7 @@ export default {
   letter-spacing: 0.5px;
 }
 
-h1 {
+header h2 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   font-weight: 700;
   letter-spacing: 2px;
@@ -394,7 +394,7 @@ header {
   margin-bottom: 2rem;
 }
 
-h1 {
+header h2 {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
@@ -488,7 +488,7 @@ main {
     flex-direction: column;
   }
 
-  h1 {
+  header h2 {
     font-size: 1.8rem;
   }
 

@@ -35,6 +35,8 @@ head:
       content: "website"
 ---
 
+# Wordle 猜单词
+
 <Wordle />
 
 <script setup>

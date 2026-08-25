@@ -12,7 +12,9 @@ layout: home
 
 ## Claude 手撸网页 PPT
 
+<main aria-label="大模型 PPT 演示">
 <LLMPPT />
+</main>
 
 <script setup>
     import LLMPPT from "./LLMPPT.vue";

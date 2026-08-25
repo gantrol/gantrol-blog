@@ -7,7 +7,7 @@ index b3de40d..afcb743 100644
  
  # AI·第一名
  
--> 本页面内容迁移到 [AiCanDo.xyz](https://www.aicando.xyz/)
+-> 本页面内容迁移到 [AiCanDo.xyz](https://aicando.xyz/)
 +> 如果是为了编程，20美元订阅通用大模型已无必要。200美元档[很神奇](o1 pro magic)，性价比看你自己
  
 -| **类别** | **收费**                                                                              | **免费**                                   | **国内**                            |
@@ -18,7 +18,7 @@ index b3de40d..afcb743 100644
 -| ✍️ 写作  | ?                                                                                   | ?                                        | ？                                 |
 -| 🎨 设计  | Canva AI                                                                            | Microsoft Designer                       | ？                                 |
 -| 💻 程序  | Github Copilot                                                                      | [Claude3](https://claude.ai/)            | ？                                 |
--| 🎵 音乐  | [Suno](https://www.aicando.xyz/music/suno-ai/)                                      | Suno                                     | ？                                 |
+-| 🎵 音乐  | [Suno](https://aicando.xyz/music/suno-ai/)                                          | Suno                                     | ？                                 |
 +| **类别** | **收费**                                       | **免费**                                                     | **国内**                                 |
 +| -------- | ---------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------- |
 +| 🌐 通用   | ChatGPT pro                                    | [Deepseek R1][deepseek]、[Claude3 sonnet][claude3] | [Deepseek R1][deepseek] |
