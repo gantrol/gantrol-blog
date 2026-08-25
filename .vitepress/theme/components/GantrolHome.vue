@@ -1005,7 +1005,6 @@ function isExternalLink(href: string) {
   height: auto;
   aspect-ratio: 1;
   border-radius: 13px;
-  box-shadow: 0 9px 24px rgb(0 0 0 / 22%);
   object-fit: cover;
 }
 
